@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['namespace' => 'prosvujusmev\\'], function() {
+    Route::get('/', 'HomeController@index');
+
+    Route::group(['prefix' => '/admin', 'namespace' => 'Admin\\'], function() {
+        Route::get('/', 'AdminController@index');
+    });
 });
