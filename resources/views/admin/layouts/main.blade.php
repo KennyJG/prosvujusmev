@@ -9,6 +9,10 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-    @yield('content')
+    <div id="app">
+        @yield('content')
+    </div>
+
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
