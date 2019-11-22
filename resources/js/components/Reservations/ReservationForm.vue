@@ -1,6 +1,6 @@
 <template>
     <div class="container w-full md:w-1/2 h-full m-auto flex justify-center items-center md:mt-4">
-        <div class="leading-loose">
+        <div class="leading-loose mb-12">
             <form class="max-w-xl p-10 bg-white rounded shadow-xl mt-4">
                 <p class="text-gray-800 font-medium mb-2">Rezervace</p>
               
@@ -9,7 +9,7 @@
                     <div @click="toggleSlevomatForm()" :class="showSlevomatForm ? 'border border-purple-300' : ''" class="w-1/2 m-2 bg-gray-200 text-center flex justify-center items-center cursor-pointer"><div class="m-2">Mám kupón ze slevomat.cz</div></div>
                 </div>
 
-                <div :class="showOrderForm ? 'block' : 'hidden'" class="mt-6">
+                <div :class="(showOrderForm || showSlevomatForm) ? 'block' : 'hidden'" class="mt-6">
                     <div class="">
                         <label class="block text-sm text-gray-600" for="cus_name">Kurz</label>
                         <div class="w-full block relative w-64">
