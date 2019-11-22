@@ -11,10 +11,20 @@
 |
 */
 
-Route::group(['namespace' => 'prosvujusmev\\'], function() {
+Route::group(['namespace' => 'prosvujusmev\\'], function () {
     Route::get('/', 'HomeController@index');
 
-    Route::group(['prefix' => '/admin', 'namespace' => 'Admin\\'], function() {
+    Route::get('/reservations', 'Reservations\ReservationsController@index');
+
+    Route::group(['prefix' => '/admin', 'namespace' => 'Admin\\'], function () {
         Route::get('/', 'AdminController@index');
+
+        Route::get('/courses', 'Courses\CoursesController@index');
+        Route::get('/courses/create', 'Courses\CoursesController@create');
+        Route::get('/courses/{course}', 'Courses\CoursesController@show');
+        Route::post('/courses', 'Courses\CoursesController@store');
+        Route::get('/courses/{course}/edit', 'Courses\CoursesController@edit');
+        Route::put('/courses/{course}', 'Courses\CoursesController@update');
+        Route::delete('/courses/{course}', 'Courses\CoursesController@destroy');
     });
 });

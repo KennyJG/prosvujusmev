@@ -1,5 +1,4 @@
 @extends('layouts.main')
 @section('content')
-    <div class="container">
-    </div>
+    <reservation-form></reservation-form>
 @endsection
