@@ -21,8 +21,9 @@
                     @endforeach
                 </div>
                 @endif
-                <form class="mt-8" method="POST" action="/admin/course-dates">
+                <form class="mt-8" method="POST" action="/admin/course-dates/{{ $courseDate->id }}">
                     @csrf
+                    <input type="hidden" name="_method" value="put" />
                     <div class="-mx-3 md:flex mb-6">
                         <div class="md:w-full px-3">
                             <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="course_id">
@@ -30,9 +31,8 @@
                             </label>
                             <div class="inline-block relative w-full mb-3">
                                 <select class="block appearance-none w-full bg-white border border-grey-lighter hover:border-gray-500 px-4 py-3 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline" name="course_id">
-                                    <option selected>-</option>
                                     @foreach ($courses as $course)
-                                    <option value="{{ $course->id }}">{{ $course->name }}</option>
+                                    <option {{ $courseDate->course_id === $course->id ? 'selected' : '' }} value="{{ $course->id }}">{{ $course->name }}</option>
                                     @endforeach
                                 </select>
                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -47,25 +47,25 @@
                             <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="from_date_date">
                                 Datum začátku
                             </label>
-                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="from_date_date" type="date" name="from_date_date" required>
+                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="from_date_date" type="date" name="from_date_date" value="{{ $courseDate->from_date->format('Y-m-d') }}" required>
                         </div>
                         <div class="md:w-1/4 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="from_date_time">
                                 Čas začátku
                             </label>
-                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="from_date_time" type="time" name="from_date_time" required>
+                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="from_date_time" type="time" name="from_date_time" value="{{ $courseDate->from_date->format('H:i:s') }}" required>
                         </div>
                         <div class="md:w-1/4 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="to_date_date">
                                 Datum konce
                             </label>
-                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="to_date_date" type="date" name="to_date_date" required>
+                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="to_date_date" type="date" name="to_date_date" value="{{ $courseDate->to_date->format('Y-m-d') }}" required>
                         </div>
                         <div class="md:w-1/4 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="to_date_time">
                                 Čas konce
                             </label>
-                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="to_date_time" type="time" name="to_date_time" required>
+                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="to_date_time" type="time" name="to_date_time" value="{{ $courseDate->to_date->format('H:i:s') }}" required>
                         </div>
                     </div>
 
@@ -74,19 +74,19 @@
                             <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="venue">
                                 Místo konání
                             </label>
-                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="venue" type="text" name="venue" required>
+                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="venue" type="text" name="venue" value="{{ $courseDate->venue }}" required>
                         </div>
                         <div class="md:w-1/3 px-3 mb-6 md:mb-0">
                             <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="lecturer">
                                 Lektor
                             </label>
-                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="lecturer" type="text" name="lecturer" required>
+                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="lecturer" type="text" name="lecturer" value="{{ $courseDate->lecturer }}" required>
                         </div>
                         <div class="md:w-1/3 px-3">
                             <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="limit">
                                 Maximální počet míst
                             </label>
-                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="limit" type="number" min="1" name="limit" required>
+                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="limit" type="number" min="1" name="limit" value="{{ $courseDate->limit }}" required>
                         </div>
                     </div>
 
@@ -95,13 +95,13 @@
                             <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="description">
                                 Popis
                             </label>
-                            <textarea class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3" id="description" type="text" name="description" rows="4"></textarea>
+                            <textarea class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 mb-3" id="description" type="text" name="description" rows="4">{{ $courseDate->description }}</textarea>
                         </div>
                     </div>
 
                     <div class="sm:float-right sm:w-auto w-full">
                         <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white text-sm font-semibold py-2 px-4 rounded">
-                            Vytvořit
+                            Upravit
                         </button>
                     </div>
                 </form>

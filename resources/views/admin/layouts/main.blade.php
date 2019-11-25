@@ -8,8 +8,8 @@
 
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <div id="app">
+<body class="min-h-screen">
+    <div id="app" class="min-h-screen">
         @yield('content')
     </div>
     <script src="{{ asset('js/app.js') }}"></script>

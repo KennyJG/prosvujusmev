@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('content')
-<div class="container flex h-full w-full bg-gray-100">
+<div class="container flex min-h-screen w-full bg-gray-100">
     <navbar></navbar>
     <div class="h-full w-full">
         <div class="w-full h-12 bg-gray-200">
@@ -27,10 +27,10 @@
                                 <td class="border border-l-0 px-4 py-4 text-right">
                                     <div class="inline-flex">
                                         <a href="/admin/courses/{{ $course->id }}/edit" class="{{$loop->even ? 'bg-gray-100' : 'bg-gray-300'}} hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
-                                            Edit
+                                            Editovat
                                         </a>
                                         <a @click="showModal('blablab', 'asdfasdf', 'asdfasdfsaf', 'adsfasdf')" href="#" class="{{$loop->even ? 'bg-gray-100' : 'bg-gray-300'}} hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
-                                            Delete
+                                            Odstranit
                                         </a>
                                     </div>
                                 </td>

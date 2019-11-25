@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('content')
-<div class="container flex h-full w-full bg-gray-100">
+<div class="container flex min-h-screen w-full bg-gray-100">
     <navbar></navbar>
     <div class="h-full w-full">
         <div class="w-full h-12 bg-gray-200">
@@ -17,25 +17,25 @@
                     <thead>
                         <tr>
                             <th class="px-2 py-2 text-left">Datum</th>
-                            <th class="px-2 py-2 text-right">Kurz</th>
-                            <th class="px-2 py-2 text-right">Místo</th>
-                            <th class="px-2 py-2 text-right">Volných míst</th>
+                            <th class="px-2 py-2 text-left">Kurz</th>
+                            <th class="px-2 py-2 text-left">Místo</th>
+                            <th class="px-2 py-2 text-left">Volných míst</th>
                             <th class="px-2 py-2 text-right">Akce</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($courseDates as $courseDate)
                             <tr class="{{$loop->even ? 'bg-gray-200' : ''}}">
-                                <td class="border border-r-0 px-4 py-2">{{ $courseDate->from_date }}</td>
-                                <td class="border border-r-0 px-4 py-2">{{ $courseDate->course->name }}</td>
-                                <td class="border border-r-0 px-4 py-2">{{ $courseDate->venue }}</td>
-                                <td class="border border-r-0 px-4 py-2">{{ $courseDate->limit }}</td>
+                                <td class="border border-r-0 px-4 py-2 text-left">{{ $courseDate->from_date }}</td>
+                                <td class="border border-r-0 px-4 py-2 text-left">{{ $courseDate->course->name }}</td>
+                                <td class="border border-r-0 px-4 py-2 text-left">{{ $courseDate->venue }}</td>
+                                <td class="border px-4 py-2 text-left">{{ $courseDate->limit }}</td>
                                 <td class="border border-l-0 px-4 py-4 text-right">
                                     <div class="inline-flex">
-                                        <a href="/admin/courses/{{ $courseDate->course->id }}/dates/{{ $courseDate->id }}/edit" class="{{$loop->even ? 'bg-gray-100' : 'bg-gray-300'}} hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
+                                        {{-- <a href="/admin/courses/{{ $courseDate->course->id }}/dates/{{ $courseDate->id }}/edit" class="{{$loop->even ? 'bg-gray-100' : 'bg-gray-300'}} hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
                                             Více
-                                        </a>
-                                        <a href="/admin/courses/{{ $courseDate->course->id }}/dates/{{ $courseDate->id }}/edit" class="{{$loop->even ? 'bg-gray-100' : 'bg-gray-300'}} hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
+                                        </a> --}}
+                                        <a href="/admin/course-dates/{{ $courseDate->id }}/edit" class="{{$loop->even ? 'bg-gray-100' : 'bg-gray-300'}} hover:bg-gray-400 text-gray-800 font-bold py-2 px-4">
                                             Editovat
                                         </a>
                                         <a @click="showModal('blablab', 'asdfasdf', 'asdfasdfsaf', 'adsfasdf')" href="#" class="{{$loop->even ? 'bg-gray-100' : 'bg-gray-300'}} hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
