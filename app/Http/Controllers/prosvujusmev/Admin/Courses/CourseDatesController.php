@@ -12,7 +12,7 @@ class CourseDatesController extends Controller
     public function index()
     {
         return response()->view('admin.courses.dates.index', [
-            'courseDates' => CourseDate::all()
+            'courseDates' => CourseDate::with('course')->get()
         ]);
     }
 
@@ -92,9 +92,6 @@ class CourseDatesController extends Controller
     public function destroy(Request $request, CourseDate $courseDate)
     {
         $courseDate->delete();
-
-        return redirect('/admin/course-dates')->with([
-            'message' => 'Kurz byl odstraněn.'
-        ]);
+        return response()->json();
     }
 }

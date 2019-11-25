@@ -63,10 +63,10 @@ class CoursesController extends Controller
 
     public function destroy(Request $request, Course $course)
     {
+        foreach ($course->dates as $courseDate) {
+            $courseDate->delete();
+        }
         $course->delete();
-        
-        return redirect('/admin/courses')->with([
-            'message' => 'Kurz byl odstraněn.'
-        ]);
+        return response()->json();
     }
 }

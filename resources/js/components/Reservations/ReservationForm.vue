@@ -5,8 +5,8 @@
                 <p class="text-gray-800 font-medium mb-2">Rezervace</p>
               
                 <div class='flex'>
-                    <div @click="toggleOrderForm()" :class="showOrderForm ? 'border border-purple-300' : '' " class="w-1/2 m-2 bg-gray-200 text-center flex justify-center items-center cursor-pointer"><div class="m-2">Mám číslo objednávky</div></div>
-                    <div @click="toggleSlevomatForm()" :class="showSlevomatForm ? 'border border-purple-300' : ''" class="w-1/2 m-2 bg-gray-200 text-center flex justify-center items-center cursor-pointer"><div class="m-2">Mám kupón ze slevomat.cz</div></div>
+                    <div @click="toggleOrderForm()" :class="showOrderForm ? 'border border-purple-300 bg-purple-200' : '' " class="w-1/2 m-2 bg-gray-200 text-center flex justify-center items-center cursor-pointer rounded shadow"><div class="m-2">Mám číslo objednávky</div></div>
+                    <div @click="toggleSlevomatForm()" :class="showSlevomatForm ? 'border border-purple-300 bg-purple-200' : ''" class="w-1/2 m-2 bg-gray-200 text-center flex justify-center items-center cursor-pointer rounded shadow"><div class="m-2">Mám kupón ze slevomat.cz</div></div>
                 </div>
 
                 <div :class="(showOrderForm || showSlevomatForm) ? 'block' : 'hidden'" class="mt-6">
