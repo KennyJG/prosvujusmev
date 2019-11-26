@@ -12,9 +12,16 @@
 */
 
 Route::group(['namespace' => 'prosvujusmev\\'], function () {
+    Route::group(['prefix' => '/api'], function() {
+        Route::get('/courses', 'Courses\ApiCoursesController@index');
+
+        Route::get('/course-dates', 'Courses\ApiCourseDatesController@index');
+    });
+
     Route::get('/', 'HomeController@index');
 
     Route::get('/reservations', 'Reservations\ReservationsController@index');
+    Route::post('/reservations', 'Reservations\ReservationsController@store');
 
     Route::group(['prefix' => '/admin', 'namespace' => 'Admin\\'], function () {
         Route::get('/', 'AdminController@index');

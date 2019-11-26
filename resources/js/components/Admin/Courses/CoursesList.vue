@@ -67,7 +67,7 @@ export default {
 
                         setTimeout(() => {
                             this.showDeleteSuccessMessage = false;
-                        }, 4000)
+                        }, 4000);
                     });
             }
         }
