@@ -7,6 +7,7 @@
     <title>Admin - Pro svůj úsměv</title>
 
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body class="min-h-screen">
     <div id="app" class="min-h-screen">

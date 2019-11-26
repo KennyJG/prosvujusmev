@@ -7,6 +7,7 @@ Vue.component('navbar', require('./components/Admin/Navbar.vue').default);
 Vue.component('confirmation-modal', require('./components/Admin/Modals/Confirmation.vue').default);
 Vue.component('course-dates-list', require('./components/Admin/Courses/CourseDatesList.vue').default);
 Vue.component('courses-list', require('./components/Admin/Courses/CoursesList.vue').default);
+Vue.component('reservation-list', require('./components/Admin/Reservations/ReservationList.vue').default);
 
 // Site components
 Vue.component('site-navbar', require('./components/SiteNavbar.vue').default);

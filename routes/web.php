@@ -12,7 +12,7 @@
 */
 
 Route::group(['namespace' => 'prosvujusmev\\'], function () {
-    Route::group(['prefix' => '/api'], function() {
+    Route::group(['prefix' => '/api'], function () {
         Route::get('/courses', 'Courses\ApiCoursesController@index');
 
         Route::get('/course-dates', 'Courses\ApiCourseDatesController@index');
@@ -40,6 +40,13 @@ Route::group(['namespace' => 'prosvujusmev\\'], function () {
         Route::get('/course-dates/{courseDate}/edit', 'Courses\CourseDatesController@edit');
         Route::put('/course-dates/{courseDate}', 'Courses\CourseDatesController@update');
         Route::delete('/course-dates/{courseDate}', 'Courses\CourseDatesController@destroy');
+
+        Route::get('/reservations', 'Reservations\ReservationsController@index');
+        Route::get('/reservations/create', 'Reservations\ReservationsController@create');
+        Route::post('/reservations', 'Reservations\ReservationsController@store');
+        Route::get('/reservations/{reservation}/edit', 'Reservations\ReservationsController@edit');
+        Route::put('/reservations/{reservation}', 'Reservations\ReservationsController@update');
+        Route::delete('/reservations/{reservation}', 'Reservations\ReservationsController@destroy');
 
         // Route::get('/courses/{course}/dates', 'Courses\CourseDatesController@index');
         // Route::get('/courses/{course}/dates/{courseDate}', 'Courses\CourseDatesController@show');
