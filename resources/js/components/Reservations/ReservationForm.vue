@@ -59,7 +59,7 @@
                                         </svg>
                                     </div>
                                 </div>
-                                <div class="">
+                                <div class="mt-12">
                                     <label class="block text-sm text-gray-600" for="sourceCode">Číslo kupónu</label>
                                     <input v-model="reservation.sourceCode" class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="sourceCode" name="sourceCode" type="text" required aria-label="Číslo kupónu">
                                 </div>
@@ -93,8 +93,8 @@
                                     <input v-model="reservation.country" class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="country" name="country" type="text" required="" placeholder="Stát" aria-label="Stát">
                                 </div>
                                 <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                                    <label class="hidden block text-sm text-gray-600" for="zip">PSČ</label>
-                                    <input v-model="reservation.zip" class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="zip"  name="zip" type="text" required="" placeholder="PSČ" aria-label="PSČ">
+                                    <label class="hidden block text-sm text-gray-600">PSČ</label>
+                                    <input v-model="reservation.zip" class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" name="zip" type="text" required="" placeholder="PSČ" aria-label="PSČ">
                                 </div>
                                 <!-- <p class="mt-4 text-gray-800 font-medium">Payment information</p>
                                 <div class="">
@@ -157,6 +157,7 @@ export default {
                     city: '',
                     country: '',
                     zip: '',
+                    courseDateId: null,
                 },
             ],
             activeReservations: [0],
@@ -186,11 +187,29 @@ export default {
         },
 
         createReservation() {
+            let reservations = this.reservations;
+            reservations = reservations.forEach((reservation) => {
+                reservation.courseDateId = this.selectedCourseDate;
+            });
             axios.post('/reservations', { reservations: this.reservations })
                 .then((response) => {
                     this.selectedCourse = '-';
                     this.selectedCourseDate = '-';
-                    this.reservations = [];
+                    this.reservations = [
+                        {
+                            sourceCode: '',
+                            firstName: '',
+                            lastName: '',
+                            email: '',
+                            phone: '',
+                            street: '',
+                            city: '',
+                            country: '',
+                            zip: '',
+                            courseDateId: null,
+                        }, 
+                    ];
+                    this.activeReservations = [0];
                     this.showCreateReservationSuccessMessage = true;
                     setTimeout(() => {
                         this.showCreateReservationSuccessMessage = false;
@@ -215,6 +234,7 @@ export default {
                     city: this.reservations[0].city,
                     country: this.reservations[0].country,
                     zip: this.reservations[0].zip,
+                    courseDateId: null,
                 }
             );
             this.activeReservations.push(this.reservations.length - 1);

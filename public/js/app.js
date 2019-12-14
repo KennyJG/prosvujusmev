@@ -2389,7 +2389,8 @@ __webpack_require__.r(__webpack_exports__);
         street: '',
         city: '',
         country: '',
-        zip: ''
+        zip: '',
+        courseDateId: null
       }],
       activeReservations: [0],
       showCreateReservationSuccessMessage: false,
@@ -2418,12 +2419,28 @@ __webpack_require__.r(__webpack_exports__);
     createReservation: function createReservation() {
       var _this3 = this;
 
+      var reservations = this.reservations;
+      reservations = reservations.forEach(function (reservation) {
+        reservation.courseDateId = _this3.selectedCourseDate;
+      });
       axios.post('/reservations', {
         reservations: this.reservations
       }).then(function (response) {
         _this3.selectedCourse = '-';
         _this3.selectedCourseDate = '-';
-        _this3.reservations = [];
+        _this3.reservations = [{
+          sourceCode: '',
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          street: '',
+          city: '',
+          country: '',
+          zip: '',
+          courseDateId: null
+        }];
+        _this3.activeReservations = [0];
         _this3.showCreateReservationSuccessMessage = true;
         setTimeout(function () {
           _this3.showCreateReservationSuccessMessage = false;
@@ -2445,7 +2462,8 @@ __webpack_require__.r(__webpack_exports__);
         street: this.reservations[0].street,
         city: this.reservations[0].city,
         country: this.reservations[0].country,
-        zip: this.reservations[0].zip
+        zip: this.reservations[0].zip,
+        courseDateId: null
       });
       this.activeReservations.push(this.reservations.length - 1);
     },
@@ -21397,7 +21415,7 @@ var render = function() {
                               ]
                             ),
                             _vm._v(" "),
-                            _c("div", {}, [
+                            _c("div", { staticClass: "mt-12" }, [
                               _c(
                                 "label",
                                 {
@@ -21773,8 +21791,7 @@ var render = function() {
                                   "label",
                                   {
                                     staticClass:
-                                      "hidden block text-sm text-gray-600",
-                                    attrs: { for: "zip" }
+                                      "hidden block text-sm text-gray-600"
                                   },
                                   [_vm._v("PSČ")]
                                 ),
@@ -21791,7 +21808,6 @@ var render = function() {
                                   staticClass:
                                     "w-full px-2 py-2 text-gray-700 bg-gray-200 rounded",
                                   attrs: {
-                                    id: "zip",
                                     name: "zip",
                                     type: "text",
                                     required: "",
