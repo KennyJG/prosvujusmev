@@ -19,7 +19,7 @@ class ReservationsController extends Controller
             'course_date_id' => $request->courseDateId,
             'source_type' => $request->sourceType,
             'source_code' => $request->sourceCode,
-            'status' => 'TODO',
+            'status' => 'Čeká na schválení',
         ]);
 
         return response()->json([]);

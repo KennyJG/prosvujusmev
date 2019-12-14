@@ -9,8 +9,8 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
-<body class="min-h-screen">
-    <div id="app" class="min-h-screen">
+<body class="min-h-screen min-w-screen bg-gray-100">
+    <div id="app" class="min-h-screen min-w-screen">
         @yield('content')
     </div>
     <script src="{{ asset('js/app.js') }}"></script>

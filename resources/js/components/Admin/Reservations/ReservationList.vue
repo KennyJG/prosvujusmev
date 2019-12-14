@@ -1,6 +1,6 @@
 <template>
     <div class="h-full w-full">
-        <div class="w-full h-12 bg-gray-200">
+        <div class="w-full h-12 bg-gray-100">
         </div>
         <div class="w-full h-full p-6">
             <div class="w-full border-b pb-2 flex items-end justify-between">
@@ -18,7 +18,7 @@
                             <th class="px-2 py-2 text-left">Termín</th>
                             <th class="px-2 py-2 text-left">Místo</th>
                             <th class="px-2 py-2 text-left">Zdroj</th>
-                            <th class="px-2 py-2 text-left">Zdroj</th>
+                            <th class="px-2 py-2 text-left">Kód</th>
                             <th class="px-2 py-2 text-left">Stav</th>
                             <th class="px-2 py-2 text-left">Vytvořeno</th>
                             <th class="px-2 py-2 text-right">Akce</th>
