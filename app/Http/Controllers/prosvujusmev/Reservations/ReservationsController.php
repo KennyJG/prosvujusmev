@@ -15,12 +15,15 @@ class ReservationsController extends Controller
 
     public function store(Request $request)
     {
-        Reservation::create([
-            'course_date_id' => $request->courseDateId,
-            'source_type' => $request->sourceType,
-            'source_code' => $request->sourceCode,
-            'status' => 'Čeká na schválení',
-        ]);
+        dd($request->reservations);
+        foreach ($request->reservations as $reservation) {
+            Reservation::create([
+                'course_date_id' => $reservation->courseDateId,
+                'source_type' => $reservation->sourceType,
+                'source_code' => $reservation->sourceCode,
+                'status' => 'Čeká na schválení',
+            ]);
+        }
 
         return response()->json([]);
     }
