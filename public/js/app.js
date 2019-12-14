@@ -2356,6 +2356,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2374,7 +2391,7 @@ __webpack_require__.r(__webpack_exports__);
         country: '',
         zip: ''
       }],
-      activeReservation: 0,
+      activeReservations: [0],
       showCreateReservationSuccessMessage: false,
       showCreateReservationFailedMessage: false
     };
@@ -2430,7 +2447,24 @@ __webpack_require__.r(__webpack_exports__);
         country: this.reservations[0].country,
         zip: this.reservations[0].zip
       });
-      this.activeReservation = this.reservations.length - 1;
+      this.activeReservations.push(this.reservations.length - 1);
+    },
+    removeReservation: function removeReservation(index) {
+      this.activeReservations = this.activeReservations.filter(function (activeReservation) {
+        return activeReservation != index;
+      });
+      this.reservations = this.reservations.filter(function (reservation, reservationIndex) {
+        return index != reservationIndex;
+      });
+    },
+    toggleReservation: function toggleReservation(index) {
+      if (this.activeReservations.includes(index)) {
+        this.activeReservations = this.activeReservations.filter(function (activeReservation) {
+          return activeReservation != index;
+        });
+      } else {
+        this.activeReservations.push(index);
+      }
     }
   },
   mounted: function mounted() {
@@ -21055,8 +21089,8 @@ var render = function() {
                         }
                       ],
                       staticClass:
-                        "w-full px-5 py-1 block appearance-none w-full bg-gray-200 text-gray-700 border hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline",
-                      staticStyle: { "min-width": "400px" },
+                        "w-full px-5 py-1 block appearance-none bg-gray-200 text-gray-700 border hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline",
+                      staticStyle: { "min-width": "450px" },
                       on: {
                         change: [
                           function($event) {
@@ -21151,7 +21185,7 @@ var render = function() {
                           }
                         ],
                         staticClass:
-                          "w-full px-5 py-1 block appearance-none w-full bg-gray-200 text-gray-700 border hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline",
+                          "w-full px-5 py-1 block appearance-none bg-gray-200 text-gray-700 border hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline",
                         attrs: { name: "courseDateId" },
                         on: {
                           change: function($event) {
@@ -21229,7 +21263,7 @@ var render = function() {
                 [
                   _vm._l(_vm.reservations, function(reservation, index) {
                     return _c("div", [
-                      index !== _vm.activeReservation
+                      !_vm.activeReservations.includes(index)
                         ? _c(
                             "div",
                             {
@@ -21237,7 +21271,7 @@ var render = function() {
                                 "p-3 border mt-12 flex justify-between cursor-pointer content-center items-center",
                               on: {
                                 click: function($event) {
-                                  _vm.activeReservation = index
+                                  return _vm.toggleReservation(index)
                                 }
                               }
                             },
@@ -21279,6 +21313,90 @@ var render = function() {
                             ]
                           )
                         : _c("div", { staticClass: "mt-12 border p-4" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "w-full flex",
+                                class: {
+                                  "justify-between": index !== 0,
+                                  "justify-end": index === 0
+                                }
+                              },
+                              [
+                                index !== 0
+                                  ? _c("div", { staticClass: "align-middle" }, [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "text-sm text-gray-600 flex content-center cursor-pointer",
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.removeReservation(
+                                                index
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("div", { staticClass: "mr-2" }, [
+                                            _c(
+                                              "svg",
+                                              {
+                                                staticClass:
+                                                  "fill-current text-gray-500 inline-block h-4 w-4",
+                                                attrs: {
+                                                  xmlns:
+                                                    "http://www.w3.org/2000/svg",
+                                                  viewBox: "0 0 448 512"
+                                                }
+                                              },
+                                              [
+                                                _c("path", {
+                                                  attrs: {
+                                                    d:
+                                                      "M108 284c-6.6 0-12-5.4-12-12v-32c0-6.6 5.4-12 12-12h232c6.6 0 12 5.4 12 12v32c0 6.6-5.4 12-12 12H108zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-48 346V86c0-3.3-2.7-6-6-6H54c-3.3 0-6 2.7-6 6v340c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"
+                                                  }
+                                                })
+                                              ]
+                                            )
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("div", [_vm._v("Odebrat osobu")])
+                                        ]
+                                      )
+                                    ])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "align-middle" }, [
+                                  _c(
+                                    "svg",
+                                    {
+                                      staticClass:
+                                        "fill-current h-4 w-4 cursor-pointer",
+                                      attrs: {
+                                        xmlns: "http://www.w3.org/2000/svg",
+                                        viewBox: "0 0 320 512"
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.toggleReservation(index)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c("path", {
+                                        attrs: {
+                                          d:
+                                            "M288.662 352H31.338c-17.818 0-26.741-21.543-14.142-34.142l128.662-128.662c7.81-7.81 20.474-7.81 28.284 0l128.662 128.662c12.6 12.599 3.676 34.142-14.142 34.142z"
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
                             _c("div", {}, [
                               _c(
                                 "label",
@@ -21714,7 +21832,7 @@ var render = function() {
                         "div",
                         {
                           staticClass:
-                            "mt-4 text-sm text-gray-600 flex content-center"
+                            "mt-4 text-sm text-gray-600 flex content-center cursor-pointer"
                         },
                         [
                           _c("div", { staticClass: "mr-2" }, [

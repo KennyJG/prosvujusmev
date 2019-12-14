@@ -8,7 +8,7 @@
                     <div class="">
                         <label class="block text-sm text-gray-600" for="cus_name">Kurz</label>
                         <div class="w-full block relative w-64">
-                            <select @change="courseSelected($event)" v-model="selectedCourse" style="min-width: 400px;" class="w-full px-5 py-1 block appearance-none w-full bg-gray-200 text-gray-700 border hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline">
+                            <select @change="courseSelected($event)" v-model="selectedCourse" style="min-width: 450px" class="w-full px-5 py-1 block appearance-none bg-gray-200 text-gray-700 border hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline">
                                 <option value="-">-</option>
                                 <option v-for="localCourse in courses" :value="localCourse.id">{{ localCourse.name }}</option>
                             </select>
@@ -21,7 +21,7 @@
                     <div :class="selectedCourse === '-' ? 'hidden' : 'block'" class="mt-2">
                         <label class="block text-sm text-gray-600" for="cus_name">Termín</label>
                         <div class="w-full block relative w-64">
-                            <select v-model="selectedCourseDate" class="w-full px-5 py-1 block appearance-none w-full bg-gray-200 text-gray-700 border hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline" name="courseDateId">
+                            <select v-model="selectedCourseDate" class="w-full px-5 py-1 block appearance-none bg-gray-200 text-gray-700 border hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline" name="courseDateId">
                                 <option value="-">-</option>
                                 <option v-for="localCourseDate in courseDates" :value="localCourseDate.id">Od {{ localCourseDate.from_date }} do {{ localCourseDate.to_date }} - {{ localCourseDate.venue }}</option>
                             </select>
@@ -33,7 +33,7 @@
 
                     <div :class="selectedCourseDate === '-' ? 'hidden' : 'block'">
                         <div v-for="(reservation, index) in reservations">
-                            <div @click="activeReservation = index" v-if='index !== activeReservation' class='p-3 border mt-12 flex justify-between cursor-pointer content-center items-center'>
+                            <div @click="toggleReservation(index)" v-if='!activeReservations.includes(index)' class='p-3 border mt-12 flex justify-between cursor-pointer content-center items-center'>
                                 <div class="text-sm text-gray-600 pl-4">{{ reservation.sourceCode }} - {{ reservation.firstName }} {{ reservation.lastName }}</div>
                                 <div class="align-middle">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
@@ -42,6 +42,23 @@
                                 </div>
                             </div>
                             <div v-else class="mt-12 border p-4">
+                                <div :class="{ 'justify-between': index !== 0, 'justify-end': index === 0 }" class="w-full flex">
+                                    <div v-if="index !== 0" class="align-middle">
+                                        <div @click="removeReservation(index)" class="text-sm text-gray-600 flex content-center cursor-pointer">
+                                            <div class="mr-2">
+                                                <svg class="fill-current text-gray-500 inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                                    <path d="M108 284c-6.6 0-12-5.4-12-12v-32c0-6.6 5.4-12 12-12h232c6.6 0 12 5.4 12 12v32c0 6.6-5.4 12-12 12H108zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-48 346V86c0-3.3-2.7-6-6-6H54c-3.3 0-6 2.7-6 6v340c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/>
+                                                </svg>
+                                            </div>
+                                            <div>Odebrat osobu</div>
+                                        </div>
+                                    </div>
+                                    <div class="align-middle">
+                                        <svg @click='toggleReservation(index)' class="fill-current h-4 w-4 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                            <path d="M288.662 352H31.338c-17.818 0-26.741-21.543-14.142-34.142l128.662-128.662c7.81-7.81 20.474-7.81 28.284 0l128.662 128.662c12.6 12.599 3.676 34.142-14.142 34.142z"/>
+                                        </svg>
+                                    </div>
+                                </div>
                                 <div class="">
                                     <label class="block text-sm text-gray-600" for="sourceCode">Číslo kupónu</label>
                                     <input v-model="reservation.sourceCode" class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="sourceCode" name="sourceCode" type="text" required aria-label="Číslo kupónu">
@@ -90,7 +107,7 @@
                             </div>
                         </div>
                         <a @click="addReservation()"> 
-                            <div class="mt-4 text-sm text-gray-600 flex content-center">
+                            <div class="mt-4 text-sm text-gray-600 flex content-center cursor-pointer">
                                 <div class="mr-2">
                                     <svg class="fill-current text-gray-500 inline-block h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                         <path d="M352 240v32c0 6.6-5.4 12-12 12h-88v88c0 6.6-5.4 12-12 12h-32c-6.6 0-12-5.4-12-12v-88h-88c-6.6 0-12-5.4-12-12v-32c0-6.6 5.4-12 12-12h88v-88c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v88h88c6.6 0 12 5.4 12 12zm96-160v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-48 346V86c0-3.3-2.7-6-6-6H54c-3.3 0-6 2.7-6 6v340c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"/>
@@ -142,7 +159,7 @@ export default {
                     zip: '',
                 },
             ],
-            activeReservation: 0,
+            activeReservations: [0],
             
             showCreateReservationSuccessMessage: false,
             showCreateReservationFailedMessage: false,
@@ -200,7 +217,27 @@ export default {
                     zip: this.reservations[0].zip,
                 }
             );
-            this.activeReservation = this.reservations.length - 1;
+            this.activeReservations.push(this.reservations.length - 1);
+        },
+
+        removeReservation(index) {
+            this.activeReservations = this.activeReservations.filter((activeReservation) => {
+                return activeReservation != index;
+            });
+
+            this.reservations = this.reservations.filter((reservation, reservationIndex) => {
+                return index != reservationIndex;
+            });
+        },
+
+        toggleReservation(index) {
+            if (this.activeReservations.includes(index)) {
+                this.activeReservations = this.activeReservations.filter((activeReservation) => {
+                    return activeReservation != index;
+                });
+            } else {
+                this.activeReservations.push(index);
+            }
         }
     },
 
