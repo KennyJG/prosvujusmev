@@ -4,7 +4,7 @@
             <div class="flex align-middle content-center text-gray-600">
                 <div class="flex content-center items-center pl-6">
                     <a class="mr-4" href="/admin/course-dates">Termíny</a>/
-                    <div class="ml-4 text-black">{{ courseDate.course.name }} {{ courseDate.from_date }} </div>
+                    <div class="ml-4 text-black">{{ courseDate.course.name }} {{ courseDate.from_date_date }}</div>
                 </div>
             </div>
             <div class="flex align-middle">
@@ -21,32 +21,47 @@
                 </div> 
                 <div class="flex mt-6">
                     <div class="w-1/3 font-bold">Začátek</div>
-                    <div class="w-2/3">{{ courseDate.from_date }}</div>
+                    <div v-show="!updating" class="w-2/3">{{ courseDate.from_date_date }} {{ courseDate.from_date_time }}</div>
+                    <div v-show="updating" class="w-2/3 flex flex-col">
+                        <input class="p-2 border" type="date" v-model="updatedCourseDate.from_date_date">
+                        <input class="p-2 border" type="time" v-model="updatedCourseDate.from_date_time">
+                    </div>
                 </div>
                 <div class="flex mt-6">
                     <div class="w-1/3 font-bold">Konec</div>
-                    <div class="w-2/3">{{ courseDate.to_date }}</div>
+                    <div v-show="!updating" class="w-2/3">{{ courseDate.to_date_date }} {{ courseDate.to_date_time }}</div>
+                    <div v-show="updating" class="w-2/3 flex flex-col">
+                        <input class="p-2 border" type="date" v-model="updatedCourseDate.to_date_date">
+                        <input class="p-2 border" type="time" v-model="updatedCourseDate.to_date_time">
+                    </div>
                 </div>
                 <div class="flex mt-6">
                     <div class="w-1/3 font-bold">Místo konání</div>
-                    <div class="w-2/3">{{ courseDate.venue }}</div>
+                    <div v-show="!updating" class="w-2/3">{{ courseDate.venue }}</div>
+                    <input v-show="updating" class="w-2/3 p-2 border" type="text" v-model="updatedCourseDate.venue">
                 </div>
                 <div class="flex mt-6">
                     <div class="w-1/3 font-bold">Limit</div>
-                    <div class="w-2/3">{{ courseDate.limit }}</div>
+                    <div v-show="!updating" class="w-2/3">{{ courseDate.limit }}</div>
+                    <input v-show="updating" class="w-2/3 p-2 border" type="text" v-model="updatedCourseDate.limit">
                 </div>
                 <div class="flex mt-6">
                     <div class="w-1/3 font-bold">Zbývá míst</div>
-                    <div class="w-2/3">{{ courseDate.actual_limit }}</div>
+                    <div class="w-2/3">{{ courseDate.remaining }}</div>
                 </div>
                 <div class="flex mt-6">
                     <div class="w-1/3 font-bold">Lektor</div>
-                    <div class="w-2/3">{{ courseDate.lecturer }}</div>
+                    <div v-show="!updating" class="w-2/3">{{ courseDate.lecturer }}</div>
+                    <input v-show="updating" class="w-2/3 p-2 border" type="text" v-model="updatedCourseDate.lecturer">
                 </div>
                 <div class="flex mt-6">
                     <div class="w-1/3 font-bold">Popis</div>
-                    <div class="w-2/3">{{ courseDate.description }}</div>
+                    <div v-show="!updating" class="w-2/3">{{ courseDate.description }}</div>
+                    <textarea v-show="updating" class="w-2/3 p-2 border" type="text" v-model="updatedCourseDate.description" rows="5"></textarea>
                 </div>
+
+                <button v-show="updating" @click="updateCourseDate()" class="border rounded shadow bg-purple-600 w-full py-2 px-4 mt-10 text-white hover:bg-purple-800">Uložit</button>
+                <button v-show="updating" @click="toggleUpdateInputs()" class="border rounded shadow border border-purple-600 w-full py-2 px-4 mt-2 text-purple-600 hover:bg-purple-600 hover:text-white">Zrušit</button>
             </div>
             <div class="w-2/3 h-full p-6 px-8">
                 <div class="text-2xl">Rezervace</div>
@@ -89,11 +104,13 @@
 
 <script>
 export default {
-    props: ['courseDate'],
+    props: ['courseDate', 'backUrl'],
 
     data() {
         return {
+            updating: false,
 
+            updatedCourseDate: this.courseDate,
         };
     },
 
@@ -105,6 +122,34 @@ export default {
                         window.location.href = '/admin/course-dates';
                     });
             }
+        },
+
+        goBack() {
+            window.location.href = this.backUrl[0];
+        },
+
+        toggleUpdateInputs() {
+            this.updating = !this.updating;
+        },
+
+        updateCourseDate() {
+            axios.put('/admin/course-dates/' + this.courseDate.id, {
+                course_id: this.courseDate.course_id,
+                from_date_date: this.updatedCourseDate.from_date,
+                to_date_date: this.updatedCourseDate.to_date,
+                venue: this.updatedCourseDate.venue,
+                limit: this.updatedCourseDate.limit,
+                lector: this.updatedCourseDate.lector,
+                description: this.updatedCourseDate.description
+            }).then((response) => {
+                this.courseDate.from_date = this.updatedCourseDate.from_date;
+                this.courseDate.to_date = this.updatedCourseDate.to_date;
+                this.courseDate.venue = this.updatedCourseDate.venue;
+                this.courseDate.limit = this.updatedCourseDate.limit;
+                this.courseDate.lector = this.updatedCourseDate.lector;
+                this.courseDate.description = this.updatedCourseDate.description;
+                this.updating = false;
+            });
         }
     }
 }

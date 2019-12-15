@@ -1927,10 +1927,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['courseDate'],
+  props: ['courseDate', 'backUrl'],
   data: function data() {
-    return {};
+    return {
+      updating: false,
+      updatedCourseDate: this.courseDate
+    };
   },
   methods: {
     deleteCourseDate: function deleteCourseDate() {
@@ -1939,6 +1957,33 @@ __webpack_require__.r(__webpack_exports__);
           window.location.href = '/admin/course-dates';
         });
       }
+    },
+    goBack: function goBack() {
+      window.location.href = this.backUrl[0];
+    },
+    toggleUpdateInputs: function toggleUpdateInputs() {
+      this.updating = !this.updating;
+    },
+    updateCourseDate: function updateCourseDate() {
+      var _this = this;
+
+      axios.put('/admin/course-dates/' + this.courseDate.id, {
+        course_id: this.courseDate.course_id,
+        from_date_date: this.updatedCourseDate.from_date,
+        to_date_date: this.updatedCourseDate.to_date,
+        venue: this.updatedCourseDate.venue,
+        limit: this.updatedCourseDate.limit,
+        lector: this.updatedCourseDate.lector,
+        description: this.updatedCourseDate.description
+      }).then(function (response) {
+        _this.courseDate.from_date = _this.updatedCourseDate.from_date;
+        _this.courseDate.to_date = _this.updatedCourseDate.to_date;
+        _this.courseDate.venue = _this.updatedCourseDate.venue;
+        _this.courseDate.limit = _this.updatedCourseDate.limit;
+        _this.courseDate.lector = _this.updatedCourseDate.lector;
+        _this.courseDate.description = _this.updatedCourseDate.description;
+        _this.updating = false;
+      });
     }
   }
 });
@@ -20325,8 +20370,7 @@ var render = function() {
               _vm._v(
                 _vm._s(_vm.courseDate.course.name) +
                   " " +
-                  _vm._s(_vm.courseDate.from_date) +
-                  " "
+                  _vm._s(_vm.courseDate.from_date_date)
               )
             ])
           ])
@@ -20391,17 +20435,189 @@ var render = function() {
         _c("div", { staticClass: "flex mt-6" }, [
           _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Začátek")]),
           _vm._v(" "),
-          _c("div", { staticClass: "w-2/3" }, [
-            _vm._v(_vm._s(_vm.courseDate.from_date))
-          ])
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: !_vm.updating,
+                  expression: "!updating"
+                }
+              ],
+              staticClass: "w-2/3"
+            },
+            [
+              _vm._v(
+                _vm._s(_vm.courseDate.from_date_date) +
+                  " " +
+                  _vm._s(_vm.courseDate.from_date_time)
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.updating,
+                  expression: "updating"
+                }
+              ],
+              staticClass: "w-2/3 flex flex-col"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.updatedCourseDate.from_date_date,
+                    expression: "updatedCourseDate.from_date_date"
+                  }
+                ],
+                staticClass: "p-2 border",
+                attrs: { type: "date" },
+                domProps: { value: _vm.updatedCourseDate.from_date_date },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.updatedCourseDate,
+                      "from_date_date",
+                      $event.target.value
+                    )
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.updatedCourseDate.from_date_time,
+                    expression: "updatedCourseDate.from_date_time"
+                  }
+                ],
+                staticClass: "p-2 border",
+                attrs: { type: "time" },
+                domProps: { value: _vm.updatedCourseDate.from_date_time },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.updatedCourseDate,
+                      "from_date_time",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]
+          )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "flex mt-6" }, [
           _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Konec")]),
           _vm._v(" "),
-          _c("div", { staticClass: "w-2/3" }, [
-            _vm._v(_vm._s(_vm.courseDate.to_date))
-          ])
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: !_vm.updating,
+                  expression: "!updating"
+                }
+              ],
+              staticClass: "w-2/3"
+            },
+            [
+              _vm._v(
+                _vm._s(_vm.courseDate.to_date_date) +
+                  " " +
+                  _vm._s(_vm.courseDate.to_date_time)
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.updating,
+                  expression: "updating"
+                }
+              ],
+              staticClass: "w-2/3 flex flex-col"
+            },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.updatedCourseDate.to_date_date,
+                    expression: "updatedCourseDate.to_date_date"
+                  }
+                ],
+                staticClass: "p-2 border",
+                attrs: { type: "date" },
+                domProps: { value: _vm.updatedCourseDate.to_date_date },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.updatedCourseDate,
+                      "to_date_date",
+                      $event.target.value
+                    )
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.updatedCourseDate.to_date_time,
+                    expression: "updatedCourseDate.to_date_time"
+                  }
+                ],
+                staticClass: "p-2 border",
+                attrs: { type: "time" },
+                domProps: { value: _vm.updatedCourseDate.to_date_time },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.updatedCourseDate,
+                      "to_date_time",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ]
+          )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "flex mt-6" }, [
@@ -20409,42 +20625,250 @@ var render = function() {
             _vm._v("Místo konání")
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "w-2/3" }, [
-            _vm._v(_vm._s(_vm.courseDate.venue))
-          ])
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: !_vm.updating,
+                  expression: "!updating"
+                }
+              ],
+              staticClass: "w-2/3"
+            },
+            [_vm._v(_vm._s(_vm.courseDate.venue))]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.updating,
+                expression: "updating"
+              },
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.updatedCourseDate.venue,
+                expression: "updatedCourseDate.venue"
+              }
+            ],
+            staticClass: "w-2/3 p-2 border",
+            attrs: { type: "text" },
+            domProps: { value: _vm.updatedCourseDate.venue },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.updatedCourseDate, "venue", $event.target.value)
+              }
+            }
+          })
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "flex mt-6" }, [
           _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Limit")]),
           _vm._v(" "),
-          _c("div", { staticClass: "w-2/3" }, [
-            _vm._v(_vm._s(_vm.courseDate.limit))
-          ])
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: !_vm.updating,
+                  expression: "!updating"
+                }
+              ],
+              staticClass: "w-2/3"
+            },
+            [_vm._v(_vm._s(_vm.courseDate.limit))]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.updating,
+                expression: "updating"
+              },
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.updatedCourseDate.limit,
+                expression: "updatedCourseDate.limit"
+              }
+            ],
+            staticClass: "w-2/3 p-2 border",
+            attrs: { type: "text" },
+            domProps: { value: _vm.updatedCourseDate.limit },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.updatedCourseDate, "limit", $event.target.value)
+              }
+            }
+          })
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "flex mt-6" }, [
           _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Zbývá míst")]),
           _vm._v(" "),
           _c("div", { staticClass: "w-2/3" }, [
-            _vm._v(_vm._s(_vm.courseDate.actual_limit))
+            _vm._v(_vm._s(_vm.courseDate.remaining))
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "flex mt-6" }, [
           _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Lektor")]),
           _vm._v(" "),
-          _c("div", { staticClass: "w-2/3" }, [
-            _vm._v(_vm._s(_vm.courseDate.lecturer))
-          ])
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: !_vm.updating,
+                  expression: "!updating"
+                }
+              ],
+              staticClass: "w-2/3"
+            },
+            [_vm._v(_vm._s(_vm.courseDate.lecturer))]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.updating,
+                expression: "updating"
+              },
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.updatedCourseDate.lecturer,
+                expression: "updatedCourseDate.lecturer"
+              }
+            ],
+            staticClass: "w-2/3 p-2 border",
+            attrs: { type: "text" },
+            domProps: { value: _vm.updatedCourseDate.lecturer },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.updatedCourseDate, "lecturer", $event.target.value)
+              }
+            }
+          })
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "flex mt-6" }, [
           _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Popis")]),
           _vm._v(" "),
-          _c("div", { staticClass: "w-2/3" }, [
-            _vm._v(_vm._s(_vm.courseDate.description))
-          ])
-        ])
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: !_vm.updating,
+                  expression: "!updating"
+                }
+              ],
+              staticClass: "w-2/3"
+            },
+            [_vm._v(_vm._s(_vm.courseDate.description))]
+          ),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.updating,
+                expression: "updating"
+              },
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.updatedCourseDate.description,
+                expression: "updatedCourseDate.description"
+              }
+            ],
+            staticClass: "w-2/3 p-2 border",
+            attrs: { type: "text", rows: "5" },
+            domProps: { value: _vm.updatedCourseDate.description },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.updatedCourseDate,
+                  "description",
+                  $event.target.value
+                )
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.updating,
+                expression: "updating"
+              }
+            ],
+            staticClass:
+              "border rounded shadow bg-purple-600 w-full py-2 px-4 mt-10 text-white hover:bg-purple-800",
+            on: {
+              click: function($event) {
+                return _vm.updateCourseDate()
+              }
+            }
+          },
+          [_vm._v("Uložit")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.updating,
+                expression: "updating"
+              }
+            ],
+            staticClass:
+              "border rounded shadow border border-purple-600 w-full py-2 px-4 mt-2 text-purple-600 hover:bg-purple-600 hover:text-white",
+            on: {
+              click: function($event) {
+                return _vm.toggleUpdateInputs()
+              }
+            }
+          },
+          [_vm._v("Zrušit")]
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "w-2/3 h-full p-6 px-8" }, [

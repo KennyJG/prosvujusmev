@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\prosvujusmev\Courses\Course;
 use App\prosvujusmev\Courses\CourseDate;
 use App\prosvujusmev\Courses\Repositories\CourseDateRepository;
+use App\prosvujusmev\Courses\Resources\CourseDateResource;
 use Illuminate\Http\Request;
 
 class CourseDatesController extends Controller
@@ -20,7 +21,8 @@ class CourseDatesController extends Controller
     public function show(CourseDate $courseDate)
     {
         return response()->view('admin.courses.dates.show', [
-            'courseDate' => $courseDate->load(['course', 'reservations']), 
+            'courseDate' => json_encode(new CourseDateResource($courseDate)),
+            'backUrl' => json_encode([str_replace(url('/'), '', url()->previous())]),
         ]);
     }
 

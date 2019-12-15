@@ -38,4 +38,9 @@ class CourseDate extends Model
     {
         return $this->hasMany(\App\prosvujusmev\Reservations\Reservation::class);
     }
+
+    public function getRemainingAttribute()
+    {
+        return $this->limit - $this->reservations()->count();
+    }
 }
