@@ -19,6 +19,8 @@ class CreateAttendeeAddressesTable extends Migration
             $table->string('city');
             $table->string('street');
             $table->string('zip');
+            $table->bigInteger('attendee_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

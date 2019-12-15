@@ -19,6 +19,8 @@ class CreateAttendeesTable extends Migration
             $table->string('last_name');
             $table->string('email');
             $table->string('phone');
+            $table->bigInteger('funfirst_contact_id')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
