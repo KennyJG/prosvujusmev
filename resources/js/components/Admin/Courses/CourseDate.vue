@@ -85,7 +85,7 @@
                                         <div :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l cursor-pointer">
                                             Potvrdit
                                         </div>
-                                        <div :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 cursor-pointer">
+                                        <div v-show="reservation.status !== 'Schváleno'" @click="approveReservation(reservation.id)" :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 cursor-pointer">
                                             Schválit 
                                         </div>
                                         <div @click="deleteReservation(reservation.id)" :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r cursor-pointer">
@@ -148,6 +148,20 @@ export default {
                 this.updatedCourseDate = this.courseDate;
                 this.updating = false;
             });
+        },
+
+        approveReservation(id) {
+            axios.post('/admin/reservations/' + id + '/approve')
+                .then((response) => {
+                    let reservations = this.courseDate.reservations; 
+                    reservations.forEach((reservation, index) => {
+                        if (reservation.id == id) {
+                            reservations[index] = response.data.reservation;
+                        }
+                    });
+
+                    Vue.set(this.courseDate, 'reservations', reservations)
+                });
         }
     }
 }

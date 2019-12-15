@@ -23,4 +23,9 @@ class Reservation extends Model
     {
         return $this->belongsTo(\App\prosvujusmev\Courses\CourseDate::class);
     }
+
+    public function attendee()
+    {
+        return $this->belongsTo(\App\prosvujusmev\Attendees\Attendee::class);
+    }
 }

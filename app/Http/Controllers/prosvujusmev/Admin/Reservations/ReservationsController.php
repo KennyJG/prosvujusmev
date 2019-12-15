@@ -5,6 +5,7 @@ namespace App\Http\Controllers\prosvujusmev\Admin\Reservations;
 use App\Http\Controllers\Controller;
 use App\prosvujusmev\Courses\Course;
 use App\prosvujusmev\Courses\CourseDate;
+use App\prosvujusmev\Reservations\Repositories\ReservationRepository;
 use App\prosvujusmev\Reservations\Reservation;
 use Illuminate\Http\Request;
 
@@ -97,5 +98,16 @@ class ReservationsController extends Controller
     {
         $reservation->delete();
         return response()->json();
+    }
+
+    public function approve(Request $request, Reservation $reservation)
+    {
+        if ($reservation->status !== 'Schváleno') {
+            $reservation = app(ReservationRepository::class)->approve($reservation);
+        }        
+        return response()->json([
+            'reservation' => $reservation,
+            'message' => 'Rezervace byla schválena.',
+        ]);
     }
 }

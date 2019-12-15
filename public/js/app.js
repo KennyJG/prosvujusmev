@@ -1982,6 +1982,19 @@ __webpack_require__.r(__webpack_exports__);
         _this.updatedCourseDate = _this.courseDate;
         _this.updating = false;
       });
+    },
+    approveReservation: function approveReservation(id) {
+      var _this2 = this;
+
+      axios.post('/admin/reservations/' + id + '/approve').then(function (response) {
+        var reservations = _this2.courseDate.reservations;
+        reservations.forEach(function (reservation, index) {
+          if (reservation.id == id) {
+            reservations[index] = response.data.reservation;
+          }
+        });
+        Vue.set(_this2.courseDate, 'reservations', reservations);
+      });
     }
   }
 });
@@ -20930,11 +20943,24 @@ var render = function() {
                         _c(
                           "div",
                           {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: reservation.status !== "Schváleno",
+                                expression: "reservation.status !== 'Schváleno'"
+                              }
+                            ],
                             staticClass:
                               "hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 cursor-pointer",
                             class: {
                               "bg-gray-100": i % 2 == 0,
                               "bg-gray-300": i % 2 != 0
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.approveReservation(reservation.id)
+                              }
                             }
                           },
                           [
