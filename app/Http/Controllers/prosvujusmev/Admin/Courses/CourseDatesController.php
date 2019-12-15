@@ -5,6 +5,7 @@ namespace App\Http\Controllers\prosvujusmev\Admin\Courses;
 use App\Http\Controllers\Controller;
 use App\prosvujusmev\Courses\Course;
 use App\prosvujusmev\Courses\CourseDate;
+use App\prosvujusmev\Courses\Repositories\CourseDateRepository;
 use Illuminate\Http\Request;
 
 class CourseDatesController extends Controller
@@ -99,10 +100,7 @@ class CourseDatesController extends Controller
 
     public function destroy(Request $request, CourseDate $courseDate)
     {
-        foreach ($courseDate->reservations as $reservation) {
-            $reservation->delete();
-        }
-        $courseDate->delete();
+        app(CourseDateRepository::class)->delete($courseDate);
         return response()->json();
     }
 }

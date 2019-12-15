@@ -19,6 +19,7 @@ class CreateReservationsTable extends Migration
             $table->string('source_type');
             $table->string('source_code');
             $table->string('status');
+            $table->bigInteger('attendee_id');
             $table->softDeletes();
             $table->timestamps();
         });

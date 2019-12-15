@@ -16,6 +16,7 @@ class Reservation extends Model
         'source_type',
         'source_code',
         'status',
+        'attendee_id',
     ];
 
     public function courseDate()
