@@ -1969,19 +1969,17 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.put('/admin/course-dates/' + this.courseDate.id, {
         course_id: this.courseDate.course_id,
-        from_date_date: this.updatedCourseDate.from_date,
-        to_date_date: this.updatedCourseDate.to_date,
+        from_date_date: this.updatedCourseDate.from_date_date,
+        from_date_time: this.updatedCourseDate.from_date_time,
+        to_date_date: this.updatedCourseDate.to_date_date,
+        to_date_time: this.updatedCourseDate.to_date_time,
         venue: this.updatedCourseDate.venue,
         limit: this.updatedCourseDate.limit,
-        lector: this.updatedCourseDate.lector,
+        lecturer: this.updatedCourseDate.lecturer,
         description: this.updatedCourseDate.description
       }).then(function (response) {
-        _this.courseDate.from_date = _this.updatedCourseDate.from_date;
-        _this.courseDate.to_date = _this.updatedCourseDate.to_date;
-        _this.courseDate.venue = _this.updatedCourseDate.venue;
-        _this.courseDate.limit = _this.updatedCourseDate.limit;
-        _this.courseDate.lector = _this.updatedCourseDate.lector;
-        _this.courseDate.description = _this.updatedCourseDate.description;
+        _this.courseDate = response.data.courseDate;
+        _this.updatedCourseDate = _this.courseDate;
         _this.updating = false;
       });
     }
@@ -1999,9 +1997,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
 //
 //
 //
@@ -21071,27 +21066,6 @@ var render = function() {
                   { staticClass: "border border-l-0 px-4 py-4 text-right" },
                   [
                     _c("div", { staticClass: "inline-flex" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass:
-                            "hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l",
-                          class: {
-                            "bg-gray-100": i % 2 == 0,
-                            "bg-gray-300": i % 2 != 0
-                          },
-                          attrs: {
-                            href:
-                              "/admin/course-dates/" + courseDate.id + "/edit"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    Editovat\n                                "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
                       _c(
                         "a",
                         {

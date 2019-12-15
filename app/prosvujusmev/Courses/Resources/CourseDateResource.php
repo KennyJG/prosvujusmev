@@ -10,6 +10,7 @@ class CourseDateResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'course_id' => $this->course_id,
             'course' => $this->course,
             'from_date' => $this->from_date,
             'from_date_date' => $this->from_date->format('Y-m-d'),

@@ -28,9 +28,6 @@
                             <td class="border px-4 py-2 text-left">{{ courseDate.limit }}</td>
                             <td class="border border-l-0 px-4 py-4 text-right">
                                 <div class="inline-flex">
-                                    <a :href="'/admin/course-dates/' + courseDate.id + '/edit'" :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
-                                        Editovat
-                                    </a>
                                     <a @click="deleteCourseDate(courseDate.id)" href="#" :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">
                                         Odstranit
                                     </a>

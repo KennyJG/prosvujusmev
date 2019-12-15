@@ -135,19 +135,17 @@ export default {
         updateCourseDate() {
             axios.put('/admin/course-dates/' + this.courseDate.id, {
                 course_id: this.courseDate.course_id,
-                from_date_date: this.updatedCourseDate.from_date,
-                to_date_date: this.updatedCourseDate.to_date,
+                from_date_date: this.updatedCourseDate.from_date_date,
+                from_date_time: this.updatedCourseDate.from_date_time,
+                to_date_date: this.updatedCourseDate.to_date_date,
+                to_date_time: this.updatedCourseDate.to_date_time,
                 venue: this.updatedCourseDate.venue,
                 limit: this.updatedCourseDate.limit,
-                lector: this.updatedCourseDate.lector,
+                lecturer: this.updatedCourseDate.lecturer,
                 description: this.updatedCourseDate.description
             }).then((response) => {
-                this.courseDate.from_date = this.updatedCourseDate.from_date;
-                this.courseDate.to_date = this.updatedCourseDate.to_date;
-                this.courseDate.venue = this.updatedCourseDate.venue;
-                this.courseDate.limit = this.updatedCourseDate.limit;
-                this.courseDate.lector = this.updatedCourseDate.lector;
-                this.courseDate.description = this.updatedCourseDate.description;
+                this.courseDate = response.data.courseDate;
+                this.updatedCourseDate = this.courseDate;
                 this.updating = false;
             });
         }

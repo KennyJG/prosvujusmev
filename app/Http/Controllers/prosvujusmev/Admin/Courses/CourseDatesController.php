@@ -88,15 +88,16 @@ class CourseDatesController extends Controller
         $courseDate->update([
             'course_id' => $request->course_id,
             'from_date' => \Carbon\Carbon::createFromDate($request->from_date_date)->setTime(\Carbon\Carbon::parse($request->from_date_time)->hour, \Carbon\Carbon::parse($request->from_date_time)->minute),
-            'to_date' => \Carbon\Carbon::createFromDate($request->to_date_date)->setTime(\Carbon\Carbon::parse($request->from_date_time)->hour, \Carbon\Carbon::parse($request->from_date_time)->minute),
+            'to_date' => \Carbon\Carbon::createFromDate($request->to_date_date)->setTime(\Carbon\Carbon::parse($request->to_date_time)->hour, \Carbon\Carbon::parse($request->to_date_time)->minute),
             'venue' => $request->venue,
             'lecturer' => $request->lecturer,
             'limit' => $request->limit,
             'description' => $request->description,
         ]);
 
-        return redirect('/admin/course-dates')->with([
-            'message' => 'Kurz byl upraven.'
+        return response()->json([
+            'message' => 'Kurz byl upraven.',
+            'courseDate' => new CourseDateResource($courseDate->fresh()),
         ]);
     }
 
