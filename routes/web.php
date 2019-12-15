@@ -36,6 +36,7 @@ Route::group(['namespace' => 'prosvujusmev\\'], function () {
 
         Route::get('/course-dates', 'Courses\CourseDatesController@index');
         Route::get('/course-dates/create', 'Courses\CourseDatesController@create');
+        Route::get('/course-dates/{courseDate}', 'Courses\CourseDatesController@show');
         Route::post('/course-dates', 'Courses\CourseDatesController@store');
         Route::get('/course-dates/{courseDate}/edit', 'Courses\CourseDatesController@edit');
         Route::put('/course-dates/{courseDate}', 'Courses\CourseDatesController@update');

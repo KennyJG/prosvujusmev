@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\prosvujusmev\Admin\Courses;
 
 use App\Http\Controllers\Controller;
-use FunFirst\Reservations\Models\Courses\Course;
-use FunFirst\Reservations\Models\Courses\CourseDate;
+use App\prosvujusmev\Courses\Course;
+use App\prosvujusmev\Courses\CourseDate;
 use Illuminate\Http\Request;
 
 class CourseDatesController extends Controller
@@ -15,6 +15,14 @@ class CourseDatesController extends Controller
             'courseDates' => CourseDate::with('course')->get()
         ]);
     }
+    
+    public function show(CourseDate $courseDate)
+    {
+        return response()->view('admin.courses.dates.show', [
+            'courseDate' => $courseDate->load(['course', 'reservations']), 
+        ]);
+    }
+
 
     public function create()
     {
@@ -32,9 +40,9 @@ class CourseDatesController extends Controller
             'from_date_date' => 'required|date',
             'from_date_time' => 'required',
             'venue' => 'required|string|min:1|max:254',
-            'lecturer' => 'required|string|min:1|max:254',
+            'lecturer' => 'nullable|string|max:254',
             'limit' => 'required|integer|min:0|max:9999999',
-            'description' => 'nullable|string|min:1|max:5000',
+            'description' => 'nullable|string|max:5000',
         ]);
 
         CourseDate::create([
@@ -91,6 +99,9 @@ class CourseDatesController extends Controller
 
     public function destroy(Request $request, CourseDate $courseDate)
     {
+        foreach ($courseDate->reservations as $reservation) {
+            $reservation->delete();
+        }
         $courseDate->delete();
         return response()->json();
     }

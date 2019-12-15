@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\prosvujusmev\Courses;
 
 use App\Http\Controllers\Controller;
-use FunFirst\Reservations\Models\Courses\CourseDate;
+use App\prosvujusmev\Courses\CourseDate;
 use Illuminate\Http\Request;
 
 class ApiCourseDatesController extends Controller

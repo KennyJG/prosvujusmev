@@ -1829,6 +1829,122 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Courses/CourseDate.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Courses/CourseDate.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['courseDate'],
+  data: function data() {
+    return {};
+  },
+  methods: {
+    deleteCourseDate: function deleteCourseDate() {
+      if (confirm('Opravdu chcete odstranit tento termin? (Všechny rezervace budou zrušeny)')) {
+        axios["delete"]('/admin/course-dates/' + this.courseDate.id).then(function (response) {
+          window.location.href = '/admin/course-dates';
+        });
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Courses/CourseDatesList.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Courses/CourseDatesList.vue?vue&type=script&lang=js& ***!
@@ -20177,6 +20293,296 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Courses/CourseDate.vue?vue&type=template&id=7f7390ea&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Courses/CourseDate.vue?vue&type=template&id=7f7390ea& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "w-full" }, [
+    _c("div", { staticClass: "w-full h-12 border-b flex justify-between" }, [
+      _c(
+        "div",
+        { staticClass: "flex align-middle content-center text-gray-600" },
+        [
+          _c("div", { staticClass: "flex content-center items-center pl-6" }, [
+            _c(
+              "a",
+              { staticClass: "mr-4", attrs: { href: "/admin/course-dates" } },
+              [_vm._v("Termíny")]
+            ),
+            _vm._v("/\n                "),
+            _c("div", { staticClass: "ml-4 text-black" }, [
+              _vm._v(
+                _vm._s(_vm.courseDate.course.name) +
+                  " " +
+                  _vm._s(_vm.courseDate.from_date) +
+                  " "
+              )
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "flex align-middle" }, [
+        _c(
+          "button",
+          {
+            staticClass:
+              "bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border-l hover:border-transparent",
+            on: {
+              click: function($event) {
+                return _vm.deleteCourseDate()
+              }
+            }
+          },
+          [_vm._v("Odstranit")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass:
+              "bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border-l hover:border-transparent",
+            on: {
+              click: function($event) {
+                return _vm.toggleUpdateInputs()
+              }
+            }
+          },
+          [_vm._v("Upravit")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass:
+              "bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border-l hover:border-transparent",
+            on: {
+              click: function($event) {
+                return _vm.goBack()
+              }
+            }
+          },
+          [_vm._v("Zpět")]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "w-full flex" }, [
+      _c("div", { staticClass: "w-1/3 h-full p-6 px-8 border-r" }, [
+        _c("div", { staticClass: "flex mt-6" }, [
+          _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Kurz")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-2/3" }, [
+            _vm._v(_vm._s(_vm.courseDate.course.name))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex mt-6" }, [
+          _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Začátek")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-2/3" }, [
+            _vm._v(_vm._s(_vm.courseDate.from_date))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex mt-6" }, [
+          _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Konec")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-2/3" }, [
+            _vm._v(_vm._s(_vm.courseDate.to_date))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex mt-6" }, [
+          _c("div", { staticClass: "w-1/3 font-bold" }, [
+            _vm._v("Místo konání")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-2/3" }, [
+            _vm._v(_vm._s(_vm.courseDate.venue))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex mt-6" }, [
+          _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Limit")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-2/3" }, [
+            _vm._v(_vm._s(_vm.courseDate.limit))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex mt-6" }, [
+          _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Zbývá míst")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-2/3" }, [
+            _vm._v(_vm._s(_vm.courseDate.actual_limit))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex mt-6" }, [
+          _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Lektor")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-2/3" }, [
+            _vm._v(_vm._s(_vm.courseDate.lecturer))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex mt-6" }, [
+          _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Popis")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-2/3" }, [
+            _vm._v(_vm._s(_vm.courseDate.description))
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "w-2/3 h-full p-6 px-8" }, [
+        _c("div", { staticClass: "text-2xl" }, [_vm._v("Rezervace")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "mt-4" }, [
+          _c("table", { staticClass: "table w-full" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.courseDate.reservations, function(reservation, i) {
+                return _c("tr", { class: { "bg-gray-200": i % 2 == 0 } }, [
+                  _c(
+                    "td",
+                    { staticClass: "border border-r-0 px-4 py-2 text-left" },
+                    [
+                      _c(
+                        "a",
+                        {
+                          attrs: {
+                            href: "/admin/reservations/" + reservation.id
+                          }
+                        },
+                        [_vm._v(_vm._s(reservation.source_code))]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    { staticClass: "border border-r-0 px-4 py-2 text-left" },
+                    [_vm._v(_vm._s(reservation.source_type))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    { staticClass: "border border-r-0 px-4 py-2 text-left" },
+                    [_vm._v(_vm._s(reservation.status))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    { staticClass: "border border-l-0 px-4 py-4 text-right" },
+                    [
+                      _c("div", { staticClass: "inline-flex" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l cursor-pointer",
+                            class: {
+                              "bg-gray-100": i % 2 == 0,
+                              "bg-gray-300": i % 2 != 0
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                        Potvrdit\n                                    "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 cursor-pointer",
+                            class: {
+                              "bg-gray-100": i % 2 == 0,
+                              "bg-gray-300": i % 2 != 0
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                        Schválit \n                                    "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r cursor-pointer",
+                            class: {
+                              "bg-gray-100": i % 2 == 0,
+                              "bg-gray-300": i % 2 != 0
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.deleteReservation(reservation.id)
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                        Odstranit\n                                    "
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                ])
+              }),
+              0
+            )
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { staticClass: "px-2 py-2 text-left" }, [_vm._v("Kód")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "px-2 py-2 text-left" }, [_vm._v("Zdroj")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "px-2 py-2 text-left" }, [_vm._v("Stav")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "px-2 py-2 text-right" }, [_vm._v("Akce")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Courses/CourseDatesList.vue?vue&type=template&id=5b6e7e94&":
 /*!********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Courses/CourseDatesList.vue?vue&type=template&id=5b6e7e94& ***!
@@ -20209,7 +20615,15 @@ var render = function() {
                 _c(
                   "td",
                   { staticClass: "border border-r-0 px-4 py-2 text-left" },
-                  [_vm._v(_vm._s(courseDate.from_date))]
+                  [
+                    _c(
+                      "a",
+                      {
+                        attrs: { href: "/admin/course-dates/" + courseDate.id }
+                      },
+                      [_vm._v(_vm._s(courseDate.from_date))]
+                    )
+                  ]
                 ),
                 _vm._v(" "),
                 _c(
@@ -34354,6 +34768,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('navbar', __webpack_require__(/*! ./components/Admin/Navbar.vue */ "./resources/js/components/Admin/Navbar.vue")["default"]);
 Vue.component('confirmation-modal', __webpack_require__(/*! ./components/Admin/Modals/Confirmation.vue */ "./resources/js/components/Admin/Modals/Confirmation.vue")["default"]);
 Vue.component('course-dates-list', __webpack_require__(/*! ./components/Admin/Courses/CourseDatesList.vue */ "./resources/js/components/Admin/Courses/CourseDatesList.vue")["default"]);
+Vue.component('course-date', __webpack_require__(/*! ./components/Admin/Courses/CourseDate.vue */ "./resources/js/components/Admin/Courses/CourseDate.vue")["default"]);
 Vue.component('courses-list', __webpack_require__(/*! ./components/Admin/Courses/CoursesList.vue */ "./resources/js/components/Admin/Courses/CoursesList.vue")["default"]);
 Vue.component('reservation-list', __webpack_require__(/*! ./components/Admin/Reservations/ReservationList.vue */ "./resources/js/components/Admin/Reservations/ReservationList.vue")["default"]); // Site components
 
@@ -34397,6 +34812,75 @@ window.axios.defaults.headers.common = {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Courses/CourseDate.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/Admin/Courses/CourseDate.vue ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CourseDate_vue_vue_type_template_id_7f7390ea___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CourseDate.vue?vue&type=template&id=7f7390ea& */ "./resources/js/components/Admin/Courses/CourseDate.vue?vue&type=template&id=7f7390ea&");
+/* harmony import */ var _CourseDate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CourseDate.vue?vue&type=script&lang=js& */ "./resources/js/components/Admin/Courses/CourseDate.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CourseDate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CourseDate_vue_vue_type_template_id_7f7390ea___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CourseDate_vue_vue_type_template_id_7f7390ea___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Admin/Courses/CourseDate.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Courses/CourseDate.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Courses/CourseDate.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseDate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CourseDate.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Courses/CourseDate.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseDate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Courses/CourseDate.vue?vue&type=template&id=7f7390ea&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Courses/CourseDate.vue?vue&type=template&id=7f7390ea& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseDate_vue_vue_type_template_id_7f7390ea___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CourseDate.vue?vue&type=template&id=7f7390ea& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Courses/CourseDate.vue?vue&type=template&id=7f7390ea&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseDate_vue_vue_type_template_id_7f7390ea___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseDate_vue_vue_type_template_id_7f7390ea___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

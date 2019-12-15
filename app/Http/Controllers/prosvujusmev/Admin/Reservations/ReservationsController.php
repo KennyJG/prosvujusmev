@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\prosvujusmev\Admin\Reservations;
 
 use App\Http\Controllers\Controller;
-use FunFirst\Reservations\Models\Courses\Course;
-use FunFirst\Reservations\Models\Courses\CourseDate;
-use FunFirst\Reservations\Models\Reservations\Reservation;
+use App\prosvujusmev\Courses\Course;
+use App\prosvujusmev\Courses\CourseDate;
+use App\prosvujusmev\Reservations\Reservation;
 use Illuminate\Http\Request;
 
 class ReservationsController extends Controller

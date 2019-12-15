@@ -22,7 +22,7 @@
                     </thead>
                     <tbody>
                         <tr v-for="(courseDate, i) in localCourseDates" :class="{'bg-gray-200': i % 2 == 0}">
-                            <td class="border border-r-0 px-4 py-2 text-left">{{ courseDate.from_date }}</td>
+                            <td class="border border-r-0 px-4 py-2 text-left"><a :href="'/admin/course-dates/' + courseDate.id">{{ courseDate.from_date }}</a></td>
                             <td class="border border-r-0 px-4 py-2 text-left">{{ courseDate.course.name }}</td>
                             <td class="border border-r-0 px-4 py-2 text-left">{{ courseDate.venue }}</td>
                             <td class="border px-4 py-2 text-left">{{ courseDate.limit }}</td>
