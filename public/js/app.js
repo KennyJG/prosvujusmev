@@ -1987,14 +1987,37 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.post('/admin/reservations/' + id + '/approve').then(function (response) {
-        var reservations = _this2.courseDate.reservations;
-        reservations.forEach(function (reservation, index) {
+        _this2.courseDate.reservations.forEach(function (reservation, index) {
           if (reservation.id == id) {
-            reservations[index] = response.data.reservation;
+            _this2.courseDate.reservations[index].status = 'Schváleno';
+            return;
           }
         });
-        Vue.set(_this2.courseDate, 'reservations', reservations);
+
+        _this2.displaySuccessMessage(response.data.message);
       });
+    },
+    completeReservation: function completeReservation(id) {
+      var _this3 = this;
+
+      axios.post('/admin/reservations/' + id + '/complete').then(function (response) {
+        _this3.courseDate.reservations.forEach(function (reservation, index) {
+          if (reservation.id == id) {
+            _this3.courseDate.reservations[index].status = 'COMPLETED';
+            return;
+          }
+        });
+
+        _this3.displaySuccessMessage(response.data.message);
+      });
+    },
+    displaySuccessMessage: function displaySuccessMessage(message) {
+      var _this4 = this;
+
+      this.successMessage = response.data.message;
+      setTimeout(function () {
+        _this4.successMessage = null;
+      }, 4000);
     }
   }
 });
@@ -20926,16 +20949,29 @@ var render = function() {
                         _c(
                           "div",
                           {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: reservation.status !== "COMPLETED",
+                                expression: "reservation.status !== 'COMPLETED'"
+                              }
+                            ],
                             staticClass:
                               "hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l cursor-pointer",
                             class: {
                               "bg-gray-100": i % 2 == 0,
                               "bg-gray-300": i % 2 != 0
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.completeReservation(reservation.id)
+                              }
                             }
                           },
                           [
                             _vm._v(
-                              "\n                                        Potvrdit\n                                    "
+                              "\n                                        Dokončit\n                                    "
                             )
                           ]
                         ),

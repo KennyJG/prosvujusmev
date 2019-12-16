@@ -16,6 +16,7 @@ class CourseDate extends Model
         'from_date',
         'to_date',
         'venue',
+        'status',
         'lecturer',
         'limit',
         'description',
@@ -28,6 +29,11 @@ class CourseDate extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    const STATUS_ACTIVE = 'ACTIVE';
+    const STATUS_IN_PROGRESS = 'IN_PROGRESS';
+    const STATUS_COMPLETED = 'COMPLETED';
+    const STATUS_CANCELED = 'CANCELED';
 
     public function course()
     {
@@ -43,4 +49,4 @@ class CourseDate extends Model
     {
         return $this->limit - $this->reservations()->count();
     }
-}
+} 

@@ -82,8 +82,8 @@
                                 <td class="border border-r-0 px-4 py-2 text-left">{{ reservation.status }}</td>
                                 <td class="border border-l-0 px-4 py-4 text-right">
                                     <div class="inline-flex">
-                                        <div :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l cursor-pointer">
-                                            Potvrdit
+                                        <div v-show="reservation.status !== 'COMPLETED'" @click="completeReservation(reservation.id)" :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l cursor-pointer">
+                                            Dokončit
                                         </div>
                                         <div v-show="reservation.status !== 'Schváleno'" @click="approveReservation(reservation.id)" :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 cursor-pointer">
                                             Schválit 
@@ -153,16 +153,35 @@ export default {
         approveReservation(id) {
             axios.post('/admin/reservations/' + id + '/approve')
                 .then((response) => {
-                    let reservations = this.courseDate.reservations; 
-                    reservations.forEach((reservation, index) => {
+                    this.courseDate.reservations.forEach((reservation, index) => {
                         if (reservation.id == id) {
-                            reservations[index] = response.data.reservation;
+                            this.courseDate.reservations[index].status = 'Schváleno';
+                            return;
                         }
                     });
-
-                    Vue.set(this.courseDate, 'reservations', reservations)
+                    this.displaySuccessMessage(response.data.message);
                 });
-        }
+        },
+
+        completeReservation(id) {
+            axios.post('/admin/reservations/' + id + '/complete')
+                .then((response) => {
+                    this.courseDate.reservations.forEach((reservation, index) => {
+                        if (reservation.id == id) {
+                            this.courseDate.reservations[index].status = 'COMPLETED';
+                            return;
+                        }
+                    });
+                    this.displaySuccessMessage(response.data.message);
+                });
+        },
+
+        displaySuccessMessage(message) {
+            this.successMessage = response.data.message;
+            setTimeout(() => {
+                this.successMessage = null;
+            }, 4000);
+        },
     }
 }
 </script>

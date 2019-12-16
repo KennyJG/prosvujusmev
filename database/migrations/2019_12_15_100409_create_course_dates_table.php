@@ -20,6 +20,7 @@ class CreateCourseDatesTable extends Migration
             $table->datetime('to_date');
             $table->string('venue');
             $table->unsignedInteger('limit');
+            $table->string('status');
             $table->string('lecturer')->nullable();
             $table->text('description')->nullable();
             $table->softDeletes();

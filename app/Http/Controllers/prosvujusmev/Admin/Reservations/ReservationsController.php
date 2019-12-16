@@ -110,4 +110,15 @@ class ReservationsController extends Controller
             'message' => 'Rezervace byla schválena.',
         ]);
     }
+
+    public function complete(Request $request, Reservation $reservation)
+    {
+        if ($reservation->status !== Reservation::STATUS_COMPLETED) {
+            $reservation = app(ReservationRepository::class)->complete($reservation);
+        } 
+        return response()->json([
+            'reservation' => $reservation,
+            'message' => 'Rezervace byla dokončena.',
+        ]);
+    }
 }
