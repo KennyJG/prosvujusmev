@@ -35,4 +35,9 @@ class Reservation extends Model
     {
         return $this->belongsTo(\App\prosvujusmev\Attendees\Attendee::class);
     }
+
+    public function statusRecords()
+    {
+        return $this->hasMany(ReservationStatusRecord::class);
+    }
 }
