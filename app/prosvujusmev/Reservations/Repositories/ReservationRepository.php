@@ -4,6 +4,7 @@ namespace App\prosvujusmev\Reservations\Repositories;
 
 use App\prosvujusmev\Reservations\Events\ReservationApproved;
 use App\prosvujusmev\Reservations\Events\ReservationCompleted;
+use App\prosvujusmev\Reservations\Events\ReservationDeleted;
 use App\prosvujusmev\Reservations\Reservation;
 
 class ReservationRepository 
@@ -17,7 +18,9 @@ class ReservationRepository
     public function delete(Reservation $reservation):bool
     {
         // app(\App\prosvujusmev\Attendees\Repositories\AttendeeRepository::class)->delete($reservation->attendee);
-        return $reservation->delete();
+        $result = $reservation->delete();
+        event(new ReservationDeleted($reservation));
+        return $result;
     }
 
     /**

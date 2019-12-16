@@ -18,12 +18,14 @@ class CourseDatesController extends Controller
         ]);
     }
     
-    public function show(CourseDate $courseDate)
+    public function show(Request $request, CourseDate $courseDate)
     {
-        return response()->view('admin.courses.dates.show', [
-            'courseDate' => json_encode(new CourseDateResource($courseDate)),
-            'backUrl' => json_encode([str_replace(url('/'), '', url()->previous())]),
-        ]);
+        return $request->ajax() ?
+            response()->json(['courseDate' => new CourseDateResource($courseDate)]) :
+            response()->view('admin.courses.dates.show', [
+                'courseDate' => json_encode(new CourseDateResource($courseDate)),
+                'backUrl' => json_encode([str_replace(url('/'), '', url()->previous())]),
+            ]);
     }
 
 
@@ -60,14 +62,6 @@ class CourseDatesController extends Controller
 
         return redirect('/admin/course-dates')->with([
             'message' => 'Termín kurzu byl vytvořen.'
-        ]);
-    }
-
-    public function edit(Request $request, CourseDate $courseDate)
-    {
-        return response()->view('admin.courses.dates.edit', [
-            'courseDate' => $courseDate,
-            'courses' => Course::all()
         ]);
     }
 

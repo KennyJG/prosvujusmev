@@ -4,7 +4,7 @@
             <div class="flex align-middle content-center text-gray-600">
                 <div class="flex content-center items-center pl-6">
                     <a class="mr-4" href="/admin/course-dates">Termíny</a>/
-                    <div class="ml-4 text-black">{{ courseDate.course.name }} {{ courseDate.from_date_date }}</div>
+                    <div class="ml-4 text-black">{{ actualCourseDate.course.name }} {{ actualCourseDate.from_date_date }}</div>
                 </div>
             </div>
             <div class="flex align-middle">
@@ -17,11 +17,11 @@
             <div class="w-1/3 h-full p-6 px-8 border-r">
                 <div class="flex mt-6">
                     <div class="w-1/3 font-bold">Kurz</div>
-                    <div class="w-2/3">{{ courseDate.course.name }}</div>
+                    <div class="w-2/3">{{ actualCourseDate.course.name }}</div>
                 </div> 
                 <div class="flex mt-6">
                     <div class="w-1/3 font-bold">Začátek</div>
-                    <div v-show="!updating" class="w-2/3">{{ courseDate.from_date_date }} {{ courseDate.from_date_time }}</div>
+                    <div v-show="!updating" class="w-2/3">{{ actualCourseDate.from_date_date }} {{ actualCourseDate.from_date_time }}</div>
                     <div v-show="updating" class="w-2/3 flex flex-col">
                         <input class="p-2 border" type="date" v-model="updatedCourseDate.from_date_date">
                         <input class="p-2 border" type="time" v-model="updatedCourseDate.from_date_time">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="flex mt-6">
                     <div class="w-1/3 font-bold">Konec</div>
-                    <div v-show="!updating" class="w-2/3">{{ courseDate.to_date_date }} {{ courseDate.to_date_time }}</div>
+                    <div v-show="!updating" class="w-2/3">{{ actualCourseDate.to_date_date }} {{ actualCourseDate.to_date_time }}</div>
                     <div v-show="updating" class="w-2/3 flex flex-col">
                         <input class="p-2 border" type="date" v-model="updatedCourseDate.to_date_date">
                         <input class="p-2 border" type="time" v-model="updatedCourseDate.to_date_time">
@@ -37,26 +37,26 @@
                 </div>
                 <div class="flex mt-6">
                     <div class="w-1/3 font-bold">Místo konání</div>
-                    <div v-show="!updating" class="w-2/3">{{ courseDate.venue }}</div>
+                    <div v-show="!updating" class="w-2/3">{{ actualCourseDate.venue }}</div>
                     <input v-show="updating" class="w-2/3 p-2 border" type="text" v-model="updatedCourseDate.venue">
                 </div>
                 <div class="flex mt-6">
                     <div class="w-1/3 font-bold">Limit</div>
-                    <div v-show="!updating" class="w-2/3">{{ courseDate.limit }}</div>
+                    <div v-show="!updating" class="w-2/3">{{ actualCourseDate.limit }}</div>
                     <input v-show="updating" class="w-2/3 p-2 border" type="text" v-model="updatedCourseDate.limit">
                 </div>
                 <div class="flex mt-6">
                     <div class="w-1/3 font-bold">Zbývá míst</div>
-                    <div class="w-2/3">{{ courseDate.remaining }}</div>
+                    <div class="w-2/3">{{ actualCourseDate.remaining }}</div>
                 </div>
                 <div class="flex mt-6">
                     <div class="w-1/3 font-bold">Lektor</div>
-                    <div v-show="!updating" class="w-2/3">{{ courseDate.lecturer }}</div>
+                    <div v-show="!updating" class="w-2/3">{{ actualCourseDate.lecturer }}</div>
                     <input v-show="updating" class="w-2/3 p-2 border" type="text" v-model="updatedCourseDate.lecturer">
                 </div>
                 <div class="flex mt-6">
                     <div class="w-1/3 font-bold">Popis</div>
-                    <div v-show="!updating" class="w-2/3">{{ courseDate.description }}</div>
+                    <div v-show="!updating" class="w-2/3">{{ actualCourseDate.description }}</div>
                     <textarea v-show="updating" class="w-2/3 p-2 border" type="text" v-model="updatedCourseDate.description" rows="5"></textarea>
                 </div>
 
@@ -76,7 +76,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(reservation, i) in courseDate.reservations" :class="{'bg-gray-200': i % 2 == 0}">
+                            <tr v-for="(reservation, i) in actualCourseDate.reservations" :class="{'bg-gray-200': i % 2 == 0}">
                                 <td class="border border-r-0 px-4 py-2 text-left"><a :href="'/admin/reservations/' + reservation.id">{{ reservation.source_code }}</a></td>
                                 <td class="border border-r-0 px-4 py-2 text-left">{{ reservation.source_type }}</td>
                                 <td class="border border-r-0 px-4 py-2 text-left">{{ reservation.status }}</td>
@@ -127,11 +127,11 @@
             </template>
         </modal>
 
-        <div v-show="successMessage !== null" class="absolute bottom-0 left-0 ml-4 mb-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
+        <div v-show="successMessage !== null" class="fixed bottom-0 left-0 ml-4 mb-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
             <p class="font-bold">Úspěch</p>
             <p>{{ successMessage }}</p>
         </div>
-        <div v-show="errorMessage !== null" class="absolute bottom-0 left-0 ml-4 mb-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
+        <div v-show="errorMessage !== null" class="fixed bottom-0 left-0 ml-4 mb-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
             <p class="font-bold">Chyba</p>
             <p>{{ errorMessage }}</p>
         </div>
@@ -148,6 +148,7 @@ export default {
 
             updating: false,
 
+            actualCourseDate: this.courseDate,
             updatedCourseDate: this.courseDate,
 
             errorMessage: null,
@@ -158,7 +159,7 @@ export default {
     methods: {
         deleteCourseDate() {
             if (confirm('Opravdu chcete odstranit tento termin? (Všechny rezervace budou zrušeny)')) {
-                axios.delete('/admin/course-dates/' + this.courseDate.id)
+                axios.delete('/admin/course-dates/' + this.actualCourseDate.id)
                     .then((response) => {
                         window.location.href = '/admin/course-dates';
                     });
@@ -173,9 +174,16 @@ export default {
             this.updating = !this.updating;
         },
 
+        refreshCourseDate() {
+            axios.get('/admin/course-dates/' + this.actualCourseDate.id)
+                .then((response) => {
+                    this.actualCourseDate = response.data.courseDate;
+                }); 
+        },
+
         updateCourseDate() {
-            axios.put('/admin/course-dates/' + this.courseDate.id, {
-                course_id: this.courseDate.course_id,
+            axios.put('/admin/course-dates/' + this.actualCourseDate.id, {
+                course_id: this.actualCourseDate.course_id,
                 from_date_date: this.updatedCourseDate.from_date_date,
                 from_date_time: this.updatedCourseDate.from_date_time,
                 to_date_date: this.updatedCourseDate.to_date_date,
@@ -185,8 +193,8 @@ export default {
                 lecturer: this.updatedCourseDate.lecturer,
                 description: this.updatedCourseDate.description
             }).then((response) => {
-                this.courseDate = response.data.courseDate;
-                this.updatedCourseDate = this.courseDate;
+                this.actualCourseDate = response.data.courseDate;
+                this.updatedCourseDate = this.actualCourseDate;
                 this.updating = false;
                 this.displayMessageFromResponse(response);
             });
@@ -195,9 +203,9 @@ export default {
         approveReservation(id) {
             axios.post('/admin/reservations/' + id + '/approve')
                 .then((response) => {
-                    this.courseDate.reservations.forEach((reservation, index) => {
+                    this.actualCourseDate.reservations.forEach((reservation, index) => {
                         if (reservation.id == id) {
-                            this.courseDate.reservations[index].status = 'Schváleno';
+                            this.actualCourseDate.reservations[index].status = 'Schváleno';
                             return;
                         }
                     });
@@ -208,9 +216,9 @@ export default {
         completeReservation(id) {
             axios.post('/admin/reservations/' + id + '/complete')
                 .then((response) => {
-                    this.courseDate.reservations.forEach((reservation, index) => {
+                    this.actualCourseDate.reservations.forEach((reservation, index) => {
                         if (reservation.id == id) {
-                            this.courseDate.reservations[index].status = 'COMPLETED';
+                            this.actualCourseDate.reservations[index].status = 'COMPLETED';
                             return;
                         }
                     });
@@ -221,9 +229,7 @@ export default {
         deleteReservation(id) {
             axios.delete('/admin/reservations/' + id)
                 .then((response) => {
-                    this.courseDate.reservations = this.courseDate.reservations.filter((reservation) => {
-                        return reservation != id;
-                    });
+                    this.refreshCourseDate();
                     this.displayMessageFromResponse(response);
                 });
         },

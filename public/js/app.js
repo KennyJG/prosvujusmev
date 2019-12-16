@@ -1984,6 +1984,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       selectedReservation: null,
       updating: false,
+      actualCourseDate: this.courseDate,
       updatedCourseDate: this.courseDate,
       errorMessage: null,
       successMessage: null
@@ -1992,7 +1993,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     deleteCourseDate: function deleteCourseDate() {
       if (confirm('Opravdu chcete odstranit tento termin? (Všechny rezervace budou zrušeny)')) {
-        axios["delete"]('/admin/course-dates/' + this.courseDate.id).then(function (response) {
+        axios["delete"]('/admin/course-dates/' + this.actualCourseDate.id).then(function (response) {
           window.location.href = '/admin/course-dates';
         });
       }
@@ -2003,11 +2004,18 @@ __webpack_require__.r(__webpack_exports__);
     toggleUpdateInputs: function toggleUpdateInputs() {
       this.updating = !this.updating;
     },
-    updateCourseDate: function updateCourseDate() {
+    refreshCourseDate: function refreshCourseDate() {
       var _this = this;
 
-      axios.put('/admin/course-dates/' + this.courseDate.id, {
-        course_id: this.courseDate.course_id,
+      axios.get('/admin/course-dates/' + this.actualCourseDate.id).then(function (response) {
+        _this.actualCourseDate = response.data.courseDate;
+      });
+    },
+    updateCourseDate: function updateCourseDate() {
+      var _this2 = this;
+
+      axios.put('/admin/course-dates/' + this.actualCourseDate.id, {
+        course_id: this.actualCourseDate.course_id,
         from_date_date: this.updatedCourseDate.from_date_date,
         from_date_time: this.updatedCourseDate.from_date_time,
         to_date_date: this.updatedCourseDate.to_date_date,
@@ -2017,34 +2025,20 @@ __webpack_require__.r(__webpack_exports__);
         lecturer: this.updatedCourseDate.lecturer,
         description: this.updatedCourseDate.description
       }).then(function (response) {
-        _this.courseDate = response.data.courseDate;
-        _this.updatedCourseDate = _this.courseDate;
-        _this.updating = false;
-
-        _this.displayMessageFromResponse(response);
-      });
-    },
-    approveReservation: function approveReservation(id) {
-      var _this2 = this;
-
-      axios.post('/admin/reservations/' + id + '/approve').then(function (response) {
-        _this2.courseDate.reservations.forEach(function (reservation, index) {
-          if (reservation.id == id) {
-            _this2.courseDate.reservations[index].status = 'Schváleno';
-            return;
-          }
-        });
+        _this2.actualCourseDate = response.data.courseDate;
+        _this2.updatedCourseDate = _this2.actualCourseDate;
+        _this2.updating = false;
 
         _this2.displayMessageFromResponse(response);
       });
     },
-    completeReservation: function completeReservation(id) {
+    approveReservation: function approveReservation(id) {
       var _this3 = this;
 
-      axios.post('/admin/reservations/' + id + '/complete').then(function (response) {
-        _this3.courseDate.reservations.forEach(function (reservation, index) {
+      axios.post('/admin/reservations/' + id + '/approve').then(function (response) {
+        _this3.actualCourseDate.reservations.forEach(function (reservation, index) {
           if (reservation.id == id) {
-            _this3.courseDate.reservations[index].status = 'COMPLETED';
+            _this3.actualCourseDate.reservations[index].status = 'Schváleno';
             return;
           }
         });
@@ -2052,15 +2046,27 @@ __webpack_require__.r(__webpack_exports__);
         _this3.displayMessageFromResponse(response);
       });
     },
-    deleteReservation: function deleteReservation(id) {
+    completeReservation: function completeReservation(id) {
       var _this4 = this;
 
-      axios["delete"]('/admin/reservations/' + id).then(function (response) {
-        _this4.courseDate.reservations = _this4.courseDate.reservations.filter(function (reservation) {
-          return reservation != id;
+      axios.post('/admin/reservations/' + id + '/complete').then(function (response) {
+        _this4.actualCourseDate.reservations.forEach(function (reservation, index) {
+          if (reservation.id == id) {
+            _this4.actualCourseDate.reservations[index].status = 'COMPLETED';
+            return;
+          }
         });
 
         _this4.displayMessageFromResponse(response);
+      });
+    },
+    deleteReservation: function deleteReservation(id) {
+      var _this5 = this;
+
+      axios["delete"]('/admin/reservations/' + id).then(function (response) {
+        _this5.refreshCourseDate();
+
+        _this5.displayMessageFromResponse(response);
       });
     },
     displayMessageFromResponse: function displayMessageFromResponse(response) {
@@ -2071,19 +2077,19 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     displaySuccessMessage: function displaySuccessMessage(message) {
-      var _this5 = this;
+      var _this6 = this;
 
       this.successMessage = message;
       setTimeout(function () {
-        _this5.successMessage = null;
+        _this6.successMessage = null;
       }, 4000);
     },
     displayErrorMessage: function displayErrorMessage(message) {
-      var _this6 = this;
+      var _this7 = this;
 
       this.errorMessage = message;
       setTimeout(function () {
-        _this6.errorMessage = null;
+        _this7.errorMessage = null;
       }, 4000);
     }
   }
@@ -21155,9 +21161,9 @@ var render = function() {
                 _vm._v("/\n                "),
                 _c("div", { staticClass: "ml-4 text-black" }, [
                   _vm._v(
-                    _vm._s(_vm.courseDate.course.name) +
+                    _vm._s(_vm.actualCourseDate.course.name) +
                       " " +
-                      _vm._s(_vm.courseDate.from_date_date)
+                      _vm._s(_vm.actualCourseDate.from_date_date)
                   )
                 ])
               ]
@@ -21216,7 +21222,7 @@ var render = function() {
             _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Kurz")]),
             _vm._v(" "),
             _c("div", { staticClass: "w-2/3" }, [
-              _vm._v(_vm._s(_vm.courseDate.course.name))
+              _vm._v(_vm._s(_vm.actualCourseDate.course.name))
             ])
           ]),
           _vm._v(" "),
@@ -21238,9 +21244,9 @@ var render = function() {
               },
               [
                 _vm._v(
-                  _vm._s(_vm.courseDate.from_date_date) +
+                  _vm._s(_vm.actualCourseDate.from_date_date) +
                     " " +
-                    _vm._s(_vm.courseDate.from_date_time)
+                    _vm._s(_vm.actualCourseDate.from_date_time)
                 )
               ]
             ),
@@ -21332,9 +21338,9 @@ var render = function() {
               },
               [
                 _vm._v(
-                  _vm._s(_vm.courseDate.to_date_date) +
+                  _vm._s(_vm.actualCourseDate.to_date_date) +
                     " " +
-                    _vm._s(_vm.courseDate.to_date_time)
+                    _vm._s(_vm.actualCourseDate.to_date_time)
                 )
               ]
             ),
@@ -21426,7 +21432,7 @@ var render = function() {
                 ],
                 staticClass: "w-2/3"
               },
-              [_vm._v(_vm._s(_vm.courseDate.venue))]
+              [_vm._v(_vm._s(_vm.actualCourseDate.venue))]
             ),
             _vm._v(" "),
             _c("input", {
@@ -21474,7 +21480,7 @@ var render = function() {
                 ],
                 staticClass: "w-2/3"
               },
-              [_vm._v(_vm._s(_vm.courseDate.limit))]
+              [_vm._v(_vm._s(_vm.actualCourseDate.limit))]
             ),
             _vm._v(" "),
             _c("input", {
@@ -21512,7 +21518,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "w-2/3" }, [
-              _vm._v(_vm._s(_vm.courseDate.remaining))
+              _vm._v(_vm._s(_vm.actualCourseDate.remaining))
             ])
           ]),
           _vm._v(" "),
@@ -21532,7 +21538,7 @@ var render = function() {
                 ],
                 staticClass: "w-2/3"
               },
-              [_vm._v(_vm._s(_vm.courseDate.lecturer))]
+              [_vm._v(_vm._s(_vm.actualCourseDate.lecturer))]
             ),
             _vm._v(" "),
             _c("input", {
@@ -21584,7 +21590,7 @@ var render = function() {
                 ],
                 staticClass: "w-2/3"
               },
-              [_vm._v(_vm._s(_vm.courseDate.description))]
+              [_vm._v(_vm._s(_vm.actualCourseDate.description))]
             ),
             _vm._v(" "),
             _c("textarea", {
@@ -21674,7 +21680,10 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "tbody",
-                _vm._l(_vm.courseDate.reservations, function(reservation, i) {
+                _vm._l(_vm.actualCourseDate.reservations, function(
+                  reservation,
+                  i
+                ) {
                   return _c("tr", { class: { "bg-gray-200": i % 2 == 0 } }, [
                     _c(
                       "td",
@@ -22008,7 +22017,7 @@ var render = function() {
             }
           ],
           staticClass:
-            "absolute bottom-0 left-0 ml-4 mb-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4",
+            "fixed bottom-0 left-0 ml-4 mb-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4",
           attrs: { role: "alert" }
         },
         [
@@ -22030,7 +22039,7 @@ var render = function() {
             }
           ],
           staticClass:
-            "absolute bottom-0 left-0 ml-4 mb-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4",
+            "fixed bottom-0 left-0 ml-4 mb-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4",
           attrs: { role: "alert" }
         },
         [
