@@ -9,6 +9,7 @@
             </div>
             <div class="flex align-middle">
                 <button @click="deleteCourseDate()" class="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border-l hover:border-transparent">Odstranit</button> 
+                <a v-show="actualCourseDate.status !== 'COMPLETED'" href="#complete-course-date" class='cursor-pointer'><button class="h-full bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border-l hover:border-transparent">Dokončit</button> </a>
                 <button @click="toggleUpdateInputs()" class="bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border-l hover:border-transparent">Upravit</button> 
                 <button @click="goBack()" class="bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border-l hover:border-transparent">Zpět</button> 
             </div>
@@ -34,6 +35,10 @@
                         <input class="p-2 border" type="date" v-model="updatedCourseDate.to_date_date">
                         <input class="p-2 border" type="time" v-model="updatedCourseDate.to_date_time">
                     </div>
+                </div>
+                 <div class="flex mt-6">
+                    <div class="w-1/3 font-bold">Stav</div>
+                    <div class="w-2/3">{{ actualCourseDate.status }}</div>
                 </div>
                 <div class="flex mt-6">
                     <div class="w-1/3 font-bold">Místo konání</div>
@@ -102,7 +107,7 @@
 
         <modal v-if="selectedReservation !== null" name="approve-reservation-modal">
             <h1 class="font-bold text-xl mb-2">Schválení rezervace</h1>
-            <p>Opravdu chcete schválit rezervaci s ID "{{ selectedReservation.id }}"</p>
+            <p class="mt-4">Opravdu chcete schválit rezervaci s ID "{{ selectedReservation.id }}"</p>
             <template v-slot:footer>
                 <a href="#" class="px-4 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white">Zrušit</a>
                 <a href="#" @click="approveReservation(selectedReservation.id)" class="px-4 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2">Schválit</a>
@@ -111,7 +116,7 @@
 
         <modal v-if="selectedReservation !== null" name="complete-reservation-modal">
             <h1 class="font-bold text-xl mb-2">Dokončení rezervace</h1>
-            <p>Opravdu chcete dokončit rezervaci s ID "{{ selectedReservation.id }}"</p>
+            <p class="mt-4">Opravdu chcete dokončit rezervaci s ID "{{ selectedReservation.id }}"</p>
             <template v-slot:footer>
                 <a href="#" class="px-4 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white">Zrušit</a>
                 <a href="#" @click="completeReservation(selectedReservation.id)" class="px-4 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2">Dokončit</a>
@@ -120,10 +125,37 @@
         
         <modal v-if="selectedReservation !== null" name="delete-reservation-modal">
             <h1 class="font-bold text-xl mb-2">Odstranění rezervace</h1>
-            <p>Opravdu chcete odstranit rezervaci s ID "{{ selectedReservation.id }}"</p>
+            <p class="mt-4">Opravdu chcete odstranit rezervaci s ID "{{ selectedReservation.id }}"</p>
             <template v-slot:footer>
                 <a href="#" class="px-4 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white">Zrušit</a>
                 <a href="#" @click="deleteReservation(selectedReservation.id)" class="px-4 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2">Odstranit</a>
+            </template>
+        </modal>
+
+        <modal name="complete-course-date">
+            <h1 class="font-bold text-xl mb-2">Dokončení termínu</h1>
+            <p class="mt-4">Zaškrtejte účastníky kteří byli přítomni na termínu.</p>
+            <div class="p-6">
+                <label v-for="reservation in actualCourseDate.reservations" class="flex justify-start items-start mt-2">
+                    <div class="bg-white border-2 rounded border-gray-400 w-6 h-6 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-blue-500">
+                        <input @change="toggleCourseDateCompletionAttendee(reservation.id)" type="checkbox" class="opacity-0 absolute">
+                        <svg class="fill-current hidden w-4 h-4 text-green-500 pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
+                    </div>
+                    <div class="select-none">{{ reservation.id }}</div>
+                </label>
+            </div>
+            <template v-slot:footer>
+                <a href="#" class="px-4 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white">Zrušit</a>
+                <a href="#complete-course-date-confirmation" class="px-4 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2">Dokončit</a>
+            </template>
+        </modal>
+
+        <modal name="complete-course-date-confirmation">
+            <h1 class="font-bold text-xl mb-2">Dokončení termínu</h1>
+            <p class="mt-4">Opravdu chcete dokončit tento termín?</p>
+            <template v-slot:footer>
+                <a href="#" class="px-4 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white">Zrušit</a>
+                <a href="#" @click="completeCourseDate()" class="px-4 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2">Dokončit</a>
             </template>
         </modal>
 
@@ -131,7 +163,7 @@
             <p class="font-bold">Úspěch</p>
             <p>{{ successMessage }}</p>
         </div>
-        <div v-show="errorMessage !== null" class="fixed bottom-0 left-0 ml-4 mb-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
+        <div v-show="errorMessage !== null" class="fixed bottom-0 left-0 ml-4 mb-4 bg-red-100 border-l-4 border-red-500 text-red-700 p-4" role="alert">
             <p class="font-bold">Chyba</p>
             <p>{{ errorMessage }}</p>
         </div>
@@ -153,12 +185,14 @@ export default {
 
             errorMessage: null,
             successMessage: null,
+
+            attendedReservationIds: [],
         };
     },
 
     methods: {
         deleteCourseDate() {
-            if (confirm('Opravdu chcete odstranit tento termin? (Všechny rezervace budou zrušeny)')) {
+            if (confirm('Opravdu chcete odstranit tento termín? (Všechny rezervace budou zrušeny)')) {
                 axios.delete('/admin/course-dates/' + this.actualCourseDate.id)
                     .then((response) => {
                         window.location.href = '/admin/course-dates';
@@ -235,7 +269,7 @@ export default {
         },
 
         displayMessageFromResponse(response) {
-            if (response.data.success) {
+            if (response.data.success == true) {
                 this.displaySuccessMessage(response.data.message);
             } else {
                 this.displayErrorMessage(response.data.message);
@@ -254,11 +288,32 @@ export default {
             setTimeout(() => {
                 this.errorMessage = null;
             }, 4000);
+        },
+
+        toggleCourseDateCompletionAttendee(id) {
+            if (this.attendedReservationIds.includes(id)) {
+                this.attendedReservationIds = this.attendedReservationIds.filter((attendeeId) => {
+                    return attendeeId != id;
+                });
+            } else {
+                this.attendedReservationIds.push(id);
+            }
+        },
+
+        completeCourseDate() {
+            axios.post('/admin/course-dates/' + this.actualCourseDate.id + '/complete', { attendedReservationIds: this.attendedReservationIds })
+                .then((response) => {
+                    this.attendedReservationIds = [];
+                    this.refreshCourseDate();
+                    this.displayMessageFromResponse(response);
+                });
         }
     }
 }
 </script>
 
 <style>
-
+    input:checked + svg {
+        display: block;
+    }
 </style>

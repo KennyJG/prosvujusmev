@@ -58,6 +58,7 @@ class CourseDatesController extends Controller
             'lecturer' => $request->lecturer,
             'limit' => $request->limit,
             'description' => $request->description,
+            'status' => CourseDate::STATUS_ACTIVE,
         ]);
 
         return redirect('/admin/course-dates')->with([
@@ -99,5 +100,19 @@ class CourseDatesController extends Controller
     {
         app(CourseDateRepository::class)->delete($courseDate);
         return response()->json();
+    }
+
+    public function complete(Request $request, CourseDate $courseDate)
+    {
+        if ($courseDate->status !== CourseDate::STATUS_COMPLETED) {
+            $result = app(CourseDateRepository::class)->complete($courseDate, $request->attendedReservationIds);
+        } else {
+            $result = false;
+        }
+        return response()->json([
+            'success' => $result,
+            'message' => $result ? 'Termín byl úspěšně dokončen.' : 'Termín se nepodařilo dokončit.',
+            'courseDate' => $courseDate->fresh() 
+        ]);
     }
 }

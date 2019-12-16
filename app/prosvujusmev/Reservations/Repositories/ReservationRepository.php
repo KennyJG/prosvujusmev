@@ -4,6 +4,7 @@ namespace App\prosvujusmev\Reservations\Repositories;
 
 use App\prosvujusmev\Reservations\Events\ReservationApproved;
 use App\prosvujusmev\Reservations\Events\ReservationCompleted;
+use App\prosvujusmev\Reservations\Events\ReservationConditioned;
 use App\prosvujusmev\Reservations\Events\ReservationDeleted;
 use App\prosvujusmev\Reservations\Reservation;
 
@@ -50,6 +51,21 @@ class ReservationRepository
             'status' => Reservation::STATUS_COMPLETED,
         ]);
         event(new ReservationCompleted($reservation->fresh()));
+        return $reservation->fresh();
+    }
+    
+    /**
+     *  Condition Reservation
+     * 
+     *  @param \App\prosvujusmev\Reservations\Reservation $reservation
+     *  @return \App\prosvujusmev\Reservations\Reservation
+     */
+    public function condition(Reservation $reservation): Reservation
+    {
+        $reservation->update([
+            'status' => Reservation::STATUS_CONDITIONED,
+        ]);
+        event(new ReservationConditioned($reservation->fresh()));
         return $reservation->fresh();
     }
 }

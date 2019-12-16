@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\prosvujusmev\Reservations\Events\ReservationApproved;
 use App\prosvujusmev\Reservations\Events\ReservationCompleted;
+use App\prosvujusmev\Reservations\Events\ReservationConditioned;
 use App\prosvujusmev\Reservations\Events\ReservationDeleted;
 use App\prosvujusmev\Reservations\Listeners\SendReservationApprovedNotification;
 use App\prosvujusmev\Reservations\Listeners\SendReservationCompletedNotification;
+use App\prosvujusmev\Reservations\Listeners\SendReservationConditionedNotification;
 use App\prosvujusmev\Reservations\Listeners\SendReservationDeletedNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -32,7 +34,9 @@ class EventServiceProvider extends ServiceProvider
         ReservationDeleted::class => [
             SendReservationDeletedNotification::class,
         ],
- 
+        ReservationConditioned::class => [
+            SendReservationConditionedNotification::class,
+        ],
     ];
 
     /**

@@ -18,6 +18,7 @@ class CourseDateResource extends JsonResource
             'to_date' => $this->to_date,
             'to_date_date' => $this->to_date->format('Y-m-d'),
             'to_date_time' => $this->to_date->format('H:i:s'),
+            'status' => $this->status,
             'venue' => $this->venue,
             'limit' => $this->limit,
             'remaining' => $this->remaining,

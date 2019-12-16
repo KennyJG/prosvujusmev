@@ -3,6 +3,8 @@
 namespace App\prosvujusmev\Courses\Repositories;
 
 use App\prosvujusmev\Courses\CourseDate;
+use App\prosvujusmev\Reservations\Repositories\ReservationRepository;
+use App\prosvujusmev\Reservations\Reservation;
 
 class CourseDateRepository 
 {
@@ -18,5 +20,31 @@ class CourseDateRepository
             app(\App\prosvujusmev\Reservations\Repositories\ReservationRepository::class)->delete($reservation);
         }
         return $courseDate->delete();
+    }
+
+    /**
+     *  Completes CourseDate
+     * 
+     *  @param \App\prosvujusmev\Courses\CourseDate $courseDate
+     *  @param Array $attendedReservationIds
+     *  @return bool
+     */
+    public function complete(CourseDate $courseDate, Array $attendedReservationIds):bool
+    {
+        try {
+            foreach ($attendedReservationIds as $reservationId) {
+                $reservation = \App\prosvujusmev\Reservations\Reservation::findOrFail($reservationId);
+                if ($reservation->status !== Reservation::STATUS_COMPLETED) {
+                    app(ReservationRepository::class)->complete($reservation);
+                }
+            }
+            foreach ($courseDate->reservations()->whereNotIn('id', $attendedReservationIds)->get() as $reservation) {
+                app(ReservationRepository::class)->condition($reservation);
+            }
+            $courseDate->update(['status' => CourseDate::STATUS_COMPLETED]);
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 }

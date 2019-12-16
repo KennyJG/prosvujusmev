@@ -40,6 +40,7 @@ Route::group(['namespace' => 'prosvujusmev\\'], function () {
         Route::post('/course-dates', 'Courses\CourseDatesController@store');
         Route::put('/course-dates/{courseDate}', 'Courses\CourseDatesController@update');
         Route::delete('/course-dates/{courseDate}', 'Courses\CourseDatesController@destroy');
+        Route::post('/course-dates/{courseDate}/complete', 'Courses\CourseDatesController@complete');
 
         Route::get('/reservations', 'Reservations\ReservationsController@index');
         Route::get('/reservations/create', 'Reservations\ReservationsController@create');
