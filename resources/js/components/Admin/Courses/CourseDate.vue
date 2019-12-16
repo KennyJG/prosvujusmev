@@ -82,15 +82,15 @@
                                 <td class="border border-r-0 px-4 py-2 text-left">{{ reservation.status }}</td>
                                 <td class="border border-l-0 px-4 py-4 text-right">
                                     <div class="inline-flex">
-                                        <div v-show="reservation.status !== 'COMPLETED'" @click="completeReservation(reservation.id)" :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l cursor-pointer">
+                                        <a v-show="reservation.status !== 'COMPLETED'" href="#complete-reservation-modal" @click="selectedReservation = reservation" :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l cursor-pointer">
                                             Dokončit
-                                        </div>
-                                        <div v-show="reservation.status !== 'Schváleno'" @click="approveReservation(reservation.id)" :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 cursor-pointer">
+                                        </a>
+                                        <a v-show="reservation.status !== 'Schváleno'" href="#approve-reservation-modal" @click="selectedReservation = reservation" :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 cursor-pointer">
                                             Schválit 
-                                        </div>
-                                        <div @click="deleteReservation(reservation.id)" :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r cursor-pointer">
+                                        </a>
+                                        <a href="#delete-reservation-modal" @click="selectedReservation = reservation" :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r cursor-pointer">
                                             Odstranit
-                                        </div>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>
@@ -98,6 +98,42 @@
                     </table>
                 </div>
             </div>
+        </div>
+
+        <modal v-if="selectedReservation !== null" name="approve-reservation-modal">
+            <h1 class="font-bold text-xl mb-2">Schválení rezervace</h1>
+            <p>Opravdu chcete schválit rezervaci s ID "{{ selectedReservation.id }}"</p>
+            <template v-slot:footer>
+                <a href="#" class="px-4 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white">Zrušit</a>
+                <a href="#" @click="approveReservation(selectedReservation.id)" class="px-4 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2">Schválit</a>
+            </template>
+        </modal>
+
+        <modal v-if="selectedReservation !== null" name="complete-reservation-modal">
+            <h1 class="font-bold text-xl mb-2">Dokončení rezervace</h1>
+            <p>Opravdu chcete dokončit rezervaci s ID "{{ selectedReservation.id }}"</p>
+            <template v-slot:footer>
+                <a href="#" class="px-4 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white">Zrušit</a>
+                <a href="#" @click="completeReservation(selectedReservation.id)" class="px-4 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2">Dokončit</a>
+            </template>
+        </modal>
+        
+        <modal v-if="selectedReservation !== null" name="delete-reservation-modal">
+            <h1 class="font-bold text-xl mb-2">Odstranění rezervace</h1>
+            <p>Opravdu chcete odstranit rezervaci s ID "{{ selectedReservation.id }}"</p>
+            <template v-slot:footer>
+                <a href="#" class="px-4 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white">Zrušit</a>
+                <a href="#" @click="deleteReservation(selectedReservation.id)" class="px-4 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2">Odstranit</a>
+            </template>
+        </modal>
+
+        <div v-show="successMessage !== null" class="absolute bottom-0 left-0 ml-4 mb-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
+            <p class="font-bold">Úspěch</p>
+            <p>{{ successMessage }}</p>
+        </div>
+        <div v-show="errorMessage !== null" class="absolute bottom-0 left-0 ml-4 mb-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
+            <p class="font-bold">Chyba</p>
+            <p>{{ errorMessage }}</p>
         </div>
     </div>
 </template>
@@ -108,9 +144,14 @@ export default {
 
     data() {
         return {
+            selectedReservation: null,
+
             updating: false,
 
             updatedCourseDate: this.courseDate,
+
+            errorMessage: null,
+            successMessage: null,
         };
     },
 
@@ -147,6 +188,7 @@ export default {
                 this.courseDate = response.data.courseDate;
                 this.updatedCourseDate = this.courseDate;
                 this.updating = false;
+                this.displayMessageFromResponse(response);
             });
         },
 
@@ -159,7 +201,7 @@ export default {
                             return;
                         }
                     });
-                    this.displaySuccessMessage(response.data.message);
+                    this.displayMessageFromResponse(response);
                 });
         },
 
@@ -172,16 +214,41 @@ export default {
                             return;
                         }
                     });
-                    this.displaySuccessMessage(response.data.message);
+                    this.displayMessageFromResponse(response);
                 });
         },
 
+        deleteReservation(id) {
+            axios.delete('/admin/reservations/' + id)
+                .then((response) => {
+                    this.courseDate.reservations = this.courseDate.reservations.filter((reservation) => {
+                        return reservation != id;
+                    });
+                    this.displayMessageFromResponse(response);
+                });
+        },
+
+        displayMessageFromResponse(response) {
+            if (response.data.success) {
+                this.displaySuccessMessage(response.data.message);
+            } else {
+                this.displayErrorMessage(response.data.message);
+            }
+        },
+
         displaySuccessMessage(message) {
-            this.successMessage = response.data.message;
+            this.successMessage = message;
             setTimeout(() => {
                 this.successMessage = null;
             }, 4000);
         },
+
+        displayErrorMessage(message) {
+            this.errorMessage = message;
+            setTimeout(() => {
+                this.errorMessage = null;
+            }, 4000);
+        }
     }
 }
 </script>

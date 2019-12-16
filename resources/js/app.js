@@ -14,6 +14,9 @@ Vue.component('reservation-list', require('./components/Admin/Reservations/Reser
 Vue.component('site-navbar', require('./components/SiteNavbar.vue').default);
 Vue.component('reservation-form', require('./components/Reservations/ReservationForm.vue').default);
 
+// Utils
+Vue.component('modal', require('./components/Utils/Modal.vue').default);
+
 const app = new Vue({
     el: '#app'
 });

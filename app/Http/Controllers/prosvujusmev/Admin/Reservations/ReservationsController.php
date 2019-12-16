@@ -96,18 +96,25 @@ class ReservationsController extends Controller
 
     public function destroy(Request $request, Reservation $reservation)
     {
-        $reservation->delete();
-        return response()->json();
+        $result = app(ReservationRepository::class)->delete($reservation);
+        return response()->json([
+            'success' => $result,
+            'message' => $result ? 'Rezervace byla odstraněna.' : 'Rezervaci se nepodařilo odstranit.',
+        ]);
     }
 
     public function approve(Request $request, Reservation $reservation)
     {
         if ($reservation->status !== 'Schváleno') {
             $reservation = app(ReservationRepository::class)->approve($reservation);
-        }        
+            $result = true;
+        } else {
+            $result = false;
+        }     
         return response()->json([
+            'success' => $result,
             'reservation' => $reservation,
-            'message' => 'Rezervace byla schválena.',
+            'message' => $result ? 'Rezervace byla schválena.' : 'Rezervaci se nepodařilo schválit.',
         ]);
     }
 
@@ -115,10 +122,14 @@ class ReservationsController extends Controller
     {
         if ($reservation->status !== Reservation::STATUS_COMPLETED) {
             $reservation = app(ReservationRepository::class)->complete($reservation);
+            $result = true;
+        } else {
+            $result = false;
         } 
         return response()->json([
+            'success' => $result,
             'reservation' => $reservation,
-            'message' => 'Rezervace byla dokončena.',
+            'message' => $result ? 'Rezervace byla dokončena.' : 'Rezervaci se nepodařilo schválit.',
         ]);
     }
 }
