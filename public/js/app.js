@@ -2693,6 +2693,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2710,7 +2719,18 @@ __webpack_require__.r(__webpack_exports__);
         city: '',
         country: '',
         zip: '',
-        courseDateId: null
+        courseDateId: null,
+        errors: {
+          sourceCode: [],
+          firstName: [],
+          lastName: [],
+          email: [],
+          phone: [],
+          street: [],
+          city: [],
+          country: [],
+          zip: []
+        }
       }],
       activeReservations: [0],
       showCreateReservationSuccessMessage: false,
@@ -2743,6 +2763,19 @@ __webpack_require__.r(__webpack_exports__);
       reservations = reservations.forEach(function (reservation) {
         reservation.courseDateId = _this3.selectedCourseDate;
       });
+      this.reservations.forEach(function (reservation, index) {
+        _this3.reservations[index].errors = {
+          sourceCode: [],
+          firstName: [],
+          lastName: [],
+          email: [],
+          phone: [],
+          street: [],
+          city: [],
+          country: [],
+          zip: []
+        };
+      });
       axios.post('/reservations', {
         reservations: this.reservations
       }).then(function (response) {
@@ -2758,7 +2791,18 @@ __webpack_require__.r(__webpack_exports__);
           city: '',
           country: '',
           zip: '',
-          courseDateId: null
+          courseDateId: null,
+          errors: {
+            sourceCode: [],
+            firstName: [],
+            lastName: [],
+            email: [],
+            phone: [],
+            street: [],
+            city: [],
+            country: [],
+            zip: []
+          }
         }];
         _this3.activeReservations = [0];
         _this3.showCreateReservationSuccessMessage = true;
@@ -2766,6 +2810,18 @@ __webpack_require__.r(__webpack_exports__);
           _this3.showCreateReservationSuccessMessage = false;
         }, 8000);
       })["catch"](function (er) {
+        var errors = er.response.data.errors;
+
+        for (var key in errors) {
+          if (errors.hasOwnProperty(key)) {
+            var splittedKey = key.split('.');
+            var formReservationNumber = splittedKey[1];
+            var errorName = splittedKey[2];
+            var errorMessages = errors[key];
+            _this3.reservations[formReservationNumber].errors[errorName] = errorMessages;
+          }
+        }
+
         _this3.showCreateReservationFailedMessage = true;
         setTimeout(function () {
           _this3.showCreateReservationFailedMessage = false;
@@ -2783,7 +2839,18 @@ __webpack_require__.r(__webpack_exports__);
         city: this.reservations[0].city,
         country: this.reservations[0].country,
         zip: this.reservations[0].zip,
-        courseDateId: null
+        courseDateId: null,
+        errors: {
+          sourceCode: [],
+          firstName: [],
+          lastName: [],
+          email: [],
+          phone: [],
+          street: [],
+          city: [],
+          country: [],
+          zip: []
+        }
       });
       this.activeReservations.push(this.reservations.length - 1);
     },
@@ -23586,320 +23653,544 @@ var render = function() {
                               ]
                             ),
                             _vm._v(" "),
-                            _c("div", { staticClass: "mt-12" }, [
-                              _c(
-                                "label",
-                                {
-                                  staticClass: "block text-sm text-gray-600",
-                                  attrs: { for: "sourceCode" }
-                                },
-                                [_vm._v("Číslo kupónu")]
-                              ),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
+                            _c(
+                              "div",
+                              { staticClass: "mt-12" },
+                              [
+                                _c(
+                                  "label",
                                   {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: reservation.sourceCode,
-                                    expression: "reservation.sourceCode"
-                                  }
-                                ],
-                                staticClass:
-                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
-                                attrs: {
-                                  id: "sourceCode",
-                                  name: "sourceCode",
-                                  type: "text",
-                                  required: "",
-                                  "aria-label": "Číslo kupónu"
-                                },
-                                domProps: { value: reservation.sourceCode },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
+                                    staticClass: "block text-sm text-gray-600",
+                                    attrs: { for: "sourceCode" }
+                                  },
+                                  [_vm._v("Číslo kupónu")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: reservation.sourceCode,
+                                      expression: "reservation.sourceCode"
                                     }
-                                    _vm.$set(
-                                      reservation,
-                                      "sourceCode",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "mt-12" }, [
-                              _c(
-                                "label",
-                                {
-                                  staticClass: "block text-sm text-gray-600",
-                                  attrs: { for: "first_name" }
-                                },
-                                [_vm._v("Jméno")]
-                              ),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: reservation.firstName,
-                                    expression: "reservation.firstName"
-                                  }
-                                ],
-                                staticClass:
-                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
-                                attrs: {
-                                  id: "first_name",
-                                  name: "first_name",
-                                  type: "text",
-                                  required: "",
-                                  placeholder: "Jan",
-                                  "aria-label": "Jméno"
-                                },
-                                domProps: { value: reservation.firstName },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      reservation,
-                                      "firstName",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", {}, [
-                              _c(
-                                "label",
-                                {
-                                  staticClass: "block text-sm text-gray-600",
-                                  attrs: { for: "last_name" }
-                                },
-                                [_vm._v("Přijmení")]
-                              ),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: reservation.lastName,
-                                    expression: "reservation.lastName"
-                                  }
-                                ],
-                                staticClass:
-                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
-                                attrs: {
-                                  id: "last_name",
-                                  name: "last_name",
-                                  type: "text",
-                                  required: "",
-                                  placeholder: "Novák",
-                                  "aria-label": "Přijmení"
-                                },
-                                domProps: { value: reservation.lastName },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      reservation,
-                                      "lastName",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "mt-2" }, [
-                              _c(
-                                "label",
-                                {
-                                  staticClass: "block text-sm text-gray-600",
-                                  attrs: { for: "email" }
-                                },
-                                [_vm._v("Email")]
-                              ),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: reservation.email,
-                                    expression: "reservation.email"
-                                  }
-                                ],
-                                staticClass:
-                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
-                                attrs: {
-                                  id: "email",
-                                  name: "email",
-                                  type: "email",
-                                  required: "",
-                                  placeholder: "jan.novak@priklad.cz",
-                                  "aria-label": "Email"
-                                },
-                                domProps: { value: reservation.email },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      reservation,
-                                      "email",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "mt-2" }, [
-                              _c(
-                                "label",
-                                {
-                                  staticClass: "block text-sm text-gray-600",
-                                  attrs: { for: "phone" }
-                                },
-                                [_vm._v("Telefon")]
-                              ),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: reservation.phone,
-                                    expression: "reservation.phone"
-                                  }
-                                ],
-                                staticClass:
-                                  "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
-                                attrs: {
-                                  id: "phone",
-                                  name: "phone",
-                                  type: "text",
-                                  required: "",
-                                  placeholder: "+420 777 888 999",
-                                  "aria-label": "Telefon"
-                                },
-                                domProps: { value: reservation.phone },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      reservation,
-                                      "phone",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "mt-2" }, [
-                              _c(
-                                "label",
-                                {
-                                  staticClass: "block text-sm text-gray-600",
-                                  attrs: { for: "street" }
-                                },
-                                [_vm._v("Adresa")]
-                              ),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: reservation.street,
-                                    expression: "reservation.street"
-                                  }
-                                ],
-                                staticClass:
-                                  "w-full px-2 py-2 text-gray-700 bg-gray-200 rounded",
-                                attrs: {
-                                  id: "street",
-                                  name: "street",
-                                  type: "text",
-                                  required: "",
-                                  placeholder: "Ulice",
-                                  "aria-label": "Ulice"
-                                },
-                                domProps: { value: reservation.street },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      reservation,
-                                      "street",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "mt-2" }, [
-                              _c(
-                                "label",
-                                {
+                                  ],
                                   staticClass:
-                                    "hidden text-sm block text-gray-600",
-                                  attrs: { for: "city" }
-                                },
-                                [_vm._v("Město")]
-                              ),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: reservation.city,
-                                    expression: "reservation.city"
-                                  }
-                                ],
-                                staticClass:
-                                  "w-full px-2 py-2 text-gray-700 bg-gray-200 rounded",
-                                attrs: {
-                                  id: "city",
-                                  name: "city",
-                                  type: "text",
-                                  required: "",
-                                  placeholder: "Město",
-                                  "aria-label": "Město"
-                                },
-                                domProps: { value: reservation.city },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
+                                    "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                  class: {
+                                    "border border-red-600":
+                                      reservation.errors.sourceCode.length !== 0
+                                  },
+                                  attrs: {
+                                    id: "sourceCode",
+                                    name: "sourceCode",
+                                    type: "text",
+                                    required: "",
+                                    "aria-label": "Číslo kupónu"
+                                  },
+                                  domProps: { value: reservation.sourceCode },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        reservation,
+                                        "sourceCode",
+                                        $event.target.value
+                                      )
                                     }
-                                    _vm.$set(
-                                      reservation,
-                                      "city",
-                                      $event.target.value
-                                    )
                                   }
-                                }
-                              })
-                            ]),
+                                }),
+                                _vm._v(" "),
+                                _vm._l(reservation.errors.sourceCode, function(
+                                  error
+                                ) {
+                                  return _c(
+                                    "div",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value:
+                                            reservation.errors.sourceCode
+                                              .length !== 0,
+                                          expression:
+                                            "reservation.errors.sourceCode.length !== 0"
+                                        }
+                                      ],
+                                      staticClass: "text-sm italic text-red-600"
+                                    },
+                                    [_vm._v(_vm._s(error))]
+                                  )
+                                })
+                              ],
+                              2
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "mt-12" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "block text-sm text-gray-600",
+                                    attrs: { for: "first_name" }
+                                  },
+                                  [_vm._v("Jméno")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: reservation.firstName,
+                                      expression: "reservation.firstName"
+                                    }
+                                  ],
+                                  staticClass:
+                                    "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                  class: {
+                                    "border border-red-600":
+                                      reservation.errors.firstName.length !== 0
+                                  },
+                                  attrs: {
+                                    id: "first_name",
+                                    name: "first_name",
+                                    type: "text",
+                                    required: "",
+                                    placeholder: "Jan",
+                                    "aria-label": "Jméno"
+                                  },
+                                  domProps: { value: reservation.firstName },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        reservation,
+                                        "firstName",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm._l(reservation.errors.firstName, function(
+                                  error
+                                ) {
+                                  return _c(
+                                    "div",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value:
+                                            reservation.errors.firstName
+                                              .length !== 0,
+                                          expression:
+                                            "reservation.errors.firstName.length !== 0"
+                                        }
+                                      ],
+                                      staticClass: "text-sm italic text-red-600"
+                                    },
+                                    [_vm._v(_vm._s(error))]
+                                  )
+                                })
+                              ],
+                              2
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {},
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "block text-sm text-gray-600",
+                                    attrs: { for: "last_name" }
+                                  },
+                                  [_vm._v("Přijmení")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: reservation.lastName,
+                                      expression: "reservation.lastName"
+                                    }
+                                  ],
+                                  staticClass:
+                                    "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                  class: {
+                                    "border border-red-600":
+                                      reservation.errors.lastName.length !== 0
+                                  },
+                                  attrs: {
+                                    id: "last_name",
+                                    name: "last_name",
+                                    type: "text",
+                                    required: "",
+                                    placeholder: "Novák",
+                                    "aria-label": "Přijmení"
+                                  },
+                                  domProps: { value: reservation.lastName },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        reservation,
+                                        "lastName",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm._l(reservation.errors.lastName, function(
+                                  error
+                                ) {
+                                  return _c(
+                                    "div",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value:
+                                            reservation.errors.lastName
+                                              .length !== 0,
+                                          expression:
+                                            "reservation.errors.lastName.length !== 0"
+                                        }
+                                      ],
+                                      staticClass: "text-sm italic text-red-600"
+                                    },
+                                    [_vm._v(_vm._s(error))]
+                                  )
+                                })
+                              ],
+                              2
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "mt-2" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "block text-sm text-gray-600",
+                                    attrs: { for: "email" }
+                                  },
+                                  [_vm._v("Email")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: reservation.email,
+                                      expression: "reservation.email"
+                                    }
+                                  ],
+                                  staticClass:
+                                    "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                  class: {
+                                    "border border-red-600":
+                                      reservation.errors.email.length !== 0
+                                  },
+                                  attrs: {
+                                    id: "email",
+                                    name: "email",
+                                    type: "email",
+                                    required: "",
+                                    placeholder: "jan.novak@priklad.cz",
+                                    "aria-label": "Email"
+                                  },
+                                  domProps: { value: reservation.email },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        reservation,
+                                        "email",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm._l(reservation.errors.email, function(
+                                  error
+                                ) {
+                                  return _c(
+                                    "div",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value:
+                                            reservation.errors.email.length !==
+                                            0,
+                                          expression:
+                                            "reservation.errors.email.length !== 0"
+                                        }
+                                      ],
+                                      staticClass: "text-sm italic text-red-600"
+                                    },
+                                    [_vm._v(_vm._s(error))]
+                                  )
+                                })
+                              ],
+                              2
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "mt-2" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "block text-sm text-gray-600",
+                                    attrs: { for: "phone" }
+                                  },
+                                  [_vm._v("Telefon")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: reservation.phone,
+                                      expression: "reservation.phone"
+                                    }
+                                  ],
+                                  staticClass:
+                                    "w-full px-5 py-1 text-gray-700 bg-gray-200 rounded",
+                                  class: {
+                                    "border border-red-600":
+                                      reservation.errors.phone.length !== 0
+                                  },
+                                  attrs: {
+                                    id: "phone",
+                                    name: "phone",
+                                    type: "text",
+                                    required: "",
+                                    placeholder: "+420 777 888 999",
+                                    "aria-label": "Telefon"
+                                  },
+                                  domProps: { value: reservation.phone },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        reservation,
+                                        "phone",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm._l(reservation.errors.phone, function(
+                                  error
+                                ) {
+                                  return _c(
+                                    "div",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value:
+                                            reservation.errors.phone.length !==
+                                            0,
+                                          expression:
+                                            "reservation.errors.phone.length !== 0"
+                                        }
+                                      ],
+                                      staticClass: "text-sm italic text-red-600"
+                                    },
+                                    [_vm._v(_vm._s(error))]
+                                  )
+                                })
+                              ],
+                              2
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "mt-2" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "block text-sm text-gray-600",
+                                    attrs: { for: "street" }
+                                  },
+                                  [_vm._v("Adresa")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: reservation.street,
+                                      expression: "reservation.street"
+                                    }
+                                  ],
+                                  staticClass:
+                                    "w-full px-2 py-2 text-gray-700 bg-gray-200 rounded",
+                                  class: {
+                                    "border border-red-600":
+                                      reservation.errors.street.length !== 0
+                                  },
+                                  attrs: {
+                                    id: "street",
+                                    name: "street",
+                                    type: "text",
+                                    required: "",
+                                    placeholder: "Ulice",
+                                    "aria-label": "Ulice"
+                                  },
+                                  domProps: { value: reservation.street },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        reservation,
+                                        "street",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm._l(reservation.errors.street, function(
+                                  error
+                                ) {
+                                  return _c(
+                                    "div",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value:
+                                            reservation.errors.street.length !==
+                                            0,
+                                          expression:
+                                            "reservation.errors.street.length !== 0"
+                                        }
+                                      ],
+                                      staticClass: "text-sm italic text-red-600"
+                                    },
+                                    [_vm._v(_vm._s(error))]
+                                  )
+                                })
+                              ],
+                              2
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "mt-2" },
+                              [
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass:
+                                      "hidden text-sm block text-gray-600",
+                                    attrs: { for: "city" }
+                                  },
+                                  [_vm._v("Město")]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: reservation.city,
+                                      expression: "reservation.city"
+                                    }
+                                  ],
+                                  staticClass:
+                                    "w-full px-2 py-2 text-gray-700 bg-gray-200 rounded",
+                                  class: {
+                                    "border border-red-600":
+                                      reservation.errors.city.length !== 0
+                                  },
+                                  attrs: {
+                                    id: "city",
+                                    name: "city",
+                                    type: "text",
+                                    required: "",
+                                    placeholder: "Město",
+                                    "aria-label": "Město"
+                                  },
+                                  domProps: { value: reservation.city },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        reservation,
+                                        "city",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm._l(reservation.errors.city, function(
+                                  error
+                                ) {
+                                  return _c(
+                                    "div",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value:
+                                            reservation.errors.city.length !==
+                                            0,
+                                          expression:
+                                            "reservation.errors.city.length !== 0"
+                                        }
+                                      ],
+                                      staticClass: "text-sm italic text-red-600"
+                                    },
+                                    [_vm._v(_vm._s(error))]
+                                  )
+                                })
+                              ],
+                              2
+                            ),
                             _vm._v(" "),
                             _c(
                               "div",
@@ -23926,6 +24217,10 @@ var render = function() {
                                   ],
                                   staticClass:
                                     "w-full px-2 py-2 text-gray-700 bg-gray-200 rounded",
+                                  class: {
+                                    "border border-red-600":
+                                      reservation.errors.country.length !== 0
+                                  },
                                   attrs: {
                                     id: "country",
                                     name: "country",
@@ -23947,8 +24242,32 @@ var render = function() {
                                       )
                                     }
                                   }
+                                }),
+                                _vm._v(" "),
+                                _vm._l(reservation.errors.country, function(
+                                  error
+                                ) {
+                                  return _c(
+                                    "div",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value:
+                                            reservation.errors.country
+                                              .length !== 0,
+                                          expression:
+                                            "reservation.errors.country.length !== 0"
+                                        }
+                                      ],
+                                      staticClass: "text-sm italic text-red-600"
+                                    },
+                                    [_vm._v(_vm._s(error))]
+                                  )
                                 })
-                              ]
+                              ],
+                              2
                             ),
                             _vm._v(" "),
                             _c(
@@ -23978,6 +24297,10 @@ var render = function() {
                                   ],
                                   staticClass:
                                     "w-full px-2 py-2 text-gray-700 bg-gray-200 rounded",
+                                  class: {
+                                    "border border-red-600":
+                                      reservation.errors.zip.length !== 0
+                                  },
                                   attrs: {
                                     name: "zip",
                                     type: "text",
@@ -23998,8 +24321,29 @@ var render = function() {
                                       )
                                     }
                                   }
+                                }),
+                                _vm._v(" "),
+                                _vm._l(reservation.errors.zip, function(error) {
+                                  return _c(
+                                    "div",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "show",
+                                          rawName: "v-show",
+                                          value:
+                                            reservation.errors.zip.length !== 0,
+                                          expression:
+                                            "reservation.errors.zip.length !== 0"
+                                        }
+                                      ],
+                                      staticClass: "text-sm italic text-red-600"
+                                    },
+                                    [_vm._v(_vm._s(error))]
+                                  )
                                 })
-                              ]
+                              ],
+                              2
                             )
                           ])
                     ])

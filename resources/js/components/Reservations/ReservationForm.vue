@@ -61,40 +61,49 @@
                                 </div>
                                 <div class="mt-12">
                                     <label class="block text-sm text-gray-600" for="sourceCode">Číslo kupónu</label>
-                                    <input v-model="reservation.sourceCode" class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="sourceCode" name="sourceCode" type="text" required aria-label="Číslo kupónu">
+                                    <input v-model="reservation.sourceCode" :class="{ 'border border-red-600': reservation.errors.sourceCode.length !== 0 }" class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="sourceCode" name="sourceCode" type="text" required aria-label="Číslo kupónu">
+                                    <div class="text-sm italic text-red-600" v-show="reservation.errors.sourceCode.length !== 0" v-for="error in reservation.errors.sourceCode">{{ error }}</div>
                                 </div>
 
                                 <div class="mt-12">
                                     <label class="block text-sm text-gray-600" for="first_name">Jméno</label>
-                                    <input v-model="reservation.firstName" class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="first_name" name="first_name" type="text" required placeholder="Jan" aria-label="Jméno">
+                                    <input v-model="reservation.firstName" :class="{ 'border border-red-600': reservation.errors.firstName.length !== 0 }"class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="first_name" name="first_name" type="text" required placeholder="Jan" aria-label="Jméno">
+                                    <div class="text-sm italic text-red-600" v-show="reservation.errors.firstName.length !== 0" v-for="error in reservation.errors.firstName">{{ error }}</div>
                                 </div>
                                 <div class="">
                                     <label class="block text-sm text-gray-600" for="last_name">Přijmení</label>
-                                    <input v-model="reservation.lastName" class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="last_name" name="last_name" type="text" required placeholder="Novák" aria-label="Přijmení">
+                                    <input v-model="reservation.lastName" :class="{ 'border border-red-600': reservation.errors.lastName.length !== 0 }" class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="last_name" name="last_name" type="text" required placeholder="Novák" aria-label="Přijmení">
+                                    <div class="text-sm italic text-red-600" v-show="reservation.errors.lastName.length !== 0" v-for="error in reservation.errors.lastName">{{ error }}</div>
                                 </div>
                                 <div class="mt-2">
                                     <label class="block text-sm text-gray-600" for="email">Email</label>
-                                    <input v-model="reservation.email" class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="email" name="email" type="email" required placeholder="jan.novak@priklad.cz" aria-label="Email">
+                                    <input v-model="reservation.email" :class="{ 'border border-red-600': reservation.errors.email.length !== 0 }" class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="email" name="email" type="email" required placeholder="jan.novak@priklad.cz" aria-label="Email">
+                                    <div class="text-sm italic text-red-600" v-show="reservation.errors.email.length !== 0" v-for="error in reservation.errors.email">{{ error }}</div>
                                 </div>
                                 <div class="mt-2">
                                     <label class="block text-sm text-gray-600" for="phone">Telefon</label>
-                                    <input v-model="reservation.phone" class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="phone" name="phone" type="text" required="" placeholder="+420 777 888 999" aria-label="Telefon">
+                                    <input v-model="reservation.phone" :class="{ 'border border-red-600': reservation.errors.phone.length !== 0 }" class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="phone" name="phone" type="text" required="" placeholder="+420 777 888 999" aria-label="Telefon">
+                                    <div class="text-sm italic text-red-600" v-show="reservation.errors.phone.length !== 0" v-for="error in reservation.errors.phone">{{ error }}</div>
                                 </div>
                                 <div class="mt-2">
                                     <label class="block text-sm text-gray-600" for="street">Adresa</label>
-                                    <input v-model="reservation.street" class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="street" name="street" type="text" required="" placeholder="Ulice" aria-label="Ulice">
+                                    <input v-model="reservation.street" :class="{ 'border border-red-600': reservation.errors.street.length !== 0 }" class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="street" name="street" type="text" required="" placeholder="Ulice" aria-label="Ulice">
+                                    <div class="text-sm italic text-red-600" v-show="reservation.errors.street.length !== 0" v-for="error in reservation.errors.street">{{ error }}</div>
                                 </div>
                                 <div class="mt-2">
                                     <label class="hidden text-sm block text-gray-600" for="city">Město</label>
-                                    <input v-model="reservation.city" class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="city" name="city" type="text" required="" placeholder="Město" aria-label="Město">
+                                    <input v-model="reservation.city" :class="{ 'border border-red-600': reservation.errors.city.length !== 0 }" class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="city" name="city" type="text" required="" placeholder="Město" aria-label="Město">
+                                    <div class="text-sm italic text-red-600" v-show="reservation.errors.city.length !== 0" v-for="error in reservation.errors.city">{{ error }}</div>
                                 </div>
                                 <div class="inline-block mt-2 w-1/2 pr-1">
                                     <label class="hidden block text-sm text-gray-600" for="country">Stát</label>
-                                    <input v-model="reservation.country" class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="country" name="country" type="text" required="" placeholder="Stát" aria-label="Stát">
+                                    <input v-model="reservation.country" :class="{ 'border border-red-600': reservation.errors.country.length !== 0 }" class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="country" name="country" type="text" required="" placeholder="Stát" aria-label="Stát">
+                                    <div class="text-sm italic text-red-600" v-show="reservation.errors.country.length !== 0" v-for="error in reservation.errors.country">{{ error }}</div>
                                 </div>
                                 <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
                                     <label class="hidden block text-sm text-gray-600">PSČ</label>
-                                    <input v-model="reservation.zip" class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" name="zip" type="text" required="" placeholder="PSČ" aria-label="PSČ">
+                                    <input v-model="reservation.zip" :class="{ 'border border-red-600': reservation.errors.zip.length !== 0 }" class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" name="zip" type="text" required="" placeholder="PSČ" aria-label="PSČ">
+                                    <div class="text-sm italic text-red-600" v-show="reservation.errors.zip.length !== 0" v-for="error in reservation.errors.zip">{{ error }}</div>
                                 </div>
                                 <!-- <p class="mt-4 text-gray-800 font-medium">Payment information</p>
                                 <div class="">
@@ -158,6 +167,17 @@ export default {
                     country: '',
                     zip: '',
                     courseDateId: null,
+                    errors: {
+                        sourceCode: [],
+                        firstName: [],
+                        lastName: [],
+                        email: [],
+                        phone: [],
+                        street: [],
+                        city: [],
+                        country: [],
+                        zip: [], 
+                    },
                 },
             ],
             activeReservations: [0],
@@ -191,6 +211,20 @@ export default {
             reservations = reservations.forEach((reservation) => {
                 reservation.courseDateId = this.selectedCourseDate;
             });
+
+            this.reservations.forEach((reservation, index) => {
+                this.reservations[index].errors = {
+                    sourceCode: [],
+                    firstName: [],
+                    lastName: [],
+                    email: [],
+                    phone: [],
+                    street: [],
+                    city: [],
+                    country: [],
+                    zip: [], 
+                };
+            });
             axios.post('/reservations', { reservations: this.reservations })
                 .then((response) => {
                     this.selectedCourse = '-';
@@ -207,6 +241,17 @@ export default {
                             country: '',
                             zip: '',
                             courseDateId: null,
+                            errors: {
+                                sourceCode: [],
+                                firstName: [],
+                                lastName: [],
+                                email: [],
+                                phone: [],
+                                street: [],
+                                city: [],
+                                country: [],
+                                zip: [], 
+                            },
                         }, 
                     ];
                     this.activeReservations = [0];
@@ -215,10 +260,20 @@ export default {
                         this.showCreateReservationSuccessMessage = false;
                     }, 8000);
                 }).catch((er) => {
+                    let errors = er.response.data.errors;
+                    for (let key in errors) {
+                        if (errors.hasOwnProperty(key)) {
+                            let splittedKey = key.split('.');
+                            let formReservationNumber = splittedKey[1];
+                            let errorName = splittedKey[2];
+                            let errorMessages = errors[key];
+                            this.reservations[formReservationNumber].errors[errorName] = errorMessages;
+                        }
+                    }
                     this.showCreateReservationFailedMessage = true;
                     setTimeout(() => {
                         this.showCreateReservationFailedMessage = false;
-                    }, 8000);
+                    }, 8000);                    
                 });
         },
 
@@ -235,6 +290,17 @@ export default {
                     country: this.reservations[0].country,
                     zip: this.reservations[0].zip,
                     courseDateId: null,
+                    errors: {
+                        sourceCode: [],
+                        firstName: [],
+                        lastName: [],
+                        email: [],
+                        phone: [],
+                        street: [],
+                        city: [],
+                        country: [],
+                        zip: [], 
+                    },
                 }
             );
             this.activeReservations.push(this.reservations.length - 1);

@@ -19,12 +19,13 @@ class Reservation extends Model
         'attendee_id',
     ];
 
+    const STATUS_CREATED = 'CREATED';
     const STATUS_UNAPPROVED = 'UNAPPROVED';
     const STATUS_APPROVED = 'APPROVED';
     const STATUS_COMPLETED = 'COMPLETED';
     const STATUS_CONDITIONED = 'CONDITIONED';
     const STATUS_SUSPENDED = 'SUSPENDED';
-    const STATUS_CANCLED = 'CANCLED';
+    const STATUS_CANCELED = 'CANCELED';
 
     public function courseDate()
     {
