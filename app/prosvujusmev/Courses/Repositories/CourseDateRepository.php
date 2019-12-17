@@ -39,7 +39,11 @@ class CourseDateRepository
                 }
             }
             foreach ($courseDate->reservations()->whereNotIn('id', $attendedReservationIds)->get() as $reservation) {
-                app(ReservationRepository::class)->condition($reservation);
+                if (Reservation::where('source_code', $reservation->source_code)->where('status', Reservation::STATUS_CONDITIONED)->count() !== 0) {
+                    app(ReservationRepository::class)->suspend($reservation);
+                } else {
+                    app(ReservationRepository::class)->condition($reservation);
+                }
             }
             $courseDate->update(['status' => CourseDate::STATUS_COMPLETED]);
             return true;

@@ -112,7 +112,7 @@ class ReservationsController extends Controller
             $result = false;
         }     
         return response()->json([
-            'success' => $result
+            'success' => $result,
             'reservation' => $reservation,
             'message' => $result ? 'Rezervace byla schválena.' : 'Rezervaci se nepodařilo schválit.',
         ]);

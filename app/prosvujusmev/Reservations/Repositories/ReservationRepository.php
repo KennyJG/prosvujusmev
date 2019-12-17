@@ -6,6 +6,7 @@ use App\prosvujusmev\Reservations\Events\ReservationApproved;
 use App\prosvujusmev\Reservations\Events\ReservationCompleted;
 use App\prosvujusmev\Reservations\Events\ReservationConditioned;
 use App\prosvujusmev\Reservations\Events\ReservationDeleted;
+use App\prosvujusmev\Reservations\Events\ReservationSuspended;
 use App\prosvujusmev\Reservations\Reservation;
 use App\prosvujusmev\Reservations\ReservationStatusRecord;
 
@@ -104,6 +105,27 @@ class ReservationRepository
             'new_status' => Reservation::STATUS_CONDITIONED,
         ]);
         event(new ReservationConditioned($reservation->fresh()));
+        return $reservation->fresh();
+    }
+
+    /**
+     *  Suspend Reservation
+     * 
+     *  @param \App\prosvujusmev\Reservations\Reservation $reservation
+     *  @return \App\prosvujusmev\Reservations\Reservation
+     */
+    public function suspend(Reservation $reservation): Reservation
+    {
+        $oldStatus = $reservation->status;
+        $reservation->update([
+            'status' => Reservation::STATUS_SUSPENDED,
+        ]);
+        ReservationStatusRecord::create([
+            'reservation_id' => $reservation->id,
+            'old_status' => $oldStatus,
+            'new_status' => Reservation::STATUS_SUSPENDED,
+        ]);
+        event(new ReservationSuspended($reservation->fresh()));
         return $reservation->fresh();
     }
 }
