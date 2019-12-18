@@ -43,6 +43,7 @@ Route::group(['namespace' => 'prosvujusmev\\'], function () {
         Route::post('/course-dates/{courseDate}/complete', 'Courses\CourseDatesController@complete');
 
         Route::get('/reservations', 'Reservations\ReservationsController@index');
+        Route::get('/reservations/{reservation}', 'Reservations\ReservationsController@show');
         Route::get('/reservations/create', 'Reservations\ReservationsController@create');
         Route::post('/reservations', 'Reservations\ReservationsController@store');
         Route::get('/reservations/{reservation}/edit', 'Reservations\ReservationsController@edit');

@@ -48,21 +48,21 @@ class ReservationsController extends Controller
             'reservations.*.lastName.string' => 'Příjmení není ve spravném formátu.',
             'reservations.*.lastName.min.string' => 'Příjmení není ve spravném formátu.',
             'reservations.*.lastName.max.string' => 'Přijmení není ve spravném formátu.',
-            
+
             'reservations.*.email.required' => 'Email je povinný.',
             'reservations.*.email.string' => 'Email není ve spravném formátu.',
             'reservations.*.email.max.string' => 'Email není ve spravném formátu.',
-            
+
             'reservations.*.phone.required' => 'Telefon je povinný.',
             'reservations.*.phone.string' => 'Telefon není ve spravném formátu.',
             'reservations.*.phone.min.string' => 'Telefon není ve spravném formátu.',
             'reservations.*.phone.max.string' => 'Telefon není ve spravném formátu.',
-            
+
             'reservations.*.country.required' => 'Stát je povinný.',
             'reservations.*.country.string' => 'Stát není ve spravném formátu.',
             'reservations.*.country.min.string' => 'Stát není ve spravném formátu.',
-            'reservations.*.country.max.string' => 'Stát není ve spravném formátu.', 
-            
+            'reservations.*.country.max.string' => 'Stát není ve spravném formátu.',
+
             'reservations.*.street.required' => 'Ulice je povinná.',
             'reservations.*.street.string' => 'Ulice není ve spravném formátu.',
             'reservations.*.street.min.string' => 'Ulice není ve spravném formátu.',
@@ -110,10 +110,9 @@ class ReservationsController extends Controller
                     'old_status' => null,
                     'new_status' => Reservation::STATUS_CREATED,
                 ]);
-
                 app(ReservationRepository::class)->unapprove($reservationModel);
-           }
-           \DB::commit();
+            }
+            \DB::commit();
         } catch (\Exception $e) {
             \DB::rollBack();
             return response()->json([]);

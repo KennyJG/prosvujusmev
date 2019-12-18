@@ -7,6 +7,7 @@ use App\prosvujusmev\Courses\Course;
 use App\prosvujusmev\Courses\CourseDate;
 use App\prosvujusmev\Reservations\Repositories\ReservationRepository;
 use App\prosvujusmev\Reservations\Reservation;
+use App\prosvujusmev\Reservations\Resources\ReservationResource;
 use Illuminate\Http\Request;
 
 class ReservationsController extends Controller
@@ -25,6 +26,14 @@ class ReservationsController extends Controller
     {
         return response()->view('admin.courses.dates.create', [
             'courses' => Course::all()
+        ]);
+    }
+
+    public function show(Request $request, Reservation $reservation)
+    {
+        return response()->view('admin.reservations.show', [
+            'reservation' => json_encode(new ReservationResource($reservation)),
+            'backUrl' => json_encode([str_replace(url('/'), '', url()->previous())]),
         ]);
     }
 

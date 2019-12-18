@@ -20,4 +20,9 @@ class Attendee extends Model
     {
         return $this->hasMany(\App\prosvujusmev\Reservations\Reservation::class);
     }
+
+    public function address()
+    {
+        return $this->hasOne(\App\prosvujusmev\Attendees\AttendeeAddress::class);
+    }
 }

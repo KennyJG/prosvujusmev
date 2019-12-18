@@ -87,10 +87,11 @@
                                 <td class="border border-r-0 px-4 py-2 text-left">{{ reservation.status }}</td>
                                 <td class="border border-l-0 px-4 py-4 text-right">
                                     <div class="inline-flex">
-                                        <a v-show="reservation.status !== 'COMPLETED'" href="#complete-reservation-modal" @click="selectedReservation = reservation" :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l cursor-pointer">
+                                        <a v-show="reservation.status === 'APPROVED'"
+                                            href="#complete-reservation-modal" @click="selectedReservation = reservation" :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l cursor-pointer">
                                             Dokončit
                                         </a>
-                                        <a v-show="reservation.status !== 'Schváleno'" href="#approve-reservation-modal" @click="selectedReservation = reservation" :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 cursor-pointer">
+                                        <a v-show="reservation.status === 'UNAPPROVED'" href="#approve-reservation-modal" @click="selectedReservation = reservation" :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 cursor-pointer">
                                             Schválit 
                                         </a>
                                         <a href="#delete-reservation-modal" @click="selectedReservation = reservation" :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r cursor-pointer">
