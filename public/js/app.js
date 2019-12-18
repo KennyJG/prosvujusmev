@@ -2819,6 +2819,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2850,8 +2861,10 @@ __webpack_require__.r(__webpack_exports__);
         }
       }],
       activeReservations: [0],
+      courseDateErrors: [],
       showCreateReservationSuccessMessage: false,
-      showCreateReservationFailedMessage: false
+      showCreateReservationFailedMessage: false,
+      focus: null
     };
   },
   methods: {
@@ -2893,6 +2906,7 @@ __webpack_require__.r(__webpack_exports__);
           zip: []
         };
       });
+      this.courseDateErrors = [];
       axios.post('/reservations', {
         reservations: this.reservations
       }).then(function (response) {
@@ -2936,6 +2950,10 @@ __webpack_require__.r(__webpack_exports__);
             var errorName = splittedKey[2];
             var errorMessages = errors[key];
             _this3.reservations[formReservationNumber].errors[errorName] = errorMessages;
+          }
+
+          if (key.includes('courseDateId')) {
+            _this3.courseDateErrors = errors[key];
           }
         }
 
@@ -23795,6 +23813,10 @@ var render = function() {
                         ],
                         staticClass:
                           "w-full px-5 py-1 block appearance-none bg-gray-200 text-gray-700 border hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline",
+                        class: {
+                          "border border-red-600":
+                            _vm.courseDateErrors.length !== 0
+                        },
                         attrs: { name: "courseDateId" },
                         on: {
                           change: function($event) {
@@ -23862,8 +23884,27 @@ var render = function() {
                         )
                       ]
                     )
-                  ])
-                ]
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.courseDateErrors, function(error) {
+                    return _c(
+                      "div",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.courseDateErrors.length !== 0,
+                            expression: "courseDateErrors.length !== 0"
+                          }
+                        ],
+                        staticClass: "text-sm italic text-red-600"
+                      },
+                      [_vm._v(_vm._s(error))]
+                    )
+                  })
+                ],
+                2
               ),
               _vm._v(" "),
               _c(
@@ -24008,7 +24049,7 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "div",
-                              { staticClass: "mt-12" },
+                              { staticClass: "mt-12 relative" },
                               [
                                 _c(
                                   "label",
@@ -24043,6 +24084,12 @@ var render = function() {
                                   },
                                   domProps: { value: reservation.sourceCode },
                                   on: {
+                                    focus: function($event) {
+                                      _vm.focus = "sourceCode"
+                                    },
+                                    blur: function($event) {
+                                      _vm.focus = null
+                                    },
                                     input: function($event) {
                                       if ($event.target.composing) {
                                         return
@@ -24077,7 +24124,29 @@ var render = function() {
                                     },
                                     [_vm._v(_vm._s(error))]
                                   )
-                                })
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: _vm.focus == "sourceCode",
+                                        expression: "focus == 'sourceCode'"
+                                      }
+                                    ],
+                                    staticClass:
+                                      "absolute right-0 top-0 rounded shadow bg-yellow-100 w-64 p-4 border mt-6",
+                                    staticStyle: { right: "-17rem" }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "Cislo kuponu naleznete na vasi fakture objednavky, nebo na vasem kuponu ze Slevomatu."
+                                    )
+                                  ]
+                                )
                               ],
                               2
                             ),

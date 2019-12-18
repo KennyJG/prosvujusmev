@@ -21,7 +21,7 @@
                     <div :class="selectedCourse === '-' ? 'hidden' : 'block'" class="mt-2">
                         <label class="block text-sm text-gray-600" for="cus_name">Termín</label>
                         <div class="w-full block relative w-64">
-                            <select v-model="selectedCourseDate" class="w-full px-5 py-1 block appearance-none bg-gray-200 text-gray-700 border hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline" name="courseDateId">
+                            <select :class="{ 'border border-red-600': courseDateErrors.length !== 0 }" v-model="selectedCourseDate" class="w-full px-5 py-1 block appearance-none bg-gray-200 text-gray-700 border hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline" name="courseDateId">
                                 <option value="-">-</option>
                                 <option v-for="localCourseDate in courseDates" :value="localCourseDate.id">Od {{ localCourseDate.from_date }} do {{ localCourseDate.to_date }} - {{ localCourseDate.venue }}</option>
                             </select>
@@ -29,6 +29,7 @@
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                             </div>
                         </div>
+                        <div class="text-sm italic text-red-600" v-show="courseDateErrors.length !== 0" v-for="error in courseDateErrors">{{ error }}</div>
                     </div>
 
                     <div :class="selectedCourseDate === '-' ? 'hidden' : 'block'">
@@ -59,51 +60,61 @@
                                         </svg>
                                     </div>
                                 </div>
-                                <div class="mt-12">
+                                <div class="mt-12 relative">
                                     <label class="block text-sm text-gray-600" for="sourceCode">Číslo kupónu</label>
-                                    <input v-model="reservation.sourceCode" :class="{ 'border border-red-600': reservation.errors.sourceCode.length !== 0 }" class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="sourceCode" name="sourceCode" type="text" required aria-label="Číslo kupónu">
+                                    <input @focus="focus = 'sourceCode'" @blur="focus = null" v-model="reservation.sourceCode" :class="{ 'border border-red-600': reservation.errors.sourceCode.length !== 0 }" class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="sourceCode" name="sourceCode" type="text" required aria-label="Číslo kupónu">
                                     <div class="text-sm italic text-red-600" v-show="reservation.errors.sourceCode.length !== 0" v-for="error in reservation.errors.sourceCode">{{ error }}</div>
+                                    <div class="absolute right-0 top-0 rounded shadow bg-yellow-100 w-64 p-4 border mt-6" v-show="focus == 'sourceCode'" style="right: -17rem;">Cislo kuponu naleznete na vasi fakture objednavky, nebo na vasem kuponu ze Slevomatu.</div>
                                 </div>
+                                <!--  -->
 
                                 <div class="mt-12">
                                     <label class="block text-sm text-gray-600" for="first_name">Jméno</label>
                                     <input v-model="reservation.firstName" :class="{ 'border border-red-600': reservation.errors.firstName.length !== 0 }"class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="first_name" name="first_name" type="text" required placeholder="Jan" aria-label="Jméno">
                                     <div class="text-sm italic text-red-600" v-show="reservation.errors.firstName.length !== 0" v-for="error in reservation.errors.firstName">{{ error }}</div>
+                                    <!-- <div class="absolute right-0 top-0 rounded shadow bg-yellow-100 w-64 p-4 border mt-6" v-show="focus == 'firstName'" style="right: -17rem;">Cislo kuponu naleznete na vasi fakture objednavky, nebo na vasem kuponu ze Slevomatu.</div> -->
                                 </div>
                                 <div class="">
                                     <label class="block text-sm text-gray-600" for="last_name">Přijmení</label>
                                     <input v-model="reservation.lastName" :class="{ 'border border-red-600': reservation.errors.lastName.length !== 0 }" class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="last_name" name="last_name" type="text" required placeholder="Novák" aria-label="Přijmení">
                                     <div class="text-sm italic text-red-600" v-show="reservation.errors.lastName.length !== 0" v-for="error in reservation.errors.lastName">{{ error }}</div>
+                                    <!-- <div class="absolute right-0 top-0 rounded shadow bg-yellow-100 w-64 p-4 border mt-6" v-show="focus == 'lastName'" style="right: -17rem;">Cislo kuponu naleznete na vasi fakture objednavky, nebo na vasem kuponu ze Slevomatu.</div> -->
                                 </div>
                                 <div class="mt-2">
                                     <label class="block text-sm text-gray-600" for="email">Email</label>
                                     <input v-model="reservation.email" :class="{ 'border border-red-600': reservation.errors.email.length !== 0 }" class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="email" name="email" type="email" required placeholder="jan.novak@priklad.cz" aria-label="Email">
                                     <div class="text-sm italic text-red-600" v-show="reservation.errors.email.length !== 0" v-for="error in reservation.errors.email">{{ error }}</div>
+                                    <!-- <div class="absolute right-0 top-0 rounded shadow bg-yellow-100 w-64 p-4 border mt-6" v-show="focus == 'email'" style="right: -17rem;">Cislo kuponu naleznete na vasi fakture objednavky, nebo na vasem kuponu ze Slevomatu.</div> -->
                                 </div>
                                 <div class="mt-2">
                                     <label class="block text-sm text-gray-600" for="phone">Telefon</label>
                                     <input v-model="reservation.phone" :class="{ 'border border-red-600': reservation.errors.phone.length !== 0 }" class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="phone" name="phone" type="text" required="" placeholder="+420 777 888 999" aria-label="Telefon">
                                     <div class="text-sm italic text-red-600" v-show="reservation.errors.phone.length !== 0" v-for="error in reservation.errors.phone">{{ error }}</div>
+                                    <!-- <div class="absolute right-0 top-0 rounded shadow bg-yellow-100 w-64 p-4 border mt-6" v-show="focus == 'phone'" style="right: -17rem;">Cislo kuponu naleznete na vasi fakture objednavky, nebo na vasem kuponu ze Slevomatu.</div> -->
                                 </div>
                                 <div class="mt-2">
                                     <label class="block text-sm text-gray-600" for="street">Adresa</label>
                                     <input v-model="reservation.street" :class="{ 'border border-red-600': reservation.errors.street.length !== 0 }" class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="street" name="street" type="text" required="" placeholder="Ulice" aria-label="Ulice">
                                     <div class="text-sm italic text-red-600" v-show="reservation.errors.street.length !== 0" v-for="error in reservation.errors.street">{{ error }}</div>
+                                    <!-- <div class="absolute right-0 top-0 rounded shadow bg-yellow-100 w-64 p-4 border mt-6" v-show="focus == 'street'" style="right: -17rem;">Cislo kuponu naleznete na vasi fakture objednavky, nebo na vasem kuponu ze Slevomatu.</div> -->
                                 </div>
                                 <div class="mt-2">
                                     <label class="hidden text-sm block text-gray-600" for="city">Město</label>
                                     <input v-model="reservation.city" :class="{ 'border border-red-600': reservation.errors.city.length !== 0 }" class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="city" name="city" type="text" required="" placeholder="Město" aria-label="Město">
                                     <div class="text-sm italic text-red-600" v-show="reservation.errors.city.length !== 0" v-for="error in reservation.errors.city">{{ error }}</div>
+                                    <!-- <div class="absolute right-0 top-0 rounded shadow bg-yellow-100 w-64 p-4 border mt-6" v-show="focus == 'city'" style="right: -17rem;">Cislo kuponu naleznete na vasi fakture objednavky, nebo na vasem kuponu ze Slevomatu.</div> -->
                                 </div>
                                 <div class="inline-block mt-2 w-1/2 pr-1">
                                     <label class="hidden block text-sm text-gray-600" for="country">Stát</label>
                                     <input v-model="reservation.country" :class="{ 'border border-red-600': reservation.errors.country.length !== 0 }" class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="country" name="country" type="text" required="" placeholder="Stát" aria-label="Stát">
                                     <div class="text-sm italic text-red-600" v-show="reservation.errors.country.length !== 0" v-for="error in reservation.errors.country">{{ error }}</div>
+                                    <!-- <div class="absolute right-0 top-0 rounded shadow bg-yellow-100 w-64 p-4 border mt-6" v-show="focus == 'country'" style="right: -17rem;">Cislo kuponu naleznete na vasi fakture objednavky, nebo na vasem kuponu ze Slevomatu.</div> -->
                                 </div>
                                 <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
                                     <label class="hidden block text-sm text-gray-600">PSČ</label>
                                     <input v-model="reservation.zip" :class="{ 'border border-red-600': reservation.errors.zip.length !== 0 }" class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" name="zip" type="text" required="" placeholder="PSČ" aria-label="PSČ">
                                     <div class="text-sm italic text-red-600" v-show="reservation.errors.zip.length !== 0" v-for="error in reservation.errors.zip">{{ error }}</div>
+                                    <!-- <div class="absolute right-0 top-0 rounded shadow bg-yellow-100 w-64 p-4 border mt-6" v-show="focus == 'firstName'" style="right: -17rem;">Cislo kuponu naleznete na vasi fakture objednavky, nebo na vasem kuponu ze Slevomatu.</div> -->
                                 </div>
                                 <!-- <p class="mt-4 text-gray-800 font-medium">Payment information</p>
                                 <div class="">
@@ -181,9 +192,12 @@ export default {
                 },
             ],
             activeReservations: [0],
+            courseDateErrors: [],
             
             showCreateReservationSuccessMessage: false,
             showCreateReservationFailedMessage: false,
+
+            focus: null,
         }
     },
     methods: {
@@ -225,6 +239,7 @@ export default {
                     zip: [], 
                 };
             });
+            this.courseDateErrors = [];
             axios.post('/reservations', { reservations: this.reservations })
                 .then((response) => {
                     this.selectedCourse = '-';
@@ -268,6 +283,9 @@ export default {
                             let errorName = splittedKey[2];
                             let errorMessages = errors[key];
                             this.reservations[formReservationNumber].errors[errorName] = errorMessages;
+                        }
+                        if (key.includes('courseDateId')) { 
+                            this.courseDateErrors = errors[key];
                         }
                     }
                     this.showCreateReservationFailedMessage = true;

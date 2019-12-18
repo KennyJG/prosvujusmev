@@ -8,6 +8,7 @@ use App\prosvujusmev\Attendees\AttendeeAddress;
 use App\prosvujusmev\Reservations\Repositories\ReservationRepository;
 use App\prosvujusmev\Reservations\Reservation;
 use App\prosvujusmev\Reservations\ReservationStatusRecord;
+use App\Rules\AvailableCourseDate;
 use App\Rules\SourceCode;
 use Illuminate\Http\Request;
 
@@ -22,6 +23,7 @@ class ReservationsController extends Controller
     {
         $rules = [
             'reservations' => 'required|array',
+            'reservations.*.courseDateId' => ['required', new AvailableCourseDate],
             'reservations.*.sourceCode' => ['required', 'string', 'min:1', 'max:254', new SourceCode],
             'reservations.*.firstName' => 'required|string|min:1|max:254',
             'reservations.*.lastName' => 'required|string|min:1|max:254',
