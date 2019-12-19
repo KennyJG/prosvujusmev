@@ -26,7 +26,7 @@
                     </thead>
                     <tbody>
                         <tr v-for="(reservation, i) in reservations" :class="{'bg-gray-200': i % 2 == 0}">
-                            <td class="border border-r-0 px-4 py-2 text-left">{{ reservation.id }}</td>
+                            <td class="border border-r-0 px-4 py-2 text-left text-blue-400"><a :href="'/admin/reservations/' + reservation.id">{{ reservation.id }}</a></td>
                             <td class="border border-r-0 px-4 py-2 text-left">{{ reservation.course_date.course.name }}</td>
                             <td class="border border-r-0 px-4 py-2 text-left">{{ reservation.course_date.from_date }} - {{ reservation.course_date.to_date }}</td>
                             <td class="border border-r-0 px-4 py-2 text-left">{{ reservation.course_date.venue }}</td>

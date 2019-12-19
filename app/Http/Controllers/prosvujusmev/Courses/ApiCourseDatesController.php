@@ -14,6 +14,9 @@ class ApiCourseDatesController extends Controller
         if ($request->courseId) {
             $courseDatesQuery->where('course_id', $request->courseId);
         }
+        if ($request->status) {
+            $courseDatesQuery->where('status', $request->status);
+        }
         return response()->json([
             'data' => $courseDatesQuery->get(),
         ]);

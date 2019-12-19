@@ -22,10 +22,10 @@
                     </thead>
                     <tbody>
                         <tr v-for="(courseDate, i) in localCourseDates" :class="{'bg-gray-200': i % 2 == 0}">
-                            <td class="border border-r-0 px-4 py-2 text-left"><a :href="'/admin/course-dates/' + courseDate.id">{{ courseDate.from_date }}</a></td>
+                            <td class="border border-r-0 px-4 py-2 text-left text-blue-600 hover:text-blue-400"><a :href="'/admin/course-dates/' + courseDate.id">{{ courseDate.fullDateForHumans }}</a></td>
                             <td class="border border-r-0 px-4 py-2 text-left">{{ courseDate.course.name }}</td>
                             <td class="border border-r-0 px-4 py-2 text-left">{{ courseDate.venue }}</td>
-                            <td class="border px-4 py-2 text-left">{{ courseDate.limit }}</td>
+                            <td class="border px-4 py-2 text-left">{{ courseDate.remaining }}</td>
                             <td class="border border-l-0 px-4 py-4 text-right">
                                 <div class="inline-flex">
                                     <a @click="deleteCourseDate(courseDate.id)" href="#" :class="{'bg-gray-100': i % 2 == 0, 'bg-gray-300': i % 2 != 0}" class="hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r">

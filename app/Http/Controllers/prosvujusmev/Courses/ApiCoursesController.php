@@ -10,9 +10,9 @@ class ApiCoursesController extends Controller
 {
     public function index(Request $request)
     {
-        $courses = Course::all();
+        $query = Course::query();
         return response()->json([
-            'data' => $courses,
+            'data' => $query->get(),
         ]);
     }
 }

@@ -29,6 +29,8 @@ class CourseDate extends Model
         'updated_at',
         'deleted_at',
     ];
+    
+    protected $appends = ['fullDateForHumans', 'remaining'];
 
     const STATUS_ACTIVE = 'ACTIVE';
     const STATUS_IN_PROGRESS = 'IN_PROGRESS';
@@ -49,4 +51,14 @@ class CourseDate extends Model
     {
         return $this->limit - $this->reservations()->count();
     }
-} 
+
+    public function getFullDateForHumansAttribute()
+    {
+        $fromDateDate = $this->from_date->format('d.m.Y');
+        $fromDateTime = $this->from_date->format('H:i');
+        $toDateDate = $this->to_date->format('d.m.Y');
+        $toDateTime = $this->to_date->format('H:i');
+
+        return "{$fromDateDate} {$fromDateTime} - {$toDateDate} {$toDateTime}";
+    }
+}

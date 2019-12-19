@@ -2882,7 +2882,7 @@ __webpack_require__.r(__webpack_exports__);
     getCourseDates: function getCourseDates(id) {
       var _this2 = this;
 
-      axios.get('/api/course-dates?courseId=' + id).then(function (response) {
+      axios.get('/api/course-dates?courseId=' + id + '&status=ACTIVE').then(function (response) {
         _this2.courseDates = response.data.data;
       });
     },
@@ -22594,14 +22594,17 @@ var render = function() {
               return _c("tr", { class: { "bg-gray-200": i % 2 == 0 } }, [
                 _c(
                   "td",
-                  { staticClass: "border border-r-0 px-4 py-2 text-left" },
+                  {
+                    staticClass:
+                      "border border-r-0 px-4 py-2 text-left text-blue-600 hover:text-blue-400"
+                  },
                   [
                     _c(
                       "a",
                       {
                         attrs: { href: "/admin/course-dates/" + courseDate.id }
                       },
-                      [_vm._v(_vm._s(courseDate.from_date))]
+                      [_vm._v(_vm._s(courseDate.fullDateForHumans))]
                     )
                   ]
                 ),
@@ -22619,7 +22622,7 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c("td", { staticClass: "border px-4 py-2 text-left" }, [
-                  _vm._v(_vm._s(courseDate.limit))
+                  _vm._v(_vm._s(courseDate.remaining))
                 ]),
                 _vm._v(" "),
                 _c(
@@ -23478,8 +23481,19 @@ var render = function() {
               return _c("tr", { class: { "bg-gray-200": i % 2 == 0 } }, [
                 _c(
                   "td",
-                  { staticClass: "border border-r-0 px-4 py-2 text-left" },
-                  [_vm._v(_vm._s(reservation.id))]
+                  {
+                    staticClass:
+                      "border border-r-0 px-4 py-2 text-left text-blue-400"
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        attrs: { href: "/admin/reservations/" + reservation.id }
+                      },
+                      [_vm._v(_vm._s(reservation.id))]
+                    )
+                  ]
                 ),
                 _vm._v(" "),
                 _c(
@@ -23843,10 +23857,7 @@ var render = function() {
                             { domProps: { value: localCourseDate.id } },
                             [
                               _vm._v(
-                                "Od " +
-                                  _vm._s(localCourseDate.from_date) +
-                                  " do " +
-                                  _vm._s(localCourseDate.to_date) +
+                                _vm._s(localCourseDate.fullDateForHumans) +
                                   " - " +
                                   _vm._s(localCourseDate.venue)
                               )
