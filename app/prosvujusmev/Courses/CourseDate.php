@@ -31,7 +31,7 @@ class CourseDate extends Model
         'deleted_at',
     ];
     
-    protected $appends = ['fullDateForHumans', 'remaining'];
+    protected $appends = ['fullDateForHumans', 'remaining', 'daysToCourseDate'];
 
     const STATUS_ACTIVE = 'ACTIVE';
     const STATUS_IN_PROGRESS = 'IN_PROGRESS';
@@ -46,7 +46,7 @@ class CourseDate extends Model
     public function reservations()
     {
         return $this->hasMany(\App\prosvujusmev\Reservations\Reservation::class);
-    }
+    }  
 
     public function getRemainingAttribute()
     {
@@ -63,5 +63,23 @@ class CourseDate extends Model
         $toDateDate = $this->to_date->format('d. m. Y');
 
         return "{$fromDay} - {$toDateDate}";
+    }
+
+    public function getDaysToCourseDateAttribute()
+    {
+        $now = \Carbon\Carbon::now();
+        $now->hour = 1;
+        $fromDate = \Carbon\Carbon::parse($this->from_date);
+        $fromDate->hour = 0;
+        return $now->diffInDays($fromDate);
+    }
+
+    public function getAttendees()
+    {
+        $attendees = [];
+        foreach ($this->reservations as $reservation) {
+            $attendees[] = $reservation->attendee;
+        }
+        return $attendees;
     }
 }

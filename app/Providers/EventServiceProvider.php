@@ -8,6 +8,8 @@ use App\prosvujusmev\Reservations\Events\ReservationConditioned;
 use App\prosvujusmev\Reservations\Events\ReservationCreated;
 use App\prosvujusmev\Reservations\Events\ReservationDeleted;
 use App\prosvujusmev\Reservations\Events\ReservationSuspended;
+use App\prosvujusmev\Reservations\Listeners\SendFinalCourseInformationMailToNewReservation;
+use App\prosvujusmev\Reservations\Listeners\SendFirstCourseInformationMailToNewReservation;
 use App\prosvujusmev\Reservations\Listeners\SendReservationApprovedNotification;
 use App\prosvujusmev\Reservations\Listeners\SendReservationCompletedNotification;
 use App\prosvujusmev\Reservations\Listeners\SendReservationConditionedNotification;
@@ -31,6 +33,8 @@ class EventServiceProvider extends ServiceProvider
         ],
         ReservationCreated::class => [
             SendReservationCreatedNotification::class,
+            SendFirstCourseInformationMailToNewReservation::class,
+            SendFinalCourseInformationMailToNewReservation::class,
         ],
         ReservationApproved::class => [
             SendReservationApprovedNotification::class,
