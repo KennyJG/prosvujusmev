@@ -54,11 +54,9 @@ class CourseDate extends Model
 
     public function getFullDateForHumansAttribute()
     {
-        $fromDateDate = $this->from_date->format('d.m.Y');
-        $fromDateTime = $this->from_date->format('H:i');
-        $toDateDate = $this->to_date->format('d.m.Y');
-        $toDateTime = $this->to_date->format('H:i');
+        $fromDay = $this->from_date->format('d.');
+        $toDateDate = $this->to_date->format('d. m. Y');
 
-        return "{$fromDateDate} {$fromDateTime} - {$toDateDate} {$toDateTime}";
+        return "{$fromDay} - {$toDateDate}";
     }
 }
