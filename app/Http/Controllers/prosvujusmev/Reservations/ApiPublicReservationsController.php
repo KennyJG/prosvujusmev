@@ -38,6 +38,6 @@ class ApiPublicReservationsController extends Controller
         app(ReservationRepository::class)->cancel($publicReservation);
         return response()->json([
             'data' => new PublicReservationResource($publicReservation->fresh()),
-        ])
+        ]);
     }
 }

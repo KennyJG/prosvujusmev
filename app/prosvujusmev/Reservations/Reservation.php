@@ -20,6 +20,7 @@ class Reservation extends Model
         'source_code',
         'status',
         'attendee_id',
+        'reservation_id',
     ];
 
     const STATUS_CREATED = 'CREATED';

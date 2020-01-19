@@ -5,6 +5,7 @@ namespace App\Http\Controllers\prosvujusmev\Reservations;
 use App\Http\Controllers\Controller;
 use App\prosvujusmev\Attendees\Attendee;
 use App\prosvujusmev\Attendees\AttendeeAddress;
+use App\prosvujusmev\Reservations\Events\ReservationCreated;
 use App\prosvujusmev\Reservations\Repositories\ReservationRepository;
 use App\prosvujusmev\Reservations\Reservation;
 use App\prosvujusmev\Reservations\ReservationStatusRecord;
@@ -107,6 +108,7 @@ class ReservationsController extends Controller
                     'status' => Reservation::STATUS_CREATED,
                     'attendee_id' => $attendee->id,
                 ]);
+                event(new ReservationCreated($reservationModel));
 
                 $reservationStatusRecords = ReservationStatusRecord::create([
                     'reservation_id' => $reservationModel->id,
@@ -129,6 +131,7 @@ class ReservationsController extends Controller
                         'old_status' => null,
                         'new_status' => Reservation::STATUS_QUEUED,
                     ]);
+                    event(new ReservationCreated($queuedReservationModel));
                 }
             }
             \DB::commit();
