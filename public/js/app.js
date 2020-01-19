@@ -3062,6 +3062,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3069,6 +3095,7 @@ __webpack_require__.r(__webpack_exports__);
       selectedCourseDateVenue: '-',
       selectedCourseDateDate: '-',
       selectedCourseDate: '-',
+      mainCourseDate: '-',
       courses: [],
       courseDates: [],
       reservations: [{
@@ -3125,7 +3152,13 @@ __webpack_require__.r(__webpack_exports__);
 
       var reservations = this.reservations;
       reservations = reservations.forEach(function (reservation) {
-        reservation.courseDateId = _this3.selectedCourseDate;
+        if (_this3.mainCourseDate !== '-') {
+          reservation.queuedCourseDateId = _this3.selectedCourseDate.id;
+          reservation.courseDateId = _this3.mainCourseDate.id;
+        } else {
+          reservation.courseDateId = _this3.selectedCourseDate.id;
+          reservation.queuedCourseDateId = null;
+        }
       });
       this.reservations.forEach(function (reservation, index) {
         _this3.reservations[index].errors = {
@@ -24935,11 +24968,39 @@ var render = function() {
                           function(localCourseDate) {
                             return _c(
                               "option",
-                              { domProps: { value: localCourseDate.id } },
+                              {
+                                class: {
+                                  "text-gray-300":
+                                    localCourseDate.remaining == 0
+                                },
+                                domProps: { value: localCourseDate }
+                              },
                               [
                                 _vm._v(
-                                  _vm._s(localCourseDate.fullDateForHumans)
-                                )
+                                  "\n                                " +
+                                    _vm._s(localCourseDate.fullDateForHumans) +
+                                    "\n                                "
+                                ),
+                                localCourseDate.remaining <= 5 &&
+                                localCourseDate.remaining > 1
+                                  ? _c("span", { staticClass: "italic" }, [
+                                      _vm._v("Poslední volná místa")
+                                    ])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                localCourseDate.remaining == 1
+                                  ? _c(
+                                      "span",
+                                      { staticClass: "italic font-bold" },
+                                      [_vm._v("Poslední 1 volné místo")]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                localCourseDate.remaining == 0
+                                  ? _c("span", { staticClass: "italic" }, [
+                                      _vm._v("Plno - Možnost náhradníka")
+                                    ])
+                                  : _vm._e()
                               ]
                             )
                           }
@@ -25137,6 +25198,198 @@ var render = function() {
                                 ])
                               ]
                             ),
+                            _vm._v(" "),
+                            _vm.selectedCourseDate.remaining == 0
+                              ? _c("div", { staticClass: "mt-6" }, [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "mt-2 mb-2",
+                                      class:
+                                        _vm.selectedCourse === "-" ||
+                                        _vm.selectedCourseDateVenue === "-"
+                                          ? "hidden"
+                                          : "block"
+                                    },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "block text-sm text-gray-600",
+                                          attrs: { for: "cus_name" }
+                                        },
+                                        [_vm._v("Termín")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "w-full block relative w-64"
+                                        },
+                                        [
+                                          _c(
+                                            "select",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value: _vm.mainCourseDate,
+                                                  expression: "mainCourseDate"
+                                                }
+                                              ],
+                                              staticClass:
+                                                "w-full px-5 py-1 block appearance-none bg-gray-200 text-gray-700 border hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline",
+                                              class: {
+                                                "border border-red-600":
+                                                  _vm.courseDateErrors
+                                                    .length !== 0
+                                              },
+                                              attrs: { name: "courseDateId" },
+                                              on: {
+                                                change: function($event) {
+                                                  var $$selectedVal = Array.prototype.filter
+                                                    .call(
+                                                      $event.target.options,
+                                                      function(o) {
+                                                        return o.selected
+                                                      }
+                                                    )
+                                                    .map(function(o) {
+                                                      var val =
+                                                        "_value" in o
+                                                          ? o._value
+                                                          : o.value
+                                                      return val
+                                                    })
+                                                  _vm.mainCourseDate = $event
+                                                    .target.multiple
+                                                    ? $$selectedVal
+                                                    : $$selectedVal[0]
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "option",
+                                                { attrs: { value: "-" } },
+                                                [_vm._v("-")]
+                                              ),
+                                              _vm._v(" "),
+                                              _vm._l(
+                                                _vm.filterCourseDatesForVenue(
+                                                  _vm.selectedCourseDateVenue
+                                                ),
+                                                function(localCourseDate) {
+                                                  return localCourseDate.remaining !==
+                                                    0
+                                                    ? _c(
+                                                        "option",
+                                                        {
+                                                          domProps: {
+                                                            value: localCourseDate
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            "\n                                                " +
+                                                              _vm._s(
+                                                                localCourseDate.fullDateForHumans
+                                                              ) +
+                                                              "\n                                                "
+                                                          ),
+                                                          localCourseDate.remaining <=
+                                                            5 &&
+                                                          localCourseDate.remaining >
+                                                            1
+                                                            ? _c(
+                                                                "span",
+                                                                {
+                                                                  staticClass:
+                                                                    "italic"
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "Poslední volná místa"
+                                                                  )
+                                                                ]
+                                                              )
+                                                            : _vm._e(),
+                                                          _vm._v(" "),
+                                                          localCourseDate.remaining ==
+                                                          1
+                                                            ? _c(
+                                                                "span",
+                                                                {
+                                                                  staticClass:
+                                                                    "italic font-bold"
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "Poslední 1 volné místo"
+                                                                  )
+                                                                ]
+                                                              )
+                                                            : _vm._e()
+                                                        ]
+                                                      )
+                                                    : _vm._e()
+                                                }
+                                              )
+                                            ],
+                                            2
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                                            },
+                                            [
+                                              _c(
+                                                "svg",
+                                                {
+                                                  staticClass:
+                                                    "fill-current h-4 w-4",
+                                                  attrs: {
+                                                    xmlns:
+                                                      "http://www.w3.org/2000/svg",
+                                                    viewBox: "0 0 20 20"
+                                                  }
+                                                },
+                                                [
+                                                  _c("path", {
+                                                    attrs: {
+                                                      d:
+                                                        "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        " text-xs italic text-gray-600 mt-1"
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                    Zvolený termín je plný, bude zapsán jako náhradník. Zvolte prosím termín který je volný, pro případ že by se termín ve kterém jste náhradník neuvolnil.\n                                "
+                                      )
+                                    ]
+                                  )
+                                ])
+                              : _vm._e(),
                             _vm._v(" "),
                             _c(
                               "div",

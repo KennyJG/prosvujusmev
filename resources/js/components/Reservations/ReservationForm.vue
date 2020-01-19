@@ -37,7 +37,12 @@
                         <div class="w-full block relative w-64">
                             <select :class="{ 'border border-red-600': courseDateErrors.length !== 0 }" v-model="selectedCourseDate" class="w-full px-5 py-1 block appearance-none bg-gray-200 text-gray-700 border hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline" name="courseDateId">
                                 <option value="-">-</option>
-                                <option v-for="localCourseDate in filterCourseDatesForVenue(selectedCourseDateVenue)" :value="localCourseDate.id">{{ localCourseDate.fullDateForHumans }}</option>
+                                <option :class="{'text-gray-300': localCourseDate.remaining == 0}" v-for="localCourseDate in filterCourseDatesForVenue(selectedCourseDateVenue)" :value="localCourseDate">
+                                    {{ localCourseDate.fullDateForHumans }}
+                                    <span class="italic" v-if="localCourseDate.remaining <= 5 && localCourseDate.remaining > 1">Poslední volná místa</span>
+                                    <span class="italic font-bold" v-if="localCourseDate.remaining == 1">Poslední 1 volné místo</span>
+                                    <span class="italic" v-if="localCourseDate.remaining == 0">Plno - Možnost náhradníka</span>
+                                </option>
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -56,7 +61,7 @@
                                     </svg>
                                 </div>
                             </div>
-                            <div v-else class="mt-12 border p-4">
+                            <div v-else class="mt-12 border p-4"> 
                                 <div :class="{ 'justify-between': index !== 0, 'justify-end': index === 0 }" class="w-full flex">
                                     <div v-if="index !== 0" class="align-middle">
                                         <div @click="removeReservation(index)" class="text-sm text-gray-600 flex content-center cursor-pointer">
@@ -72,6 +77,27 @@
                                         <svg @click='toggleReservation(index)' class="fill-current h-4 w-4 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                             <path d="M288.662 352H31.338c-17.818 0-26.741-21.543-14.142-34.142l128.662-128.662c7.81-7.81 20.474-7.81 28.284 0l128.662 128.662c12.6 12.599 3.676 34.142-14.142 34.142z"/>
                                         </svg>
+                                    </div>
+                                </div>
+                                <div v-if="selectedCourseDate.remaining == 0" class="mt-6">
+                                    <div :class="selectedCourse === '-' || selectedCourseDateVenue === '-' ? 'hidden' : 'block'" class="mt-2 mb-2">
+                                        <label class="block text-sm text-gray-600" for="cus_name">Termín</label>
+                                        <div class="w-full block relative w-64">
+                                            <select :class="{ 'border border-red-600': courseDateErrors.length !== 0 }" v-model="mainCourseDate" class="w-full px-5 py-1 block appearance-none bg-gray-200 text-gray-700 border hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline" name="courseDateId">
+                                                <option value="-">-</option>
+                                                <option v-if="localCourseDate.remaining !== 0" v-for="localCourseDate in filterCourseDatesForVenue(selectedCourseDateVenue)" :value="localCourseDate">
+                                                    {{ localCourseDate.fullDateForHumans }}
+                                                    <span class="italic" v-if="localCourseDate.remaining <= 5 && localCourseDate.remaining > 1">Poslední volná místa</span>
+                                                    <span class="italic font-bold" v-if="localCourseDate.remaining == 1">Poslední 1 volné místo</span>
+                                                </option>
+                                            </select>
+                                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" text-xs italic text-gray-600 mt-1">
+                                        Zvolený termín je plný, bude zapsán jako náhradník. Zvolte prosím termín který je volný, pro případ že by se termín ve kterém jste náhradník neuvolnil.
                                     </div>
                                 </div>
                                 <div class="mt-12 relative">
@@ -178,6 +204,7 @@ export default {
             selectedCourseDateVenue: '-',
             selectedCourseDateDate: '-',
             selectedCourseDate: '-',
+            mainCourseDate: '-',
 
             courses: [],
             courseDates: [],
@@ -239,7 +266,13 @@ export default {
         createReservation() {
             let reservations = this.reservations;
             reservations = reservations.forEach((reservation) => {
-                reservation.courseDateId = this.selectedCourseDate;
+                if (this.mainCourseDate !== '-') {
+                    reservation.queuedCourseDateId = this.selectedCourseDate.id;
+                    reservation.courseDateId = this.mainCourseDate.id;
+                } else {
+                    reservation.courseDateId = this.selectedCourseDate.id;
+                    reservation.queuedCourseDateId = null;
+                }
             });
 
             this.reservations.forEach((reservation, index) => {

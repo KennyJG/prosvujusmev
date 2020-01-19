@@ -24,6 +24,7 @@ class ReservationsController extends Controller
         $rules = [
             'reservations' => 'required|array',
             'reservations.*.courseDateId' => ['required', new AvailableCourseDate],
+            'reservations.*.queuedCourseDateId' => 'nullable|exists:course_dates,id',
             'reservations.*.sourceCode' => ['required', 'string', 'min:1', 'max:254', new SourceCode],
             'reservations.*.firstName' => 'required|string|min:1|max:254',
             'reservations.*.lastName' => 'required|string|min:1|max:254',
@@ -113,10 +114,27 @@ class ReservationsController extends Controller
                     'new_status' => Reservation::STATUS_CREATED,
                 ]);
                 app(ReservationRepository::class)->unapprove($reservationModel);
+
+                if ($reservation['queuedCourseDateId'] !== null) {
+                    $queuedReservationModel = Reservation::create([
+                        'course_date_id' => $reservation['queuedCourseDateId'],
+                        'source_type' => 'Slevomat', //$reservation['sourceType'],
+                        'source_code' => $reservation['sourceCode'],
+                        'status' => Reservation::STATUS_QUEUED,
+                        'attendee_id' => $attendee->id,
+                        'reservation_id' => $reservationModel->id,
+                    ]);
+                    $queuedReservationStatusRecords = ReservationStatusRecord::create([
+                        'reservation_id' => $reservationModel->id,
+                        'old_status' => null,
+                        'new_status' => Reservation::STATUS_QUEUED,
+                    ]);
+                }
             }
             \DB::commit();
         } catch (\Exception $e) {
             \DB::rollBack();
+            dd($e);
             return response()->json([]);
         }
         return response()->json([]);

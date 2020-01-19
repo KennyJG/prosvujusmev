@@ -2,6 +2,7 @@
 
 namespace App\prosvujusmev\Courses;
 
+use App\prosvujusmev\Reservations\Reservation;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -49,7 +50,11 @@ class CourseDate extends Model
 
     public function getRemainingAttribute()
     {
-        return $this->limit - $this->reservations()->count();
+        return $this->limit - $this->reservations()
+            ->whereIn('status', [
+                Reservation::STATUS_APPROVED,
+                Reservation::STATUS_UNAPPROVED,
+            ])->count();
     }
 
     public function getFullDateForHumansAttribute()
