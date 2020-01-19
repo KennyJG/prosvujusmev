@@ -3,6 +3,7 @@
 namespace App\prosvujusmev\Reservations\Repositories;
 
 use App\prosvujusmev\Reservations\Events\ReservationApproved;
+use App\prosvujusmev\Reservations\Events\ReservationCanceled;
 use App\prosvujusmev\Reservations\Events\ReservationCompleted;
 use App\prosvujusmev\Reservations\Events\ReservationConditioned;
 use App\prosvujusmev\Reservations\Events\ReservationDeleted;
@@ -126,6 +127,21 @@ class ReservationRepository
             'new_status' => Reservation::STATUS_SUSPENDED,
         ]);
         event(new ReservationSuspended($reservation->fresh()));
+        return $reservation->fresh();
+    }
+
+    /**
+     *  Cancels Reservation 
+     * 
+     *  @param \App\prosvujusmev\Reservations\Reservation $reservation
+     *  @return \App\prosvujusmev\Reservations\Reservation
+     */
+    public function cancel(Reservation $reservation): Reservation
+    {
+        $reservation->update([
+            'status' => Reservation::STATUS_CANCELED,
+        ]);
+        event(new ReservationCanceled($reservation));
         return $reservation->fresh();
     }
 }

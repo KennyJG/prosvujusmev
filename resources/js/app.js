@@ -14,9 +14,13 @@ Vue.component('reservation-list', require('./components/Admin/Reservations/Reser
 // Site components
 Vue.component('site-navbar', require('./components/SiteNavbar.vue').default);
 Vue.component('reservation-form', require('./components/Reservations/ReservationForm.vue').default);
+Vue.component('public-reservation', require('./components/Reservations/PublicReservation.vue').default);
 
 // Utils
-Vue.component('modal', require('./components/Utils/Modal.vue').default);
+// Vue.component('modal', require('./components/Utils/Modal.vue').default);
+
+import VModal from 'vue-js-modal';
+Vue.use(VModal);
 
 const app = new Vue({
     el: '#app'

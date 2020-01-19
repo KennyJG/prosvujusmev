@@ -4,6 +4,7 @@ namespace App\Http\Controllers\prosvujusmev\Courses;
 
 use App\Http\Controllers\Controller;
 use App\prosvujusmev\Courses\Course;
+use App\prosvujusmev\Courses\Resources\CourseResource;
 use Illuminate\Http\Request;
 
 class ApiCoursesController extends Controller
@@ -12,7 +13,7 @@ class ApiCoursesController extends Controller
     {
         $query = Course::query();
         return response()->json([
-            'data' => $query->get(),
+            'data' => CourseResource::collection($query->get()),
         ]);
     }
 }

@@ -23,7 +23,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Route::bind('publicReservation', function ($uuid) {
+            return \App\prosvujusmev\Reservations\Reservation::where('uuid', $uuid)->firstOrFail();
+        });
 
         parent::boot();
     }

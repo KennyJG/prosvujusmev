@@ -12,12 +12,26 @@
 */
 
 Route::group(['namespace' => 'prosvujusmev\\'], function () {
+    // PUBLIC VIEW RESPONSE ENDPOINTS
+    Route::group(['prefix' => '/public'], function() {
+        Route::get('/reservations/{publicReservation}', 'Reservations\PublicReservationsController@show');
+    });
+
+    // PUBLIC JSON RESPONSE ENDPOINTS
+    Route::group(['prefix' => '/api/public'], function() {
+        Route::get('/reservations/{publicReservation}', 'Reservations\ApiPublicReservationsController@show');
+        Route::put('/reservations/{publicReservation}', 'Reservations\ApiPublicReservationsController@update');
+        Route::post('/reservations/{publicReservation}/cancel', 'Reservations\ApiPublicReservationsController@cancel');
+    });
+
+    // JSON RESPONSE CALLS
     Route::group(['prefix' => '/api'], function () {
         Route::get('/courses', 'Courses\ApiCoursesController@index');
 
         Route::get('/course-dates', 'Courses\ApiCourseDatesController@index');
     });
 
+    // VIEW RESPONSE CALLS
     Route::get('/', 'HomeController@index');
 
     Route::get('/reservations', 'Reservations\ReservationsController@index');

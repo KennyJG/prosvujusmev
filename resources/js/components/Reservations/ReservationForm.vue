@@ -19,17 +19,31 @@
                     </div>
 
                     <div :class="selectedCourse === '-' ? 'hidden' : 'block'" class="mt-2">
-                        <label class="block text-sm text-gray-600" for="cus_name">Termín</label>
+                        <label class="block text-sm text-gray-600" for="cus_name">Místo</label>
                         <div class="w-full block relative w-64">
-                            <select :class="{ 'border border-red-600': courseDateErrors.length !== 0 }" v-model="selectedCourseDate" class="w-full px-5 py-1 block appearance-none bg-gray-200 text-gray-700 border hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline" name="courseDateId">
+                            <select :class="{ 'border border-red-600': courseDateErrors.length !== 0 }" v-model="selectedCourseDateVenue" class="w-full px-5 py-1 block appearance-none bg-gray-200 text-gray-700 border hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline" name="courseDateId">
                                 <option value="-">-</option>
-                                <option v-for="localCourseDate in courseDates" :value="localCourseDate.id">{{ localCourseDate.fullDateForHumans }} - {{ localCourseDate.venue }}</option>
+                                <option v-for="venue in getVenues()" :value="venue">{{ venue }}</option>
                             </select>
                             <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                             </div>
                         </div>
-                        <div class="text-sm italic text-red-600" v-show="courseDateErrors.length !== 0" v-for="error in courseDateErrors">{{ error }}</div>
+                       <div class="text-sm italic text-red-600" v-show="courseDateErrors.length !== 0" v-for="error in courseDateErrors">{{ error }}</div>
+                    </div>
+
+                    <div :class="selectedCourse === '-' || selectedCourseDateVenue === '-' ? 'hidden' : 'block'" class="mt-2">
+                        <label class="block text-sm text-gray-600" for="cus_name">Termín</label>
+                        <div class="w-full block relative w-64">
+                            <select :class="{ 'border border-red-600': courseDateErrors.length !== 0 }" v-model="selectedCourseDate" class="w-full px-5 py-1 block appearance-none bg-gray-200 text-gray-700 border hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline" name="courseDateId">
+                                <option value="-">-</option>
+                                <option v-for="localCourseDate in filterCourseDatesForVenue(selectedCourseDateVenue)" :value="localCourseDate.id">{{ localCourseDate.fullDateForHumans }}</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                        </div>
+                       <div class="text-sm italic text-red-600" v-show="courseDateErrors.length !== 0" v-for="error in courseDateErrors">{{ error }}</div>
                     </div>
 
                     <div :class="selectedCourseDate === '-' ? 'hidden' : 'block'">
@@ -161,6 +175,8 @@ export default {
     data() {
         return {
             selectedCourse: '-',
+            selectedCourseDateVenue: '-',
+            selectedCourseDateDate: '-',
             selectedCourseDate: '-',
 
             courses: [],
@@ -342,6 +358,22 @@ export default {
             } else {
                 this.activeReservations.push(index);
             }
+        },
+
+        filterCourseDatesForVenue(venue) {
+            return this.courseDates.filter(courseDate => {
+                return courseDate.venue == venue;
+            });
+        },
+
+        getVenues() {
+            let venues = [];
+            this.courseDates.forEach(courseDate => {
+                if (!venues.includes(courseDate.venue)) {
+                    venues.push(courseDate.venue);
+                }
+            });
+            return venues;
         }
     },
 

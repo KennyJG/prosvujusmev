@@ -16,6 +16,8 @@ class Attendee extends Model
         'funfirst_contact_id'
     ];
 
+    public $appends = ['fullname'];
+
     public function reservations()
     {
         return $this->hasMany(\App\prosvujusmev\Reservations\Reservation::class);
@@ -24,5 +26,10 @@ class Attendee extends Model
     public function address()
     {
         return $this->hasOne(\App\prosvujusmev\Attendees\AttendeeAddress::class);
+    }
+
+    public function getFullnameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 }

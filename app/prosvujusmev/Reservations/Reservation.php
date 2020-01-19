@@ -2,8 +2,10 @@
 
 namespace App\prosvujusmev\Reservations;
 
+use Faker\Provider\Uuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Reservation extends Model
 {
@@ -12,6 +14,7 @@ class Reservation extends Model
     protected $table = 'reservations';
 
     protected $fillable = [
+        'uuid',
         'course_date_id',
         'source_type',
         'source_code',
@@ -26,6 +29,17 @@ class Reservation extends Model
     const STATUS_CONDITIONED = 'CONDITIONED';
     const STATUS_SUSPENDED = 'SUSPENDED';
     const STATUS_CANCELED = 'CANCELED';
+    const STATUS_QUEUED = 'QUEUED';
+
+    const SOURCE_TYPE_SLEVOMAT = 'SLEVOMAT';
+    const SOURCE_TYPE_FUNFIRST = 'FUNFIRST';
+
+    public static function create(array $attributes = [])
+    {
+        $attributes = array_merge(['uuid' => Uuid::uuid()], $attributes);
+        $model = static::query()->create($attributes);
+        return $model;
+    }
 
     public function courseDate()
     {
@@ -35,6 +49,11 @@ class Reservation extends Model
     public function attendee()
     {
         return $this->belongsTo(\App\prosvujusmev\Attendees\Attendee::class);
+    }
+
+    public function queuedReservation()
+    {
+        return $this->hasOne(Reservation::class, 'reservation_id', 'id');
     }
 
     public function statusRecords()
