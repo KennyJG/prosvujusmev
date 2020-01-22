@@ -22,6 +22,7 @@ class ApiPublicReservationsController extends Controller
 
     public function update(Request $request, Reservation $publicReservation)
     {
+        abort_if(!$publicReservation->canChangeCourseDate(), 404);
         $this->validate($request, [
             'courseDateId' => ['required', new AvailableCourseDate],
         ]);
@@ -36,7 +37,7 @@ class ApiPublicReservationsController extends Controller
         ]);
 
         event(new ReservationCourseDateChanged($publicReservation->fresh()));
-        
+
         if ($oldCourseDate->fresh()->remaining == 1) {
             event(new CourseDateSpotFreed($oldCourseDate->fresh()));
         }
@@ -47,6 +48,7 @@ class ApiPublicReservationsController extends Controller
 
     public function cancel(Request $request, Reservation $publicReservation)
     {
+        abort_if(!$publicReservation->canBeCanceled(), 404);
         app(ReservationRepository::class)->cancel($publicReservation);
         return response()->json([
             'data' => new PublicReservationResource($publicReservation->fresh()),

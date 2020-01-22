@@ -58,8 +58,8 @@
                                     </div>
                                 </div>
                                 <div class="h-full flex items-end justify-end">
-                                    <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded" @click="showChangeReservationModal()">Změnit Termín</button>
-                                    <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded" @click="showModal('cancel-reservation-modal')">Zrušit</button>
+                                    <button :disabled="!reservation.canChangeCourseDate" :class="{'opacity-50 cursor-not-allowed': !reservation.canChangeCourseDate}" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded" @click="showChangeReservationModal()">Změnit Termín</button>
+                                    <button :disabled="!reservation.canBeCanceled" :class="{'opacity-50 cursor-not-allowed': !reservation.canChangeCourseDate}" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded" @click="showModal('cancel-reservation-modal')">Zrušit</button>
                                 </div>
                             </div>
                             <div v-if="activeTab === 'QUEUED_RESERVATION' && reservation.queuedReservation" class="block text-gray-600 w-2/3 pl-6 p-6 rounded-r-lg bg-gray-100 flex flex-col" style="min-height: 335px;">
@@ -82,8 +82,8 @@
                                     </div>
                                 </div>
                                 <div class="h-full flex items-end justify-end">
-                                    <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded">Změnit Termín</button>
-                                    <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded" @click="showModal('cancel-queued-reservation-modal')">Zrušit</button>
+                                    <button :disabled="!reservation.queuedReservation.canChangeCourseDate" :class="{'opacity-50 cursor-not-allowed': !reservation.canChangeCourseDate}" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded">Změnit Termín</button>
+                                    <button :disabled="!reservation.queuedReservation.canBeCanceled" :class="{'opacity-50 cursor-not-allowed': !reservation.canBeCanceled}" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded" @click="showModal('cancel-queued-reservation-modal')">Zrušit</button>
                                 </div>
                             </div>
                         </div>

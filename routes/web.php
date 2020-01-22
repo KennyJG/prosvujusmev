@@ -15,6 +15,7 @@ Route::group(['namespace' => 'prosvujusmev\\'], function () {
     // PUBLIC VIEW RESPONSE ENDPOINTS
     Route::group(['prefix' => '/public'], function() {
         Route::get('/reservations/{publicReservation}', 'Reservations\PublicReservationsController@show');
+        Route::get('/reservations/{publicReservation}/confirm', 'Reservations\PublicReservationsController@confirm');
     });
 
     // PUBLIC JSON RESPONSE ENDPOINTS

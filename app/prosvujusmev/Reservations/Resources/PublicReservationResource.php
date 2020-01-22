@@ -18,6 +18,8 @@ class PublicReservationResource extends JsonResource
             'status' => $this->status,
             'statusRecords' => $this->statusRecords()->orderBy('id', 'desc')->get(),
             'queuedReservation' => new PublicReservationResource($this->queuedReservation),
+            'canChangeCourseDate' => $this->canChangeCourseDate(),
+            'canBeCanceled' => $this->canBeCanceled(),
             'created_at' => (string)$this->created_at,
             'updated_at' => (string)$this->updated_at,
         ];

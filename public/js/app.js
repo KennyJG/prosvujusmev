@@ -24245,6 +24245,14 @@ var render = function() {
                                     {
                                       staticClass:
                                         "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded",
+                                      class: {
+                                        "opacity-50 cursor-not-allowed": !_vm
+                                          .reservation.canChangeCourseDate
+                                      },
+                                      attrs: {
+                                        disabled: !_vm.reservation
+                                          .canChangeCourseDate
+                                      },
                                       on: {
                                         click: function($event) {
                                           return _vm.showChangeReservationModal()
@@ -24259,6 +24267,13 @@ var render = function() {
                                     {
                                       staticClass:
                                         "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded",
+                                      class: {
+                                        "opacity-50 cursor-not-allowed": !_vm
+                                          .reservation.canChangeCourseDate
+                                      },
+                                      attrs: {
+                                        disabled: !_vm.reservation.canBeCanceled
+                                      },
                                       on: {
                                         click: function($event) {
                                           return _vm.showModal(
@@ -24365,7 +24380,15 @@ var render = function() {
                                     "button",
                                     {
                                       staticClass:
-                                        "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded"
+                                        "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded",
+                                      class: {
+                                        "opacity-50 cursor-not-allowed": !_vm
+                                          .reservation.canChangeCourseDate
+                                      },
+                                      attrs: {
+                                        disabled: !_vm.reservation
+                                          .queuedReservation.canChangeCourseDate
+                                      }
                                     },
                                     [_vm._v("Změnit Termín")]
                                   ),
@@ -24375,6 +24398,14 @@ var render = function() {
                                     {
                                       staticClass:
                                         "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded",
+                                      class: {
+                                        "opacity-50 cursor-not-allowed": !_vm
+                                          .reservation.canBeCanceled
+                                      },
+                                      attrs: {
+                                        disabled: !_vm.reservation
+                                          .queuedReservation.canBeCanceled
+                                      },
                                       on: {
                                         click: function($event) {
                                           return _vm.showModal(

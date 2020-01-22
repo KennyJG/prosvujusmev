@@ -12,6 +12,7 @@ use App\prosvujusmev\Reservations\Events\ReservationCourseDateChanged;
 use App\prosvujusmev\Reservations\Events\ReservationCreated;
 use App\prosvujusmev\Reservations\Events\ReservationDeleted;
 use App\prosvujusmev\Reservations\Events\ReservationSuspended;
+use App\prosvujusmev\Reservations\Events\SubstituteReservationHasBecomeFull;
 use App\prosvujusmev\Reservations\Listeners\CancelSubstituteReservation;
 use App\prosvujusmev\Reservations\Listeners\SendFinalCourseInformationMail;
 use App\prosvujusmev\Reservations\Listeners\SendFinalCourseInformationMailToNewReservation;
@@ -72,6 +73,8 @@ class EventServiceProvider extends ServiceProvider
             SendReservationCanceledNotification::class,
             SendCourseDateAvailableMail::class,
             CancelSubstituteReservation::class,
+        ],
+        SubstituteReservationHasBecomeFull::class => [
         ],
     ];
 

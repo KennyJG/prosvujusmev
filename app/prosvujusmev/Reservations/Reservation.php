@@ -6,7 +6,6 @@ use Faker\Provider\Uuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
 class Reservation extends Model
 {
     use SoftDeletes;
@@ -57,8 +56,44 @@ class Reservation extends Model
         return $this->hasOne(Reservation::class, 'reservation_id', 'id');
     }
 
+    public function mainReservation()
+    {
+        return $this->belongsTo(Reservation::class, 'reservation_id', 'id');
+    }
+
     public function statusRecords()
     {
         return $this->hasMany(ReservationStatusRecord::class);
+    }
+
+    public function isSubstitute()
+    {
+        return $this->reservation_id !== null;
+    }
+
+    public function canBeCanceled()
+    {
+        $oldCourseDate = $this->courseDate;
+        $now = \Carbon\Carbon::now();
+        $startOfCourse = \Carbon\Carbon::parse($oldCourseDate->from_date);
+        return $startOfCourse->diffInDays($now) > 4 && in_array($this->status, [
+            self::STATUS_CREATED,
+            self::STATUS_UNAPPROVED,
+            self::STATUS_APPROVED,
+            self::STATUS_QUEUED,
+        ]);
+    }
+
+    public function canChangeCourseDate()
+    {
+        $oldCourseDate = $this->courseDate;
+        $now = \Carbon\Carbon::now();
+        $startOfCourse = \Carbon\Carbon::parse($oldCourseDate->from_date);
+        return $startOfCourse->diffInDays($now) > 4 && in_array($this->status, [
+            self::STATUS_CREATED,
+            self::STATUS_UNAPPROVED,
+            self::STATUS_APPROVED,
+            self::STATUS_QUEUED,
+        ]);
     }
 }

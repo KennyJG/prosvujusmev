@@ -32,7 +32,7 @@ class SendCourseDateAvailableMail
             $courseDate = $event->reservation->courseDate;
         }
         if ($courseDate && $courseDate->remaining == 1) {
-            app(CourseDateRepository::class)->sendEmailToSubstitutes($courseDate, new CourseDateSpotFreed($courseDate));
+            app(CourseDateRepository::class)->sendEmailToSubstitutes($courseDate, CourseDateSpotFreed::class);
         }
     }
 }

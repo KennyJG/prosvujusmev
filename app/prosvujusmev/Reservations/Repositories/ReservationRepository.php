@@ -8,6 +8,7 @@ use App\prosvujusmev\Reservations\Events\ReservationCompleted;
 use App\prosvujusmev\Reservations\Events\ReservationConditioned;
 use App\prosvujusmev\Reservations\Events\ReservationDeleted;
 use App\prosvujusmev\Reservations\Events\ReservationSuspended;
+use App\prosvujusmev\Reservations\Events\SubstituteReservationHasBecomeFull;
 use App\prosvujusmev\Reservations\Reservation;
 use App\prosvujusmev\Reservations\ReservationStatusRecord;
 
@@ -156,6 +157,29 @@ class ReservationRepository
         $reservation->update([
             'status' => Reservation::STATUS_CANCELED,
         ]);
+        return $reservation->fresh();
+    }
+
+    /**
+     *  Make full reservation from substitute reservation 
+     * 
+     *  @param \App\prosvujusmev\Reservations\Reservation $reservation
+     *  @return \App\prosvujusmev\Reservations\Reservation
+     */
+    public function makeFullReservation(Reservation $reservation): Reservation
+    {
+        $mainReservation = $reservation->mainReservation;
+        $mainReservation->update([
+            'status' => Reservation::STATUS_CANCELED,
+        ]);
+
+        $reservation->update([
+            'status' => Reservation::STATUS_UNAPPROVED,
+            'reservation_id' => null,
+        ]);
+
+        event(new SubstituteReservationHasBecomeFull($reservation->fresh()));
+
         return $reservation->fresh();
     }
 }
