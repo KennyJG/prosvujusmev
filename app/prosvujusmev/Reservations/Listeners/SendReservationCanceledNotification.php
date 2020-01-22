@@ -26,6 +26,7 @@ class SendReservationCanceledNotification
     public function handle(ReservationCanceled $event)
     {
         $reservation = $event->reservation;
+        $attendee = $reservation->attendee;
         \Mail::to($attendee)->send(new MailsReservationCanceled($reservation));
     }
 }

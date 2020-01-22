@@ -141,7 +141,21 @@ class ReservationRepository
         $reservation->update([
             'status' => Reservation::STATUS_CANCELED,
         ]);
-        event(new ReservationCanceled($reservation));
+        event(new ReservationCanceled($reservation->fresh()));
+        return $reservation->fresh();
+    }
+
+    /**
+     *  Cancels Substitute Reservation 
+     * 
+     *  @param \App\prosvujusmev\Reservations\Reservation $reservation
+     *  @return \App\prosvujusmev\Reservations\Reservation
+     */
+    public function cancelSubstitute(Reservation $reservation): Reservation
+    {
+        $reservation->update([
+            'status' => Reservation::STATUS_CANCELED,
+        ]);
         return $reservation->fresh();
     }
 }

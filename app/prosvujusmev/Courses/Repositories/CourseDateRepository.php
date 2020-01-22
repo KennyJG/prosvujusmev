@@ -68,6 +68,22 @@ class CourseDateRepository
         }
     }
 
+     /**
+     *  Send email to Substitutes of CourseDate
+     * 
+     *  @param \App\prosvujusmev\Courses\CourseDate $courseDate
+     *  @param \Illuminate\Mail\Mailable $mail
+     *  @return void
+     */
+    public function sendEmailToSubstitutes(CourseDate $courseDate, \Illuminate\Mail\Mailable $mail): void
+    {
+        foreach ($courseDate->getAttendees() as $attendee) {
+            if ($attendee->reservations()->where('course_date_id', $courseDate->id)->where('status', Reservation::STATUS_QUEUED)->count() !== 0) {
+                \Mail::to($attendee)->send($mail);
+            }
+        }
+    }
+
     /**
      *  Send First Information email to Attendees of CourseDatee
      * 

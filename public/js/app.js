@@ -2826,6 +2826,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['reservationUuid'],
   data: function data() {
@@ -2834,7 +2852,9 @@ __webpack_require__.r(__webpack_exports__);
       courses: [],
       activeTab: 'RESERVATION',
       selectedCourse: null,
-      selectedCourseDate: null
+      selectedCourseDate: null,
+      selectedCourseDateVenue: null,
+      selectedCourseDateDate: null
     };
   },
   methods: {
@@ -2859,6 +2879,17 @@ __webpack_require__.r(__webpack_exports__);
         courseDateId: this.selectedCourseDate.id
       }).then(function (response) {
         _this3.getPublicReservation(_this3.reservationUuid);
+
+        _this3.hideModal('change-reservation-modal');
+      });
+    },
+    cancelReservation: function cancelReservation() {
+      var _this4 = this;
+
+      axios.post('/api/public/reservations/' + this.reservationUuid + '/cancel').then(function (response) {
+        _this4.getPublicReservation(_this4.reservationUuid);
+
+        _this4.hideModal('cancel-reservation-modal');
       });
     },
     showModal: function showModal(name) {
@@ -2872,6 +2903,24 @@ __webpack_require__.r(__webpack_exports__);
       this.selectedCourseDate = null;
       this.getCourses();
       this.showModal('change-reservation-modal');
+    },
+    filterCourseDatesForVenue: function filterCourseDatesForVenue(venue) {
+      var _this5 = this;
+
+      return this.selectedCourse.courseDates.filter(function (courseDate) {
+        return courseDate.venue == venue && courseDate.remaining !== 0 && courseDate.id !== _this5.reservation.courseDate.id;
+      });
+    },
+    getVenues: function getVenues() {
+      var _this6 = this;
+
+      var venues = [];
+      this.selectedCourse.courseDates.forEach(function (courseDate) {
+        if (!venues.includes(courseDate.venue) && courseDate.remaining !== 0 && courseDate.id !== _this6.reservation.courseDate.id) {
+          venues.push(courseDate.venue);
+        }
+      });
+      return venues;
     }
   },
   mounted: function mounted() {
@@ -3405,7 +3454,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* Enter and leave animations can use different */\n /* durations and timing functions.              */\n.slide-fade-enter-active {\n     -webkit-transition: all .3s ease;\n     transition: all .3s ease;\n}\n.slide-fade-leave-active {\n     -webkit-transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n     transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter, .slide-fade-leave-to\n     /* .slide-fade-leave-active below version 2.1.8 */ {\n     -webkit-transform: translateX(10px);\n             transform: translateX(10px);\n     opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* Enter and leave animations can use different */\n /* durations and timing functions.              */\n.slide-fade-enter-active {\n     -webkit-transition: all .3s ease;\n     transition: all .3s ease;\n}\n.slide-fade-leave-active {\n     -webkit-transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n     transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter, .slide-fade-leave-to\n     /* .slide-fade-leave-active below version 2.1.8 */ {\n     -webkit-transform: translateX(10px);\n             transform: translateX(10px);\n     opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -24462,7 +24511,7 @@ var render = function() {
           }
         },
         [
-          _c("div", { staticClass: "w-full px-6 py-6" }, [
+          _c("div", { staticClass: "w-full px-6 pt-6 pb-2" }, [
             _c(
               "label",
               {
@@ -24542,16 +24591,95 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm.selectedCourse
-            ? _c("div", { staticClass: "w-full px-6 pb-6" }, [
+          _vm.selectedCourse != null
+            ? _c("div", { staticClass: "w-full px-6 pb-2" }, [
                 _c(
                   "label",
                   {
                     staticClass:
-                      "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
-                    attrs: { for: "grid-state" }
+                      "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                   },
-                  [_vm._v("\n                Termín\n            ")]
+                  [_vm._v("Místo")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "relative" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.selectedCourseDateVenue,
+                          expression: "selectedCourseDateVenue"
+                        }
+                      ],
+                      staticClass:
+                        "block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.selectedCourseDateVenue = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    _vm._l(_vm.getVenues(), function(venue) {
+                      return _c("option", { domProps: { value: venue } }, [
+                        _vm._v(_vm._s(venue))
+                      ])
+                    }),
+                    0
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "fill-current h-4 w-4",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            viewBox: "0 0 20 20"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.selectedCourse != null && _vm.selectedCourseDateVenue != null
+            ? _c("div", { staticClass: "w-full px-6 pb-2" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass:
+                      "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                  },
+                  [_vm._v("Termín")]
                 ),
                 _vm._v(" "),
                 _c("div", { staticClass: "relative" }, [
@@ -24568,7 +24696,6 @@ var render = function() {
                       ],
                       staticClass:
                         "block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
-                      attrs: { id: "grid-state" },
                       on: {
                         change: function($event) {
                           var $$selectedVal = Array.prototype.filter
@@ -24585,14 +24712,54 @@ var render = function() {
                         }
                       }
                     },
-                    _vm._l(_vm.selectedCourse.courseDates, function(
-                      courseDate
-                    ) {
-                      return _c("option", { domProps: { value: courseDate } }, [
-                        _vm._v(_vm._s(courseDate.fullDateForHumans))
-                      ])
-                    }),
-                    0
+                    [
+                      _c("option", { attrs: { value: "-" } }, [_vm._v("-")]),
+                      _vm._v(" "),
+                      _vm._l(
+                        _vm.filterCourseDatesForVenue(
+                          _vm.selectedCourseDateVenue
+                        ),
+                        function(localCourseDate) {
+                          return _c(
+                            "option",
+                            {
+                              class: {
+                                "text-gray-300": localCourseDate.remaining == 0
+                              },
+                              domProps: { value: localCourseDate }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        " +
+                                  _vm._s(localCourseDate.fullDateForHumans) +
+                                  "\n                        "
+                              ),
+                              localCourseDate.remaining <= 5 &&
+                              localCourseDate.remaining > 1
+                                ? _c("span", { staticClass: "italic" }, [
+                                    _vm._v("Poslední volná místa")
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              localCourseDate.remaining == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "italic font-bold" },
+                                    [_vm._v("Poslední 1 volné místo")]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              localCourseDate.remaining == 0
+                                ? _c("span", { staticClass: "italic" }, [
+                                    _vm._v("Plno - Možnost náhradníka")
+                                  ])
+                                : _vm._e()
+                            ]
+                          )
+                        }
+                      )
+                    ],
+                    2
                   ),
                   _vm._v(" "),
                   _c(
