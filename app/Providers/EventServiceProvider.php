@@ -28,6 +28,7 @@ use App\prosvujusmev\Reservations\Listeners\SendReservationCreatedNotification;
 use App\prosvujusmev\Reservations\Listeners\SendReservationDeletedNotification;
 use App\prosvujusmev\Reservations\Listeners\SendReservationRejectedNotification;
 use App\prosvujusmev\Reservations\Listeners\SendReservationSuspendedNotification;
+use App\prosvujusmev\Reservations\Listeners\SendSubstituteReservationHasBecomeFullNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -83,6 +84,7 @@ class EventServiceProvider extends ServiceProvider
             CancelSubstituteReservation::class,
         ],
         SubstituteReservationHasBecomeFull::class => [
+            SendSubstituteReservationHasBecomeFullNotification::class,
         ],
     ];
 

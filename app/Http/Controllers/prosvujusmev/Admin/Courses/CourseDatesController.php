@@ -75,7 +75,7 @@ class CourseDatesController extends Controller
             'from_date_date' => 'required|date',
             'from_date_time' => 'required',
             'venue' => 'required|string|min:1|max:254',
-            'lecturer' => 'required|string|min:1|max:254',
+            'lecturer' => 'nullable|string|min:1|max:254',
             'limit' => 'required|integer|min:0|max:9999999',
             'description' => 'nullable|string|min:1|max:5000',
         ]);

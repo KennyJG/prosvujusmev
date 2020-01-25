@@ -127,7 +127,7 @@ class ReservationsController extends Controller
                         'reservation_id' => $reservationModel->id,
                     ]);
                     $queuedReservationStatusRecords = ReservationStatusRecord::create([
-                        'reservation_id' => $reservationModel->id,
+                        'reservation_id' => $queuedReservationModel->id,
                         'old_status' => null,
                         'new_status' => Reservation::STATUS_QUEUED,
                     ]);

@@ -162,24 +162,16 @@ class ReservationRepository
      */
     public function cancel(Reservation $reservation): Reservation
     {
+        $oldStatus = $reservation->status;
         $reservation->update([
             'status' => Reservation::STATUS_CANCELED,
+        ]);
+        ReservationStatusRecord::create([
+            'reservation_id' => $reservation->id,
+            'old_status' => $oldStatus,
+            'new_status' => Reservation::STATUS_CANCELED,
         ]);
         event(new ReservationCanceled($reservation->fresh()));
-        return $reservation->fresh();
-    }
-
-    /**
-     *  Cancels Substitute Reservation 
-     * 
-     *  @param \App\prosvujusmev\Reservations\Reservation $reservation
-     *  @return \App\prosvujusmev\Reservations\Reservation
-     */
-    public function cancelSubstitute(Reservation $reservation): Reservation
-    {
-        $reservation->update([
-            'status' => Reservation::STATUS_CANCELED,
-        ]);
         return $reservation->fresh();
     }
 
@@ -192,16 +184,28 @@ class ReservationRepository
     public function makeFullReservation(Reservation $reservation): Reservation
     {
         $mainReservation = $reservation->mainReservation;
+        $oldStatus = $mainReservation->status;
         $mainReservation->update([
             'status' => Reservation::STATUS_CANCELED,
         ]);
-
-        $reservation->update([
-            'status' => Reservation::STATUS_REJECTED,
-            'reservation_id' => null,
+        ReservationStatusRecord::create([
+            'reservation_id' => $mainReservation->id,
+            'old_status' => $oldStatus,
+            'new_status' => Reservation::STATUS_CANCELED,
         ]);
 
-        event(new SubstituteReservationHasBecomeFull($reservation->fresh()));
+        $oldStatus = $reservation->status;
+        $reservation->update([
+            'status' => Reservation::STATUS_UNAPPROVED,
+            'reservation_id' => null,
+        ]);
+        ReservationStatusRecord::create([
+            'reservation_id' => $reservation->id,
+            'old_status' => $oldStatus,
+            'new_status' => Reservation::STATUS_CANCELED,
+        ]);
+
+        event(new SubstituteReservationHasBecomeFull($reservation->fresh(), $mainReservation->fresh()));
 
         return $reservation->fresh();
     }

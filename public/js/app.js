@@ -2589,6 +2589,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['reservation', 'backUrl'],
   data: function data() {
@@ -2894,6 +2899,54 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['reservationUuid'],
   data: function data() {
@@ -2933,13 +2986,17 @@ __webpack_require__.r(__webpack_exports__);
         _this3.hideModal('change-reservation-modal');
       });
     },
-    cancelReservation: function cancelReservation() {
+    cancelReservation: function cancelReservation(reservationUuid) {
       var _this4 = this;
 
-      axios.post('/api/public/reservations/' + this.reservationUuid + '/cancel').then(function (response) {
+      axios.post('/api/public/reservations/' + reservationUuid + '/cancel').then(function (response) {
         _this4.getPublicReservation(_this4.reservationUuid);
 
-        _this4.hideModal('cancel-reservation-modal');
+        if (reservationUuid == _this4.reservation.uuid) {
+          _this4.hideModal('cancel-reservation-modal');
+        } else {
+          _this4.hideModal('cancel-queued-reservation-modal');
+        }
       });
     },
     showModal: function showModal(name) {
@@ -2953,6 +3010,12 @@ __webpack_require__.r(__webpack_exports__);
       this.selectedCourseDate = null;
       this.getCourses();
       this.showModal('change-reservation-modal');
+    },
+    showCreateQueuedReservationModal: function showCreateQueuedReservationModal() {
+      this.selectedCourse = null;
+      this.selectedCourseDate = null;
+      this.getCourses();
+      this.showModal('create-queued-reservation-modal');
     },
     filterCourseDatesForVenue: function filterCourseDatesForVenue(venue) {
       var _this5 = this;
@@ -3187,6 +3250,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3195,6 +3270,7 @@ __webpack_require__.r(__webpack_exports__);
       selectedCourseDateDate: '-',
       selectedCourseDate: '-',
       mainCourseDate: '-',
+      mainCourseDateVenue: '-',
       courses: [],
       courseDates: [],
       reservations: [{
@@ -3504,7 +3580,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* Enter and leave animations can use different */\n /* durations and timing functions.              */\n.slide-fade-enter-active {\n     -webkit-transition: all .3s ease;\n     transition: all .3s ease;\n}\n.slide-fade-leave-active {\n     -webkit-transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n     transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter, .slide-fade-leave-to\n     /* .slide-fade-leave-active below version 2.1.8 */ {\n     -webkit-transform: translateX(10px);\n             transform: translateX(10px);\n     opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* Enter and leave animations can use different */\n /* durations and timing functions.              */\n.slide-fade-enter-active {\n     -webkit-transition: all .3s ease;\n     transition: all .3s ease;\n}\n.slide-fade-leave-active {\n     -webkit-transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n     transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter, .slide-fade-leave-to\n     /* .slide-fade-leave-active below version 2.1.8 */ {\n     -webkit-transform: translateX(10px);\n             transform: translateX(10px);\n     opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -23769,6 +23845,14 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "flex mt-6" }, [
+          _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("UUID")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-2/3" }, [
+            _vm._v(_vm._s(_vm.reservation.uuid))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex mt-6" }, [
           _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Jméno")]),
           _vm._v(" "),
           _c("div", { staticClass: "w-2/3" }, [
@@ -24534,22 +24618,44 @@ var render = function() {
                                     "h-full flex items-end justify-end"
                                 },
                                 [
-                                  _c(
-                                    "button",
-                                    {
-                                      staticClass:
-                                        "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded",
-                                      class: {
-                                        "opacity-50 cursor-not-allowed": !_vm
-                                          .reservation.canChangeCourseDate
-                                      },
-                                      attrs: {
-                                        disabled: !_vm.reservation
-                                          .queuedReservation.canChangeCourseDate
-                                      }
-                                    },
-                                    [_vm._v("Změnit Termín")]
-                                  ),
+                                  !_vm.reservation.queuedReservation
+                                    .canChangeCourseDate
+                                    ? _c(
+                                        "button",
+                                        {
+                                          staticClass:
+                                            "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded",
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.showCreateQueuedReservationModal()
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("Vytvořit náhradní termín")]
+                                      )
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  _vm.reservation.queuedReservation
+                                    .canChangeCourseDate
+                                    ? _c(
+                                        "button",
+                                        {
+                                          staticClass:
+                                            "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded",
+                                          class: {
+                                            "opacity-50 cursor-not-allowed": !_vm
+                                              .reservation.queuedReservation
+                                              .canChangeCourseDate
+                                          },
+                                          attrs: {
+                                            disabled: !_vm.reservation
+                                              .queuedReservation
+                                              .canChangeCourseDate
+                                          }
+                                        },
+                                        [_vm._v("Změnit Termín")]
+                                      )
+                                    : _vm._e(),
                                   _vm._v(" "),
                                   _c(
                                     "button",
@@ -24558,7 +24664,8 @@ var render = function() {
                                         "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded",
                                       class: {
                                         "opacity-50 cursor-not-allowed": !_vm
-                                          .reservation.canBeCanceled
+                                          .reservation.queuedReservation
+                                          .canBeCanceled
                                       },
                                       attrs: {
                                         disabled: !_vm.reservation
@@ -24613,7 +24720,7 @@ var render = function() {
                     "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded",
                   on: {
                     click: function($event) {
-                      return _vm.cancelReservation(_vm.reservation.id)
+                      return _vm.cancelReservation(_vm.reservation.uuid)
                     }
                   }
                 },
@@ -24651,7 +24758,7 @@ var render = function() {
           _c("div", { staticClass: "flex flex-col" }, [
             _c("div", { staticClass: "p-6" }, [
               _vm._v(
-                "\n                Opravdu chcete zrušit Vaší preferovanou rezervaci?\n            "
+                "\n                Opravdu chcete zrušit Vaší náhradní rezervaci?\n            "
               )
             ]),
             _vm._v(" "),
@@ -24664,7 +24771,7 @@ var render = function() {
                   on: {
                     click: function($event) {
                       return _vm.cancelReservation(
-                        _vm.reservation.queuedReservation.id
+                        _vm.reservation.queuedReservation.uuid
                       )
                     }
                   }
@@ -25005,6 +25112,330 @@ var render = function() {
                 on: {
                   click: function($event) {
                     return _vm.hideModal("change-reservation-modal")
+                  }
+                }
+              },
+              [_vm._v("Zrušit")]
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "modal",
+        {
+          attrs: {
+            name: "create-queued-reservation-modal",
+            width: "480",
+            height: "auto"
+          }
+        },
+        [
+          _c("div", { staticClass: "w-full px-6 pt-6 pb-2" }, [
+            _c(
+              "label",
+              {
+                staticClass:
+                  "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+                attrs: { for: "grid-state" }
+              },
+              [_vm._v("\n                Kurz\n            ")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "relative" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.selectedCourse,
+                      expression: "selectedCourse"
+                    }
+                  ],
+                  staticClass:
+                    "block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
+                  attrs: { id: "grid-state" },
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.selectedCourse = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    }
+                  }
+                },
+                _vm._l(_vm.courses, function(course) {
+                  return _c("option", { domProps: { value: course } }, [
+                    _vm._v(_vm._s(course.name))
+                  ])
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                },
+                [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "fill-current h-4 w-4",
+                      attrs: {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        viewBox: "0 0 20 20"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                        }
+                      })
+                    ]
+                  )
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _vm.selectedCourse != null
+            ? _c("div", { staticClass: "w-full px-6 pb-2" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass:
+                      "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                  },
+                  [_vm._v("Místo")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "relative" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.selectedCourseDateVenue,
+                          expression: "selectedCourseDateVenue"
+                        }
+                      ],
+                      staticClass:
+                        "block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.selectedCourseDateVenue = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    _vm._l(_vm.getVenues(), function(venue) {
+                      return _c("option", { domProps: { value: venue } }, [
+                        _vm._v(_vm._s(venue))
+                      ])
+                    }),
+                    0
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "fill-current h-4 w-4",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            viewBox: "0 0 20 20"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.selectedCourse != null && _vm.selectedCourseDateVenue != null
+            ? _c("div", { staticClass: "w-full px-6 pb-2" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass:
+                      "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                  },
+                  [_vm._v("Termín")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "relative" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.selectedCourseDate,
+                          expression: "selectedCourseDate"
+                        }
+                      ],
+                      staticClass:
+                        "block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500",
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.selectedCourseDate = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "-" } }, [_vm._v("-")]),
+                      _vm._v(" "),
+                      _vm._l(
+                        _vm.filterCourseDatesForVenue(
+                          _vm.selectedCourseDateVenue
+                        ),
+                        function(localCourseDate) {
+                          return _c(
+                            "option",
+                            {
+                              class: {
+                                "text-gray-300": localCourseDate.remaining == 0
+                              },
+                              domProps: { value: localCourseDate }
+                            },
+                            [
+                              _vm._v(
+                                "\n                        " +
+                                  _vm._s(localCourseDate.fullDateForHumans) +
+                                  "\n                        "
+                              ),
+                              localCourseDate.remaining <= 5 &&
+                              localCourseDate.remaining > 1
+                                ? _c("span", { staticClass: "italic" }, [
+                                    _vm._v("Poslední volná místa")
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              localCourseDate.remaining == 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "italic font-bold" },
+                                    [_vm._v("Poslední 1 volné místo")]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              localCourseDate.remaining == 0
+                                ? _c("span", { staticClass: "italic" }, [
+                                    _vm._v("Plno - Možnost náhradníka")
+                                  ])
+                                : _vm._e()
+                            ]
+                          )
+                        }
+                      )
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "fill-current h-4 w-4",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            viewBox: "0 0 20 20"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", { staticClass: "flex justify-end pb-6 px-6" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded",
+                on: {
+                  click: function($event) {
+                    return _vm.createQueuedReservation()
+                  }
+                }
+              },
+              [_vm._v("Vytvořit")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass:
+                  "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded",
+                on: {
+                  click: function($event) {
+                    return _vm.hideModal("create-queued-reservation-modal")
                   }
                 }
               },
@@ -25560,6 +25991,133 @@ var render = function() {
                                   _c(
                                     "div",
                                     {
+                                      staticClass: "mt-2",
+                                      class:
+                                        _vm.selectedCourse === "-"
+                                          ? "hidden"
+                                          : "block"
+                                    },
+                                    [
+                                      _c(
+                                        "label",
+                                        {
+                                          staticClass:
+                                            "block text-sm text-gray-600",
+                                          attrs: { for: "cus_name" }
+                                        },
+                                        [_vm._v("Místo")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "w-full block relative w-64"
+                                        },
+                                        [
+                                          _c(
+                                            "select",
+                                            {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value:
+                                                    _vm.mainCourseDateVenue,
+                                                  expression:
+                                                    "mainCourseDateVenue"
+                                                }
+                                              ],
+                                              staticClass:
+                                                "w-full px-5 py-1 block appearance-none bg-gray-200 text-gray-700 border hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline",
+                                              class: {
+                                                "border border-red-600":
+                                                  _vm.courseDateErrors
+                                                    .length !== 0
+                                              },
+                                              attrs: { name: "courseDateId" },
+                                              on: {
+                                                change: function($event) {
+                                                  var $$selectedVal = Array.prototype.filter
+                                                    .call(
+                                                      $event.target.options,
+                                                      function(o) {
+                                                        return o.selected
+                                                      }
+                                                    )
+                                                    .map(function(o) {
+                                                      var val =
+                                                        "_value" in o
+                                                          ? o._value
+                                                          : o.value
+                                                      return val
+                                                    })
+                                                  _vm.mainCourseDateVenue = $event
+                                                    .target.multiple
+                                                    ? $$selectedVal
+                                                    : $$selectedVal[0]
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "option",
+                                                { attrs: { value: "-" } },
+                                                [_vm._v("-")]
+                                              ),
+                                              _vm._v(" "),
+                                              _vm._l(_vm.getVenues(), function(
+                                                venue
+                                              ) {
+                                                return _c(
+                                                  "option",
+                                                  {
+                                                    domProps: { value: venue }
+                                                  },
+                                                  [_vm._v(_vm._s(venue))]
+                                                )
+                                              })
+                                            ],
+                                            2
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                                            },
+                                            [
+                                              _c(
+                                                "svg",
+                                                {
+                                                  staticClass:
+                                                    "fill-current h-4 w-4",
+                                                  attrs: {
+                                                    xmlns:
+                                                      "http://www.w3.org/2000/svg",
+                                                    viewBox: "0 0 20 20"
+                                                  }
+                                                },
+                                                [
+                                                  _c("path", {
+                                                    attrs: {
+                                                      d:
+                                                        "M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
                                       staticClass: "mt-2 mb-2",
                                       class:
                                         _vm.selectedCourse === "-" ||
@@ -25636,7 +26194,7 @@ var render = function() {
                                               _vm._v(" "),
                                               _vm._l(
                                                 _vm.filterCourseDatesForVenue(
-                                                  _vm.selectedCourseDateVenue
+                                                  _vm.mainCourseDateVenue
                                                 ),
                                                 function(localCourseDate) {
                                                   return localCourseDate.remaining !==

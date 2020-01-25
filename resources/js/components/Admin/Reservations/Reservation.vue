@@ -25,6 +25,11 @@
                 </div>
 
                 <div class="flex mt-6">
+                    <div class="w-1/3 font-bold">UUID</div>
+                    <div class="w-2/3">{{ reservation.uuid }}</div>
+                </div>
+
+                <div class="flex mt-6">
                     <div class="w-1/3 font-bold">Jméno</div>
                     <div class="w-2/3">{{ reservation.attendee.first_name }}</div>
                 </div> 

@@ -1,9 +1,5 @@
 <template>
     <div class="relative overflow-hidden bg-gray-400 h-full w-full">
-        <!-- <div class="absolute top-0 left-0 pt-10 px-10 flex items-center justify-center">
-            <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3" style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;"></div>
-            <img class="relative w-40" src="https://user-images.githubusercontent.com/2805249/64069899-8bdaa180-cc97-11e9-9b19-1a9e1a254c18.png" alt="">
-        </div> -->
         <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
             <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white"/>
             <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white"/>
@@ -82,8 +78,9 @@
                                     </div>
                                 </div>
                                 <div class="h-full flex items-end justify-end">
-                                    <button :disabled="!reservation.queuedReservation.canChangeCourseDate" :class="{'opacity-50 cursor-not-allowed': !reservation.canChangeCourseDate}" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded">Změnit Termín</button>
-                                    <button :disabled="!reservation.queuedReservation.canBeCanceled" :class="{'opacity-50 cursor-not-allowed': !reservation.canBeCanceled}" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded" @click="showModal('cancel-queued-reservation-modal')">Zrušit</button>
+                                    <button v-if="!reservation.queuedReservation.canChangeCourseDate" @click="showCreateQueuedReservationModal()" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded">Vytvořit náhradní termín</button>
+                                    <button v-if="reservation.queuedReservation.canChangeCourseDate" :disabled="!reservation.queuedReservation.canChangeCourseDate" :class="{'opacity-50 cursor-not-allowed': !reservation.queuedReservation.canChangeCourseDate}" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded">Změnit Termín</button>
+                                    <button :disabled="!reservation.queuedReservation.canBeCanceled" :class="{'opacity-50 cursor-not-allowed': !reservation.queuedReservation.canBeCanceled}" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded" @click="showModal('cancel-queued-reservation-modal')">Zrušit</button>
                                 </div>
                             </div>
                         </div>
@@ -98,7 +95,7 @@
                     Opravdu chcete zrušit Vaší rezervaci?
                 </div>
                 <div class="flex justify-end py-4 px-4">
-                   <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded" @click="cancelReservation(reservation.id)">Ano</button>
+                   <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded" @click="cancelReservation(reservation.uuid)">Ano</button>
                    <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded" @click="hideModal('cancel-reservation-modal')">Ne</button>
                 </div>
             </div>
@@ -107,10 +104,10 @@
         <modal name="cancel-queued-reservation-modal" width="480" height="auto">
             <div class="flex flex-col">
                 <div class="p-6">
-                    Opravdu chcete zrušit Vaší preferovanou rezervaci?
+                    Opravdu chcete zrušit Vaší náhradní rezervaci?
                 </div>
                 <div class="flex justify-end py-4 px-4">
-                   <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded" @click="cancelReservation(reservation.queuedReservation.id)">Ano</button>
+                   <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded" @click="cancelReservation(reservation.queuedReservation.uuid)">Ano</button>
                    <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded" @click="hideModal('cancel-queued-reservation-modal')">Ne</button>
                 </div>
             </div>
@@ -167,6 +164,57 @@
             </div>
         </modal>
 
+        <modal name="create-queued-reservation-modal" width="480" height="auto">
+            <div class="w-full px-6 pt-6 pb-2">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+                    Kurz
+                </label>
+                <div class="relative">
+                    <select v-model="selectedCourse" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                        <option v-for="course in courses" :value="course">{{ course.name }}</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="selectedCourse != null" class="w-full px-6 pb-2">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Místo</label>
+                <div class="relative">
+                    <select v-model="selectedCourseDateVenue" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                        <option v-for="venue in getVenues()" :value="venue">{{ venue }}</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="selectedCourse != null && selectedCourseDateVenue != null" class="w-full px-6 pb-2">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Termín</label>
+                <div class="relative">
+                    <select v-model="selectedCourseDate" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                        <option value="-">-</option>
+                        <option :class="{'text-gray-300': localCourseDate.remaining == 0}" v-for="localCourseDate in filterCourseDatesForVenue(selectedCourseDateVenue)" :value="localCourseDate">
+                            {{ localCourseDate.fullDateForHumans }}
+                            <span class="italic" v-if="localCourseDate.remaining <= 5 && localCourseDate.remaining > 1">Poslední volná místa</span>
+                            <span class="italic font-bold" v-if="localCourseDate.remaining == 1">Poslední 1 volné místo</span>
+                            <span class="italic" v-if="localCourseDate.remaining == 0">Plno - Možnost náhradníka</span>
+                        </option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end pb-6 px-6">
+                <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded" @click="createQueuedReservation()">Vytvořit</button>
+                <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded" @click="hideModal('create-queued-reservation-modal')">Zrušit</button>
+            </div>
+        </modal>
+
     </div>
 </template>
 
@@ -212,11 +260,15 @@ export default {
             });
         },
 
-        cancelReservation() {
-            axios.post('/api/public/reservations/' + this.reservationUuid + '/cancel')
+        cancelReservation(reservationUuid) {
+            axios.post('/api/public/reservations/' + reservationUuid + '/cancel')
                 .then((response) => {
                     this.getPublicReservation(this.reservationUuid);
-                    this.hideModal('cancel-reservation-modal');
+                    if (reservationUuid == this.reservation.uuid) {
+                        this.hideModal('cancel-reservation-modal');
+                    } else {
+                        this.hideModal('cancel-queued-reservation-modal');
+                    }
                 });
         },
 
@@ -233,6 +285,13 @@ export default {
             this.selectedCourseDate = null;
             this.getCourses();
             this.showModal('change-reservation-modal');
+        },
+
+        showCreateQueuedReservationModal() {
+            this.selectedCourse = null;
+            this.selectedCourseDate = null;
+            this.getCourses();
+            this.showModal('create-queued-reservation-modal');
         },
 
         filterCourseDatesForVenue(venue) {

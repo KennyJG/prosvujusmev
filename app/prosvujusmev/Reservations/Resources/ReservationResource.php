@@ -10,6 +10,7 @@ class ReservationResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'uuid' => $this->uuid,
             'course' => $this->courseDate->course,
             'courseDate' => $this->courseDate,
             'attendee' => $this->attendee->load('address'),
