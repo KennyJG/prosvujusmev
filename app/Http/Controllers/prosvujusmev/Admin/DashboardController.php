@@ -4,10 +4,10 @@ namespace App\Http\Controllers\prosvujusmev\Admin;
 
 use App\Http\Controllers\Controller;
 
-class AdminController extends Controller
+class DashboardController extends Controller
 {
     public function index()
     {
-        return redirect('/admin/dashboard');
+        return response()->view('admin.dashboard');
     }
 }

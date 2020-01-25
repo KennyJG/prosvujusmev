@@ -44,6 +44,8 @@ Route::group(['namespace' => 'prosvujusmev\\'], function () {
     Route::group(['prefix' => '/admin', 'namespace' => 'Admin\\'], function () {
         Route::get('/', 'AdminController@index');
 
+        Route::get('/dashboard', 'DashboardController@index');
+
         Route::get('/courses', 'Courses\CoursesController@index');
         Route::get('/courses/create', 'Courses\CoursesController@create');
         Route::get('/courses/{course}', 'Courses\CoursesController@show');
