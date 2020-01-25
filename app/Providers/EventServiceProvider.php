@@ -13,6 +13,7 @@ use App\prosvujusmev\Reservations\Events\ReservationCreated;
 use App\prosvujusmev\Reservations\Events\ReservationDeleted;
 use App\prosvujusmev\Reservations\Events\ReservationRejected;
 use App\prosvujusmev\Reservations\Events\ReservationSuspended;
+use App\prosvujusmev\Reservations\Events\SubstituteReservationCreated;
 use App\prosvujusmev\Reservations\Events\SubstituteReservationHasBecomeFull;
 use App\prosvujusmev\Reservations\Listeners\CancelSubstituteReservation;
 use App\prosvujusmev\Reservations\Listeners\SendFinalCourseInformationMail;
@@ -28,6 +29,7 @@ use App\prosvujusmev\Reservations\Listeners\SendReservationCreatedNotification;
 use App\prosvujusmev\Reservations\Listeners\SendReservationDeletedNotification;
 use App\prosvujusmev\Reservations\Listeners\SendReservationRejectedNotification;
 use App\prosvujusmev\Reservations\Listeners\SendReservationSuspendedNotification;
+use App\prosvujusmev\Reservations\Listeners\SendSubstituteReservationCreatedNotification;
 use App\prosvujusmev\Reservations\Listeners\SendSubstituteReservationHasBecomeFullNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -86,6 +88,9 @@ class EventServiceProvider extends ServiceProvider
         SubstituteReservationHasBecomeFull::class => [
             SendSubstituteReservationHasBecomeFullNotification::class,
         ],
+        SubstituteReservationCreated::class => [
+            SendSubstituteReservationCreatedNotification::class,
+        ]
     ];
 
     /**

@@ -16,6 +16,7 @@ Route::group(['namespace' => 'prosvujusmev\\'], function () {
     Route::group(['prefix' => '/public'], function() {
         Route::get('/reservations/{publicReservation}', 'Reservations\PublicReservationsController@show');
         Route::get('/reservations/{publicReservation}/confirm', 'Reservations\PublicReservationsController@confirm');
+        Route::get('/reservations/{publicReservation}/cancel', 'Reservations\PublicReservationsController@cancel');
     });
 
     // PUBLIC JSON RESPONSE ENDPOINTS
@@ -23,6 +24,8 @@ Route::group(['namespace' => 'prosvujusmev\\'], function () {
         Route::get('/reservations/{publicReservation}', 'Reservations\ApiPublicReservationsController@show');
         Route::put('/reservations/{publicReservation}', 'Reservations\ApiPublicReservationsController@update');
         Route::post('/reservations/{publicReservation}/cancel', 'Reservations\ApiPublicReservationsController@cancel');
+        
+        Route::post('/reservations/{publicReservation}/substitute', 'Reservations\ApiPublicReservationSubstituteController@store');
     });
 
     // JSON RESPONSE CALLS

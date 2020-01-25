@@ -13,7 +13,7 @@
                                 <div @click="activeTab='RESERVATION'" :class="{'flex px-4 py-3 cursor-pointer hover:text-gray-300': activeTab != 'RESERVATION', 'rounded-tl-lg flex py-3 px-4 text-purple-500 bg-gray-100': activeTab == 'RESERVATION'}">
                                     <div class="w-full font-bold">Vaše rezervace</div>
                                 </div>
-                                <div @click="activeTab='QUEUED_RESERVATION'" :class="{'flex px-4 py-3 cursor-pointer hover:text-gray-300': activeTab != 'QUEUED_RESERVATION', 'flex py-3 px-4 text-purple-500 bg-gray-100': activeTab == 'QUEUED_RESERVATION'}">
+                                <div v-if="reservation.queuedReservation !== null" @click="activeTab='QUEUED_RESERVATION'" :class="{'flex px-4 py-3 cursor-pointer hover:text-gray-300': activeTab != 'QUEUED_RESERVATION', 'flex py-3 px-4 text-purple-500 bg-gray-100': activeTab == 'QUEUED_RESERVATION'}">
                                     <div class="w-full font-bold">Náhradník v Termínu</div>
                                 </div>
                             </div>
@@ -78,9 +78,8 @@
                                     </div>
                                 </div>
                                 <div class="h-full flex items-end justify-end">
-                                    <button v-if="!reservation.queuedReservation.canChangeCourseDate" @click="showCreateQueuedReservationModal()" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded">Vytvořit náhradní termín</button>
                                     <button v-if="reservation.queuedReservation.canChangeCourseDate" :disabled="!reservation.queuedReservation.canChangeCourseDate" :class="{'opacity-50 cursor-not-allowed': !reservation.queuedReservation.canChangeCourseDate}" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded">Změnit Termín</button>
-                                    <button :disabled="!reservation.queuedReservation.canBeCanceled" :class="{'opacity-50 cursor-not-allowed': !reservation.queuedReservation.canBeCanceled}" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded" @click="showModal('cancel-queued-reservation-modal')">Zrušit</button>
+                                    <button v-if="reservation.queuedReservation.canChangeCourseDate" :disabled="!reservation.queuedReservation.canBeCanceled" :class="{'opacity-50 cursor-not-allowed': !reservation.queuedReservation.canBeCanceled}" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded" @click="showModal('cancel-queued-reservation-modal')">Zrušit</button>
                                 </div>
                             </div>
                         </div>
@@ -114,107 +113,59 @@
         </modal>
 
         <modal name="change-reservation-modal" width="480" height="auto">
-            <div class="w-full px-6 pt-6 pb-2">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-                    Kurz
-                </label>
-                <div class="relative">
-                    <select v-model="selectedCourse" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                        <option v-for="course in courses" :value="course">{{ course.name }}</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+            <div :class="{'pb-6': selectedCourseDate == null}">
+                <div class="w-full px-6 pt-6 pb-2">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+                        Kurz
+                    </label>
+                    <div class="relative">
+                        <select v-model="selectedCourse" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                            <option v-for="course in courses" :value="course">{{ course.name }}</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="selectedCourse != null" class="w-full px-6 pb-2">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Místo</label>
+                    <div class="relative">
+                        <select v-model="selectedCourseDateVenue" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            <option v-for="venue in getVenues()" :value="venue">{{ venue }}</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="selectedCourse != null && selectedCourseDateVenue != null" class="w-full px-6 pb-2">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Termín</label>
+                    <div class="relative">
+                        <select v-model="selectedCourseDate" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            <option value="-">-</option>
+                            <option :class="{'text-gray-300': localCourseDate.remaining == 0}" v-for="localCourseDate in filterCourseDatesForVenue(selectedCourseDateVenue)" :value="localCourseDate">
+                                {{ localCourseDate.fullDateForHumans }}
+                                <span class="italic" v-if="localCourseDate.remaining <= 5 && localCourseDate.remaining > 1">Poslední volná místa</span>
+                                <span class="italic font-bold" v-if="localCourseDate.remaining == 1">Poslední 1 volné místo</span>
+                                <span class="italic" v-if="localCourseDate.remaining == 0">Plno - Možnost náhradníka</span>
+                            </option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div v-if="selectedCourse != null" class="w-full px-6 pb-2">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Místo</label>
-                <div class="relative">
-                    <select v-model="selectedCourseDateVenue" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                        <option v-for="venue in getVenues()" :value="venue">{{ venue }}</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
-                </div>
-            </div>
-
-            <div v-if="selectedCourse != null && selectedCourseDateVenue != null" class="w-full px-6 pb-2">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Termín</label>
-                <div class="relative">
-                    <select v-model="selectedCourseDate" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                        <option value="-">-</option>
-                        <option :class="{'text-gray-300': localCourseDate.remaining == 0}" v-for="localCourseDate in filterCourseDatesForVenue(selectedCourseDateVenue)" :value="localCourseDate">
-                            {{ localCourseDate.fullDateForHumans }}
-                            <span class="italic" v-if="localCourseDate.remaining <= 5 && localCourseDate.remaining > 1">Poslední volná místa</span>
-                            <span class="italic font-bold" v-if="localCourseDate.remaining == 1">Poslední 1 volné místo</span>
-                            <span class="italic" v-if="localCourseDate.remaining == 0">Plno - Možnost náhradníka</span>
-                        </option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex justify-end pb-6 px-6">
-                <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded" @click="changeReservation()">Změnit</button>
+            <div class="flex justify-end pb-6 px-6 mt-3" v-if="selectedCourseDate">
+                <button v-if="selectedCourseDate.remaining == 0 && (reservation.queuedReservation === null || reservation.queuedReservation.status === 'CANCELED')" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded" @click="createSubstituteReservation()">Obsadit místo náhradník</button>
+                <button v-if="selectedCourseDate.remaining == 0 && (reservation.queuedReservation !== null && reservation.queuedReservation.status !== 'CANCELED')" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded" @click="changeReservation(reservation.queuedReservation.uuid)">Změnit místo náhradníka</button>
+                <button v-if="selectedCourseDate.remaining != 0" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded" @click="changeReservation(reservation.uuid)">Změnit</button>
                 <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded" @click="hideModal('change-reservation-modal')">Zrušit</button>
             </div>
         </modal>
-
-        <modal name="create-queued-reservation-modal" width="480" height="auto">
-            <div class="w-full px-6 pt-6 pb-2">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-                    Kurz
-                </label>
-                <div class="relative">
-                    <select v-model="selectedCourse" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                        <option v-for="course in courses" :value="course">{{ course.name }}</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
-                </div>
-            </div>
-
-            <div v-if="selectedCourse != null" class="w-full px-6 pb-2">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Místo</label>
-                <div class="relative">
-                    <select v-model="selectedCourseDateVenue" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                        <option v-for="venue in getVenues()" :value="venue">{{ venue }}</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
-                </div>
-            </div>
-
-            <div v-if="selectedCourse != null && selectedCourseDateVenue != null" class="w-full px-6 pb-2">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Termín</label>
-                <div class="relative">
-                    <select v-model="selectedCourseDate" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                        <option value="-">-</option>
-                        <option :class="{'text-gray-300': localCourseDate.remaining == 0}" v-for="localCourseDate in filterCourseDatesForVenue(selectedCourseDateVenue)" :value="localCourseDate">
-                            {{ localCourseDate.fullDateForHumans }}
-                            <span class="italic" v-if="localCourseDate.remaining <= 5 && localCourseDate.remaining > 1">Poslední volná místa</span>
-                            <span class="italic font-bold" v-if="localCourseDate.remaining == 1">Poslední 1 volné místo</span>
-                            <span class="italic" v-if="localCourseDate.remaining == 0">Plno - Možnost náhradníka</span>
-                        </option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex justify-end pb-6 px-6">
-                <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded" @click="createQueuedReservation()">Vytvořit</button>
-                <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded" @click="hideModal('create-queued-reservation-modal')">Zrušit</button>
-            </div>
-        </modal>
-
     </div>
 </template>
 
@@ -251,8 +202,8 @@ export default {
                 });
         },
 
-        changeReservation() {
-            axios.put('/api/public/reservations/' + this.reservationUuid, {
+        changeReservation(reservationUuid) {
+            axios.put('/api/public/reservations/' + reservationUuid, {
                 courseDateId: this.selectedCourseDate.id,
             }).then((response) => {
                 this.getPublicReservation(this.reservationUuid);
@@ -270,6 +221,15 @@ export default {
                         this.hideModal('cancel-queued-reservation-modal');
                     }
                 });
+        },
+
+        createSubstituteReservation () {
+            axios.post('/api/public/reservations/' + this.reservationUuid + '/substitute', {
+                courseDateId: this.selectedCourseDate.id,
+            }).then((response) => {
+                this.getPublicReservation(this.reservationUuid);
+                this.hideModal('change-reservation-modal');
+            });
         },
 
         showModal (name) {
@@ -296,14 +256,14 @@ export default {
 
         filterCourseDatesForVenue(venue) {
             return this.selectedCourse.courseDates.filter(courseDate => {
-                return courseDate.venue == venue && courseDate.remaining !== 0 && courseDate.id !== this.reservation.courseDate.id;
+                return courseDate.venue == venue && courseDate.id !== this.reservation.courseDate.id;
             });
         },
 
         getVenues() {
             let venues = [];
             this.selectedCourse.courseDates.forEach(courseDate => {
-                if (!venues.includes(courseDate.venue) && courseDate.remaining !== 0 && courseDate.id !== this.reservation.courseDate.id) {
+                if (!venues.includes(courseDate.venue) && courseDate.id !== this.reservation.courseDate.id) {
                     venues.push(courseDate.venue);
                 }
             });

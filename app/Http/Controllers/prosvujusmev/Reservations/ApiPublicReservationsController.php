@@ -23,9 +23,15 @@ class ApiPublicReservationsController extends Controller
     public function update(Request $request, Reservation $publicReservation)
     {
         abort_if(!$publicReservation->canChangeCourseDate(), 404);
-        $this->validate($request, [
-            'courseDateId' => ['required', new AvailableCourseDate],
-        ]);
+        if ($publicReservation->isSubstitute()) {
+            $this->validate($request, [
+                'courseDateId' => ['required', 'exists:course_dates,id'],
+            ]);
+        } else {
+            $this->validate($request, [
+                'courseDateId' => ['required', new AvailableCourseDate],
+            ]);
+        }
 
         $oldCourseDate = $publicReservation->courseDate;
         $now = \Carbon\Carbon::now();

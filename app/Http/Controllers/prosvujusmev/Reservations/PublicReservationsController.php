@@ -37,4 +37,16 @@ class PublicReservationsController extends Controller
             'reservation' => new PublicReservationResource($publicReservation->fresh()),
         ]);
     }
+
+    public function cancel(Request $request, Reservation $publicReservation)
+    {
+        abort_if(!$publicReservation->isSubstitute(), 404);
+        abort_if($publicReservation->status != Reservation::STATUS_QUEUED, 404);
+
+        app(ReservationRepository::class)->cancel($publicReservation);
+
+        return view('reservations.canceled', [
+            'reservation' => new PublicReservationResource($publicReservation->fresh()),
+        ]);
+    }
 }
