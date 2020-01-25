@@ -114,7 +114,7 @@ class ReservationsController extends Controller
 
     public function approve(Request $request, Reservation $reservation)
     {
-        if ($reservation->status !== 'Schváleno') {
+        if ($reservation->status !== Reservation::STATUS_APPROVED) {
             $reservation = app(ReservationRepository::class)->approve($reservation);
             $result = true;
         } else {
@@ -124,6 +124,21 @@ class ReservationsController extends Controller
             'success' => $result,
             'reservation' => $reservation,
             'message' => $result ? 'Rezervace byla schválena.' : 'Rezervaci se nepodařilo schválit.',
+        ]);
+    }
+
+    public function reject(Request $request, Reservation $reservation)
+    {
+        if ($reservation->status !== Reservation::STATUS_REJECTED) {
+            $reservation = app(ReservationRepository::class)->reject($reservation);
+            $result = true;
+        } else {
+            $result = false;
+        }     
+        return response()->json([
+            'success' => $result,
+            'reservation' => $reservation,
+            'message' => $result ? 'Rezervace byla zamítnuta.' : 'Rezervaci se nepodařilo zamítnout.',
         ]);
     }
 

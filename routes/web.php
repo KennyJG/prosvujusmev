@@ -65,6 +65,7 @@ Route::group(['namespace' => 'prosvujusmev\\'], function () {
         Route::put('/reservations/{reservation}', 'Reservations\ReservationsController@update');
         Route::delete('/reservations/{reservation}', 'Reservations\ReservationsController@destroy');
         Route::post('/reservations/{reservation}/approve', 'Reservations\ReservationsController@approve');
+        Route::post('/reservations/{reservation}/reject', 'Reservations\ReservationsController@reject');
         Route::post('/reservations/{reservation}/complete', 'Reservations\ReservationsController@complete');
         // Route::get('/courses/{course}/dates', 'Courses\CourseDatesController@index');
         // Route::get('/courses/{course}/dates/{courseDate}', 'Courses\CourseDatesController@show');

@@ -7,6 +7,7 @@ use App\prosvujusmev\Reservations\Events\ReservationCanceled;
 use App\prosvujusmev\Reservations\Events\ReservationCompleted;
 use App\prosvujusmev\Reservations\Events\ReservationConditioned;
 use App\prosvujusmev\Reservations\Events\ReservationDeleted;
+use App\prosvujusmev\Reservations\Events\ReservationRejected;
 use App\prosvujusmev\Reservations\Events\ReservationSuspended;
 use App\prosvujusmev\Reservations\Events\SubstituteReservationHasBecomeFull;
 use App\prosvujusmev\Reservations\Reservation;
@@ -47,6 +48,7 @@ class ReservationRepository
         ]);
         return $reservation->fresh();
     }
+    
     /**
      *  Approves Reservation
      * 
@@ -65,6 +67,27 @@ class ReservationRepository
             'new_status' => Reservation::STATUS_APPROVED,
         ]);
         event(new ReservationApproved($reservation->fresh()));
+        return $reservation->fresh();
+    }
+    
+    /**
+     *  Reject Reservation
+     * 
+     *  @param \App\prosvujusmev\Reservations\Reservation $reservation
+     *  @return \App\prosvujusmev\Reservations\Reservation
+     */
+    public function reject(Reservation $reservation): Reservation
+    {
+        $oldStatus = $reservation->status;
+        $reservation->update([
+            'status' => Reservation::STATUS_REJECTED,
+        ]);
+        ReservationStatusRecord::create([
+            'reservation_id' => $reservation->id,
+            'old_status' => $oldStatus,
+            'new_status' => Reservation::STATUS_REJECTED,
+        ]);
+        event(new ReservationRejected($reservation->fresh()));
         return $reservation->fresh();
     }
     
@@ -174,7 +197,7 @@ class ReservationRepository
         ]);
 
         $reservation->update([
-            'status' => Reservation::STATUS_UNAPPROVED,
+            'status' => Reservation::STATUS_REJECTED,
             'reservation_id' => null,
         ]);
 

@@ -11,6 +11,7 @@ use App\prosvujusmev\Reservations\Events\ReservationConditioned;
 use App\prosvujusmev\Reservations\Events\ReservationCourseDateChanged;
 use App\prosvujusmev\Reservations\Events\ReservationCreated;
 use App\prosvujusmev\Reservations\Events\ReservationDeleted;
+use App\prosvujusmev\Reservations\Events\ReservationRejected;
 use App\prosvujusmev\Reservations\Events\ReservationSuspended;
 use App\prosvujusmev\Reservations\Events\SubstituteReservationHasBecomeFull;
 use App\prosvujusmev\Reservations\Listeners\CancelSubstituteReservation;
@@ -25,6 +26,7 @@ use App\prosvujusmev\Reservations\Listeners\SendReservationConditionedNotificati
 use App\prosvujusmev\Reservations\Listeners\SendReservationCourseDateChanged;
 use App\prosvujusmev\Reservations\Listeners\SendReservationCreatedNotification;
 use App\prosvujusmev\Reservations\Listeners\SendReservationDeletedNotification;
+use App\prosvujusmev\Reservations\Listeners\SendReservationRejectedNotification;
 use App\prosvujusmev\Reservations\Listeners\SendReservationSuspendedNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -48,6 +50,12 @@ class EventServiceProvider extends ServiceProvider
         ],
         ReservationApproved::class => [
             SendReservationApprovedNotification::class,
+            SendFirstCourseInformationMail::class,
+            SendFinalCourseInformationMail::class,
+        ],
+        ReservationRejected::class => [
+            SendReservationRejectedNotification::class,
+            SendCourseDateAvailableMail::class,
         ],
         ReservationCompleted::class => [
             SendReservationCompletedNotification::class,
@@ -63,8 +71,8 @@ class EventServiceProvider extends ServiceProvider
         ],
         ReservationCourseDateChanged::class => [
             SendReservationCourseDateChanged::class,
-            SendFirstCourseInformationMail::class,
-            SendFinalCourseInformationMail::class,
+            // SendFirstCourseInformationMail::class,
+            // SendFinalCourseInformationMail::class,
         ],
         CourseDateSpotFreed::class => [
             SendCourseDateAvailableMail::class,

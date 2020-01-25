@@ -2011,6 +2011,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['courseDate', 'backUrl'],
   data: function data() {
@@ -2025,6 +2039,24 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    showModal: function showModal(name) {
+      var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      if (callback != null) {
+        callback();
+      }
+
+      this.$modal.show(name);
+    },
+    hideModal: function hideModal(name) {
+      var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      if (callback != null) {
+        callback();
+      }
+
+      this.$modal.hide(name);
+    },
     deleteCourseDate: function deleteCourseDate() {
       if (confirm('Opravdu chcete odstranit tento termín? (Všechny rezervace budou zrušeny)')) {
         axios["delete"]('/admin/course-dates/' + this.actualCourseDate.id).then(function (response) {
@@ -2080,13 +2112,13 @@ __webpack_require__.r(__webpack_exports__);
         _this3.displayMessageFromResponse(response);
       });
     },
-    completeReservation: function completeReservation(id) {
+    rejectReservation: function rejectReservation(id) {
       var _this4 = this;
 
-      axios.post('/admin/reservations/' + id + '/complete').then(function (response) {
+      axios.post('/admin/reservations/' + id + '/reject').then(function (response) {
         _this4.actualCourseDate.reservations.forEach(function (reservation, index) {
           if (reservation.id == id) {
-            _this4.actualCourseDate.reservations[index].status = 'COMPLETED';
+            _this4.actualCourseDate.reservations[index].status = 'REJECTED';
             return;
           }
         });
@@ -2094,13 +2126,27 @@ __webpack_require__.r(__webpack_exports__);
         _this4.displayMessageFromResponse(response);
       });
     },
-    deleteReservation: function deleteReservation(id) {
+    completeReservation: function completeReservation(id) {
       var _this5 = this;
 
-      axios["delete"]('/admin/reservations/' + id).then(function (response) {
-        _this5.refreshCourseDate();
+      axios.post('/admin/reservations/' + id + '/complete').then(function (response) {
+        _this5.actualCourseDate.reservations.forEach(function (reservation, index) {
+          if (reservation.id == id) {
+            _this5.actualCourseDate.reservations[index].status = 'COMPLETED';
+            return;
+          }
+        });
 
         _this5.displayMessageFromResponse(response);
+      });
+    },
+    deleteReservation: function deleteReservation(id) {
+      var _this6 = this;
+
+      axios["delete"]('/admin/reservations/' + id).then(function (response) {
+        _this6.refreshCourseDate();
+
+        _this6.displayMessageFromResponse(response);
       });
     },
     displayMessageFromResponse: function displayMessageFromResponse(response) {
@@ -2111,19 +2157,19 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     displaySuccessMessage: function displaySuccessMessage(message) {
-      var _this6 = this;
+      var _this7 = this;
 
       this.successMessage = message;
       setTimeout(function () {
-        _this6.successMessage = null;
+        _this7.successMessage = null;
       }, 4000);
     },
     displayErrorMessage: function displayErrorMessage(message) {
-      var _this7 = this;
+      var _this8 = this;
 
       this.errorMessage = message;
       setTimeout(function () {
-        _this7.errorMessage = null;
+        _this8.errorMessage = null;
       }, 4000);
     },
     toggleCourseDateCompletionAttendee: function toggleCourseDateCompletionAttendee(id) {
@@ -2136,16 +2182,20 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     completeCourseDate: function completeCourseDate() {
-      var _this8 = this;
+      var _this9 = this;
 
       axios.post('/admin/course-dates/' + this.actualCourseDate.id + '/complete', {
         attendedReservationIds: this.attendedReservationIds
       }).then(function (response) {
-        _this8.attendedReservationIds = [];
+        _this9.attendedReservationIds = [];
 
-        _this8.refreshCourseDate();
+        _this9.refreshCourseDate();
 
-        _this8.displayMessageFromResponse(response);
+        _this9.displayMessageFromResponse(response);
+
+        _this9.hideModal('complete-course-date-confirmation');
+
+        _this9.hideModal('complete-course-date');
       });
     }
   }
@@ -21810,7 +21860,11 @@ var render = function() {
                 }
               ],
               staticClass: "cursor-pointer",
-              attrs: { href: "#complete-course-date" }
+              on: {
+                click: function($event) {
+                  return _vm.showModal("complete-course-date")
+                }
+              }
             },
             [
               _c(
@@ -22365,7 +22419,7 @@ var render = function() {
                       [
                         _c("div", { staticClass: "inline-flex" }, [
                           _c(
-                            "a",
+                            "button",
                             {
                               directives: [
                                 {
@@ -22382,22 +22436,22 @@ var render = function() {
                                 "bg-gray-100": i % 2 == 0,
                                 "bg-gray-300": i % 2 != 0
                               },
-                              attrs: { href: "#complete-reservation-modal" },
                               on: {
                                 click: function($event) {
-                                  _vm.selectedReservation = reservation
+                                  _vm.showModal(
+                                    "complete-reservation-modal",
+                                    function() {
+                                      _vm.selectedReservation = reservation
+                                    }
+                                  )
                                 }
                               }
                             },
-                            [
-                              _vm._v(
-                                "\n                                        Dokončit\n                                    "
-                              )
-                            ]
+                            [_vm._v("Dokončit")]
                           ),
                           _vm._v(" "),
                           _c(
-                            "a",
+                            "button",
                             {
                               directives: [
                                 {
@@ -22414,22 +22468,54 @@ var render = function() {
                                 "bg-gray-100": i % 2 == 0,
                                 "bg-gray-300": i % 2 != 0
                               },
-                              attrs: { href: "#approve-reservation-modal" },
                               on: {
                                 click: function($event) {
-                                  _vm.selectedReservation = reservation
+                                  _vm.showModal(
+                                    "reject-reservation-modal",
+                                    function() {
+                                      _vm.selectedReservation = reservation
+                                    }
+                                  )
                                 }
                               }
                             },
-                            [
-                              _vm._v(
-                                "\n                                        Schválit \n                                    "
-                              )
-                            ]
+                            [_vm._v("Zamítnout")]
                           ),
                           _vm._v(" "),
                           _c(
-                            "a",
+                            "button",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: reservation.status === "UNAPPROVED",
+                                  expression:
+                                    "reservation.status === 'UNAPPROVED'"
+                                }
+                              ],
+                              staticClass:
+                                "hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 cursor-pointer",
+                              class: {
+                                "bg-gray-100": i % 2 == 0,
+                                "bg-gray-300": i % 2 != 0
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.showModal(
+                                    "approve-reservation-modal",
+                                    function() {
+                                      _vm.selectedReservation = reservation
+                                    }
+                                  )
+                                }
+                              }
+                            },
+                            [_vm._v("Schválit")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
                             {
                               staticClass:
                                 "hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r cursor-pointer",
@@ -22437,18 +22523,18 @@ var render = function() {
                                 "bg-gray-100": i % 2 == 0,
                                 "bg-gray-300": i % 2 != 0
                               },
-                              attrs: { href: "#delete-reservation-modal" },
                               on: {
                                 click: function($event) {
-                                  _vm.selectedReservation = reservation
+                                  _vm.showModal(
+                                    "delete-reservation-modal",
+                                    function() {
+                                      _vm.selectedReservation = reservation
+                                    }
+                                  )
                                 }
                               }
                             },
-                            [
-                              _vm._v(
-                                "\n                                        Odstranit\n                                    "
-                              )
-                            ]
+                            [_vm._v("Odstranit")]
                           )
                         ])
                       ]
@@ -22462,307 +22548,176 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm.selectedReservation !== null
-        ? _c(
-            "modal",
-            {
-              attrs: { name: "approve-reservation-modal" },
-              scopedSlots: _vm._u(
-                [
-                  {
-                    key: "footer",
-                    fn: function() {
-                      return [
-                        _c(
-                          "a",
-                          {
-                            staticClass:
-                              "px-4 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white",
-                            attrs: { href: "#" }
-                          },
-                          [_vm._v("Zrušit")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass:
-                              "px-4 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.approveReservation(
-                                  _vm.selectedReservation.id
-                                )
-                              }
-                            }
-                          },
-                          [_vm._v("Schválit")]
-                        )
-                      ]
-                    },
-                    proxy: true
-                  }
-                ],
-                null,
-                false,
-                196997410
-              )
-            },
-            [
-              _c("h1", { staticClass: "font-bold text-xl mb-2" }, [
-                _vm._v("Schválení rezervace")
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "mt-4" }, [
-                _vm._v(
-                  'Opravdu chcete schválit rezervaci s ID "' +
-                    _vm._s(_vm.selectedReservation.id) +
-                    '"'
-                )
-              ])
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.selectedReservation !== null
-        ? _c(
-            "modal",
-            {
-              attrs: { name: "complete-reservation-modal" },
-              scopedSlots: _vm._u(
-                [
-                  {
-                    key: "footer",
-                    fn: function() {
-                      return [
-                        _c(
-                          "a",
-                          {
-                            staticClass:
-                              "px-4 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white",
-                            attrs: { href: "#" }
-                          },
-                          [_vm._v("Zrušit")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass:
-                              "px-4 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.completeReservation(
-                                  _vm.selectedReservation.id
-                                )
-                              }
-                            }
-                          },
-                          [_vm._v("Dokončit")]
-                        )
-                      ]
-                    },
-                    proxy: true
-                  }
-                ],
-                null,
-                false,
-                1514240843
-              )
-            },
-            [
-              _c("h1", { staticClass: "font-bold text-xl mb-2" }, [
-                _vm._v("Dokončení rezervace")
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "mt-4" }, [
-                _vm._v(
-                  'Opravdu chcete dokončit rezervaci s ID "' +
-                    _vm._s(_vm.selectedReservation.id) +
-                    '"'
-                )
-              ])
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.selectedReservation !== null
-        ? _c(
-            "modal",
-            {
-              attrs: { name: "delete-reservation-modal" },
-              scopedSlots: _vm._u(
-                [
-                  {
-                    key: "footer",
-                    fn: function() {
-                      return [
-                        _c(
-                          "a",
-                          {
-                            staticClass:
-                              "px-4 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white",
-                            attrs: { href: "#" }
-                          },
-                          [_vm._v("Zrušit")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass:
-                              "px-4 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.deleteReservation(
-                                  _vm.selectedReservation.id
-                                )
-                              }
-                            }
-                          },
-                          [_vm._v("Odstranit")]
-                        )
-                      ]
-                    },
-                    proxy: true
-                  }
-                ],
-                null,
-                false,
-                160875814
-              )
-            },
-            [
-              _c("h1", { staticClass: "font-bold text-xl mb-2" }, [
-                _vm._v("Odstranění rezervace")
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "mt-4" }, [
-                _vm._v(
-                  'Opravdu chcete odstranit rezervaci s ID "' +
-                    _vm._s(_vm.selectedReservation.id) +
-                    '"'
-                )
-              ])
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
       _c(
         "modal",
         {
-          attrs: { name: "complete-course-date" },
-          scopedSlots: _vm._u([
-            {
-              key: "footer",
-              fn: function() {
-                return [
+          attrs: {
+            name: "approve-reservation-modal",
+            width: "480",
+            height: "auto"
+          }
+        },
+        [
+          _vm.selectedReservation
+            ? _c("div", { staticClass: "flex flex-col px-6 py-8" }, [
+                _c("h1", { staticClass: "font-bold text-xl mb-2" }, [
+                  _vm._v("Schválení rezervace")
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "mt-4" }, [
+                  _vm._v(
+                    'Opravdu chcete schválit rezervaci s ID "' +
+                      _vm._s(_vm.selectedReservation.id) +
+                      '"'
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex justify-end mt-5" }, [
                   _c(
-                    "a",
+                    "button",
                     {
                       staticClass:
                         "px-4 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white",
-                      attrs: { href: "#" }
+                      on: {
+                        click: function($event) {
+                          _vm.hideModal(
+                            "approve-reservation-modal",
+                            function() {
+                              _vm.selectedReservation = null
+                            }
+                          )
+                        }
+                      }
                     },
                     [_vm._v("Zrušit")]
                   ),
                   _vm._v(" "),
                   _c(
-                    "a",
+                    "button",
                     {
                       staticClass:
                         "px-4 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2",
-                      attrs: { href: "#complete-course-date-confirmation" }
-                    },
-                    [_vm._v("Dokončit")]
-                  )
-                ]
-              },
-              proxy: true
-            }
-          ])
-        },
-        [
-          _c("h1", { staticClass: "font-bold text-xl mb-2" }, [
-            _vm._v("Dokončení termínu")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "mt-4" }, [
-            _vm._v("Zaškrtejte účastníky kteří byli přítomni na termínu.")
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "p-6" },
-            _vm._l(_vm.actualCourseDate.reservations, function(reservation) {
-              return _c(
-                "label",
-                { staticClass: "flex justify-start items-start mt-2" },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "bg-white border-2 rounded border-gray-400 w-6 h-6 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-blue-500"
-                    },
-                    [
-                      _c("input", {
-                        staticClass: "opacity-0 absolute",
-                        attrs: { type: "checkbox" },
-                        on: {
-                          change: function($event) {
-                            return _vm.toggleCourseDateCompletionAttendee(
-                              reservation.id
-                            )
-                          }
+                      on: {
+                        click: function($event) {
+                          _vm.hideModal(
+                            "approve-reservation-modal",
+                            _vm.approveReservation(_vm.selectedReservation.id)
+                          )
                         }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "svg",
-                        {
-                          staticClass:
-                            "fill-current hidden w-4 h-4 text-green-500 pointer-events-none",
-                          attrs: { viewBox: "0 0 20 20" }
-                        },
-                        [
-                          _c("path", {
-                            attrs: { d: "M0 11l2-2 5 5L18 3l2 2L7 18z" }
-                          })
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "select-none" }, [
-                    _vm._v(_vm._s(reservation.id))
-                  ])
-                ]
-              )
-            }),
-            0
-          )
+                      }
+                    },
+                    [_vm._v("Schválit")]
+                  )
+                ])
+              ])
+            : _vm._e()
         ]
       ),
       _vm._v(" "),
       _c(
         "modal",
         {
-          attrs: { name: "complete-course-date-confirmation" },
-          scopedSlots: _vm._u([
-            {
-              key: "footer",
-              fn: function() {
-                return [
+          attrs: {
+            name: "reject-reservation-modal",
+            width: "480",
+            height: "auto"
+          }
+        },
+        [
+          _vm.selectedReservation
+            ? _c("div", { staticClass: "flex flex-col px-6 py-8" }, [
+                _c("h1", { staticClass: "font-bold text-xl mb-2" }, [
+                  _vm._v("Zamítnutí rezervace")
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "mt-4" }, [
+                  _vm._v(
+                    'Opravdu chcete zamítnout rezervaci s ID "' +
+                      _vm._s(_vm.selectedReservation.id) +
+                      '"'
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex justify-end mt-5" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "px-4 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white",
+                      on: {
+                        click: function($event) {
+                          _vm.hideModal("reject-reservation-modal", function() {
+                            _vm.selectedReservation = null
+                          })
+                        }
+                      }
+                    },
+                    [_vm._v("Zrušit")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "px-4 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2",
+                      on: {
+                        click: function($event) {
+                          _vm.hideModal(
+                            "reject-reservation-modal",
+                            _vm.rejectReservation(_vm.selectedReservation.id)
+                          )
+                        }
+                      }
+                    },
+                    [_vm._v("Zamítnout")]
+                  )
+                ])
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "modal",
+        {
+          attrs: {
+            name: "complete-reservation-modal",
+            width: "480",
+            height: "auto"
+          }
+        },
+        [
+          _vm.selectedReservation
+            ? _c("div", { staticClass: "flex flex-col px-6 py-8" }, [
+                _c("h1", { staticClass: "font-bold text-xl mb-2" }, [
+                  _vm._v("Dokončení rezervace")
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "mt-4" }, [
+                  _vm._v(
+                    'Opravdu chcete dokončit rezervaci s ID "' +
+                      _vm._s(_vm.selectedReservation.id) +
+                      '"'
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex justify-end mt-5" }, [
                   _c(
                     "a",
                     {
                       staticClass:
                         "px-4 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white",
-                      attrs: { href: "#" }
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          _vm.hideModal(
+                            "complete-reservation-modal",
+                            function() {
+                              _vm.selectedReservation = null
+                            }
+                          )
+                        }
+                      }
                     },
                     [_vm._v("Zrušit")]
                   ),
@@ -22775,25 +22730,228 @@ var render = function() {
                       attrs: { href: "#" },
                       on: {
                         click: function($event) {
-                          return _vm.completeCourseDate()
+                          _vm.hideModal(
+                            "complete-reservation-modal",
+                            _vm.completeReservation(_vm.selectedReservation.id)
+                          )
                         }
                       }
                     },
                     [_vm._v("Dokončit")]
                   )
-                ]
-              },
-              proxy: true
-            }
-          ])
+                ])
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "modal",
+        {
+          attrs: {
+            name: "delete-reservation-modal",
+            width: "480",
+            height: "auto"
+          }
         },
         [
-          _c("h1", { staticClass: "font-bold text-xl mb-2" }, [
-            _vm._v("Dokončení termínu")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "mt-4" }, [
-            _vm._v("Opravdu chcete dokončit tento termín?")
+          _vm.selectedReservation
+            ? _c("div", { staticClass: "flex flex-col px-6 py-8" }, [
+                _c("h1", { staticClass: "font-bold text-xl mb-2" }, [
+                  _vm._v("Odstranění rezervace")
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "mt-4" }, [
+                  _vm._v(
+                    'Opravdu chcete odstranit rezervaci s ID "' +
+                      _vm._s(_vm.selectedReservation.id) +
+                      '"'
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex justify-end mt-5" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "px-3 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white cursor-pointer",
+                      on: {
+                        click: function($event) {
+                          _vm.hideModal("delete-reservation-modal", function() {
+                            _vm.selectedReservation = null
+                          })
+                        }
+                      }
+                    },
+                    [_vm._v("Zrušit")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "px-3 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2 cursor-pointer",
+                      on: {
+                        click: function($event) {
+                          _vm.hideModal(
+                            "delete-reservation-modal",
+                            _vm.deleteReservation(_vm.selectedReservation.id)
+                          )
+                        }
+                      }
+                    },
+                    [_vm._v("Odstranit")]
+                  )
+                ])
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "modal",
+        {
+          attrs: { name: "complete-course-date", width: "480", height: "auto" }
+        },
+        [
+          _c("div", { staticClass: "flex flex-col px-6 py-8" }, [
+            _c("h1", { staticClass: "font-bold text-xl mb-2" }, [
+              _vm._v("Dokončení termínu")
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "mt-4" }, [
+              _vm._v("Zaškrtejte účastníky kteří byli přítomni na termínu.")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "p-6" },
+              _vm._l(_vm.actualCourseDate.reservations, function(reservation) {
+                return _c(
+                  "label",
+                  { staticClass: "flex justify-start items-start mt-2" },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "bg-white border-2 rounded border-gray-400 w-6 h-6 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-blue-500"
+                      },
+                      [
+                        _c("input", {
+                          staticClass: "opacity-0 absolute",
+                          attrs: { type: "checkbox" },
+                          on: {
+                            change: function($event) {
+                              return _vm.toggleCourseDateCompletionAttendee(
+                                reservation.id
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "svg",
+                          {
+                            staticClass:
+                              "fill-current hidden w-4 h-4 text-green-500 pointer-events-none",
+                            attrs: { viewBox: "0 0 20 20" }
+                          },
+                          [
+                            _c("path", {
+                              attrs: { d: "M0 11l2-2 5 5L18 3l2 2L7 18z" }
+                            })
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "select-none" }, [
+                      _vm._v(_vm._s(reservation.id))
+                    ])
+                  ]
+                )
+              }),
+              0
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex justify-end" }, [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded",
+                  on: {
+                    click: function($event) {
+                      return _vm.showModal("complete-course-date-confirmation")
+                    }
+                  }
+                },
+                [_vm._v("Dokončit")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded",
+                  on: {
+                    click: function($event) {
+                      return _vm.hideModal("complete-course-date")
+                    }
+                  }
+                },
+                [_vm._v("Zrušit")]
+              )
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "modal",
+        {
+          attrs: {
+            name: "complete-course-date-confirmation",
+            width: "480",
+            height: "auto"
+          }
+        },
+        [
+          _c("div", { staticClass: "flex flex-col" }, [
+            _c("div", { staticClass: "p-6" }, [
+              _vm._v("Opravdu chcete dokončit tento termín?")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex justify-end py-4 px-4" }, [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded",
+                  on: {
+                    click: function($event) {
+                      return _vm.completeCourseDate()
+                    }
+                  }
+                },
+                [_vm._v("Ano")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded",
+                  on: {
+                    click: function($event) {
+                      return _vm.hideModal("complete-course-date-confirmation")
+                    }
+                  }
+                },
+                [_vm._v("Ne")]
+              )
+            ])
           ])
         ]
       ),

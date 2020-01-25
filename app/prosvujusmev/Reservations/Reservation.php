@@ -30,6 +30,7 @@ class Reservation extends Model
     const STATUS_SUSPENDED = 'SUSPENDED';
     const STATUS_CANCELED = 'CANCELED';
     const STATUS_QUEUED = 'QUEUED';
+    const STATUS_REJECTED = 'REJECTED';
 
     const SOURCE_TYPE_SLEVOMAT = 'SLEVOMAT';
     const SOURCE_TYPE_FUNFIRST = 'FUNFIRST';
