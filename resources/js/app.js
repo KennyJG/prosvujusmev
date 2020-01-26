@@ -4,6 +4,7 @@ window.Vue = require('vue');
  
 // Admin components
 Vue.component('navbar', require('./components/Admin/Navbar.vue').default);
+Vue.component('dashboard', require('./components/Admin/Dashboard.vue').default);
 Vue.component('confirmation-modal', require('./components/Admin/Modals/Confirmation.vue').default);
 Vue.component('course-dates-list', require('./components/Admin/Courses/CourseDatesList.vue').default);
 Vue.component('course-date', require('./components/Admin/Courses/CourseDate.vue').default);
@@ -17,7 +18,10 @@ Vue.component('reservation-form', require('./components/Reservations/Reservation
 Vue.component('public-reservation', require('./components/Reservations/PublicReservation.vue').default);
 
 // Utils
-// Vue.component('modal', require('./components/Utils/Modal.vue').default);
+Vue.component('line-chart', require('./components/Utils/Charts/LineChart.vue').default);
+Vue.component('bar-chart', require('./components/Utils/Charts/BarChart.vue').default);
+Vue.component('pie-chart', require('./components/Utils/Charts/PieChart.vue').default);
+Vue.component('doughnut-chart', require('./components/Utils/Charts/DoughnutChart.vue').default);
 
 import VModal from 'vue-js-modal';
 Vue.use(VModal);

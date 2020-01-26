@@ -42,6 +42,8 @@ Route::group(['namespace' => 'prosvujusmev\\'], function () {
     Route::post('/reservations', 'Reservations\ReservationsController@store');
 
     Route::group(['prefix' => '/admin', 'namespace' => 'Admin\\'], function () {
+        Route::get('/stats', 'StatsController@index');
+
         Route::get('/', 'AdminController@index');
 
         Route::get('/dashboard', 'DashboardController@index');
