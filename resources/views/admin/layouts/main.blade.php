@@ -13,6 +13,6 @@
     <div id="app" class="min-h-screen min-w-screen">
         @yield('content')
     </div>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ env('APP_ENV') === 'local' ? 'http://localhost:8080/js/app.js' : asset('js/app.js') }}"></script>
 </body>
 </html>
