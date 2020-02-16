@@ -10,21 +10,20 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::group(['namespace' => 'prosvujusmev\\'], function () {
     // PUBLIC VIEW RESPONSE ENDPOINTS
-    Route::group(['prefix' => '/public'], function() {
+    Route::group(['prefix' => '/public'], function () {
         Route::get('/reservations/{publicReservation}', 'Reservations\PublicReservationsController@show');
         Route::get('/reservations/{publicReservation}/confirm', 'Reservations\PublicReservationsController@confirm');
         Route::get('/reservations/{publicReservation}/cancel', 'Reservations\PublicReservationsController@cancel');
     });
 
     // PUBLIC JSON RESPONSE ENDPOINTS
-    Route::group(['prefix' => '/api/public'], function() {
+    Route::group(['prefix' => '/api/public'], function () {
         Route::get('/reservations/{publicReservation}', 'Reservations\ApiPublicReservationsController@show');
         Route::put('/reservations/{publicReservation}', 'Reservations\ApiPublicReservationsController@update');
         Route::post('/reservations/{publicReservation}/cancel', 'Reservations\ApiPublicReservationsController@cancel');
-        
+
         Route::post('/reservations/{publicReservation}/substitute', 'Reservations\ApiPublicReservationSubstituteController@store');
     });
 

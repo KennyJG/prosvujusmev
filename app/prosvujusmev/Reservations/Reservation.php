@@ -22,6 +22,8 @@ class Reservation extends Model
         'reservation_id',
     ];
 
+    public $appends = ['createdAtForHumans'];
+
     const STATUS_CREATED = 'CREATED';
     const STATUS_UNAPPROVED = 'UNAPPROVED';
     const STATUS_APPROVED = 'APPROVED';
@@ -96,5 +98,11 @@ class Reservation extends Model
             self::STATUS_APPROVED,
             self::STATUS_QUEUED,
         ]);
+    }
+
+    public function getCreatedAtForHumansAttribute()
+    {
+        \Carbon\Carbon::setLocale('cs');
+        return $this->created_at->diffForHumans();
     }
 }

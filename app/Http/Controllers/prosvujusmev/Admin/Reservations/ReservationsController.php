@@ -119,7 +119,7 @@ class ReservationsController extends Controller
             $result = true;
         } else {
             $result = false;
-        }     
+        }
         return response()->json([
             'success' => $result,
             'reservation' => $reservation,
@@ -134,7 +134,7 @@ class ReservationsController extends Controller
             $result = true;
         } else {
             $result = false;
-        }     
+        }
         return response()->json([
             'success' => $result,
             'reservation' => $reservation,
@@ -149,7 +149,7 @@ class ReservationsController extends Controller
             $result = true;
         } else {
             $result = false;
-        } 
+        }
         return response()->json([
             'success' => $result,
             'reservation' => $reservation,
