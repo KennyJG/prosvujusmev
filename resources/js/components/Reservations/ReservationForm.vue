@@ -39,7 +39,8 @@
                                 <option value="-">-</option>
                                 <option :class="{'text-gray-300': localCourseDate.remaining == 0}" v-for="localCourseDate in filterCourseDatesForVenue(selectedCourseDateVenue)" :value="localCourseDate">
                                     {{ localCourseDate.fullDateForHumans }}
-                                    <span class="italic" v-if="localCourseDate.remaining <= 5 && localCourseDate.remaining > 1">Poslední volná místa</span>
+                                    <span class="italic" v-if="localCourseDate.remaining <= 5 && localCourseDate.remaining > 2">Poslední volná místa</span>
+                                    <span class="italic font-bold" v-if="localCourseDate.remaining == 2">Poslední dvě volná místa</span>
                                     <span class="italic font-bold" v-if="localCourseDate.remaining == 1">Poslední 1 volné místo</span>
                                     <span class="italic" v-if="localCourseDate.remaining == 0">Plno - Možnost náhradníka</span>
                                 </option>
@@ -99,7 +100,8 @@
                                                 <option value="-">-</option>
                                                 <option v-if="localCourseDate.remaining !== 0" v-for="localCourseDate in filterCourseDatesForVenue(mainCourseDateVenue)" :value="localCourseDate">
                                                     {{ localCourseDate.fullDateForHumans }}
-                                                    <span class="italic" v-if="localCourseDate.remaining <= 5 && localCourseDate.remaining > 1">Poslední volná místa</span>
+                                                    <span class="italic" v-if="localCourseDate.remaining <= 5 && localCourseDate.remaining > 2">Poslední volná místa</span>
+                                                    <span class="italic font-bold" v-if="localCourseDate.remaining == 2">Poslední dvě volná místa</span>
                                                     <span class="italic font-bold" v-if="localCourseDate.remaining == 1">Poslední 1 volné místo</span>
                                                 </option>
                                             </select>

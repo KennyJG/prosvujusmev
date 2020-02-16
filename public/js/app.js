@@ -3410,6 +3410,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['reservationUuid'],
   data: function data() {
@@ -3526,6 +3527,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -20331,7 +20334,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* Enter and leave animations can use different */\n /* durations and timing functions.              */\n.slide-fade-enter-active {\n     -webkit-transition: all .3s ease;\n     transition: all .3s ease;\n}\n.slide-fade-leave-active {\n     -webkit-transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n     transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter, .slide-fade-leave-to\n     /* .slide-fade-leave-active below version 2.1.8 */ {\n     -webkit-transform: translateX(10px);\n             transform: translateX(10px);\n     opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* Enter and leave animations can use different */\n /* durations and timing functions.              */\n.slide-fade-enter-active {\n     -webkit-transition: all .3s ease;\n     transition: all .3s ease;\n}\n.slide-fade-leave-active {\n     -webkit-transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n     transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter, .slide-fade-leave-to\n     /* .slide-fade-leave-active below version 2.1.8 */ {\n     -webkit-transform: translateX(10px);\n             transform: translateX(10px);\n     opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -61055,10 +61058,18 @@ var render = function() {
                                     "\n                            "
                                 ),
                                 localCourseDate.remaining <= 5 &&
-                                localCourseDate.remaining > 1
+                                localCourseDate.remaining > 2
                                   ? _c("span", { staticClass: "italic" }, [
                                       _vm._v("Poslední volná místa")
                                     ])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                localCourseDate.remaining == 2
+                                  ? _c(
+                                      "span",
+                                      { staticClass: "italic font-bold" },
+                                      [_vm._v("Poslední dvě volná místa")]
+                                    )
                                   : _vm._e(),
                                 _vm._v(" "),
                                 localCourseDate.remaining == 1
@@ -61512,10 +61523,18 @@ var render = function() {
                                     "\n                                "
                                 ),
                                 localCourseDate.remaining <= 5 &&
-                                localCourseDate.remaining > 1
+                                localCourseDate.remaining > 2
                                   ? _c("span", { staticClass: "italic" }, [
                                       _vm._v("Poslední volná místa")
                                     ])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                localCourseDate.remaining == 2
+                                  ? _c(
+                                      "span",
+                                      { staticClass: "italic font-bold" },
+                                      [_vm._v("Poslední dvě volná místa")]
+                                    )
                                   : _vm._e(),
                                 _vm._v(" "),
                                 localCourseDate.remaining == 1
@@ -61960,7 +61979,7 @@ var render = function() {
                                                           localCourseDate.remaining <=
                                                             5 &&
                                                           localCourseDate.remaining >
-                                                            1
+                                                            2
                                                             ? _c(
                                                                 "span",
                                                                 {
@@ -61970,6 +61989,22 @@ var render = function() {
                                                                 [
                                                                   _vm._v(
                                                                     "Poslední volná místa"
+                                                                  )
+                                                                ]
+                                                              )
+                                                            : _vm._e(),
+                                                          _vm._v(" "),
+                                                          localCourseDate.remaining ==
+                                                          2
+                                                            ? _c(
+                                                                "span",
+                                                                {
+                                                                  staticClass:
+                                                                    "italic font-bold"
+                                                                },
+                                                                [
+                                                                  _vm._v(
+                                                                    "Poslední dvě volná místa"
                                                                   )
                                                                 ]
                                                               )
