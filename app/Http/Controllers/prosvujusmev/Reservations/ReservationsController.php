@@ -38,10 +38,10 @@ class ReservationsController extends Controller
         ];
 
         $customMessages = [
-            'reservations.*.sourceCode.required' => 'Číslo kupónu je povinné.',
-            'reservations.*.sourceCode.string' => 'Číslo kupónu není platné.',
-            'reservations.*.sourceCode.min.string' => 'Číslo kupónu není platné.',
-            'reservations.*.sourceCode.max.string' => 'Číslo kupónu není platné.',
+            'reservations.*.sourceCode.required' => 'Číslo objednávky je povinné.',
+            'reservations.*.sourceCode.string' => 'Číslo objednávky není platné.',
+            'reservations.*.sourceCode.min.string' => 'Číslo objednávky není platné.',
+            'reservations.*.sourceCode.max.string' => 'Číslo objednávky není platné.',
 
             'reservations.*.firstName.required' => 'Jméno je povinné.',
             'reservations.*.firstName.string' => 'Jméno není ve spravném formátu.',

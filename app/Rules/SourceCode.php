@@ -28,7 +28,7 @@ class SourceCode implements Rule
     public function passes($attribute, $value)
     {
         if (Reservation::where('source_code', $value)->where('status', '!=', Reservation::STATUS_CONDITIONED)->count() !== 0) {
-            $this->message = 'Číslo kupónu bylo již použito.';
+            $this->message = 'Číslo objednávky bylo již použito.';
             return false; // Reservation with code already exists
         }
         return true;

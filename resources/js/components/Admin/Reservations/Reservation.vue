@@ -17,58 +17,68 @@
                 <div class="w-full flex">
                     <div class="w-1/3 h-full p-4 border-r">
                         <div class="flex">
-                            <div class="w-1/3 font-bold">Kurz</div>
-                            <div class="w-2/3">{{ reservation.course.name }}</div>
+                            <div class="w-5/12 font-bold">Kurz</div>
+                            <div class="w-7/12">{{ reservation.course.name }}</div>
                         </div>
 
                         <div class="flex mt-2">
-                            <div class="w-1/3 font-bold">Stav</div>
-                            <div class="w-2/3">{{ reservation.status }}</div>
+                            <div class="w-5/12 font-bold">Stav</div>
+                            <div class="w-7/12">{{ reservation.status }}</div>
                         </div>
 
                         <div class="flex mt-2">
-                            <div class="w-1/3 font-bold">UUID</div>
-                            <div class="w-2/3">{{ reservation.uuid }}</div>
+                            <div class="w-5/12 font-bold">Zdroj</div>
+                            <div class="w-7/12">{{ reservation.source_type }}</div>
                         </div>
 
                         <div class="flex mt-2">
-                            <div class="w-1/3 font-bold">Jméno</div>
-                            <div class="w-2/3">{{ reservation.attendee.first_name }}</div>
+                            <div class="w-5/12 font-bold">Č. Objednávky</div>
+                            <div class="w-7/12">{{ reservation.source_code }}</div>
+                        </div>
+
+                        <div class="flex mt-2">
+                            <div class="w-5/12 font-bold">UUID</div>
+                            <div class="w-7/12">{{ reservation.uuid }}</div>
+                        </div>
+
+                        <div class="flex mt-2">
+                            <div class="w-5/12 font-bold">Jméno</div>
+                            <div class="w-7/12">{{ reservation.attendee.first_name }}</div>
                         </div> 
 
                         <div class="flex mt-2">
-                            <div class="w-1/3 font-bold">Příjmení</div>
-                            <div class="w-2/3">{{ reservation.attendee.last_name }}</div>
+                            <div class="w-5/12 font-bold">Příjmení</div>
+                            <div class="w-7/12">{{ reservation.attendee.last_name }}</div>
                         </div> 
 
                         <div class="flex mt-2">
-                            <div class="w-1/3 font-bold">Email</div>
-                            <div class="w-2/3">{{ reservation.attendee.email }}</div>
+                            <div class="w-5/12 font-bold">Email</div>
+                            <div class="w-7/12">{{ reservation.attendee.email }}</div>
                         </div> 
 
                         <div class="flex mt-2">
-                            <div class="w-1/3 font-bold">Telefon</div>
-                            <div class="w-2/3">{{ reservation.attendee.phone }}</div>
+                            <div class="w-5/12 font-bold">Telefon</div>
+                            <div class="w-7/12">{{ reservation.attendee.phone }}</div>
                         </div> 
 
                         <div class="flex mt-2">
-                            <div class="w-1/3 font-bold">Stát</div>
-                            <div class="w-2/3">{{ reservation.attendee.address.country }}</div>
+                            <div class="w-5/12 font-bold">Stát</div>
+                            <div class="w-7/12">{{ reservation.attendee.address.country }}</div>
                         </div> 
 
                         <div class="flex mt-2">
-                            <div class="w-1/3 font-bold">Město</div>
-                            <div class="w-2/3">{{ reservation.attendee.address.city }}</div>
+                            <div class="w-5/12 font-bold">Město</div>
+                            <div class="w-7/12">{{ reservation.attendee.address.city }}</div>
                         </div> 
 
                         <div class="flex mt-2">
-                            <div class="w-1/3 font-bold">Ulice</div>
-                            <div class="w-2/3">{{ reservation.attendee.address.street }}</div>
+                            <div class="w-5/12 font-bold">Ulice</div>
+                            <div class="w-7/12">{{ reservation.attendee.address.street }}</div>
                         </div> 
 
                         <div class="flex mt-2">
-                            <div class="w-1/3 font-bold">PSČ</div>
-                            <div class="w-2/3">{{ reservation.attendee.address.zip }}</div>
+                            <div class="w-5/12 font-bold">PSČ</div>
+                            <div class="w-7/12">{{ reservation.attendee.address.zip }}</div>
                         </div>   
                     </div>
                     <div class="w-2/3 h-full p-4">

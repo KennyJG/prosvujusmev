@@ -113,8 +113,8 @@
                                     </div>
                                 </div>
                                 <div class="mt-12 relative">
-                                    <label class="block text-sm text-gray-600" for="sourceCode">Číslo kupónu</label>
-                                    <input @focus="focus = 'sourceCode'" @blur="focus = null" v-model="reservation.sourceCode" :class="{ 'border border-red-600': reservation.errors.sourceCode.length !== 0 }" class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="sourceCode" name="sourceCode" type="text" required aria-label="Číslo kupónu">
+                                    <label class="block text-sm text-gray-600" for="sourceCode">Číslo objednávky</label>
+                                    <input @focus="focus = 'sourceCode'" @blur="focus = null" v-model="reservation.sourceCode" :class="{ 'border border-red-600': reservation.errors.sourceCode.length !== 0 }" class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="sourceCode" name="sourceCode" type="text" required aria-label="Číslo objednávky">
                                     <div class="text-sm italic text-red-600" v-show="reservation.errors.sourceCode.length !== 0" v-for="error in reservation.errors.sourceCode">{{ error }}</div>
                                     <div class="absolute right-0 top-0 rounded shadow bg-yellow-100 w-64 p-4 border mt-6" v-show="focus == 'sourceCode'" style="right: -17rem;">Cislo kuponu naleznete na vasi fakture objednavky, nebo na vasem kuponu ze Slevomatu.</div>
                                 </div>

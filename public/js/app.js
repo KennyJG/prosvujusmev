@@ -2025,6 +2025,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['courseDate', 'backUrl'],
   data: function data() {
@@ -2263,6 +2267,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['courseDates'],
   data: function data() {
@@ -2303,6 +2308,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -2948,6 +2955,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {},
   data: function data() {
@@ -3073,6 +3090,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['reservation', 'backUrl'],
   data: function data() {
@@ -3097,6 +3128,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -56482,1209 +56515,1284 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "w-full" },
-    [
-      _c("div", { staticClass: "w-full h-12 border-b flex justify-between" }, [
-        _c(
-          "div",
-          { staticClass: "flex align-middle content-center text-gray-600" },
-          [
-            _c(
-              "div",
-              { staticClass: "flex content-center items-center pl-6" },
-              [
+  return _c("div", { staticClass: "h-screen w-full bg-gray-100" }, [
+    _c("div", { staticClass: "flex-grow w-full pt-4 pb-8 pr-4" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "bg-white border-t border-b sm:border-l sm:border-r sm:rounded shadow mb-4"
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "w-full h-12 border-b flex justify-between" },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "flex align-middle content-center text-gray-600"
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "flex content-center items-center pl-4" },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "mr-4",
+                          attrs: { href: "/admin/course-dates" }
+                        },
+                        [_vm._v("Termíny")]
+                      ),
+                      _vm._v("/\n                        "),
+                      _c("div", { staticClass: "ml-4 text-black" }, [
+                        _vm._v(
+                          _vm._s(_vm.actualCourseDate.course.name) +
+                            " " +
+                            _vm._s(_vm.actualCourseDate.from_date_date)
+                        )
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex align-middle" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border-l hover:border-transparent",
+                    on: {
+                      click: function($event) {
+                        return _vm.deleteCourseDate()
+                      }
+                    }
+                  },
+                  [_vm._v("Odstranit")]
+                ),
+                _vm._v(" "),
                 _c(
                   "a",
                   {
-                    staticClass: "mr-4",
-                    attrs: { href: "/admin/course-dates" }
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.actualCourseDate.status !== "COMPLETED",
+                        expression: "actualCourseDate.status !== 'COMPLETED'"
+                      }
+                    ],
+                    staticClass: "cursor-pointer",
+                    on: {
+                      click: function($event) {
+                        return _vm.showModal("complete-course-date")
+                      }
+                    }
                   },
-                  [_vm._v("Termíny")]
+                  [
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "h-full bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border-l hover:border-transparent"
+                      },
+                      [_vm._v("Dokončit")]
+                    )
+                  ]
                 ),
-                _vm._v("/\n                "),
-                _c("div", { staticClass: "ml-4 text-black" }, [
-                  _vm._v(
-                    _vm._s(_vm.actualCourseDate.course.name) +
-                      " " +
-                      _vm._s(_vm.actualCourseDate.from_date_date)
-                  )
-                ])
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex align-middle" }, [
-          _c(
-            "button",
-            {
-              staticClass:
-                "bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border-l hover:border-transparent",
-              on: {
-                click: function($event) {
-                  return _vm.deleteCourseDate()
-                }
-              }
-            },
-            [_vm._v("Odstranit")]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.actualCourseDate.status !== "COMPLETED",
-                  expression: "actualCourseDate.status !== 'COMPLETED'"
-                }
-              ],
-              staticClass: "cursor-pointer",
-              on: {
-                click: function($event) {
-                  return _vm.showModal("complete-course-date")
-                }
-              }
-            },
-            [
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "h-full bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border-l hover:border-transparent"
-                },
-                [_vm._v("Dokončit")]
-              )
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border-l hover:border-transparent",
+                    on: {
+                      click: function($event) {
+                        return _vm.toggleUpdateInputs()
+                      }
+                    }
+                  },
+                  [_vm._v("Upravit")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border-l hover:border-transparent",
+                    on: {
+                      click: function($event) {
+                        return _vm.goBack()
+                      }
+                    }
+                  },
+                  [_vm._v("Zpět")]
+                )
+              ])
             ]
           ),
           _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass:
-                "bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border-l hover:border-transparent",
-              on: {
-                click: function($event) {
-                  return _vm.toggleUpdateInputs()
-                }
-              }
-            },
-            [_vm._v("Upravit")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass:
-                "bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border-l hover:border-transparent",
-              on: {
-                click: function($event) {
-                  return _vm.goBack()
-                }
-              }
-            },
-            [_vm._v("Zpět")]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "w-full flex" }, [
-        _c("div", { staticClass: "w-1/3 h-full p-6 px-8 border-r" }, [
-          _c("div", { staticClass: "flex mt-6" }, [
-            _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Kurz")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "w-2/3" }, [
-              _vm._v(_vm._s(_vm.actualCourseDate.course.name))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "flex mt-6" }, [
-            _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Začátek")]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.updating,
-                    expression: "!updating"
-                  }
-                ],
-                staticClass: "w-2/3"
-              },
-              [
-                _vm._v(
-                  _vm._s(_vm.actualCourseDate.from_date_date) +
-                    " " +
-                    _vm._s(_vm.actualCourseDate.from_date_time)
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.updating,
-                    expression: "updating"
-                  }
-                ],
-                staticClass: "w-2/3 flex flex-col"
-              },
-              [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.updatedCourseDate.from_date_date,
-                      expression: "updatedCourseDate.from_date_date"
-                    }
-                  ],
-                  staticClass: "p-2 border",
-                  attrs: { type: "date" },
-                  domProps: { value: _vm.updatedCourseDate.from_date_date },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.updatedCourseDate,
-                        "from_date_date",
-                        $event.target.value
-                      )
-                    }
-                  }
-                }),
+          _c("div", { staticClass: "w-full flex" }, [
+            _c("div", { staticClass: "w-1/3 h-full p-4 border-r" }, [
+              _c("div", { staticClass: "flex" }, [
+                _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Kurz")]),
                 _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.updatedCourseDate.from_date_time,
-                      expression: "updatedCourseDate.from_date_time"
-                    }
-                  ],
-                  staticClass: "p-2 border",
-                  attrs: { type: "time" },
-                  domProps: { value: _vm.updatedCourseDate.from_date_time },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.updatedCourseDate,
-                        "from_date_time",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "flex mt-6" }, [
-            _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Konec")]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.updating,
-                    expression: "!updating"
-                  }
-                ],
-                staticClass: "w-2/3"
-              },
-              [
-                _vm._v(
-                  _vm._s(_vm.actualCourseDate.to_date_date) +
-                    " " +
-                    _vm._s(_vm.actualCourseDate.to_date_time)
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.updating,
-                    expression: "updating"
-                  }
-                ],
-                staticClass: "w-2/3 flex flex-col"
-              },
-              [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.updatedCourseDate.to_date_date,
-                      expression: "updatedCourseDate.to_date_date"
-                    }
-                  ],
-                  staticClass: "p-2 border",
-                  attrs: { type: "date" },
-                  domProps: { value: _vm.updatedCourseDate.to_date_date },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.updatedCourseDate,
-                        "to_date_date",
-                        $event.target.value
-                      )
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.updatedCourseDate.to_date_time,
-                      expression: "updatedCourseDate.to_date_time"
-                    }
-                  ],
-                  staticClass: "p-2 border",
-                  attrs: { type: "time" },
-                  domProps: { value: _vm.updatedCourseDate.to_date_time },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.updatedCourseDate,
-                        "to_date_time",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "flex mt-6" }, [
-            _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Stav")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "w-2/3" }, [
-              _vm._v(_vm._s(_vm.actualCourseDate.status))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "flex mt-6" }, [
-            _c("div", { staticClass: "w-1/3 font-bold" }, [
-              _vm._v("Místo konání")
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.updating,
-                    expression: "!updating"
-                  }
-                ],
-                staticClass: "w-2/3"
-              },
-              [_vm._v(_vm._s(_vm.actualCourseDate.venue))]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.updating,
-                  expression: "updating"
-                },
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.updatedCourseDate.venue,
-                  expression: "updatedCourseDate.venue"
-                }
-              ],
-              staticClass: "w-2/3 p-2 border",
-              attrs: { type: "text" },
-              domProps: { value: _vm.updatedCourseDate.venue },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.updatedCourseDate, "venue", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "flex mt-6" }, [
-            _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Limit")]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.updating,
-                    expression: "!updating"
-                  }
-                ],
-                staticClass: "w-2/3"
-              },
-              [_vm._v(_vm._s(_vm.actualCourseDate.limit))]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.updating,
-                  expression: "updating"
-                },
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.updatedCourseDate.limit,
-                  expression: "updatedCourseDate.limit"
-                }
-              ],
-              staticClass: "w-2/3 p-2 border",
-              attrs: { type: "text" },
-              domProps: { value: _vm.updatedCourseDate.limit },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.updatedCourseDate, "limit", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "flex mt-6" }, [
-            _c("div", { staticClass: "w-1/3 font-bold" }, [
-              _vm._v("Zbývá míst")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "w-2/3" }, [
-              _vm._v(_vm._s(_vm.actualCourseDate.remaining))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "flex mt-6" }, [
-            _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Lektor")]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.updating,
-                    expression: "!updating"
-                  }
-                ],
-                staticClass: "w-2/3"
-              },
-              [_vm._v(_vm._s(_vm.actualCourseDate.lecturer))]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.updating,
-                  expression: "updating"
-                },
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.updatedCourseDate.lecturer,
-                  expression: "updatedCourseDate.lecturer"
-                }
-              ],
-              staticClass: "w-2/3 p-2 border",
-              attrs: { type: "text" },
-              domProps: { value: _vm.updatedCourseDate.lecturer },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(
-                    _vm.updatedCourseDate,
-                    "lecturer",
-                    $event.target.value
-                  )
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "flex mt-6" }, [
-            _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Popis")]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.updating,
-                    expression: "!updating"
-                  }
-                ],
-                staticClass: "w-2/3"
-              },
-              [_vm._v(_vm._s(_vm.actualCourseDate.description))]
-            ),
-            _vm._v(" "),
-            _c("textarea", {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.updating,
-                  expression: "updating"
-                },
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.updatedCourseDate.description,
-                  expression: "updatedCourseDate.description"
-                }
-              ],
-              staticClass: "w-2/3 p-2 border",
-              attrs: { type: "text", rows: "5" },
-              domProps: { value: _vm.updatedCourseDate.description },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(
-                    _vm.updatedCourseDate,
-                    "description",
-                    $event.target.value
-                  )
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.updating,
-                  expression: "updating"
-                }
-              ],
-              staticClass:
-                "border rounded shadow bg-purple-600 w-full py-2 px-4 mt-10 text-white hover:bg-purple-800",
-              on: {
-                click: function($event) {
-                  return _vm.updateCourseDate()
-                }
-              }
-            },
-            [_vm._v("Uložit")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.updating,
-                  expression: "updating"
-                }
-              ],
-              staticClass:
-                "border rounded shadow border border-purple-600 w-full py-2 px-4 mt-2 text-purple-600 hover:bg-purple-600 hover:text-white",
-              on: {
-                click: function($event) {
-                  return _vm.toggleUpdateInputs()
-                }
-              }
-            },
-            [_vm._v("Zrušit")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "w-2/3 h-full p-6 px-8" }, [
-          _c("div", { staticClass: "text-2xl" }, [_vm._v("Rezervace")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "mt-4" }, [
-            _c("table", { staticClass: "table w-full" }, [
-              _vm._m(0),
+                _c("div", { staticClass: "w-2/3" }, [
+                  _vm._v(_vm._s(_vm.actualCourseDate.course.name))
+                ])
+              ]),
               _vm._v(" "),
-              _c(
-                "tbody",
-                _vm._l(_vm.actualCourseDate.reservations, function(
-                  reservation,
-                  i
-                ) {
-                  return _c("tr", { class: { "bg-gray-200": i % 2 == 0 } }, [
-                    _c(
-                      "td",
-                      { staticClass: "border border-r-0 px-4 py-2 text-left" },
-                      [
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              href: "/admin/reservations/" + reservation.id
-                            }
-                          },
-                          [_vm._v(_vm._s(reservation.source_code))]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      { staticClass: "border border-r-0 px-4 py-2 text-left" },
-                      [_vm._v(_vm._s(reservation.source_type))]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      { staticClass: "border border-r-0 px-4 py-2 text-left" },
-                      [_vm._v(_vm._s(reservation.status))]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      { staticClass: "border border-l-0 px-4 py-4 text-right" },
-                      [
-                        _c("div", { staticClass: "inline-flex" }, [
-                          _c(
-                            "button",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: reservation.status === "APPROVED",
-                                  expression:
-                                    "reservation.status === 'APPROVED'"
-                                }
-                              ],
-                              staticClass:
-                                "hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l cursor-pointer",
-                              class: {
-                                "bg-gray-100": i % 2 == 0,
-                                "bg-gray-300": i % 2 != 0
-                              },
-                              on: {
-                                click: function($event) {
-                                  _vm.showModal(
-                                    "complete-reservation-modal",
-                                    function() {
-                                      _vm.selectedReservation = reservation
-                                    }
-                                  )
-                                }
-                              }
-                            },
-                            [_vm._v("Dokončit")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: reservation.status === "UNAPPROVED",
-                                  expression:
-                                    "reservation.status === 'UNAPPROVED'"
-                                }
-                              ],
-                              staticClass:
-                                "hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 cursor-pointer",
-                              class: {
-                                "bg-gray-100": i % 2 == 0,
-                                "bg-gray-300": i % 2 != 0
-                              },
-                              on: {
-                                click: function($event) {
-                                  _vm.showModal(
-                                    "reject-reservation-modal",
-                                    function() {
-                                      _vm.selectedReservation = reservation
-                                    }
-                                  )
-                                }
-                              }
-                            },
-                            [_vm._v("Zamítnout")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: reservation.status === "UNAPPROVED",
-                                  expression:
-                                    "reservation.status === 'UNAPPROVED'"
-                                }
-                              ],
-                              staticClass:
-                                "hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 cursor-pointer",
-                              class: {
-                                "bg-gray-100": i % 2 == 0,
-                                "bg-gray-300": i % 2 != 0
-                              },
-                              on: {
-                                click: function($event) {
-                                  _vm.showModal(
-                                    "approve-reservation-modal",
-                                    function() {
-                                      _vm.selectedReservation = reservation
-                                    }
-                                  )
-                                }
-                              }
-                            },
-                            [_vm._v("Schválit")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass:
-                                "hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r cursor-pointer",
-                              class: {
-                                "bg-gray-100": i % 2 == 0,
-                                "bg-gray-300": i % 2 != 0
-                              },
-                              on: {
-                                click: function($event) {
-                                  _vm.showModal(
-                                    "delete-reservation-modal",
-                                    function() {
-                                      _vm.selectedReservation = reservation
-                                    }
-                                  )
-                                }
-                              }
-                            },
-                            [_vm._v("Odstranit")]
-                          )
-                        ])
-                      ]
-                    )
-                  ])
-                }),
-                0
-              )
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "modal",
-        {
-          attrs: {
-            name: "approve-reservation-modal",
-            width: "480",
-            height: "auto"
-          }
-        },
-        [
-          _vm.selectedReservation
-            ? _c("div", { staticClass: "flex flex-col px-6 py-8" }, [
-                _c("h1", { staticClass: "font-bold text-xl mb-2" }, [
-                  _vm._v("Schválení rezervace")
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-1/3 font-bold" }, [
+                  _vm._v("Začátek")
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "mt-4" }, [
-                  _vm._v(
-                    'Opravdu chcete schválit rezervaci s ID "' +
-                      _vm._s(_vm.selectedReservation.id) +
-                      '"'
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "flex justify-end mt-5" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass:
-                        "px-4 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white",
-                      on: {
-                        click: function($event) {
-                          _vm.hideModal(
-                            "approve-reservation-modal",
-                            function() {
-                              _vm.selectedReservation = null
-                            }
-                          )
-                        }
-                      }
-                    },
-                    [_vm._v("Zrušit")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass:
-                        "px-4 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2",
-                      on: {
-                        click: function($event) {
-                          _vm.hideModal(
-                            "approve-reservation-modal",
-                            _vm.approveReservation(_vm.selectedReservation.id)
-                          )
-                        }
-                      }
-                    },
-                    [_vm._v("Schválit")]
-                  )
-                ])
-              ])
-            : _vm._e()
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "modal",
-        {
-          attrs: {
-            name: "reject-reservation-modal",
-            width: "480",
-            height: "auto"
-          }
-        },
-        [
-          _vm.selectedReservation
-            ? _c("div", { staticClass: "flex flex-col px-6 py-8" }, [
-                _c("h1", { staticClass: "font-bold text-xl mb-2" }, [
-                  _vm._v("Zamítnutí rezervace")
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "mt-4" }, [
-                  _vm._v(
-                    'Opravdu chcete zamítnout rezervaci s ID "' +
-                      _vm._s(_vm.selectedReservation.id) +
-                      '"'
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "flex justify-end mt-5" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass:
-                        "px-4 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white",
-                      on: {
-                        click: function($event) {
-                          _vm.hideModal("reject-reservation-modal", function() {
-                            _vm.selectedReservation = null
-                          })
-                        }
-                      }
-                    },
-                    [_vm._v("Zrušit")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass:
-                        "px-4 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2",
-                      on: {
-                        click: function($event) {
-                          _vm.hideModal(
-                            "reject-reservation-modal",
-                            _vm.rejectReservation(_vm.selectedReservation.id)
-                          )
-                        }
-                      }
-                    },
-                    [_vm._v("Zamítnout")]
-                  )
-                ])
-              ])
-            : _vm._e()
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "modal",
-        {
-          attrs: {
-            name: "complete-reservation-modal",
-            width: "480",
-            height: "auto"
-          }
-        },
-        [
-          _vm.selectedReservation
-            ? _c("div", { staticClass: "flex flex-col px-6 py-8" }, [
-                _c("h1", { staticClass: "font-bold text-xl mb-2" }, [
-                  _vm._v("Dokončení rezervace")
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "mt-4" }, [
-                  _vm._v(
-                    'Opravdu chcete dokončit rezervaci s ID "' +
-                      _vm._s(_vm.selectedReservation.id) +
-                      '"'
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "flex justify-end mt-5" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass:
-                        "px-4 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          _vm.hideModal(
-                            "complete-reservation-modal",
-                            function() {
-                              _vm.selectedReservation = null
-                            }
-                          )
-                        }
-                      }
-                    },
-                    [_vm._v("Zrušit")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass:
-                        "px-4 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          _vm.hideModal(
-                            "complete-reservation-modal",
-                            _vm.completeReservation(_vm.selectedReservation.id)
-                          )
-                        }
-                      }
-                    },
-                    [_vm._v("Dokončit")]
-                  )
-                ])
-              ])
-            : _vm._e()
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "modal",
-        {
-          attrs: {
-            name: "delete-reservation-modal",
-            width: "480",
-            height: "auto"
-          }
-        },
-        [
-          _vm.selectedReservation
-            ? _c("div", { staticClass: "flex flex-col px-6 py-8" }, [
-                _c("h1", { staticClass: "font-bold text-xl mb-2" }, [
-                  _vm._v("Odstranění rezervace")
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "mt-4" }, [
-                  _vm._v(
-                    'Opravdu chcete odstranit rezervaci s ID "' +
-                      _vm._s(_vm.selectedReservation.id) +
-                      '"'
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "flex justify-end mt-5" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass:
-                        "px-3 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white cursor-pointer",
-                      on: {
-                        click: function($event) {
-                          _vm.hideModal("delete-reservation-modal", function() {
-                            _vm.selectedReservation = null
-                          })
-                        }
-                      }
-                    },
-                    [_vm._v("Zrušit")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass:
-                        "px-3 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2 cursor-pointer",
-                      on: {
-                        click: function($event) {
-                          _vm.hideModal(
-                            "delete-reservation-modal",
-                            _vm.deleteReservation(_vm.selectedReservation.id)
-                          )
-                        }
-                      }
-                    },
-                    [_vm._v("Odstranit")]
-                  )
-                ])
-              ])
-            : _vm._e()
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "modal",
-        {
-          attrs: { name: "complete-course-date", width: "480", height: "auto" }
-        },
-        [
-          _c("div", { staticClass: "flex flex-col px-6 py-8" }, [
-            _c("h1", { staticClass: "font-bold text-xl mb-2" }, [
-              _vm._v("Dokončení termínu")
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "mt-4" }, [
-              _vm._v("Zaškrtejte účastníky kteří byli přítomni na termínu.")
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "p-6" },
-              _vm._l(_vm.actualCourseDate.reservations, function(reservation) {
-                return _c(
-                  "label",
-                  { staticClass: "flex justify-start items-start mt-2" },
-                  [
-                    _c(
-                      "div",
+                _c(
+                  "div",
+                  {
+                    directives: [
                       {
-                        staticClass:
-                          "bg-white border-2 rounded border-gray-400 w-6 h-6 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-blue-500"
-                      },
-                      [
-                        _c("input", {
-                          staticClass: "opacity-0 absolute",
-                          attrs: { type: "checkbox" },
-                          on: {
-                            change: function($event) {
-                              return _vm.toggleCourseDateCompletionAttendee(
-                                reservation.id
-                              )
-                            }
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.updating,
+                        expression: "!updating"
+                      }
+                    ],
+                    staticClass: "w-2/3"
+                  },
+                  [
+                    _vm._v(
+                      _vm._s(_vm.actualCourseDate.from_date_date) +
+                        " " +
+                        _vm._s(_vm.actualCourseDate.from_date_time)
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.updating,
+                        expression: "updating"
+                      }
+                    ],
+                    staticClass: "w-2/3 flex flex-col"
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.updatedCourseDate.from_date_date,
+                          expression: "updatedCourseDate.from_date_date"
+                        }
+                      ],
+                      staticClass: "p-2 border",
+                      attrs: { type: "date" },
+                      domProps: { value: _vm.updatedCourseDate.from_date_date },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
                           }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "svg",
-                          {
-                            staticClass:
-                              "fill-current hidden w-4 h-4 text-green-500 pointer-events-none",
-                            attrs: { viewBox: "0 0 20 20" }
-                          },
-                          [
-                            _c("path", {
-                              attrs: { d: "M0 11l2-2 5 5L18 3l2 2L7 18z" }
-                            })
-                          ]
-                        )
-                      ]
-                    ),
+                          _vm.$set(
+                            _vm.updatedCourseDate,
+                            "from_date_date",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
                     _vm._v(" "),
-                    _c("div", { staticClass: "select-none" }, [
-                      _vm._v(_vm._s(reservation.id))
-                    ])
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.updatedCourseDate.from_date_time,
+                          expression: "updatedCourseDate.from_date_time"
+                        }
+                      ],
+                      staticClass: "p-2 border",
+                      attrs: { type: "time" },
+                      domProps: { value: _vm.updatedCourseDate.from_date_time },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.updatedCourseDate,
+                            "from_date_time",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
                   ]
                 )
-              }),
-              0
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "flex justify-end" }, [
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-1/3 font-bold" }, [
+                  _vm._v("Konec")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.updating,
+                        expression: "!updating"
+                      }
+                    ],
+                    staticClass: "w-2/3"
+                  },
+                  [
+                    _vm._v(
+                      _vm._s(_vm.actualCourseDate.to_date_date) +
+                        " " +
+                        _vm._s(_vm.actualCourseDate.to_date_time)
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.updating,
+                        expression: "updating"
+                      }
+                    ],
+                    staticClass: "w-2/3 flex flex-col"
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.updatedCourseDate.to_date_date,
+                          expression: "updatedCourseDate.to_date_date"
+                        }
+                      ],
+                      staticClass: "p-2 border",
+                      attrs: { type: "date" },
+                      domProps: { value: _vm.updatedCourseDate.to_date_date },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.updatedCourseDate,
+                            "to_date_date",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.updatedCourseDate.to_date_time,
+                          expression: "updatedCourseDate.to_date_time"
+                        }
+                      ],
+                      staticClass: "p-2 border",
+                      attrs: { type: "time" },
+                      domProps: { value: _vm.updatedCourseDate.to_date_time },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.updatedCourseDate,
+                            "to_date_time",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Stav")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-2/3" }, [
+                  _vm._v(_vm._s(_vm.actualCourseDate.status))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-1/3 font-bold" }, [
+                  _vm._v("Místo konání")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.updating,
+                        expression: "!updating"
+                      }
+                    ],
+                    staticClass: "w-2/3"
+                  },
+                  [_vm._v(_vm._s(_vm.actualCourseDate.venue))]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.updating,
+                      expression: "updating"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.updatedCourseDate.venue,
+                      expression: "updatedCourseDate.venue"
+                    }
+                  ],
+                  staticClass: "w-2/3 p-2 border",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.updatedCourseDate.venue },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.updatedCourseDate,
+                        "venue",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-1/3 font-bold" }, [
+                  _vm._v("Limit")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.updating,
+                        expression: "!updating"
+                      }
+                    ],
+                    staticClass: "w-2/3"
+                  },
+                  [_vm._v(_vm._s(_vm.actualCourseDate.limit))]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.updating,
+                      expression: "updating"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.updatedCourseDate.limit,
+                      expression: "updatedCourseDate.limit"
+                    }
+                  ],
+                  staticClass: "w-2/3 p-2 border",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.updatedCourseDate.limit },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.updatedCourseDate,
+                        "limit",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-1/3 font-bold" }, [
+                  _vm._v("Zbývá míst")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-2/3" }, [
+                  _vm._v(_vm._s(_vm.actualCourseDate.remaining))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-1/3 font-bold" }, [
+                  _vm._v("Lektor")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.updating,
+                        expression: "!updating"
+                      }
+                    ],
+                    staticClass: "w-2/3"
+                  },
+                  [_vm._v(_vm._s(_vm.actualCourseDate.lecturer))]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.updating,
+                      expression: "updating"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.updatedCourseDate.lecturer,
+                      expression: "updatedCourseDate.lecturer"
+                    }
+                  ],
+                  staticClass: "w-2/3 p-2 border",
+                  attrs: { type: "text" },
+                  domProps: { value: _vm.updatedCourseDate.lecturer },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.updatedCourseDate,
+                        "lecturer",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-1/3 font-bold" }, [
+                  _vm._v("Popis")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.updating,
+                        expression: "!updating"
+                      }
+                    ],
+                    staticClass: "w-2/3"
+                  },
+                  [_vm._v(_vm._s(_vm.actualCourseDate.description))]
+                ),
+                _vm._v(" "),
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.updating,
+                      expression: "updating"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.updatedCourseDate.description,
+                      expression: "updatedCourseDate.description"
+                    }
+                  ],
+                  staticClass: "w-2/3 p-2 border",
+                  attrs: { type: "text", rows: "5" },
+                  domProps: { value: _vm.updatedCourseDate.description },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.updatedCourseDate,
+                        "description",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
               _c(
                 "button",
                 {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.updating,
+                      expression: "updating"
+                    }
+                  ],
                   staticClass:
-                    "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded",
+                    "border rounded shadow bg-purple-600 w-full py-2 px-4 mt-10 text-white hover:bg-purple-800",
                   on: {
                     click: function($event) {
-                      return _vm.showModal("complete-course-date-confirmation")
+                      return _vm.updateCourseDate()
                     }
                   }
                 },
-                [_vm._v("Dokončit")]
+                [_vm._v("Uložit")]
               ),
               _vm._v(" "),
               _c(
                 "button",
                 {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.updating,
+                      expression: "updating"
+                    }
+                  ],
                   staticClass:
-                    "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded",
+                    "border rounded shadow border border-purple-600 w-full py-2 px-4 mt-2 text-purple-600 hover:bg-purple-600 hover:text-white",
                   on: {
                     click: function($event) {
-                      return _vm.hideModal("complete-course-date")
+                      return _vm.toggleUpdateInputs()
                     }
                   }
                 },
                 [_vm._v("Zrušit")]
               )
-            ])
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "modal",
-        {
-          attrs: {
-            name: "complete-course-date-confirmation",
-            width: "480",
-            height: "auto"
-          }
-        },
-        [
-          _c("div", { staticClass: "flex flex-col" }, [
-            _c("div", { staticClass: "p-6" }, [
-              _vm._v("Opravdu chcete dokončit tento termín?")
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "flex justify-end py-4 px-4" }, [
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded",
-                  on: {
-                    click: function($event) {
-                      return _vm.completeCourseDate()
-                    }
-                  }
-                },
-                [_vm._v("Ano")]
-              ),
+            _c("div", { staticClass: "w-2/3 h-full p-4" }, [
+              _c("div", { staticClass: "text-xl" }, [_vm._v("Rezervace")]),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded",
-                  on: {
-                    click: function($event) {
-                      return _vm.hideModal("complete-course-date-confirmation")
-                    }
-                  }
-                },
-                [_vm._v("Ne")]
-              )
+              _c("div", { staticClass: "mt-4" }, [
+                _c("table", { staticClass: "table w-full" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.actualCourseDate.reservations, function(
+                      reservation,
+                      i
+                    ) {
+                      return _c(
+                        "tr",
+                        { class: { "bg-gray-200": i % 2 == 0 } },
+                        [
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "border border-r-0 px-1 py-1 text-left"
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  attrs: {
+                                    href:
+                                      "/admin/reservations/" + reservation.id
+                                  }
+                                },
+                                [_vm._v(_vm._s(reservation.source_code))]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "border border-r-0 px-1 py-1 text-left"
+                            },
+                            [_vm._v(_vm._s(reservation.source_type))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "border border-r-0 px-1 py-1 text-left"
+                            },
+                            [_vm._v(_vm._s(reservation.status))]
+                          ),
+                          _vm._v(" "),
+                          _c("td", { staticClass: "border border-l-0" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "inline-flex w-full flex justify-end"
+                              },
+                              [
+                                _c(
+                                  "button",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value:
+                                          reservation.status === "APPROVED",
+                                        expression:
+                                          "reservation.status === 'APPROVED'"
+                                      }
+                                    ],
+                                    staticClass:
+                                      "hover:bg-gray-400 text-gray-800 font-bold p-1 px-2 cursor-pointer",
+                                    class: {
+                                      "bg-gray-100": i % 2 == 0,
+                                      "bg-gray-300": i % 2 != 0
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.showModal(
+                                          "complete-reservation-modal",
+                                          function() {
+                                            _vm.selectedReservation = reservation
+                                          }
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Dokončit")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value:
+                                          reservation.status === "UNAPPROVED",
+                                        expression:
+                                          "reservation.status === 'UNAPPROVED'"
+                                      }
+                                    ],
+                                    staticClass:
+                                      "hover:bg-gray-400 text-gray-800 font-bold p-1 px-2 cursor-pointer",
+                                    class: {
+                                      "bg-gray-100": i % 2 == 0,
+                                      "bg-gray-300": i % 2 != 0
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.showModal(
+                                          "reject-reservation-modal",
+                                          function() {
+                                            _vm.selectedReservation = reservation
+                                          }
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Zamítnout")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value:
+                                          reservation.status === "UNAPPROVED",
+                                        expression:
+                                          "reservation.status === 'UNAPPROVED'"
+                                      }
+                                    ],
+                                    staticClass:
+                                      "hover:bg-gray-400 text-gray-800 font-bold p-1 px-2 cursor-pointer",
+                                    class: {
+                                      "bg-gray-100": i % 2 == 0,
+                                      "bg-gray-300": i % 2 != 0
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.showModal(
+                                          "approve-reservation-modal",
+                                          function() {
+                                            _vm.selectedReservation = reservation
+                                          }
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Schválit")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "hover:bg-gray-400 text-gray-800 font-bold p-1 px-2 cursor-pointer",
+                                    class: {
+                                      "bg-gray-100": i % 2 == 0,
+                                      "bg-gray-300": i % 2 != 0
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.showModal(
+                                          "delete-reservation-modal",
+                                          function() {
+                                            _vm.selectedReservation = reservation
+                                          }
+                                        )
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Odstranit")]
+                                )
+                              ]
+                            )
+                          ])
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                ])
+              ])
             ])
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.successMessage !== null,
-              expression: "successMessage !== null"
-            }
-          ],
-          staticClass:
-            "fixed bottom-0 left-0 ml-4 mb-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4",
-          attrs: { role: "alert" }
-        },
-        [
-          _c("p", { staticClass: "font-bold" }, [_vm._v("Úspěch")]),
+          ]),
           _vm._v(" "),
-          _c("p", [_vm._v(_vm._s(_vm.successMessage))])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          directives: [
+          _c(
+            "modal",
             {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.errorMessage !== null,
-              expression: "errorMessage !== null"
-            }
-          ],
-          staticClass:
-            "fixed bottom-0 left-0 ml-4 mb-4 bg-red-100 border-l-4 border-red-500 text-red-700 p-4",
-          attrs: { role: "alert" }
-        },
-        [
-          _c("p", { staticClass: "font-bold" }, [_vm._v("Chyba")]),
+              attrs: {
+                name: "approve-reservation-modal",
+                width: "480",
+                height: "auto"
+              }
+            },
+            [
+              _vm.selectedReservation
+                ? _c("div", { staticClass: "flex flex-col px-6 py-8" }, [
+                    _c("h1", { staticClass: "font-bold text-xl mb-2" }, [
+                      _vm._v("Schválení rezervace")
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mt-4" }, [
+                      _vm._v(
+                        'Opravdu chcete schválit rezervaci s ID "' +
+                          _vm._s(_vm.selectedReservation.id) +
+                          '"'
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "flex justify-end mt-5" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "px-4 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white",
+                          on: {
+                            click: function($event) {
+                              _vm.hideModal(
+                                "approve-reservation-modal",
+                                function() {
+                                  _vm.selectedReservation = null
+                                }
+                              )
+                            }
+                          }
+                        },
+                        [_vm._v("Zrušit")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "px-4 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2",
+                          on: {
+                            click: function($event) {
+                              _vm.hideModal(
+                                "approve-reservation-modal",
+                                _vm.approveReservation(
+                                  _vm.selectedReservation.id
+                                )
+                              )
+                            }
+                          }
+                        },
+                        [_vm._v("Schválit")]
+                      )
+                    ])
+                  ])
+                : _vm._e()
+            ]
+          ),
           _vm._v(" "),
-          _c("p", [_vm._v(_vm._s(_vm.errorMessage))])
-        ]
+          _c(
+            "modal",
+            {
+              attrs: {
+                name: "reject-reservation-modal",
+                width: "480",
+                height: "auto"
+              }
+            },
+            [
+              _vm.selectedReservation
+                ? _c("div", { staticClass: "flex flex-col px-6 py-8" }, [
+                    _c("h1", { staticClass: "font-bold text-xl mb-2" }, [
+                      _vm._v("Zamítnutí rezervace")
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mt-4" }, [
+                      _vm._v(
+                        'Opravdu chcete zamítnout rezervaci s ID "' +
+                          _vm._s(_vm.selectedReservation.id) +
+                          '"'
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "flex justify-end mt-5" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "px-4 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white",
+                          on: {
+                            click: function($event) {
+                              _vm.hideModal(
+                                "reject-reservation-modal",
+                                function() {
+                                  _vm.selectedReservation = null
+                                }
+                              )
+                            }
+                          }
+                        },
+                        [_vm._v("Zrušit")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "px-4 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2",
+                          on: {
+                            click: function($event) {
+                              _vm.hideModal(
+                                "reject-reservation-modal",
+                                _vm.rejectReservation(
+                                  _vm.selectedReservation.id
+                                )
+                              )
+                            }
+                          }
+                        },
+                        [_vm._v("Zamítnout")]
+                      )
+                    ])
+                  ])
+                : _vm._e()
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "modal",
+            {
+              attrs: {
+                name: "complete-reservation-modal",
+                width: "480",
+                height: "auto"
+              }
+            },
+            [
+              _vm.selectedReservation
+                ? _c("div", { staticClass: "flex flex-col px-6 py-8" }, [
+                    _c("h1", { staticClass: "font-bold text-xl mb-2" }, [
+                      _vm._v("Dokončení rezervace")
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mt-4" }, [
+                      _vm._v(
+                        'Opravdu chcete dokončit rezervaci s ID "' +
+                          _vm._s(_vm.selectedReservation.id) +
+                          '"'
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "flex justify-end mt-5" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "px-4 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.hideModal(
+                                "complete-reservation-modal",
+                                function() {
+                                  _vm.selectedReservation = null
+                                }
+                              )
+                            }
+                          }
+                        },
+                        [_vm._v("Zrušit")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "px-4 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              _vm.hideModal(
+                                "complete-reservation-modal",
+                                _vm.completeReservation(
+                                  _vm.selectedReservation.id
+                                )
+                              )
+                            }
+                          }
+                        },
+                        [_vm._v("Dokončit")]
+                      )
+                    ])
+                  ])
+                : _vm._e()
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "modal",
+            {
+              attrs: {
+                name: "delete-reservation-modal",
+                width: "480",
+                height: "auto"
+              }
+            },
+            [
+              _vm.selectedReservation
+                ? _c("div", { staticClass: "flex flex-col px-6 py-8" }, [
+                    _c("h1", { staticClass: "font-bold text-xl mb-2" }, [
+                      _vm._v("Odstranění rezervace")
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mt-4" }, [
+                      _vm._v(
+                        'Opravdu chcete odstranit rezervaci s ID "' +
+                          _vm._s(_vm.selectedReservation.id) +
+                          '"'
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "flex justify-end mt-5" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "px-3 py-2 block border border-gray-600 rounded shadow text-gray-600 hover:bg-red-600 hover:text-white cursor-pointer",
+                          on: {
+                            click: function($event) {
+                              _vm.hideModal(
+                                "delete-reservation-modal",
+                                function() {
+                                  _vm.selectedReservation = null
+                                }
+                              )
+                            }
+                          }
+                        },
+                        [_vm._v("Zrušit")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "px-3 py-2 block border border-purple-600 rounded shadow text-purple-600 hover:bg-purple-600 hover:text-white ml-2 cursor-pointer",
+                          on: {
+                            click: function($event) {
+                              _vm.hideModal(
+                                "delete-reservation-modal",
+                                _vm.deleteReservation(
+                                  _vm.selectedReservation.id
+                                )
+                              )
+                            }
+                          }
+                        },
+                        [_vm._v("Odstranit")]
+                      )
+                    ])
+                  ])
+                : _vm._e()
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "modal",
+            {
+              attrs: {
+                name: "complete-course-date",
+                width: "480",
+                height: "auto"
+              }
+            },
+            [
+              _c("div", { staticClass: "flex flex-col px-6 py-8" }, [
+                _c("h1", { staticClass: "font-bold text-xl mb-2" }, [
+                  _vm._v("Dokončení termínu")
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "mt-4" }, [
+                  _vm._v("Zaškrtejte účastníky kteří byli přítomni na termínu.")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "p-6" },
+                  _vm._l(_vm.actualCourseDate.reservations, function(
+                    reservation
+                  ) {
+                    return _c(
+                      "label",
+                      { staticClass: "flex justify-start items-start mt-2" },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "bg-white border-2 rounded border-gray-400 w-6 h-6 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-blue-500"
+                          },
+                          [
+                            _c("input", {
+                              staticClass: "opacity-0 absolute",
+                              attrs: { type: "checkbox" },
+                              on: {
+                                change: function($event) {
+                                  return _vm.toggleCourseDateCompletionAttendee(
+                                    reservation.id
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "svg",
+                              {
+                                staticClass:
+                                  "fill-current hidden w-4 h-4 text-green-500 pointer-events-none",
+                                attrs: { viewBox: "0 0 20 20" }
+                              },
+                              [
+                                _c("path", {
+                                  attrs: { d: "M0 11l2-2 5 5L18 3l2 2L7 18z" }
+                                })
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "select-none" }, [
+                          _vm._v(_vm._s(reservation.id))
+                        ])
+                      ]
+                    )
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex justify-end" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded",
+                      on: {
+                        click: function($event) {
+                          return _vm.showModal(
+                            "complete-course-date-confirmation"
+                          )
+                        }
+                      }
+                    },
+                    [_vm._v("Dokončit")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded",
+                      on: {
+                        click: function($event) {
+                          return _vm.hideModal("complete-course-date")
+                        }
+                      }
+                    },
+                    [_vm._v("Zrušit")]
+                  )
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "modal",
+            {
+              attrs: {
+                name: "complete-course-date-confirmation",
+                width: "480",
+                height: "auto"
+              }
+            },
+            [
+              _c("div", { staticClass: "flex flex-col" }, [
+                _c("div", { staticClass: "p-6" }, [
+                  _vm._v("Opravdu chcete dokončit tento termín?")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex justify-end py-4 px-4" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded",
+                      on: {
+                        click: function($event) {
+                          return _vm.completeCourseDate()
+                        }
+                      }
+                    },
+                    [_vm._v("Ano")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded",
+                      on: {
+                        click: function($event) {
+                          return _vm.hideModal(
+                            "complete-course-date-confirmation"
+                          )
+                        }
+                      }
+                    },
+                    [_vm._v("Ne")]
+                  )
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.successMessage !== null,
+                  expression: "successMessage !== null"
+                }
+              ],
+              staticClass:
+                "fixed bottom-0 left-0 ml-4 mb-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4",
+              attrs: { role: "alert" }
+            },
+            [
+              _c("p", { staticClass: "font-bold" }, [_vm._v("Úspěch")]),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(_vm.successMessage))])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.errorMessage !== null,
+                  expression: "errorMessage !== null"
+                }
+              ],
+              staticClass:
+                "fixed bottom-0 left-0 ml-4 mb-4 bg-red-100 border-l-4 border-red-500 text-red-700 p-4",
+              attrs: { role: "alert" }
+            },
+            [
+              _c("p", { staticClass: "font-bold" }, [_vm._v("Chyba")]),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(_vm.errorMessage))])
+            ]
+          )
+        ],
+        1
       )
-    ],
-    1
-  )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -57693,13 +57801,13 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { staticClass: "px-2 py-2 text-left" }, [_vm._v("Kód")]),
+        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Kód")]),
         _vm._v(" "),
-        _c("th", { staticClass: "px-2 py-2 text-left" }, [_vm._v("Zdroj")]),
+        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Zdroj")]),
         _vm._v(" "),
-        _c("th", { staticClass: "px-2 py-2 text-left" }, [_vm._v("Stav")]),
+        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Stav")]),
         _vm._v(" "),
-        _c("th", { staticClass: "px-2 py-2 text-right" }, [_vm._v("Akce")])
+        _c("th", { staticClass: "px-1 py-1 text-right" }, [_vm._v("Akce")])
       ])
     ])
   }
@@ -57725,140 +57833,155 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "h-full w-full" }, [
-    _c("div", { staticClass: "w-full h-12 bg-gray-100" }),
-    _vm._v(" "),
-    _c("div", { staticClass: "w-full h-full p-6" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "w-full h-full mt-6" }, [
-        _c("table", { staticClass: "table w-full" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.localCourseDates, function(courseDate, i) {
-              return _c("tr", { class: { "bg-gray-200": i % 2 == 0 } }, [
-                _c(
-                  "td",
-                  {
-                    staticClass:
-                      "border border-r-0 px-4 py-2 text-left text-blue-600 hover:text-blue-400"
-                  },
-                  [
-                    _c(
-                      "a",
-                      {
-                        attrs: { href: "/admin/course-dates/" + courseDate.id }
-                      },
-                      [_vm._v(_vm._s(courseDate.fullDateForHumans))]
-                    )
-                  ]
-                ),
+  return _c("div", { staticClass: "h-screen w-full bg-gray-100" }, [
+    _c("div", { staticClass: "flex-grow w-full pt-4 pb-8 pr-4" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "bg-white border-t border-b sm:border-l sm:border-r sm:rounded shadow mb-4"
+        },
+        [
+          _c("div", { staticClass: "w-full h-full p-6" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-full h-full mt-6" }, [
+              _c("table", { staticClass: "table w-full" }, [
+                _vm._m(1),
                 _vm._v(" "),
                 _c(
-                  "td",
-                  { staticClass: "border border-r-0 px-4 py-2 text-left" },
-                  [_vm._v(_vm._s(courseDate.course.name))]
-                ),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  { staticClass: "border border-r-0 px-4 py-2 text-left" },
-                  [_vm._v(_vm._s(courseDate.venue))]
-                ),
-                _vm._v(" "),
-                _c("td", { staticClass: "border px-4 py-2 text-left" }, [
-                  _vm._v(_vm._s(courseDate.remaining))
-                ]),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  { staticClass: "border border-l-0 px-4 py-4 text-right" },
-                  [
-                    _c("div", { staticClass: "inline-flex" }, [
+                  "tbody",
+                  _vm._l(_vm.localCourseDates, function(courseDate, i) {
+                    return _c("tr", { class: { "bg-gray-200": i % 2 == 0 } }, [
                       _c(
-                        "a",
+                        "td",
                         {
                           staticClass:
-                            "hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r",
-                          class: {
-                            "bg-gray-100": i % 2 == 0,
-                            "bg-gray-300": i % 2 != 0
-                          },
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              return _vm.deleteCourseDate(courseDate.id)
-                            }
+                            "border border-r-0 px-1 py-1 text-left text-blue-600 hover:text-blue-400"
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                href: "/admin/course-dates/" + courseDate.id
+                              }
+                            },
+                            [_vm._v(_vm._s(courseDate.fullDateForHumans))]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        {
+                          staticClass: "border border-r-0 px-1 py-1 text-left"
+                        },
+                        [_vm._v(_vm._s(courseDate.course.name))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        {
+                          staticClass: "border border-r-0 px-1 py-1 text-left"
+                        },
+                        [_vm._v(_vm._s(courseDate.venue))]
+                      ),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "border px-1 py-1 text-left" }, [
+                        _vm._v(_vm._s(courseDate.remaining))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "border border-l-0" }, [
+                        _c("div", { staticClass: "inline-flex w-full" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "w-full text-center hover:bg-gray-400 text-gray-800 font-bold py-1 bg-gray-100",
+                              class: {
+                                "bg-gray-100": i % 2 == 0,
+                                "bg-gray-300": i % 2 != 0
+                              },
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteCourseDate(courseDate.id)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                            Odstranit\n                                        "
+                              )
+                            ]
+                          )
+                        ])
+                      ])
+                    ])
+                  }),
+                  0
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _vm.showDeleteSuccessMessage
+            ? _c(
+                "div",
+                {
+                  staticClass:
+                    "fixed bottom-0 right-0 mb-4 mr-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded cursor-pointer",
+                  attrs: { role: "alert" },
+                  on: {
+                    click: function($event) {
+                      _vm.showDeleteSuccessMessage = false
+                    }
+                  }
+                },
+                [
+                  _c("strong", { staticClass: "font-bold" }, [
+                    _vm._v("Úspěch!")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "block sm:inline pr-6" }, [
+                    _vm._v("Termín byl odstraňěn.")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "absolute top-0 bottom-0 right-0 px-4 py-3"
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "fill-current h-6 w-6 text-green-500",
+                          attrs: {
+                            role: "button",
+                            xmlns: "http://www.w3.org/2000/svg",
+                            viewBox: "0 0 20 20"
                           }
                         },
                         [
-                          _vm._v(
-                            "\n                                    Odstranit\n                                "
-                          )
+                          _c("title", [_vm._v("Close")]),
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"
+                            }
+                          })
                         ]
                       )
-                    ])
-                  ]
-                )
-              ])
-            }),
-            0
-          )
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _vm.showDeleteSuccessMessage
-      ? _c(
-          "div",
-          {
-            staticClass:
-              "fixed bottom-0 right-0 mb-4 mr-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded cursor-pointer",
-            attrs: { role: "alert" },
-            on: {
-              click: function($event) {
-                _vm.showDeleteSuccessMessage = false
-              }
-            }
-          },
-          [
-            _c("strong", { staticClass: "font-bold" }, [_vm._v("Úspěch!")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "block sm:inline pr-6" }, [
-              _vm._v("Termín byl odstraňěn.")
-            ]),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "absolute top-0 bottom-0 right-0 px-4 py-3" },
-              [
-                _c(
-                  "svg",
-                  {
-                    staticClass: "fill-current h-6 w-6 text-green-500",
-                    attrs: {
-                      role: "button",
-                      xmlns: "http://www.w3.org/2000/svg",
-                      viewBox: "0 0 20 20"
-                    }
-                  },
-                  [
-                    _c("title", [_vm._v("Close")]),
-                    _c("path", {
-                      attrs: {
-                        d:
-                          "M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"
-                      }
-                    })
-                  ]
-                )
-              ]
-            )
-          ]
-        )
-      : _vm._e()
+                    ]
+                  )
+                ]
+              )
+            : _vm._e()
+        ]
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -57879,7 +58002,7 @@ var staticRenderFns = [
               "bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded",
             attrs: { href: "/admin/course-dates/create" }
           },
-          [_vm._v("Přidat\n            ")]
+          [_vm._v("Přidat\n                    ")]
         )
       ]
     )
@@ -57890,17 +58013,17 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { staticClass: "px-2 py-2 text-left" }, [_vm._v("Datum")]),
+        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Datum")]),
         _vm._v(" "),
-        _c("th", { staticClass: "px-2 py-2 text-left" }, [_vm._v("Kurz")]),
+        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Kurz")]),
         _vm._v(" "),
-        _c("th", { staticClass: "px-2 py-2 text-left" }, [_vm._v("Místo")]),
+        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Místo")]),
         _vm._v(" "),
-        _c("th", { staticClass: "px-2 py-2 text-left" }, [
+        _c("th", { staticClass: "px-1 py-1 text-left" }, [
           _vm._v("Volných míst")
         ]),
         _vm._v(" "),
-        _c("th", { staticClass: "px-2 py-2 text-right" }, [_vm._v("Akce")])
+        _c("th", { staticClass: "px-1 py-1 text-right" }, [_vm._v("Akce")])
       ])
     ])
   }
@@ -57926,137 +58049,166 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "h-full w-full" }, [
-    _c("div", { staticClass: "w-full h-12 bg-gray-100" }),
-    _vm._v(" "),
-    _c("div", { staticClass: "w-full h-full p-6" }, [
-      _vm._m(0),
-      _vm._v(" "),
+  return _c("div", { staticClass: "h-screen w-full bg-gray-100" }, [
+    _c("div", { staticClass: "flex-grow w-full pt-4 pb-8 pr-4" }, [
       _c(
         "div",
-        { staticClass: "w-full h-full mt-6" },
+        {
+          staticClass:
+            "bg-white border-t border-b sm:border-l sm:border-r sm:rounded shadow mb-4"
+        },
         [
-          _c("table", { staticClass: "table w-full" }, [
-            _vm._m(1),
+          _c("div", { staticClass: "w-full h-full p-6" }, [
+            _vm._m(0),
             _vm._v(" "),
             _c(
-              "tbody",
-              _vm._l(_vm.localCourses, function(course, i) {
-                return _c("tr", { class: { "bg-gray-200": i % 2 == 0 } }, [
-                  _c("td", { staticClass: "border border-r-0 px-4 py-2" }, [
-                    _vm._v(_vm._s(course.name))
-                  ]),
+              "div",
+              { staticClass: "w-full h-full mt-6" },
+              [
+                _c("table", { staticClass: "table w-full" }, [
+                  _vm._m(1),
                   _vm._v(" "),
                   _c(
-                    "td",
-                    { staticClass: "border border-l-0 px-4 py-4 text-right" },
-                    [
-                      _c("div", { staticClass: "inline-flex" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass:
-                              "hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l",
-                            class: {
-                              "bg-gray-100": i % 2 == 0,
-                              "bg-gray-300": i % 2 != 0
-                            },
-                            attrs: {
-                              href: "/admin/courses/" + course.id + "/edit"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                    Editovat\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass:
-                              "hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r cursor-pointer",
-                            class: {
-                              "bg-gray-100": i % 2 == 0,
-                              "bg-gray-300": i % 2 != 0
-                            },
-                            on: {
-                              click: function($event) {
-                                return _vm.deleteCourse(course.id)
-                              }
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                    Odstranit\n                                "
-                            )
-                          ]
-                        )
-                      ])
-                    ]
+                    "tbody",
+                    _vm._l(_vm.localCourses, function(course, i) {
+                      return _c(
+                        "tr",
+                        { class: { "bg-gray-200": i % 2 == 0 } },
+                        [
+                          _c(
+                            "td",
+                            { staticClass: "border border-r-0 px-1 py-1" },
+                            [_vm._v(_vm._s(course.name))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            { staticClass: "border border-l-0 text-right" },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "inline-flex w-full flex justify-end"
+                                },
+                                [
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass:
+                                        "text-center hover:bg-gray-400 text-gray-800 px-2 font-bold py-1 bg-gray-100",
+                                      class: {
+                                        "bg-gray-100": i % 2 == 0,
+                                        "bg-gray-300": i % 2 != 0
+                                      },
+                                      attrs: {
+                                        href:
+                                          "/admin/courses/" +
+                                          course.id +
+                                          "/edit"
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                            Editovat\n                                        "
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass:
+                                        "text-center hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 bg-gray-100",
+                                      class: {
+                                        "bg-gray-100": i % 2 == 0,
+                                        "bg-gray-300": i % 2 != 0
+                                      },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.deleteCourse(course.id)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                            Odstranit\n                                        "
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    }),
+                    0
                   )
-                ])
-              }),
-              0
+                ]),
+                _vm._v(" "),
+                _c("confirmation-modal")
+              ],
+              1
             )
           ]),
           _vm._v(" "),
-          _c("confirmation-modal")
-        ],
-        1
-      )
-    ]),
-    _vm._v(" "),
-    _vm.showDeleteSuccessMessage
-      ? _c(
-          "div",
-          {
-            staticClass:
-              "fixed bottom-0 right-0 mb-4 mr-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded cursor-pointer",
-            attrs: { role: "alert" },
-            on: {
-              click: function($event) {
-                _vm.showDeleteSuccessMessage = false
-              }
-            }
-          },
-          [
-            _c("strong", { staticClass: "font-bold" }, [_vm._v("Úspěch!")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "block sm:inline pr-6" }, [
-              _vm._v("Kurz byl odstraňěn.")
-            ]),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "absolute top-0 bottom-0 right-0 px-4 py-3" },
-              [
-                _c(
-                  "svg",
-                  {
-                    staticClass: "fill-current h-6 w-6 text-green-500",
-                    attrs: {
-                      role: "button",
-                      xmlns: "http://www.w3.org/2000/svg",
-                      viewBox: "0 0 20 20"
+          _vm.showDeleteSuccessMessage
+            ? _c(
+                "div",
+                {
+                  staticClass:
+                    "fixed bottom-0 right-0 mb-4 mr-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded cursor-pointer",
+                  attrs: { role: "alert" },
+                  on: {
+                    click: function($event) {
+                      _vm.showDeleteSuccessMessage = false
                     }
-                  },
-                  [
-                    _c("title", [_vm._v("Close")]),
-                    _c("path", {
-                      attrs: {
-                        d:
-                          "M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"
-                      }
-                    })
-                  ]
-                )
-              ]
-            )
-          ]
-        )
-      : _vm._e()
+                  }
+                },
+                [
+                  _c("strong", { staticClass: "font-bold" }, [
+                    _vm._v("Úspěch!")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "block sm:inline pr-6" }, [
+                    _vm._v("Kurz byl odstraňěn.")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "absolute top-0 bottom-0 right-0 px-4 py-3"
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "fill-current h-6 w-6 text-green-500",
+                          attrs: {
+                            role: "button",
+                            xmlns: "http://www.w3.org/2000/svg",
+                            viewBox: "0 0 20 20"
+                          }
+                        },
+                        [
+                          _c("title", [_vm._v("Close")]),
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            : _vm._e()
+        ]
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -58077,7 +58229,7 @@ var staticRenderFns = [
               "bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded",
             attrs: { href: "/admin/courses/create" }
           },
-          [_vm._v("Přidat\n            ")]
+          [_vm._v("Přidat\n                    ")]
         )
       ]
     )
@@ -58088,9 +58240,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { staticClass: "px-2 py-2 text-left" }, [_vm._v("Jméno")]),
+        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Jméno")]),
         _vm._v(" "),
-        _c("th", { staticClass: "px-2 py-2 text-right" }, [_vm._v("Akce")])
+        _c("th", { staticClass: "px-1 py-1 text-right" }, [_vm._v("Akce")])
       ])
     ])
   }
@@ -58123,12 +58275,12 @@ var render = function() {
         staticClass: "font-sans bg-gray-400er flex flex-col min-h-screen w-full"
       },
       [
-        _c("div", { staticClass: "flex-grow w-full pt-6 pb-8 pr-8" }, [
+        _c("div", { staticClass: "flex-grow w-full pt-4 pb-8 pr-4" }, [
           _c(
             "div",
             {
               staticClass:
-                "bg-white border-t border-b sm:border-l sm:border-r sm:rounded shadow mb-6"
+                "bg-white border-t border-b sm:border-l sm:border-r sm:rounded shadow mb-4"
             },
             [
               _c("div", { staticClass: "border-b px-6" }, [
@@ -58250,7 +58402,7 @@ var render = function() {
                   "div",
                   {
                     staticClass:
-                      "w-full mb-6 lg:mb-0 lg:w-1/2 px-4 flex flex-col text-gray-700"
+                      "w-full mb-6 lg:mb-0 lg:w-1/2 px-4 pr-2 flex flex-col text-gray-700"
                   },
                   [
                     _c(
@@ -58402,7 +58554,7 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c("div", { staticClass: "w-full lg:w-1/2 px-4" }, [
+                _c("div", { staticClass: "w-full lg:w-1/2 pl-2 px-4" }, [
                   _vm.activeDetailsTab == "COURSE_DATES_REMAINING_BY_VENUE"
                     ? _c(
                         "div",
@@ -58544,7 +58696,7 @@ var render = function() {
                   "div",
                   {
                     staticClass:
-                      "w-full mb-6 lg:mb-0 lg:w-1/2 px-4 flex flex-col text-gray-700"
+                      "w-full mb-6 lg:mb-0 lg:w-1/2 px-4 pr-2 flex flex-col text-gray-700"
                   },
                   [
                     _c(
@@ -58618,7 +58770,7 @@ var render = function() {
                   "div",
                   {
                     staticClass:
-                      "w-full mb-6 lg:mb-0 lg:w-1/2 px-4 flex flex-col text-gray-700"
+                      "w-full mb-6 lg:mb-0 lg:w-1/2 px-4 pr-2 flex flex-col text-gray-700"
                   },
                   [
                     _c(
@@ -59371,7 +59523,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "p-4 pt-0 mx-auto flex flex-wrap " }, [
-    _c("div", { staticClass: "p-4 pt-6 w-64 " }, [
+    _c("div", { staticClass: "pt-4 w-64" }, [
       _c(
         "div",
         {
@@ -59400,127 +59552,139 @@ var render = function() {
           ),
           _vm._v(" "),
           _c(
-            "div",
+            "a",
             {
               staticClass:
-                "cursor-pointer px-2 py-1 hover:bg-gray-200 hover:text-gray-700 rounded block mb-3 flex items-center"
+                "cursor-pointer px-2 py-1 hover:bg-gray-200 hover:text-gray-700 rounded block mb-3 flex items-center",
+              class: _vm.isActive("/admin/dashboard") ? "bg-gray-200" : "",
+              attrs: { href: "/admin/dashboard" }
             },
             [
-              _c(
-                "svg",
-                {
-                  staticClass:
-                    "fill-current inline-block h-8 w-8 rounded-full p-2 bg-gray-200",
-                  attrs: {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    viewBox: "0 0 24 24"
-                  }
-                },
-                [
-                  _c("path", {
+              _c("div", { staticClass: "rounded-full bg-gray-200" }, [
+                _c(
+                  "svg",
+                  {
+                    staticClass:
+                      "fill-current inline-block h-8 w-8 rounded-full p-2 bg-gray-200",
                     attrs: {
-                      "fill-rule": "evenodd",
-                      d:
-                        "M3.889 3h6.222a.9.9 0 0 1 .889.91v8.18a.9.9 0 0 1-.889.91H3.89A.9.9 0 0 1 3 12.09V3.91A.9.9 0 0 1 3.889 3zM3.889 15h6.222c.491 0 .889.384.889.857v4.286c0 .473-.398.857-.889.857H3.89C3.398 21 3 20.616 3 20.143v-4.286c0-.473.398-.857.889-.857zM13.889 11h6.222a.9.9 0 0 1 .889.91v8.18a.9.9 0 0 1-.889.91H13.89a.9.9 0 0 1-.889-.91v-8.18a.9.9 0 0 1 .889-.91zM13.889 3h6.222c.491 0 .889.384.889.857v4.286c0 .473-.398.857-.889.857H13.89C13.398 9 13 8.616 13 8.143V3.857c0-.473.398-.857.889-.857z"
+                      xmlns: "http://www.w3.org/2000/svg",
+                      viewBox: "0 0 24 24"
                     }
-                  })
-                ]
-              ),
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        "fill-rule": "evenodd",
+                        d:
+                          "M3.889 3h6.222a.9.9 0 0 1 .889.91v8.18a.9.9 0 0 1-.889.91H3.89A.9.9 0 0 1 3 12.09V3.91A.9.9 0 0 1 3.889 3zM3.889 15h6.222c.491 0 .889.384.889.857v4.286c0 .473-.398.857-.889.857H3.89C3.398 21 3 20.616 3 20.143v-4.286c0-.473.398-.857.889-.857zM13.889 11h6.222a.9.9 0 0 1 .889.91v8.18a.9.9 0 0 1-.889.91H13.89a.9.9 0 0 1-.889-.91v-8.18a.9.9 0 0 1 .889-.91zM13.889 3h6.222c.491 0 .889.384.889.857v4.286c0 .473-.398.857-.889.857H13.89C13.398 9 13 8.616 13 8.143V3.857c0-.473.398-.857.889-.857z"
+                      }
+                    })
+                  ]
+                )
+              ]),
               _vm._v(" "),
               _c("span", { staticClass: "mx-2" }, [_vm._v("Přehled")])
             ]
           ),
           _vm._v(" "),
           _c(
-            "div",
+            "a",
             {
               staticClass:
-                "cursor-pointer px-2 py-1 hover:bg-gray-200 hover:text-gray-700 rounded block mb-3 flex items-center"
+                "cursor-pointer px-2 py-1 hover:bg-gray-200 hover:text-gray-700 rounded block mb-3 flex items-center",
+              class: _vm.isActive("/admin/courses") ? "bg-gray-200" : "",
+              attrs: { href: "/admin/courses" }
             },
             [
-              _c(
-                "svg",
-                {
-                  staticClass:
-                    "fill-current inline-block h-8 w-8 rounded-full p-2 bg-gray-200",
-                  attrs: {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    viewBox: "0 0 24 24"
-                  }
-                },
-                [
-                  _c("path", {
+              _c("div", { staticClass: "rounded-full bg-gray-200" }, [
+                _c(
+                  "svg",
+                  {
+                    staticClass:
+                      "fill-current inline-block h-8 w-8 rounded-full p-2 bg-gray-200",
                     attrs: {
-                      "fill-rule": "evenodd",
-                      d:
-                        "M3.889 3h6.222a.9.9 0 0 1 .889.91v8.18a.9.9 0 0 1-.889.91H3.89A.9.9 0 0 1 3 12.09V3.91A.9.9 0 0 1 3.889 3zM3.889 15h6.222c.491 0 .889.384.889.857v4.286c0 .473-.398.857-.889.857H3.89C3.398 21 3 20.616 3 20.143v-4.286c0-.473.398-.857.889-.857zM13.889 11h6.222a.9.9 0 0 1 .889.91v8.18a.9.9 0 0 1-.889.91H13.89a.9.9 0 0 1-.889-.91v-8.18a.9.9 0 0 1 .889-.91zM13.889 3h6.222c.491 0 .889.384.889.857v4.286c0 .473-.398.857-.889.857H13.89C13.398 9 13 8.616 13 8.143V3.857c0-.473.398-.857.889-.857z"
+                      xmlns: "http://www.w3.org/2000/svg",
+                      viewBox: "0 0 512 512"
                     }
-                  })
-                ]
-              ),
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M204.3 5C104.9 24.4 24.8 104.3 5.2 203.4c-37 187 131.7 326.4 258.8 306.7 41.2-6.4 61.4-54.6 42.5-91.7-23.1-45.4 9.9-98.4 60.9-98.4h79.7c35.8 0 64.8-29.6 64.9-65.3C511.5 97.1 368.1-26.9 204.3 5zM96 320c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm32-128c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128-64c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 64c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"
+                      }
+                    })
+                  ]
+                )
+              ]),
               _vm._v(" "),
               _c("span", { staticClass: "mx-2" }, [_vm._v("Kurzy")])
             ]
           ),
           _vm._v(" "),
           _c(
-            "div",
+            "a",
             {
               staticClass:
-                "cursor-pointer px-2 py-1 hover:bg-gray-200 hover:text-gray-700 rounded block mb-3 flex items-center"
+                "cursor-pointer px-2 py-1 hover:bg-gray-200 hover:text-gray-700 rounded block mb-3 flex items-center",
+              class: _vm.isActive("/admin/course-dates") ? "bg-gray-200" : "",
+              attrs: { href: "/admin/course-dates" }
             },
             [
-              _c(
-                "svg",
-                {
-                  staticClass:
-                    "fill-current inline-block h-8 w-8 rounded-full p-2 bg-gray-200",
-                  attrs: {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    viewBox: "0 0 24 24"
-                  }
-                },
-                [
-                  _c("path", {
+              _c("div", { staticClass: "rounded-full bg-gray-200" }, [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "fill-current inline-block h-8 w-8 p-2",
                     attrs: {
-                      "fill-rule": "evenodd",
-                      d:
-                        "M3.889 3h6.222a.9.9 0 0 1 .889.91v8.18a.9.9 0 0 1-.889.91H3.89A.9.9 0 0 1 3 12.09V3.91A.9.9 0 0 1 3.889 3zM3.889 15h6.222c.491 0 .889.384.889.857v4.286c0 .473-.398.857-.889.857H3.89C3.398 21 3 20.616 3 20.143v-4.286c0-.473.398-.857.889-.857zM13.889 11h6.222a.9.9 0 0 1 .889.91v8.18a.9.9 0 0 1-.889.91H13.89a.9.9 0 0 1-.889-.91v-8.18a.9.9 0 0 1 .889-.91zM13.889 3h6.222c.491 0 .889.384.889.857v4.286c0 .473-.398.857-.889.857H13.89C13.398 9 13 8.616 13 8.143V3.857c0-.473.398-.857.889-.857z"
+                      xmlns: "http://www.w3.org/2000/svg",
+                      viewBox: "0 0 448 512"
                     }
-                  })
-                ]
-              ),
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"
+                      }
+                    })
+                  ]
+                )
+              ]),
               _vm._v(" "),
               _c("span", { staticClass: "mx-2" }, [_vm._v("Termíny")])
             ]
           ),
           _vm._v(" "),
           _c(
-            "div",
+            "a",
             {
               staticClass:
-                "cursor-pointer px-2 py-1 hover:bg-gray-200 hover:text-gray-700 rounded block mb-3 flex items-center"
+                "cursor-pointer px-2 py-1 hover:bg-gray-200 hover:text-gray-700 rounded block mb-3 flex items-center",
+              class: _vm.isActive("/admin/reservations") ? "bg-gray-200" : "",
+              attrs: { href: "/admin/reservations" }
             },
             [
-              _c(
-                "svg",
-                {
-                  staticClass:
-                    "fill-current inline-block h-8 w-8 rounded-full p-2 bg-gray-200",
-                  attrs: {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    viewBox: "0 0 24 24"
-                  }
-                },
-                [
-                  _c("path", {
+              _c("div", { staticClass: "rounded-full bg-gray-200" }, [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "fill-current inline-block h-8 w-8 p-2",
                     attrs: {
-                      d:
-                        "M528 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm0 400H48V80h480v352zM208 256c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm-89.6 128h179.2c12.4 0 22.4-8.6 22.4-19.2v-19.2c0-31.8-30.1-57.6-67.2-57.6-10.8 0-18.7 8-44.8 8-26.9 0-33.4-8-44.8-8-37.1 0-67.2 25.8-67.2 57.6v19.2c0 10.6 10 19.2 22.4 19.2zM360 320h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm0-64h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm0-64h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8z"
+                      xmlns: "http://www.w3.org/2000/svg",
+                      viewBox: "0 0 576 512"
                     }
-                  })
-                ]
-              ),
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M528 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm0 400H48V80h480v352zM208 256c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm-89.6 128h179.2c12.4 0 22.4-8.6 22.4-19.2v-19.2c0-31.8-30.1-57.6-67.2-57.6-10.8 0-18.7 8-44.8 8-26.9 0-33.4-8-44.8-8-37.1 0-67.2 25.8-67.2 57.6v19.2c0 10.6 10 19.2 22.4 19.2zM360 320h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm0-64h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm0-64h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8z"
+                      }
+                    })
+                  ]
+                )
+              ]),
               _vm._v(" "),
               _c("span", { staticClass: "mx-2" }, [_vm._v("Rezervace")])
             ]
@@ -59552,225 +59716,289 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "w-full" }, [
-    _c("div", { staticClass: "w-full h-12 border-b flex justify-between" }, [
+  return _c("div", { staticClass: "h-screen w-full bg-gray-100" }, [
+    _c("div", { staticClass: "flex-grow w-full pt-4 pb-8 pr-4" }, [
       _c(
         "div",
-        { staticClass: "flex align-middle content-center text-gray-600" },
+        {
+          staticClass:
+            "bg-white border-t border-b sm:border-l sm:border-r sm:rounded shadow mb-4"
+        },
         [
-          _c("div", { staticClass: "flex content-center items-center pl-6" }, [
-            _c(
-              "a",
-              { staticClass: "mr-4", attrs: { href: "/admin/reservations" } },
-              [_vm._v("Rezervace")]
-            ),
-            _vm._v("/\n                "),
-            _c("div", { staticClass: "ml-4 text-black" }, [
-              _vm._v(
-                _vm._s(_vm.reservation.source_code) +
-                  " - " +
-                  _vm._s(_vm.reservation.attendee.first_name) +
-                  " " +
-                  _vm._s(_vm.reservation.attendee.last_name)
+          _c(
+            "div",
+            { staticClass: "w-full h-12 border-b flex justify-between" },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "flex align-middle content-center text-gray-600"
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "flex content-center items-center pl-4" },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "mr-4",
+                          attrs: { href: "/admin/reservations" }
+                        },
+                        [_vm._v("Rezervace")]
+                      ),
+                      _vm._v("/\n                        "),
+                      _c("div", { staticClass: "ml-4 text-black" }, [
+                        _vm._v(
+                          _vm._s(_vm.reservation.source_code) +
+                            " - " +
+                            _vm._s(_vm.reservation.attendee.first_name) +
+                            " " +
+                            _vm._s(_vm.reservation.attendee.last_name)
+                        )
+                      ])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex align-middle" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border-l hover:border-transparent",
+                    on: {
+                      click: function($event) {
+                        return _vm.deleteReservation()
+                      }
+                    }
+                  },
+                  [_vm._v("Odstranit")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border-l hover:border-transparent",
+                    on: {
+                      click: function($event) {
+                        return _vm.goBack()
+                      }
+                    }
+                  },
+                  [_vm._v("Zpět")]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "w-full flex" }, [
+            _c("div", { staticClass: "w-1/3 h-full p-4 border-r" }, [
+              _c("div", { staticClass: "flex" }, [
+                _c("div", { staticClass: "w-5/12 font-bold" }, [
+                  _vm._v("Kurz")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-7/12" }, [
+                  _vm._v(_vm._s(_vm.reservation.course.name))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-5/12 font-bold" }, [
+                  _vm._v("Stav")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-7/12" }, [
+                  _vm._v(_vm._s(_vm.reservation.status))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-5/12 font-bold" }, [
+                  _vm._v("Zdroj")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-7/12" }, [
+                  _vm._v(_vm._s(_vm.reservation.source_type))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-5/12 font-bold" }, [
+                  _vm._v("Č. Objednávky")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-7/12" }, [
+                  _vm._v(_vm._s(_vm.reservation.source_code))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-5/12 font-bold" }, [
+                  _vm._v("UUID")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-7/12" }, [
+                  _vm._v(_vm._s(_vm.reservation.uuid))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-5/12 font-bold" }, [
+                  _vm._v("Jméno")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-7/12" }, [
+                  _vm._v(_vm._s(_vm.reservation.attendee.first_name))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-5/12 font-bold" }, [
+                  _vm._v("Příjmení")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-7/12" }, [
+                  _vm._v(_vm._s(_vm.reservation.attendee.last_name))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-5/12 font-bold" }, [
+                  _vm._v("Email")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-7/12" }, [
+                  _vm._v(_vm._s(_vm.reservation.attendee.email))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-5/12 font-bold" }, [
+                  _vm._v("Telefon")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-7/12" }, [
+                  _vm._v(_vm._s(_vm.reservation.attendee.phone))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-5/12 font-bold" }, [
+                  _vm._v("Stát")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-7/12" }, [
+                  _vm._v(_vm._s(_vm.reservation.attendee.address.country))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-5/12 font-bold" }, [
+                  _vm._v("Město")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-7/12" }, [
+                  _vm._v(_vm._s(_vm.reservation.attendee.address.city))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-5/12 font-bold" }, [
+                  _vm._v("Ulice")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-7/12" }, [
+                  _vm._v(_vm._s(_vm.reservation.attendee.address.street))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-5/12 font-bold" }, [_vm._v("PSČ")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "w-7/12" }, [
+                  _vm._v(_vm._s(_vm.reservation.attendee.address.zip))
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-2/3 h-full p-4" }, [
+              _c("div", { staticClass: "text-xl" }, [_vm._v("Historie")]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "p-4" },
+                _vm._l(_vm.reservation.statusRecords, function(statusRecord) {
+                  return _c("div", { staticClass: "flex w-full mt-3" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "w-1/4 text-gray-600 italic content-center items-center flex justify-start"
+                      },
+                      [
+                        _c("div", { staticClass: "h-auto" }, [
+                          _vm._v(_vm._s(statusRecord.created_at))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "w-1/4 text-red-900 font-bold content-center items-center flex justify-end"
+                      },
+                      [
+                        _c("div", { staticClass: "h-auto" }, [
+                          _vm._v(_vm._s(statusRecord.old_status))
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    statusRecord.old_status !== null
+                      ? _c("div", { staticClass: "text-center w-1/4" }, [
+                          _c(
+                            "svg",
+                            {
+                              staticClass:
+                                "fill-current text-gray-500 inline-block h-12 w-12",
+                              attrs: {
+                                xmlns: "http://www.w3.org/2000/svg",
+                                viewBox: "0 0 448 512"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  d:
+                                    "M313.941 216H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12h301.941v46.059c0 21.382 25.851 32.09 40.971 16.971l86.059-86.059c9.373-9.373 9.373-24.569 0-33.941l-86.059-86.059c-15.119-15.119-40.971-4.411-40.971 16.971V216z"
+                                }
+                              })
+                            ]
+                          )
+                        ])
+                      : _c("div", { staticClass: "text-center w-1/4 h-12" }),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "w-1/3 text-right text-green-600 font-bold content-center items-center flex"
+                      },
+                      [_c("div", [_vm._v(_vm._s(statusRecord.new_status))])]
+                    )
+                  ])
+                }),
+                0
               )
             ])
           ])
         ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "flex align-middle" }, [
-        _c(
-          "button",
-          {
-            staticClass:
-              "bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border-l hover:border-transparent",
-            on: {
-              click: function($event) {
-                return _vm.deleteReservation()
-              }
-            }
-          },
-          [_vm._v("Odstranit")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass:
-              "bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border-l hover:border-transparent",
-            on: {
-              click: function($event) {
-                return _vm.goBack()
-              }
-            }
-          },
-          [_vm._v("Zpět")]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "w-full flex" }, [
-      _c("div", { staticClass: "w-1/3 h-full p-6 px-8 border-r" }, [
-        _c("div", { staticClass: "flex mt-6" }, [
-          _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Kurz")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-2/3" }, [
-            _vm._v(_vm._s(_vm.reservation.course.name))
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex mt-6" }, [
-          _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Stav")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-2/3" }, [
-            _vm._v(_vm._s(_vm.reservation.status))
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex mt-6" }, [
-          _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("UUID")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-2/3" }, [
-            _vm._v(_vm._s(_vm.reservation.uuid))
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex mt-6" }, [
-          _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Jméno")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-2/3" }, [
-            _vm._v(_vm._s(_vm.reservation.attendee.first_name))
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex mt-6" }, [
-          _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Příjmení")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-2/3" }, [
-            _vm._v(_vm._s(_vm.reservation.attendee.last_name))
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex mt-6" }, [
-          _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Email")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-2/3" }, [
-            _vm._v(_vm._s(_vm.reservation.attendee.email))
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex mt-6" }, [
-          _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Telefon")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-2/3" }, [
-            _vm._v(_vm._s(_vm.reservation.attendee.phone))
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex mt-6" }, [
-          _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Stát")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-2/3" }, [
-            _vm._v(_vm._s(_vm.reservation.attendee.address.country))
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex mt-6" }, [
-          _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Město")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-2/3" }, [
-            _vm._v(_vm._s(_vm.reservation.attendee.address.city))
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex mt-6" }, [
-          _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Ulice")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-2/3" }, [
-            _vm._v(_vm._s(_vm.reservation.attendee.address.street))
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex mt-6" }, [
-          _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("PSČ")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-2/3" }, [
-            _vm._v(_vm._s(_vm.reservation.attendee.address.zip))
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "w-2/3 h-full p-6 px-8" }, [
-        _c("div", { staticClass: "text-2xl" }, [_vm._v("Historie")]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "p-12" },
-          _vm._l(_vm.reservation.statusRecords, function(statusRecord) {
-            return _c("div", { staticClass: "flex w-full mt-3" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "w-1/4 text-gray-600 italic content-center items-center flex justify-start"
-                },
-                [
-                  _c("div", { staticClass: "h-auto" }, [
-                    _vm._v(_vm._s(statusRecord.created_at))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "w-1/4 text-red-900 font-bold content-center items-center flex justify-end"
-                },
-                [
-                  _c("div", { staticClass: "h-auto" }, [
-                    _vm._v(_vm._s(statusRecord.old_status))
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              statusRecord.old_status !== null
-                ? _c("div", { staticClass: "text-center w-1/4" }, [
-                    _c(
-                      "svg",
-                      {
-                        staticClass:
-                          "fill-current text-gray-500 inline-block h-12 w-12",
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          viewBox: "0 0 448 512"
-                        }
-                      },
-                      [
-                        _c("path", {
-                          attrs: {
-                            d:
-                              "M313.941 216H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12h301.941v46.059c0 21.382 25.851 32.09 40.971 16.971l86.059-86.059c9.373-9.373 9.373-24.569 0-33.941l-86.059-86.059c-15.119-15.119-40.971-4.411-40.971 16.971V216z"
-                          }
-                        })
-                      ]
-                    )
-                  ])
-                : _c("div", { staticClass: "text-center w-1/4 h-12" }),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "w-1/3 text-right text-green-600 font-bold content-center items-center flex"
-                },
-                [_c("div", [_vm._v(_vm._s(statusRecord.new_status))])]
-              )
-            ])
-          }),
-          0
-        )
-      ])
+      )
     ])
   ])
 }
@@ -59796,170 +60024,191 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "h-full w-full" }, [
-    _c("div", { staticClass: "w-full h-12 bg-gray-100" }),
-    _vm._v(" "),
-    _c("div", { staticClass: "w-full h-full p-6" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "w-full h-full mt-6" }, [
-        _c("table", { staticClass: "table w-full" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.reservations, function(reservation, i) {
-              return _c("tr", { class: { "bg-gray-200": i % 2 == 0 } }, [
-                _c(
-                  "td",
-                  {
-                    staticClass:
-                      "border border-r-0 px-4 py-2 text-left text-blue-400"
-                  },
-                  [
-                    _c(
-                      "a",
-                      {
-                        attrs: { href: "/admin/reservations/" + reservation.id }
-                      },
-                      [_vm._v(_vm._s(reservation.id))]
-                    )
-                  ]
-                ),
+  return _c("div", { staticClass: "h-screen w-full bg-gray-100" }, [
+    _c("div", { staticClass: "flex-grow w-full pt-4 pb-8 pr-4" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "bg-white border-t border-b sm:border-l sm:border-r sm:rounded shadow mb-4"
+        },
+        [
+          _c("div", { staticClass: "w-full h-full p-6" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-full h-full mt-6" }, [
+              _c("table", { staticClass: "table w-full" }, [
+                _vm._m(1),
                 _vm._v(" "),
                 _c(
-                  "td",
-                  { staticClass: "border border-r-0 px-4 py-2 text-left" },
-                  [_vm._v(_vm._s(reservation.course_date.course.name))]
-                ),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  { staticClass: "border border-r-0 px-4 py-2 text-left" },
-                  [
-                    _vm._v(
-                      _vm._s(reservation.course_date.from_date) +
-                        " - " +
-                        _vm._s(reservation.course_date.to_date)
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  { staticClass: "border border-r-0 px-4 py-2 text-left" },
-                  [_vm._v(_vm._s(reservation.course_date.venue))]
-                ),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  { staticClass: "border border-r-0 px-4 py-2 text-left" },
-                  [_vm._v(_vm._s(reservation.source_type))]
-                ),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  { staticClass: "border border-r-0 px-4 py-2 text-left" },
-                  [_vm._v(_vm._s(reservation.source_code))]
-                ),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  { staticClass: "border border-r-0 px-4 py-2 text-left" },
-                  [_vm._v(_vm._s(reservation.status))]
-                ),
-                _vm._v(" "),
-                _c("td", { staticClass: "border px-4 py-2 text-left" }, [
-                  _vm._v(_vm._s(reservation.created_at))
-                ]),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  { staticClass: "border border-l-0 px-4 py-4 text-right" },
-                  [
-                    _c("div", { staticClass: "inline-flex" }, [
+                  "tbody",
+                  _vm._l(_vm.reservations, function(reservation, i) {
+                    return _c("tr", { class: { "bg-gray-200": i % 2 == 0 } }, [
                       _c(
-                        "a",
+                        "td",
                         {
                           staticClass:
-                            "hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r",
-                          class: {
-                            "bg-gray-100": i % 2 == 0,
-                            "bg-gray-300": i % 2 != 0
-                          },
-                          attrs: { href: "#" },
-                          on: {
-                            click: function($event) {
-                              return _vm.deleteReservation(reservation.id)
-                            }
-                          }
+                            "border border-r-0 px-1 py-1 text-left text-blue-400"
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              attrs: {
+                                href: "/admin/reservations/" + reservation.id
+                              }
+                            },
+                            [_vm._v(_vm._s(reservation.id))]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        {
+                          staticClass: "border border-r-0 px-1 py-1 text-left"
+                        },
+                        [_vm._v(_vm._s(reservation.course_date.course.name))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        {
+                          staticClass: "border border-r-0 px-1 py-1 text-left"
                         },
                         [
                           _vm._v(
-                            "\n                                    Odstranit\n                                "
+                            _vm._s(reservation.course_date.fullDateForHumans)
                           )
                         ]
-                      )
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        {
+                          staticClass: "border border-r-0 px-1 py-1 text-left"
+                        },
+                        [_vm._v(_vm._s(reservation.course_date.venue))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        {
+                          staticClass: "border border-r-0 px-1 py-1 text-left"
+                        },
+                        [_vm._v(_vm._s(reservation.source_type))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        {
+                          staticClass: "border border-r-0 px-1 py-1 text-left"
+                        },
+                        [_vm._v(_vm._s(reservation.source_code))]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "td",
+                        {
+                          staticClass: "border border-r-0 px-1 py-1 text-left"
+                        },
+                        [_vm._v(_vm._s(reservation.status))]
+                      ),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "border px-4 py-2 text-left" }, [
+                        _vm._v(_vm._s(reservation.createdAtForHumans))
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "border border-l-0" }, [
+                        _c("div", { staticClass: "inline-flex w-full" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "w-full text-center hover:bg-gray-400 text-gray-800 font-bold py-1",
+                              class: {
+                                "bg-gray-100": i % 2 == 0,
+                                "bg-gray-300": i % 2 != 0
+                              },
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteReservation(reservation.id)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                            Odstranit\n                                        "
+                              )
+                            ]
+                          )
+                        ])
+                      ])
                     ])
-                  ]
+                  }),
+                  0
                 )
               ])
-            }),
-            0
-          )
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _vm.showDeleteSuccessMessage
-      ? _c(
-          "div",
-          {
-            staticClass:
-              "fixed bottom-0 right-0 mb-4 mr-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded cursor-pointer",
-            attrs: { role: "alert" },
-            on: {
-              click: function($event) {
-                _vm.showDeleteSuccessMessage = false
-              }
-            }
-          },
-          [
-            _c("strong", { staticClass: "font-bold" }, [_vm._v("Úspěch!")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "block sm:inline pr-6" }, [
-              _vm._v("Termín byl odstraňěn.")
-            ]),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticClass: "absolute top-0 bottom-0 right-0 px-4 py-3" },
-              [
-                _c(
-                  "svg",
-                  {
-                    staticClass: "fill-current h-6 w-6 text-green-500",
-                    attrs: {
-                      role: "button",
-                      xmlns: "http://www.w3.org/2000/svg",
-                      viewBox: "0 0 20 20"
+            ])
+          ]),
+          _vm._v(" "),
+          _vm.showDeleteSuccessMessage
+            ? _c(
+                "div",
+                {
+                  staticClass:
+                    "fixed bottom-0 right-0 mb-4 mr-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded cursor-pointer",
+                  attrs: { role: "alert" },
+                  on: {
+                    click: function($event) {
+                      _vm.showDeleteSuccessMessage = false
                     }
-                  },
-                  [
-                    _c("title", [_vm._v("Close")]),
-                    _c("path", {
-                      attrs: {
-                        d:
-                          "M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"
-                      }
-                    })
-                  ]
-                )
-              ]
-            )
-          ]
-        )
-      : _vm._e()
+                  }
+                },
+                [
+                  _c("strong", { staticClass: "font-bold" }, [
+                    _vm._v("Úspěch!")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "block sm:inline pr-6" }, [
+                    _vm._v("Termín byl odstraňěn.")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "absolute top-0 bottom-0 right-0 px-4 py-3"
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "fill-current h-6 w-6 text-green-500",
+                          attrs: {
+                            role: "button",
+                            xmlns: "http://www.w3.org/2000/svg",
+                            viewBox: "0 0 20 20"
+                          }
+                        },
+                        [
+                          _c("title", [_vm._v("Close")]),
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            : _vm._e()
+        ]
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -59979,23 +60228,23 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { staticClass: "px-2 py-2 text-left" }, [_vm._v("ID")]),
+        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("ID")]),
         _vm._v(" "),
-        _c("th", { staticClass: "px-2 py-2 text-left" }, [_vm._v("Kurz")]),
+        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Kurz")]),
         _vm._v(" "),
-        _c("th", { staticClass: "px-2 py-2 text-left" }, [_vm._v("Termín")]),
+        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Termín")]),
         _vm._v(" "),
-        _c("th", { staticClass: "px-2 py-2 text-left" }, [_vm._v("Místo")]),
+        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Místo")]),
         _vm._v(" "),
-        _c("th", { staticClass: "px-2 py-2 text-left" }, [_vm._v("Zdroj")]),
+        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Zdroj")]),
         _vm._v(" "),
-        _c("th", { staticClass: "px-2 py-2 text-left" }, [_vm._v("Kód")]),
+        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Kód")]),
         _vm._v(" "),
-        _c("th", { staticClass: "px-2 py-2 text-left" }, [_vm._v("Stav")]),
+        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Stav")]),
         _vm._v(" "),
-        _c("th", { staticClass: "px-2 py-2 text-left" }, [_vm._v("Vytvořeno")]),
+        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Vytvořeno")]),
         _vm._v(" "),
-        _c("th", { staticClass: "px-2 py-2 text-right" }, [_vm._v("Akce")])
+        _c("th", { staticClass: "px-1 py-1 text-right" }, [_vm._v("Akce")])
       ])
     ])
   }
@@ -60150,11 +60399,11 @@ var render = function() {
                                 _c("div", { staticClass: "flex" }, [
                                   _c(
                                     "div",
-                                    { staticClass: "w-1/3 font-bold" },
-                                    [_vm._v("Kod")]
+                                    { staticClass: "w-5/12 font-bold" },
+                                    [_vm._v("Číslo objednávky")]
                                   ),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "pl-2 w-2/3" }, [
+                                  _c("div", { staticClass: "pl-2 w-7/12" }, [
                                     _vm._v(
                                       _vm._s(_vm.reservation.source_code) +
                                         " (" +
@@ -60167,11 +60416,11 @@ var render = function() {
                                 _c("div", { staticClass: "flex mb-6" }, [
                                   _c(
                                     "div",
-                                    { staticClass: "w-1/3 font-bold" },
+                                    { staticClass: "w-5/12 font-bold" },
                                     [_vm._v("Zarezervováno")]
                                   ),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "w-2/3 pl-2" }, [
+                                  _c("div", { staticClass: "w-7/12 pl-2" }, [
                                     _vm._v(_vm._s(_vm.reservation.created_at))
                                   ])
                                 ]),
@@ -60179,11 +60428,11 @@ var render = function() {
                                 _c("div", { staticClass: "flex mb-1" }, [
                                   _c(
                                     "div",
-                                    { staticClass: "w-1/3 font-bold" },
+                                    { staticClass: "w-5/12 font-bold" },
                                     [_vm._v("Kurz")]
                                   ),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "pl-2 w-2/3" }, [
+                                  _c("div", { staticClass: "pl-2 w-7/12" }, [
                                     _vm._v(_vm._s(_vm.reservation.course.name))
                                   ])
                                 ]),
@@ -60191,11 +60440,11 @@ var render = function() {
                                 _c("div", { staticClass: "flex mb-1" }, [
                                   _c(
                                     "div",
-                                    { staticClass: "w-1/3 font-bold" },
+                                    { staticClass: "w-5/12 font-bold" },
                                     [_vm._v("Stav")]
                                   ),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "pl-2 w-2/3" }, [
+                                  _c("div", { staticClass: "pl-2 w-7/12" }, [
                                     _vm._v(_vm._s(_vm.reservation.status))
                                   ])
                                 ]),
@@ -60203,11 +60452,11 @@ var render = function() {
                                 _c("div", { staticClass: "flex mb-1" }, [
                                   _c(
                                     "div",
-                                    { staticClass: "w-1/3 font-bold" },
+                                    { staticClass: "w-5/12 font-bold" },
                                     [_vm._v("Termín")]
                                   ),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "pl-2 w-2/3" }, [
+                                  _c("div", { staticClass: "pl-2 w-7/12" }, [
                                     _vm._v(
                                       _vm._s(
                                         _vm.reservation.courseDate
@@ -60220,11 +60469,11 @@ var render = function() {
                                 _c("div", { staticClass: "flex mb-6" }, [
                                   _c(
                                     "div",
-                                    { staticClass: "w-1/3 font-bold" },
+                                    { staticClass: "w-5/12 font-bold" },
                                     [_vm._v("Místo konání")]
                                   ),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "pl-2 w-2/3" }, [
+                                  _c("div", { staticClass: "pl-2 w-7/12" }, [
                                     _vm._v(
                                       _vm._s(_vm.reservation.courseDate.venue)
                                     )
@@ -60234,11 +60483,11 @@ var render = function() {
                                 _c("div", { staticClass: "flex mb-1" }, [
                                   _c(
                                     "div",
-                                    { staticClass: "w-1/3 font-bold" },
+                                    { staticClass: "w-5/12 font-bold" },
                                     [_vm._v("Jméno")]
                                   ),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "pl-2 w-2/3" }, [
+                                  _c("div", { staticClass: "pl-2 w-7/12" }, [
                                     _vm._v(
                                       _vm._s(
                                         _vm.reservation.attendee.fullname
@@ -60250,11 +60499,11 @@ var render = function() {
                                 _c("div", { staticClass: "flex mb-1" }, [
                                   _c(
                                     "div",
-                                    { staticClass: "w-1/3 font-bold" },
+                                    { staticClass: "w-5/12 font-bold" },
                                     [_vm._v("Email")]
                                   ),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "pl-2 w-2/3" }, [
+                                  _c("div", { staticClass: "pl-2 w-7/12" }, [
                                     _vm._v(
                                       _vm._s(_vm.reservation.attendee.email)
                                     )
@@ -60333,11 +60582,11 @@ var render = function() {
                                 _c("div", { staticClass: "flex mb-1" }, [
                                   _c(
                                     "div",
-                                    { staticClass: "w-1/3 font-bold" },
+                                    { staticClass: "w-5/12 font-bold" },
                                     [_vm._v("Kurz")]
                                   ),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "pl-2 w-2/3" }, [
+                                  _c("div", { staticClass: "pl-2 w-7/12" }, [
                                     _vm._v(
                                       _vm._s(
                                         _vm.reservation.queuedReservation.course
@@ -60350,11 +60599,11 @@ var render = function() {
                                 _c("div", { staticClass: "flex mb-1" }, [
                                   _c(
                                     "div",
-                                    { staticClass: "w-1/3 font-bold" },
+                                    { staticClass: "w-5/12 font-bold" },
                                     [_vm._v("Stav")]
                                   ),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "pl-2 w-2/3" }, [
+                                  _c("div", { staticClass: "pl-2 w-7/12" }, [
                                     _vm._v(
                                       _vm._s(
                                         _vm.reservation.queuedReservation.status
@@ -60366,11 +60615,11 @@ var render = function() {
                                 _c("div", { staticClass: "flex mb-1" }, [
                                   _c(
                                     "div",
-                                    { staticClass: "w-1/3 font-bold" },
+                                    { staticClass: "w-5/12 font-bold" },
                                     [_vm._v("Termín")]
                                   ),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "pl-2 w-2/3" }, [
+                                  _c("div", { staticClass: "pl-2 w-7/12" }, [
                                     _vm._v(
                                       _vm._s(
                                         _vm.reservation.queuedReservation
@@ -60383,11 +60632,11 @@ var render = function() {
                                 _c("div", { staticClass: "flex mb-6" }, [
                                   _c(
                                     "div",
-                                    { staticClass: "w-1/3 font-bold" },
+                                    { staticClass: "w-5/12 font-bold" },
                                     [_vm._v("Místo konání")]
                                   ),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "pl-2 w-2/3" }, [
+                                  _c("div", { staticClass: "pl-2 w-7/12" }, [
                                     _vm._v(
                                       _vm._s(
                                         _vm.reservation.queuedReservation
@@ -61809,7 +62058,7 @@ var render = function() {
                                     staticClass: "block text-sm text-gray-600",
                                     attrs: { for: "sourceCode" }
                                   },
-                                  [_vm._v("Číslo kupónu")]
+                                  [_vm._v("Číslo objednávky")]
                                 ),
                                 _vm._v(" "),
                                 _c("input", {
@@ -61832,7 +62081,7 @@ var render = function() {
                                     name: "sourceCode",
                                     type: "text",
                                     required: "",
-                                    "aria-label": "Číslo kupónu"
+                                    "aria-label": "Číslo objednávky"
                                   },
                                   domProps: { value: reservation.sourceCode },
                                   on: {

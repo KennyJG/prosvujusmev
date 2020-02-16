@@ -20,37 +20,37 @@
                             <div v-if="activeTab === 'RESERVATION'" class="block text-gray-600 w-2/3 pl-6 p-6 rounded-r-lg bg-gray-100 flex flex-col">
                                 <div>
                                     <div class="flex">
-                                        <div class="w-1/3 font-bold">Kod</div>
-                                        <div class="pl-2 w-2/3">{{ reservation.source_code }} ({{ reservation.source_type }})</div>
+                                        <div class="w-5/12 font-bold">Číslo objednávky</div>
+                                        <div class="pl-2 w-7/12">{{ reservation.source_code }} ({{ reservation.source_type }})</div>
                                     </div>
                                     <div class="flex mb-6">
-                                        <div class="w-1/3 font-bold">Zarezervováno</div>
-                                        <div class="w-2/3 pl-2">{{ reservation.created_at }}</div>
+                                        <div class="w-5/12 font-bold">Zarezervováno</div>
+                                        <div class="w-7/12 pl-2">{{ reservation.created_at }}</div>
                                     </div>
                                     <div class="flex mb-1">
-                                        <div class="w-1/3 font-bold">Kurz</div>
-                                        <div class="pl-2 w-2/3">{{ reservation.course.name }}</div>
+                                        <div class="w-5/12 font-bold">Kurz</div>
+                                        <div class="pl-2 w-7/12">{{ reservation.course.name }}</div>
                                     </div>
                                     <div class="flex mb-1">
-                                        <div class="w-1/3 font-bold">Stav</div>
-                                        <div class="pl-2 w-2/3">{{ reservation.status }}</div>
+                                        <div class="w-5/12 font-bold">Stav</div>
+                                        <div class="pl-2 w-7/12">{{ reservation.status }}</div>
                                     </div>
                                     <div class="flex mb-1">
-                                        <div class="w-1/3 font-bold">Termín</div>
-                                        <div class="pl-2 w-2/3">{{ reservation.courseDate.fullDateForHumans }}</div>
+                                        <div class="w-5/12 font-bold">Termín</div>
+                                        <div class="pl-2 w-7/12">{{ reservation.courseDate.fullDateForHumans }}</div>
                                     </div>
                                     <div class="flex mb-6">
-                                        <div class="w-1/3 font-bold">Místo konání</div>
-                                        <div class="pl-2 w-2/3">{{ reservation.courseDate.venue }}</div>
+                                        <div class="w-5/12 font-bold">Místo konání</div>
+                                        <div class="pl-2 w-7/12">{{ reservation.courseDate.venue }}</div>
                                     </div>
 
                                     <div class="flex mb-1">
-                                        <div class="w-1/3 font-bold">Jméno</div>
-                                        <div class="pl-2 w-2/3">{{ reservation.attendee.fullname }} </div>
+                                        <div class="w-5/12 font-bold">Jméno</div>
+                                        <div class="pl-2 w-7/12">{{ reservation.attendee.fullname }} </div>
                                     </div>
                                     <div class="flex mb-1">
-                                        <div class="w-1/3 font-bold">Email</div>
-                                        <div class="pl-2 w-2/3">{{ reservation.attendee.email }}</div>
+                                        <div class="w-5/12 font-bold">Email</div>
+                                        <div class="pl-2 w-7/12">{{ reservation.attendee.email }}</div>
                                     </div>
                                 </div>
                                 <div class="h-full flex items-end justify-end">
@@ -61,20 +61,20 @@
                             <div v-if="activeTab === 'QUEUED_RESERVATION' && reservation.queuedReservation" class="block text-gray-600 w-2/3 pl-6 p-6 rounded-r-lg bg-gray-100 flex flex-col" style="min-height: 335px;">
                                 <div>
                                     <div class="flex mb-1">
-                                        <div class="w-1/3 font-bold">Kurz</div>
-                                        <div class="pl-2 w-2/3">{{ reservation.queuedReservation.course.name }}</div>
+                                        <div class="w-5/12 font-bold">Kurz</div>
+                                        <div class="pl-2 w-7/12">{{ reservation.queuedReservation.course.name }}</div>
                                     </div>
                                     <div class="flex mb-1">
-                                        <div class="w-1/3 font-bold">Stav</div>
-                                        <div class="pl-2 w-2/3">{{ reservation.queuedReservation.status }}</div>
+                                        <div class="w-5/12 font-bold">Stav</div>
+                                        <div class="pl-2 w-7/12">{{ reservation.queuedReservation.status }}</div>
                                     </div>
                                     <div class="flex mb-1">
-                                        <div class="w-1/3 font-bold">Termín</div>
-                                        <div class="pl-2 w-2/3">{{ reservation.queuedReservation.courseDate.fullDateForHumans }}</div>
+                                        <div class="w-5/12 font-bold">Termín</div>
+                                        <div class="pl-2 w-7/12">{{ reservation.queuedReservation.courseDate.fullDateForHumans }}</div>
                                     </div>
                                     <div class="flex mb-6">
-                                        <div class="w-1/3 font-bold">Místo konání</div>
-                                        <div class="pl-2 w-2/3">{{ reservation.queuedReservation.courseDate.venue }}</div>
+                                        <div class="w-5/12 font-bold">Místo konání</div>
+                                        <div class="pl-2 w-7/12">{{ reservation.queuedReservation.courseDate.venue }}</div>
                                     </div>
                                 </div>
                                 <div class="h-full flex items-end justify-end">
