@@ -120,12 +120,12 @@
                                             <div class="text-right">{{ stats.spotsTaken }}/{{ stats.limit }}</div>
                                         </div>
                                         <div class="w-1/2 px-4">
-                                            <div class="text-right text-gray font-bold">{{ stats.percent }}%</div>
+                                            <div :class="{'text-red-600': stats.percent >= 75}" class="text-right text-gray font-bold">{{ stats.percent }}%</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="px-6 py-4">
-                                    <div class="text-center text-gray font-bold">
+                                    <div :class="{'text-red-600': spotTakenCourseDateTotalStatsThisMonth.percent >= 75}" class="text-center text-gray font-bold">
                                         Celkově {{ spotTakenCourseDateTotalStatsThisMonth.spotsTaken }}/{{ spotTakenCourseDateTotalStatsThisMonth.limit }} → {{ spotTakenCourseDateTotalStatsThisMonth.percent }}%
                                     </div>
                                 </div>
@@ -140,12 +140,12 @@
                                             <div class="text-right">{{ stats.spotsTaken }}/{{ stats.limit }}</div>
                                         </div>
                                         <div class="w-1/2 px-4">
-                                            <div class="text-right text-gray font-bold">{{ stats.percent }}%</div>
+                                            <div :class="{'text-red-600': stats.percent >= 75}" class="text-right text-gray font-bold">{{ stats.percent }}%</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="px-6 py-4">
-                                    <div class="text-center text-gray font-bold">
+                                    <div :class="{'text-red-600': spotTakenCourseDateTotalStatsThisYear.percent >= 75}" class="text-center text-gray font-bold">
                                         Celkově {{ spotTakenCourseDateTotalStatsThisYear.spotsTaken }}/{{ spotTakenCourseDateTotalStatsThisYear.limit }} → {{ spotTakenCourseDateTotalStatsThisYear.percent }}%
                                     </div>
                                 </div>
@@ -161,12 +161,12 @@
                                             <div class="text-right">{{ stats.full }}/{{ stats.all }}</div>
                                         </div>
                                         <div class="w-1/2 px-4">
-                                            <div class="text-right text-gray font-bold">{{ stats.percent }}%</div>
+                                            <div :class="{'text-red-600': stats.percent >= 75}" class="text-right text-gray font-bold">{{ stats.percent }}%</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="px-6 py-4">
-                                    <div class="text-center text-gray font-bold">
+                                    <div :class="{'text-red-600': fullCourseDateTotalStatsThisMonth.percent >= 75}" class="text-center text-gray font-bold">
                                         Celkově {{ fullCourseDateTotalStatsThisMonth.full }}/{{ fullCourseDateTotalStatsThisMonth.all }} → {{ fullCourseDateTotalStatsThisMonth.percent }}%
                                     </div>
                                 </div>
@@ -181,12 +181,12 @@
                                             <div class="text-right">{{ stats.full }}/{{ stats.all }}</div>
                                         </div>
                                         <div class="w-1/2 px-4">
-                                            <div class="text-right text-gray font-bold">{{ stats.percent }}%</div>
+                                            <div :class="{'text-red-600': stats.percent >= 75}" class="text-right text-gray font-bold">{{ stats.percent }}%</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="px-6 py-4">
-                                    <div class="text-center text-gray font-bold">
+                                    <div :class="{'text-red-600': fullCourseDateTotalStatsThisYear.percent >= 75}" class="text-center text-gray font-bold">
                                         Celkově {{ fullCourseDateTotalStatsThisYear.full }}/{{ fullCourseDateTotalStatsThisYear.all }} → {{ fullCourseDateTotalStatsThisYear.percent }}%
                                     </div>
                                 </div>
@@ -202,12 +202,12 @@
                                             <div class="text-right">{{ stats.remaining }}/{{ stats.all }}</div>
                                         </div>
                                         <div class="w-1/2 px-4">
-                                            <div class="text-right text-gray font-bold">{{ stats.percent }}%</div>
+                                            <div :class="{'text-red-600': stats.percent <= 25}" class="text-right text-gray font-bold">{{ stats.percent }}%</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="px-6 py-4">
-                                    <div class="text-center text-gray font-bold">
+                                    <div :class="{'text-red-600': remainingCourseDateSpotsTotalStatsInMonths.percent <= 25}" class="text-center text-gray font-bold">
                                         Celkově {{ remainingCourseDateSpotsTotalStatsInMonths.remaining }}/{{ remainingCourseDateSpotsTotalStatsInMonths.all }} → {{ remainingCourseDateSpotsTotalStatsInMonths.percent }}%
                                     </div>
                                 </div>
@@ -223,12 +223,12 @@
                                             <div class="text-right">{{ stats.full }}/{{ stats.all }}</div>
                                         </div>
                                         <div class="w-1/2 px-4">
-                                            <div class="text-right text-gray font-bold">{{ stats.percent }}%</div>
+                                            <div :class="{'text-red-600': stats.percent >= 75}" class="text-right text-gray font-bold">{{ stats.percent }}%</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="px-6 py-4">
-                                    <div class="text-center text-gray font-bold">
+                                    <div :class="{'text-red-600': fullCourseDatesTotalStatsInMonths.percent >= 75}" class="text-center text-gray font-bold">
                                         Celkově {{ fullCourseDatesTotalStatsInMonths.full }}/{{ fullCourseDatesTotalStatsInMonths.all }} → {{ fullCourseDatesTotalStatsInMonths.percent }}%
                                     </div>
                                 </div>
