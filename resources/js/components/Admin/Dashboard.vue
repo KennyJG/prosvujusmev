@@ -62,10 +62,12 @@
                             <div class="text-sm uppercase text-gray tracking-wide">Plně zaplněných kurzů</div>
                             </div>
                         </div>
+                        <!-- Count of Completed Course Dates -->
                         <div class="w-1/4 text-center py-8">
                             <div>
                                 <div class="text-gray-600er mb-2">
-                                    <span class="text-5xl">8</span>
+                                    <span v-if="timeRange == 'MONTH'" class="text-5xl">{{ completedCourseDatesThisMonth }}</span>
+                                    <span v-if="timeRange == 'YEAR'" class="text-5xl">{{ completedCourseDatesThisYear }}</span>
                                 </div>
                                 <div class="text-sm uppercase text-gray tracking-wide">Dokončených kurzů</div>
                             </div>
@@ -456,6 +458,8 @@ export default {
             courseDatesInProgress: null,
             fullCourseDatesThisMonth: null,
             fullCourseDatesThisYear: null,
+            completedCourseDatesThisMonth: null,
+            completedCourseDatesThisYear: null,
         }
     },
 
@@ -468,6 +472,9 @@ export default {
                     this.courseDatesInProgress = response.data.data.courseDatesInProgress;
                     this.fullCourseDatesThisMonth = response.data.data.fullCourseDatesThisMonth;
                     this.fullCourseDatesThisYear = response.data.data.fullCourseDatesThisYear;
+                    this.completedCourseDatesThisMonth = response.data.data.completedCourseDatesThisMonth;
+                    this.completedCourseDatesThisYear = response.data.data.completedCourseDatesThisYear;
+
                 });
         }
     },

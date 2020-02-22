@@ -25,6 +25,8 @@ class StatsController extends Controller
                 'courseDatesInProgress' => $this->getCountOfCourseDatesInProgress(),
                 'fullCourseDatesThisMonth' => $this->getCountOfFullCourseDatesThisMonth(),
                 'fullCourseDatesThisYear' => $this->getCountOfFullCourseDatesThisYear(),
+                'completedCourseDatesThisMonth' => $this->getCountOfCompletedCourseDatesThisMonth(),
+                'completedCourseDatesThisYear' => $this->getCountOfCompletedCourseDatesThisYear(),
             ],
         ]);
     }
@@ -114,5 +116,39 @@ class StatsController extends Controller
                 (from_date BETWEEN \'' . $startOfYear->format('Y-m-d H:i:s') . '\' AND \'' . $endOfYear->format('Y-m-d H:i:s') . '\')';
     
         return DB::select(DB::raw($sqlQuery))[0]->countOfFullCourseDates;
+    }
+
+    /**
+     *  Return count of Course Dates that are already completed this month
+     * 
+     *  @return int 
+     */
+    private function getCountOfCompletedCourseDatesThisMonth(): int 
+    {
+        $startOfMonth = Carbon::now()->startOfMonth();
+        $endOfMonth = Carbon::now()->endOfMonth();
+
+        return CourseDate::whereBetween('from_date', [
+                $startOfMonth,
+                $endOfMonth
+            ])->where('status', CourseDate::STATUS_COMPLETED)
+            ->count();
+    }
+
+    /**
+     *  Return count of Course Dates that are already completed this year
+     * 
+     *  @return int 
+     */
+    private function getCountOfCompletedCourseDatesThisYear(): int 
+    {
+        $startOfYear = Carbon::now()->startOfYear();
+        $endOfYear = Carbon::now()->endOfYear();
+
+        return CourseDate::whereBetween('from_date', [
+                $startOfYear,
+                $endOfYear
+            ])->where('status', CourseDate::STATUS_COMPLETED)
+            ->count();
     }
 }
