@@ -191,7 +191,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div v-if="activeDetailsTab == 'COURSE_DATES_REMAINING_BY_MONTH'">
                               <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
                                   <div class="w-1/2">
@@ -288,77 +288,87 @@
                     </div>
                     <div class="w-full lg:w-1/2 pl-2 px-4">
                         <div v-if="activeDetailsTab == 'COURSE_DATES_REMAINING_BY_VENUE' && timeRange == 'MONTH'" class="bg-white border-t border-b sm:rounded sm:border shadow p-4">
-                            <doughnut-chart key="courseDatesSpotTakenStatsVenuesThisMonth" :chartdata="{
-                                labels: courseDatesSpotTakenStatsVenuesThisMonth,
+                            <doughnut-chart key="spotTakenCourseDateStatsVenuesThisMonth" :chartdata="{
+                                labels: spotTakenCourseDateStatsVenuesThisMonth,
                                 datasets: [
                                     {
                                         label: 'Zaplnění termínu podle místa',
                                         backgroundColor: ['#44337A', '#553C9A', '#6B46C1', '#805AD5', '#9F7AEA', '#B794F4', '#D6BCFA', '#E9D8FD', '#FAF5FF', '#3C366B', '#434190', '#4C51BF', '#5A67D8', '#667EEA', '#7F9CF5', '#A3BFFA', '#C3DAFE', '#EBF4FF', '#2A4365', '#2C5282', '#2B6CB0', '#3182CE', '#4299E1', '#63B3ED', '#90CDF4', '#BEE3F8', '#EBF8FF', '#234E52'],
-                                        data: courseDatesSpotTakenStatsSpotsTakenThisMonth
+                                        data: spotTakenCourseDateStatsSpotTakenCountThisMonth
                                     }
                                 ]
                             }"></doughnut-chart>
                         </div>
                         <div v-if="activeDetailsTab == 'COURSE_DATES_REMAINING_BY_VENUE' && timeRange == 'YEAR'" class="bg-white border-t border-b sm:rounded sm:border shadow p-4">
-                            <doughnut-chart key="courseDatesSpotTakenStatsVenuesThisYear" :chartdata="{
-                                labels: courseDatesSpotTakenStatsVenuesThisYear,
+                            <doughnut-chart key="spotTakenCourseDateStatsVenuesThisYear" :chartdata="{
+                                labels: spotTakenCourseDateStatsVenuesThisYear,
                                 datasets: [
                                     {
                                         label: 'Zaplnění termínu podle místa',
                                         backgroundColor: ['#44337A', '#553C9A', '#6B46C1', '#805AD5', '#9F7AEA', '#B794F4', '#D6BCFA', '#E9D8FD', '#FAF5FF', '#3C366B', '#434190', '#4C51BF', '#5A67D8', '#667EEA', '#7F9CF5', '#A3BFFA', '#C3DAFE', '#EBF4FF', '#2A4365', '#2C5282', '#2B6CB0', '#3182CE', '#4299E1', '#63B3ED', '#90CDF4', '#BEE3F8', '#EBF8FF', '#234E52'],
-                                        data: courseDatesSpotTakenStatsSpotsTakenThisYear
+                                        data: spotTakenCourseDateStatsSpotTakenCountThisYear
                                     }
                                 ]
                             }"></doughnut-chart>
                         </div>
-                      <div v-if="activeDetailsTab == 'COURSE_DATES_FULL_BY_VENUE'" class="bg-white border-t border-b sm:rounded sm:border shadow p-4">
-                          <doughnut-chart :chartdata="{
-                              labels: [
-                                  'PRAHA (Komunitní centrum Hrubého, Praha 8 - Kobylisy)', 
-                                  'BRNO (Gymnázium Globe, s.r.o., Bzenecká 23, Brno)',
-                                  'OSTRAVA (SŠ stavební a dřevozpracující, U Studia 33, Ostrava - Zábřeh)'
-                              ],
-                              datasets: [
-                                  {
-                                      label: 'Plných termínu podle místa',
-                                      backgroundColor: ['#49306B', '#635380', '#90708C'],
-                                      data: [0, 2, 1]
-                                  }
-                              ]
-                          }"></doughnut-chart>
-                      </div>
-                      <div v-if="activeDetailsTab == 'COURSE_DATES_REMAINING_BY_MONTH'" class="bg-white border-t border-b sm:rounded sm:border shadow p-4">
-                          <line-chart :chartdata="{
-                              labels: [
-                                  'Leden', 
-                                  'Únor',
-                                  'Březen'
-                              ],
-                              datasets: [
-                                  {
-                                      label: 'Zbývajicí míst v měsících',
-                                      backgroundColor: ['#49306B', '#635380', '#90708C'],
-                                      data: [2, 8, 20]
-                                  }
-                              ]
-                          }"></line-chart>
-                      </div>
-                      <div v-if="activeDetailsTab == 'COURSE_DATES_FULL_BY_MONTH'" class="bg-white border-t border-b sm:rounded sm:border shadow p-4">
-                          <bar-chart :chartdata="{
-                              labels: [
-                                  'Leden', 
-                                  'Únor',
-                                  'Březen'
-                              ],
-                              datasets: [
-                                  {
-                                      label: 'Plné kurzy v měsících',
-                                      backgroundColor: ['#49306B', '#635380', '#90708C'],
-                                      data: [4, 1, 0]
-                                  }
-                              ]
-                          }"></bar-chart>
-                      </div>
+
+                        <div v-if="activeDetailsTab == 'COURSE_DATES_FULL_BY_VENUE' && timeRange == 'MONTH'" class="bg-white border-t border-b sm:rounded sm:border shadow p-4">
+                            <doughnut-chart key="fullCourseDateStatsVenuesThisMonth" :chartdata="{
+                                labels: fullCourseDateStatsVenuesThisMonth,
+                                datasets: [
+                                    {
+                                        label: 'Zaplnění termínu podle místa',
+                                        backgroundColor: ['#44337A', '#553C9A', '#6B46C1', '#805AD5', '#9F7AEA', '#B794F4', '#D6BCFA', '#E9D8FD', '#FAF5FF', '#3C366B', '#434190', '#4C51BF', '#5A67D8', '#667EEA', '#7F9CF5', '#A3BFFA', '#C3DAFE', '#EBF4FF', '#2A4365', '#2C5282', '#2B6CB0', '#3182CE', '#4299E1', '#63B3ED', '#90CDF4', '#BEE3F8', '#EBF8FF', '#234E52'],
+                                        data: fullCourseDateStatsFullCountThisMonth
+                                    }
+                                ]
+                            }"></doughnut-chart>
+                        </div>
+                        <div v-if="activeDetailsTab == 'COURSE_DATES_FULL_BY_VENUE' && timeRange == 'YEAR'" class="bg-white border-t border-b sm:rounded sm:border shadow p-4">
+                            <doughnut-chart key="fullCourseDateStatsVenuesThisYear" :chartdata="{
+                                labels: fullCourseDateStatsVenuesThisYear,
+                                datasets: [
+                                    {
+                                        label: 'Zaplnění termínu podle místa',
+                                        backgroundColor: ['#44337A', '#553C9A', '#6B46C1', '#805AD5', '#9F7AEA', '#B794F4', '#D6BCFA', '#E9D8FD', '#FAF5FF', '#3C366B', '#434190', '#4C51BF', '#5A67D8', '#667EEA', '#7F9CF5', '#A3BFFA', '#C3DAFE', '#EBF4FF', '#2A4365', '#2C5282', '#2B6CB0', '#3182CE', '#4299E1', '#63B3ED', '#90CDF4', '#BEE3F8', '#EBF8FF', '#234E52'],
+                                        data: fullCourseDateStatsFullCountThisYear
+                                    }
+                                ]
+                            }"></doughnut-chart>
+                        </div>
+ 
+                        <div v-if="activeDetailsTab == 'COURSE_DATES_REMAINING_BY_MONTH'" class="bg-white border-t border-b sm:rounded sm:border shadow p-4">
+                            <line-chart :chartdata="{
+                                labels: [
+                                    'Leden', 
+                                    'Únor',
+                                    'Březen'
+                                ],
+                                datasets: [
+                                    {
+                                        label: 'Zbývajicí míst v měsících',
+                                        backgroundColor: ['#49306B', '#635380', '#90708C'],
+                                        data: [2, 8, 20]
+                                    }
+                                ]
+                            }"></line-chart>
+                        </div>
+                        <div v-if="activeDetailsTab == 'COURSE_DATES_FULL_BY_MONTH'" class="bg-white border-t border-b sm:rounded sm:border shadow p-4">
+                            <bar-chart :chartdata="{
+                                labels: [
+                                    'Leden', 
+                                    'Únor',
+                                    'Březen'
+                                ],
+                                datasets: [
+                                    {
+                                        label: 'Plné kurzy v měsících',
+                                        backgroundColor: ['#49306B', '#635380', '#90708C'],
+                                        data: [4, 1, 0]
+                                    }
+                                ]
+                            }"></bar-chart>
+                        </div>
                     </div>
                 </div>
                 <div v-if="activeTab == 'RESERVATIONS'" class="flex flex-wrap -mx-4">
@@ -479,25 +489,45 @@ export default {
     },
 
     computed: {
-        courseDatesSpotTakenStatsVenuesThisMonth() {
+        spotTakenCourseDateStatsVenuesThisMonth() {
             return Object.keys(this.spotTakenCourseDateStatsThisMonth);
         },
 
-         courseDatesSpotTakenStatsSpotsTakenThisMonth() {
+        spotTakenCourseDateStatsSpotTakenCountThisMonth() {
             return Object.keys(this.spotTakenCourseDateStatsThisMonth).map(key => {
                 return this.spotTakenCourseDateStatsThisMonth[key].spotsTaken;
             });
         },
 
-        courseDatesSpotTakenStatsVenuesThisYear() {
+        spotTakenCourseDateStatsVenuesThisYear() {
             return Object.keys(this.spotTakenCourseDateStatsThisYear);
         },
 
-         courseDatesSpotTakenStatsSpotsTakenThisYear() {
+        spotTakenCourseDateStatsSpotTakenCountThisYear() {
             return Object.keys(this.spotTakenCourseDateStatsThisYear).map(key => {
                 return this.spotTakenCourseDateStatsThisYear[key].spotsTaken;
             });
-        }
+        },
+
+        fullCourseDateStatsVenuesThisMonth() {
+            return Object.keys(this.fullCourseDateStatsThisMonth);
+        },
+
+        fullCourseDateStatsFullCountThisMonth() {
+            return Object.keys(this.fullCourseDateStatsThisMonth).map(key => {
+                return this.fullCourseDateStatsThisMonth[key].full;
+            });
+        },
+
+        fullCourseDateStatsVenuesThisYear() {
+            return Object.keys(this.fullCourseDateStatsThisYear);
+        },
+
+        fullCourseDateStatsFullCountThisYear() {
+            return Object.keys(this.fullCourseDateStatsThisYear).map(key => {
+                return this.fullCourseDateStatsThisYear[key].full;
+            });
+        },
     },
 
     methods: {
