@@ -101,7 +101,7 @@
                                 <div class="flex justify-between px-6 -mb-px">
                                     <div @click="activeDetailsTab = 'COURSE_DATES_REMAINING_BY_VENUE'" :class="{'text-blue-600': activeDetailsTab == 'COURSE_DATES_REMAINING_BY_VENUE'}" class="py-4 px-2 font-normal cursor-pointer hover:text-gray-500">Zaplnění termínu podle místa</div>
                                     <div @click="activeDetailsTab = 'COURSE_DATES_FULL_BY_VENUE'" :class="{'text-blue-600': activeDetailsTab == 'COURSE_DATES_FULL_BY_VENUE'}" class="py-4 px-2 font-normal cursor-pointer hover:text-gray-500">Plných termínu podle místa</div>
-                                    <div @click="activeDetailsTab = 'COURSE_DATES_REMAINING_BY_MONTH'" :class="{'text-blue-600': activeDetailsTab == 'COURSE_DATES_REMAINING_BY_MONTH'}" class="py-4 abnfpx-2 font-normal cursor-pointer hover:text-gray-500">Zbývajicí míst v měsícíc</div>
+                                    <div @click="activeDetailsTab = 'COURSE_DATES_REMAINING_BY_MONTH'" :class="{'text-blue-600': activeDetailsTab == 'COURSE_DATES_REMAINING_BY_MONTH'}" class="py-4 abnfpx-2 font-normal cursor-pointer hover:text-gray-500">Zbývajicí míst v měsících</div>
                                     <div @click="activeDetailsTab = 'COURSE_DATES_FULL_BY_MONTH'" :class="{'text-blue-600': activeDetailsTab == 'COURSE_DATES_FULL_BY_MONTH'}" class="py-4 px-2 font-normal cursor-pointer hover:text-gray-500">Plné kurzy v měsících</div>
                                     <!-- <div class="flex">
                                         <button type="button" class="appearance-none py-4 text-blue-600 border-b border-blue-600 mr-3">List</button>
@@ -193,51 +193,26 @@
                             </div>
 
                             <div v-if="activeDetailsTab == 'COURSE_DATES_REMAINING_BY_MONTH'">
-                              <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
-                                  <div class="w-1/2">
-                                      <div class="px-4">Leden</div>
-                                  </div>
-                                  <div class="flex w-3/5">
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right">2/40</div>
-                                      </div>
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right text-gray font-bold text-red-600">5%</div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
-                                  <div class="w-1/2">
-                                      <div class="px-4">Únor</div>
-                                  </div>
-                                  <div class="flex w-3/5">
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right">8/20</div>
-                                      </div>
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right text-gray font-bold">40%</div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
-                                  <div class="w-1/2">
-                                      <div class="px-4">Březen</div>
-                                  </div>
-                                  <div class="flex w-3/5">
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right">20/20</div>
-                                      </div>
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right text-gray font-bold">100%</div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="px-6 py-4">
-                                  <div class="text-center text-gray font-bold">
-                                      Celkově 30/80 → 37.5%
-                                  </div>
-                              </div>
+                                <div v-for="(stats, monthName) in remainingCourseDateSpotsStatsInMonths" class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
+                                    <div class="w-1/2">
+                                        <div class="px-4">{{ monthName }}</div>
+                                    </div>
+                                    <div class="flex w-3/5">
+                                        <div class="w-1/2 px-4">
+                                            <div class="text-right">{{ stats.remaining }}/{{ stats.all }}</div>
+                                        </div>
+                                        <div class="w-1/2 px-4">
+                                            <div class="text-right text-gray font-bold">{{ stats.percent }}%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="px-6 py-4">
+                                    <div class="text-center text-gray font-bold">
+                                        Celkově {{ remainingCourseDateSpotsTotalStatsInMonths.remaining }}/{{ remainingCourseDateSpotsTotalStatsInMonths.all }} → {{ remainingCourseDateSpotsTotalStatsInMonths.percent }}%
+                                    </div>
+                                </div>
                             </div>
+
                             <div v-if="activeDetailsTab == 'COURSE_DATES_FULL_BY_MONTH'">
                               <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
                                   <div class="w-1/2">
@@ -338,21 +313,18 @@
                         </div>
  
                         <div v-if="activeDetailsTab == 'COURSE_DATES_REMAINING_BY_MONTH'" class="bg-white border-t border-b sm:rounded sm:border shadow p-4">
-                            <line-chart :chartdata="{
-                                labels: [
-                                    'Leden', 
-                                    'Únor',
-                                    'Březen'
-                                ],
+                            <doughnut-chart key="remainingCourseDateSpotsStatsMonthsInMonth" :chartdata="{
+                                labels: remainingCourseDateSpotsStatsMonthsInMonth,
                                 datasets: [
                                     {
                                         label: 'Zbývajicí míst v měsících',
-                                        backgroundColor: ['#49306B', '#635380', '#90708C'],
-                                        data: [2, 8, 20]
+                                        backgroundColor: ['#44337A', '#553C9A', '#6B46C1', '#805AD5', '#9F7AEA', '#B794F4', '#D6BCFA', '#E9D8FD', '#FAF5FF', '#3C366B', '#434190', '#4C51BF', '#5A67D8', '#667EEA', '#7F9CF5', '#A3BFFA', '#C3DAFE', '#EBF4FF', '#2A4365', '#2C5282', '#2B6CB0', '#3182CE', '#4299E1', '#63B3ED', '#90CDF4', '#BEE3F8', '#EBF8FF', '#234E52'],
+                                        data: remainingCourseDateSpotsRemainingCountInMonth
                                     }
                                 ]
-                            }"></line-chart>
+                            }"></doughnut-chart>
                         </div>
+
                         <div v-if="activeDetailsTab == 'COURSE_DATES_FULL_BY_MONTH'" class="bg-white border-t border-b sm:rounded sm:border shadow p-4">
                             <bar-chart :chartdata="{
                                 labels: [
@@ -485,6 +457,9 @@ export default {
                     
             fullCourseDateStatsThisYear: [],
             fullCourseDateTotalStatsThisYear: null,
+
+            remainingCourseDateSpotsStatsInMonths: [],
+            remainingCourseDateSpotsTotalStatsInMonths: null,
         }
     },
 
@@ -528,6 +503,16 @@ export default {
                 return this.fullCourseDateStatsThisYear[key].full;
             });
         },
+
+        remainingCourseDateSpotsStatsMonthsInMonth() {
+            return Object.keys(this.remainingCourseDateSpotsStatsInMonths);
+        },
+
+        remainingCourseDateSpotsRemainingCountInMonth() {
+            return Object.keys(this.remainingCourseDateSpotsStatsInMonths).map(key => {
+                return this.remainingCourseDateSpotsStatsInMonths[key].remaining;
+            });
+        },
     },
 
     methods: {
@@ -556,6 +541,9 @@ export default {
 
                     this.fullCourseDateStatsThisYear = response.data.data.fullCourseDatesStatsThisYear.data;
                     this.fullCourseDateTotalStatsThisYear = response.data.data.fullCourseDatesStatsThisYear.total; 
+
+                    this.remainingCourseDateSpotsStatsInMonths = response.data.data.remainingCourseDateSpotsStatsInMonths.data;
+                    this.remainingCourseDateSpotsTotalStatsInMonths = response.data.data.remainingCourseDateSpotsStatsInMonths.total; 
                 });
         }
     },
