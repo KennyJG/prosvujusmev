@@ -214,50 +214,24 @@
                             </div>
 
                             <div v-if="activeDetailsTab == 'COURSE_DATES_FULL_BY_MONTH'">
-                              <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
-                                  <div class="w-1/2">
-                                      <div class="px-4">Leden</div>
-                                  </div>
-                                  <div class="flex w-3/5">
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right">4/5</div>
-                                      </div>
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right text-gray font-bold">80%</div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
-                                  <div class="w-1/2">
-                                      <div class="px-4">Únor</div>
-                                  </div>
-                                  <div class="flex w-3/5">
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right">1/4</div>
-                                      </div>
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right text-gray font-bold">25%</div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
-                                  <div class="w-1/2">
-                                      <div class="px-4">Březen</div>
-                                  </div>
-                                  <div class="flex w-3/5">
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right">0/5</div>
-                                      </div>
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right text-gray font-bold">0%</div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="px-6 py-4">
-                                  <div class="text-center text-gray font-bold">
-                                      Celkově 5/14 → 35.7%
-                                  </div>
-                              </div>
+                                <div v-for="(stats, monthName) in fullCourseDatesStatsInMonths" class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
+                                    <div class="w-1/2">
+                                        <div class="px-4">{{ monthName }}</div>
+                                    </div>
+                                    <div class="flex w-3/5">
+                                        <div class="w-1/2 px-4">
+                                            <div class="text-right">{{ stats.full }}/{{ stats.all }}</div>
+                                        </div>
+                                        <div class="w-1/2 px-4">
+                                            <div class="text-right text-gray font-bold">{{ stats.percent }}%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="px-6 py-4">
+                                    <div class="text-center text-gray font-bold">
+                                        Celkově {{ fullCourseDatesTotalStatsInMonths.full }}/{{ fullCourseDatesTotalStatsInMonths.all }} → {{ fullCourseDatesTotalStatsInMonths.percent }}%
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -326,20 +300,16 @@
                         </div>
 
                         <div v-if="activeDetailsTab == 'COURSE_DATES_FULL_BY_MONTH'" class="bg-white border-t border-b sm:rounded sm:border shadow p-4">
-                            <bar-chart :chartdata="{
-                                labels: [
-                                    'Leden', 
-                                    'Únor',
-                                    'Březen'
-                                ],
+                            <doughnut-chart key="fullCourseDatesStatsMonthsInMonths" :chartdata="{
+                                labels: fullCourseDatesStatsMonthsInMonths,
                                 datasets: [
                                     {
                                         label: 'Plné kurzy v měsících',
-                                        backgroundColor: ['#49306B', '#635380', '#90708C'],
-                                        data: [4, 1, 0]
+                                        backgroundColor: ['#44337A', '#553C9A', '#6B46C1', '#805AD5', '#9F7AEA', '#B794F4', '#D6BCFA', '#E9D8FD', '#FAF5FF', '#3C366B', '#434190', '#4C51BF', '#5A67D8', '#667EEA', '#7F9CF5', '#A3BFFA', '#C3DAFE', '#EBF4FF', '#2A4365', '#2C5282', '#2B6CB0', '#3182CE', '#4299E1', '#63B3ED', '#90CDF4', '#BEE3F8', '#EBF8FF', '#234E52'],
+                                        data: fullCourseDatesStatsFullCountInMonths
                                     }
                                 ]
-                            }"></bar-chart>
+                            }"></doughnut-chart>
                         </div>
                     </div>
                 </div>
@@ -460,6 +430,9 @@ export default {
 
             remainingCourseDateSpotsStatsInMonths: [],
             remainingCourseDateSpotsTotalStatsInMonths: null,
+
+            fullCourseDatesStatsInMonths: [],
+            fullCourseDatesTotalStatsInMonths: null,
         }
     },
 
@@ -513,6 +486,16 @@ export default {
                 return this.remainingCourseDateSpotsStatsInMonths[key].remaining;
             });
         },
+
+        fullCourseDatesStatsMonthsInMonths() {
+            return Object.keys(this.fullCourseDatesStatsInMonths);
+        },
+
+        fullCourseDatesStatsFullCountInMonths() {
+            return Object.keys(this.fullCourseDatesStatsInMonths).map(key => {
+                return this.fullCourseDatesStatsInMonths[key].full;
+            });
+        },
     },
 
     methods: {
@@ -544,6 +527,9 @@ export default {
 
                     this.remainingCourseDateSpotsStatsInMonths = response.data.data.remainingCourseDateSpotsStatsInMonths.data;
                     this.remainingCourseDateSpotsTotalStatsInMonths = response.data.data.remainingCourseDateSpotsStatsInMonths.total; 
+
+                    this.fullCourseDatesStatsInMonths = response.data.data.fullCourseDatesStatsInMonths.data;
+                    this.fullCourseDatesTotalStatsInMonths = response.data.data.fullCourseDatesStatsInMonths.total;
                 });
         }
     },

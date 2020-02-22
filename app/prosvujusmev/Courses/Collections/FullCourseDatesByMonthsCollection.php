@@ -5,7 +5,7 @@ namespace App\prosvujusmev\Courses\Collections;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class CourseDateRemainingSpotsByMonths extends ResourceCollection
+class FullCourseDatesByMonthsCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -31,30 +31,34 @@ class CourseDateRemainingSpotsByMonths extends ResourceCollection
             }
             $monthName = ucfirst(Carbon::parse($courseDate->from_date)->locale('cs')->monthName);
             if (!array_key_exists($monthName, $groupedCourseDatesByMonthStats)) {
-                $groupedCourseDatesByMonthStats[$monthName] = ['all' => 0, 'remaining' => 0];
+                $groupedCourseDatesByMonthStats[$monthName] = ['all' => 0, 'full' => 0];
             }
-            $groupedCourseDatesByMonthStats[$monthName]['remaining'] += $courseDate->remaining;
-            $groupedCourseDatesByMonthStats[$monthName]['all'] += $courseDate->limit;
+
+            if ($courseDate->full) {
+                $groupedCourseDatesByMonthStats[$monthName]['full']++;
+            }
+            $groupedCourseDatesByMonthStats[$monthName]['all']++;
         }
 
         foreach ($groupedCourseDatesByMonthStats as $monthName => $monthStats) {
-            $groupedCourseDatesByMonthStats[$monthName]['percent'] = round(($monthStats['remaining'] / $monthStats['all']) * 100, 2);
+            $groupedCourseDatesByMonthStats[$monthName]['percent'] = round(($monthStats['full'] / $monthStats['all']) * 100, 2);
         }
+  
         return $groupedCourseDatesByMonthStats;
     }
 
     public function getTotal($groupedCourseDatesByMonthStats)
     {
-        $remaining = 0;
+        $full = 0;
         $all = 0;
         foreach ($groupedCourseDatesByMonthStats as $monthStats) {
-            $remaining += $monthStats['remaining'];
+            $full += $monthStats['full'];
             $all += $monthStats['all'];
         }
         return [
-            'remaining' => $remaining,
+            'full' => $full,
             'all' => $all,
-            'percent' => round(($remaining / $all) * 100, 2),
+            'percent' => round(($full / $all) * 100, 2),
         ];
     }
 }

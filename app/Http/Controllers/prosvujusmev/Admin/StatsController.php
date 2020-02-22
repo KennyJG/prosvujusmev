@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\prosvujusmev\Admin;
 
 use App\Http\Controllers\Controller;
-use App\prosvujusmev\Courses\Collections\CourseDateRemainingSpotsByMonths;
+use App\prosvujusmev\Courses\Collections\CourseDateRemainingSpotsByMonthsCollection;
 use App\prosvujusmev\Courses\Collections\CourseDatesFullStatsCollection;
 use App\prosvujusmev\Courses\Collections\CourseDatesSpotTakenStatsCollection;
+use App\prosvujusmev\Courses\Collections\FullCourseDatesByMonthsCollection;
 use App\prosvujusmev\Courses\CourseDate;
 use App\prosvujusmev\Reservations\Reservation;
 use Carbon\Carbon;
@@ -36,9 +37,9 @@ class StatsController extends Controller
                 'fullCourseDatesStatsThisMonth' => new CourseDatesFullStatsCollection($this->getCourseDatesOfThisMonth()),
                 'fullCourseDatesStatsThisYear' => new CourseDatesFullStatsCollection($this->getCourseDatesOfThisYear()),
                 
-                'remainingCourseDateSpotsStatsInMonths' => new CourseDateRemainingSpotsByMonths($this->getCourseDatesOfThisYear()),
+                'remainingCourseDateSpotsStatsInMonths' => new CourseDateRemainingSpotsByMonthsCollection($this->getCourseDatesOfThisYear()),
 
-                'fullCourseDatesInMonths' => new CourseDatesFullStatsCollection($this->getCourseDatesOfThisYear()),
+                'fullCourseDatesStatsInMonths' => new FullCourseDatesByMonthsCollection($this->getCourseDatesOfThisYear()),
             ],
         ]);
     }
