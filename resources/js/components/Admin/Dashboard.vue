@@ -52,10 +52,12 @@
                                 <div class="text-sm uppercase text-gray tracking-wide">Probíhajicí kurzy</div>
                             </div>
                         </div>
+                        <!-- Count of Full Course Dates -->
                         <div class="w-1/4 text-center py-8">
                             <div class="border-r">
                                 <div class="text-gray-600er mb-2">
-                                    <span class="text-5xl">7</span>
+                                    <span v-if="timeRange == 'MONTH'" class="text-5xl">{{ fullCourseDatesThisMonth }}</span>
+                                    <span v-if="timeRange == 'YEAR'" class="text-5xl">{{ fullCourseDatesThisYear }}</span>
                                 </div>
                             <div class="text-sm uppercase text-gray tracking-wide">Plně zaplněných kurzů</div>
                             </div>
@@ -452,6 +454,8 @@ export default {
             courseDatesThisMonth: null,
             courseDatesThisYear: null,
             courseDatesInProgress: null,
+            fullCourseDatesThisMonth: null,
+            fullCourseDatesThisYear: null,
         }
     },
 
@@ -462,6 +466,8 @@ export default {
                     this.courseDatesThisMonth = response.data.data.courseDatesThisMonth;
                     this.courseDatesThisYear = response.data.data.courseDatesThisYear;
                     this.courseDatesInProgress = response.data.data.courseDatesInProgress;
+                    this.fullCourseDatesThisMonth = response.data.data.fullCourseDatesThisMonth;
+                    this.fullCourseDatesThisYear = response.data.data.fullCourseDatesThisYear;
                 });
         }
     },
