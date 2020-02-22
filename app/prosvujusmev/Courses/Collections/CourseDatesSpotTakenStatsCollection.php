@@ -2,7 +2,6 @@
 
 namespace App\prosvujusmev\Courses\Collections;
 
-use App\prosvujusmev\Courses\CourseDate;
 use App\prosvujusmev\Reservations\Reservation;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 

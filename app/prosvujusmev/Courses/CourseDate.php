@@ -31,7 +31,7 @@ class CourseDate extends Model
         'deleted_at',
     ];
 
-    protected $appends = ['fullDateForHumans', 'remaining', 'daysToCourseDate', 'createdAtForHumans'];
+    protected $appends = ['fullDateForHumans', 'remaining', 'daysToCourseDate', 'createdAtForHumans', 'full'];
 
     const STATUS_ACTIVE = 'ACTIVE';
     const STATUS_IN_PROGRESS = 'IN_PROGRESS';
@@ -54,6 +54,9 @@ class CourseDate extends Model
             ->whereIn('status', [
                 Reservation::STATUS_APPROVED,
                 Reservation::STATUS_UNAPPROVED,
+                Reservation::STATUS_COMPLETED,
+                Reservation::STATUS_CONDITIONED,
+                Reservation::STATUS_SUSPENDED, 
             ])->count();
     }
 
@@ -78,7 +81,7 @@ class CourseDate extends Model
         $fromDate->hour = 0;
         return $now->diffInDays($fromDate);
     }
-    
+
     public function getAttendees()
     {
         $attendees = [];
@@ -86,5 +89,10 @@ class CourseDate extends Model
             $attendees[] = $reservation->attendee;
         }
         return $attendees;
+    }
+
+    public function getFullAttribute()
+    {
+        return $this->remaining <= 0;
     }
 }

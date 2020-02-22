@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\prosvujusmev\Admin;
 
 use App\Http\Controllers\Controller;
+use App\prosvujusmev\Courses\Collections\CourseDatesFullStatsCollection;
 use App\prosvujusmev\Courses\Collections\CourseDatesSpotTakenStatsCollection;
 use App\prosvujusmev\Courses\CourseDate;
 use App\prosvujusmev\Reservations\Reservation;
@@ -28,8 +29,11 @@ class StatsController extends Controller
                 'waitingForApprovementReservations' => Reservation::where('status', Reservation::STATUS_UNAPPROVED)->get(),
                 'queuedReservations' => Reservation::where('status', Reservation::STATUS_QUEUED)->get(),
 
-                'groupedCourseDatesByVenueThisMonth' => new CourseDatesSpotTakenStatsCollection($this->getCourseDatesOfThisMonth()),
-                'groupedCourseDatesByVenueThisYear' => new CourseDatesSpotTakenStatsCollection($this->getCourseDatesOfThisYear()),
+                'spotTakenCourseDateStatsThisMonth' => new CourseDatesSpotTakenStatsCollection($this->getCourseDatesOfThisMonth()),
+                'spotTakenCourseDateStatsThisYear' => new CourseDatesSpotTakenStatsCollection($this->getCourseDatesOfThisYear()),
+                
+                'fullCourseDatesStatsThisMonth' => new CourseDatesFullStatsCollection($this->getCourseDatesOfThisMonth()),
+                'fullCourseDatesStatsThisYear' => new CourseDatesFullStatsCollection($this->getCourseDatesOfThisYear()),
             ],
         ]);
     }

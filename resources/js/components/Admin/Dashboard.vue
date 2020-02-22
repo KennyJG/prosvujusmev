@@ -109,8 +109,9 @@
                                     </div> -->
                                 </div>
                             </div>
+
                             <div v-if="activeDetailsTab == 'COURSE_DATES_REMAINING_BY_VENUE' && timeRange == 'MONTH'">
-                                <div v-for="(stats, venue) in courseDatesSpotTakenStatsGroupedByVenueThisMonth" class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
+                                <div v-for="(stats, venue) in spotTakenCourseDateStatsThisMonth" class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
                                     <div class="w-1/2">
                                         <div class="px-4">{{ venue }}</div>
                                     </div>
@@ -125,12 +126,12 @@
                                 </div>
                                 <div class="px-6 py-4">
                                     <div class="text-center text-gray font-bold">
-                                        Celkově {{ courseDatesSpotTakenTotalStatsThisMonth.spotsTaken }}/{{ courseDatesSpotTakenTotalStatsThisMonth.limit }} → {{ courseDatesSpotTakenTotalStatsThisMonth.percent }}%
+                                        Celkově {{ spotTakenCourseDateTotalStatsThisMonth.spotsTaken }}/{{ spotTakenCourseDateTotalStatsThisMonth.limit }} → {{ spotTakenCourseDateTotalStatsThisMonth.percent }}%
                                     </div>
                                 </div>
                             </div>
                             <div v-if="activeDetailsTab == 'COURSE_DATES_REMAINING_BY_VENUE' && timeRange == 'YEAR'">
-                                <div v-for="(stats, venue) in courseDatesSpotTakenStatsGroupedByVenueThisYear" class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
+                                <div v-for="(stats, venue) in spotTakenCourseDateStatsThisYear" class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
                                     <div class="w-1/2">
                                         <div class="px-4">{{ venue }}</div>
                                     </div>
@@ -145,56 +146,52 @@
                                 </div>
                                 <div class="px-6 py-4">
                                     <div class="text-center text-gray font-bold">
-                                        Celkově {{ courseDatesSpotTakenTotalStatsThisYear.spotsTaken }}/{{ courseDatesSpotTakenTotalStatsThisYear.limit }} → {{ courseDatesSpotTakenTotalStatsThisYear.percent }}%
+                                        Celkově {{ spotTakenCourseDateTotalStatsThisYear.spotsTaken }}/{{ spotTakenCourseDateTotalStatsThisYear.limit }} → {{ spotTakenCourseDateTotalStatsThisYear.percent }}%
                                     </div>
                                 </div>
                             </div>
-                            <div v-if="activeDetailsTab == 'COURSE_DATES_FULL_BY_VENUE'">
-                              <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
-                                  <div class="w-1/2">
-                                      <div class="px-4">PRAHA (Komunitní centrum Hrubého, Praha 8 - Kobylisy)</div>
-                                  </div>
-                                  <div class="flex w-3/5">
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right">0/4</div>
-                                      </div>
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right text-gray font-bold">0%</div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
-                                  <div class="w-1/2">
-                                      <div class="px-4">BRNO (Gymnázium Globe, s.r.o., Bzenecká 23, Brno)</div>
-                                  </div>
-                                  <div class="flex w-3/5">
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right">2/4</div>
-                                      </div>
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right text-gray font-bold">50%</div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
-                                  <div class="w-1/2">
-                                      <div class="px-4">OSTRAVA (SŠ stavební a dřevozpracující, U Studia 33, Ostrava - Zábřeh) </div>
-                                  </div>
-                                  <div class="flex w-3/5">
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right">1/1</div>
-                                      </div>
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right text-gray font-bold text-red-600">100%</div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="px-6 py-4">
-                                  <div class="text-center text-gray font-bold">
-                                      Celkově 3/9 → 33.33%
-                                  </div>
-                              </div>
+
+                            <div v-if="activeDetailsTab == 'COURSE_DATES_FULL_BY_VENUE' && timeRange == 'MONTH'">
+                                <div v-for="(stats, venue) in fullCourseDateStatsThisMonth" class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
+                                    <div class="w-1/2">
+                                        <div class="px-4">{{ venue }}</div>
+                                    </div>
+                                    <div class="flex w-3/5">
+                                        <div class="w-1/2 px-4">
+                                            <div class="text-right">{{ stats.full }}/{{ stats.all }}</div>
+                                        </div>
+                                        <div class="w-1/2 px-4">
+                                            <div class="text-right text-gray font-bold">{{ stats.percent }}%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="px-6 py-4">
+                                    <div class="text-center text-gray font-bold">
+                                        Celkově {{ fullCourseDateTotalStatsThisMonth.full }}/{{ fullCourseDateTotalStatsThisMonth.all }} → {{ fullCourseDateTotalStatsThisMonth.percent }}%
+                                    </div>
+                                </div>
                             </div>
+                            <div v-if="activeDetailsTab == 'COURSE_DATES_FULL_BY_VENUE' && timeRange == 'YEAR'">
+                                <div v-for="(stats, venue) in fullCourseDateStatsThisYear" class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
+                                    <div class="w-1/2">
+                                        <div class="px-4">{{ venue }}</div>
+                                    </div>
+                                    <div class="flex w-3/5">
+                                        <div class="w-1/2 px-4">
+                                            <div class="text-right">{{ stats.full }}/{{ stats.all }}</div>
+                                        </div>
+                                        <div class="w-1/2 px-4">
+                                            <div class="text-right text-gray font-bold">{{ stats.percent }}%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="px-6 py-4">
+                                    <div class="text-center text-gray font-bold">
+                                        Celkově {{ fullCourseDateTotalStatsThisYear.full }}/{{ fullCourseDateTotalStatsThisYear.all }} → {{ fullCourseDateTotalStatsThisYear.percent }}%
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <div v-if="activeDetailsTab == 'COURSE_DATES_REMAINING_BY_MONTH'">
                               <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
                                   <div class="w-1/2">
@@ -467,32 +464,38 @@ export default {
             waitingForApprovementReservations: [],
             queuedReservations: [],
 
-            courseDatesSpotTakenStatsGroupedByVenueThisMonth: [],
-            courseDatesSpotTakenTotalStatsThisMonth: null,
+            spotTakenCourseDateStatsThisMonth: [],
+            spotTakenCourseDateTotalStatsThisMonth: null,
 
-            courseDatesSpotTakenStatsGroupedByVenueThisYear: [],
-            courseDatesSpotTakenTotalStatsThisYear: null,
+            spotTakenCourseDateStatsThisYear: [],
+            spotTakenCourseDateTotalStatsThisYear: null,
+
+            fullCourseDateStatsThisMonth: [],
+            fullCourseDateTotalStatsThisMonth: null,
+                    
+            fullCourseDateStatsThisYear: [],
+            fullCourseDateTotalStatsThisYear: null,
         }
     },
 
     computed: {
         courseDatesSpotTakenStatsVenuesThisMonth() {
-            return Object.keys(this.courseDatesSpotTakenStatsGroupedByVenueThisMonth);
+            return Object.keys(this.spotTakenCourseDateStatsThisMonth);
         },
 
          courseDatesSpotTakenStatsSpotsTakenThisMonth() {
-            return Object.keys(this.courseDatesSpotTakenStatsGroupedByVenueThisMonth).map(key => {
-                return this.courseDatesSpotTakenStatsGroupedByVenueThisMonth[key].spotsTaken;
+            return Object.keys(this.spotTakenCourseDateStatsThisMonth).map(key => {
+                return this.spotTakenCourseDateStatsThisMonth[key].spotsTaken;
             });
         },
 
         courseDatesSpotTakenStatsVenuesThisYear() {
-            return Object.keys(this.courseDatesSpotTakenStatsGroupedByVenueThisYear);
+            return Object.keys(this.spotTakenCourseDateStatsThisYear);
         },
 
          courseDatesSpotTakenStatsSpotsTakenThisYear() {
-            return Object.keys(this.courseDatesSpotTakenStatsGroupedByVenueThisYear).map(key => {
-                return this.courseDatesSpotTakenStatsGroupedByVenueThisYear[key].spotsTaken;
+            return Object.keys(this.spotTakenCourseDateStatsThisYear).map(key => {
+                return this.spotTakenCourseDateStatsThisYear[key].spotsTaken;
             });
         }
     },
@@ -512,11 +515,17 @@ export default {
                     this.waitingForApprovementReservations = response.data.data.waitingForApprovementReservations;
                     this.queuedReservations = response.data.data.queuedReservations;
 
-                    this.courseDatesSpotTakenStatsGroupedByVenueThisMonth = response.data.data.groupedCourseDatesByVenueThisMonth.data;
-                    this.courseDatesSpotTakenTotalStatsThisMonth = response.data.data.groupedCourseDatesByVenueThisMonth.total; 
+                    this.spotTakenCourseDateStatsThisMonth = response.data.data.spotTakenCourseDateStatsThisMonth.data;
+                    this.spotTakenCourseDateTotalStatsThisMonth = response.data.data.spotTakenCourseDateStatsThisMonth.total; 
 
-                    this.courseDatesSpotTakenStatsGroupedByVenueThisYear = response.data.data.groupedCourseDatesByVenueThisYear.data;
-                    this.courseDatesSpotTakenTotalStatsThisYear = response.data.data.groupedCourseDatesByVenueThisYear.total; 
+                    this.spotTakenCourseDateStatsThisYear = response.data.data.spotTakenCourseDateStatsThisYear.data;
+                    this.spotTakenCourseDateTotalStatsThisYear = response.data.data.spotTakenCourseDateStatsThisYear.total; 
+                    
+                    this.fullCourseDateStatsThisMonth = response.data.data.fullCourseDatesStatsThisMonth.data;
+                    this.fullCourseDateTotalStatsThisMonth = response.data.data.fullCourseDatesStatsThisMonth.total; 
+
+                    this.fullCourseDateStatsThisYear = response.data.data.fullCourseDatesStatsThisYear.data;
+                    this.fullCourseDateTotalStatsThisYear = response.data.data.fullCourseDatesStatsThisYear.total; 
                 });
         }
     },
