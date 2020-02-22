@@ -1,90 +1,94 @@
 <template>
-     <div class="h-screen w-full bg-gray-100">
-            <div class="font-sans bg-gray-400er flex flex-col min-h-screen w-full">
-                <div class="flex-grow w-full pt-4 pb-8 pr-4">
-                  <div class="bg-white border-t border-b sm:border-l sm:border-r sm:rounded shadow mb-4">
+    <div class="h-screen w-full bg-gray-100">
+        <div class="font-sans bg-gray-400er flex flex-col min-h-screen w-full">
+            <div class="flex-grow w-full pt-4 pb-8 pr-4">
+                <div class="bg-white border-t border-b sm:border-l sm:border-r sm:rounded shadow mb-4">
                     <div class="border-b px-6">
-                      <div class="flex justify-between -mb-px">
-                        <div class="hidden lg:flex text-gray-600 ">
-                          <button @click="activeTab = 'COURSE_DATES'" :class="{'border-blue-600 text-blue-600 hover:border-blue-600': activeTab == 'COURSE_DATES'}" class="focus:outline-none appearance-none py-4 border-b border-transparent mr-6 hover:border-gray-600">Kurzy</button>
-                          <button @click="activeTab = 'RESERVATIONS'" :class="{'border-blue-600 text-blue-600 hover:border-blue-600': activeTab == 'RESERVATIONS'}" class="focus:outline-none appearance-none py-4 border-b border-transparent hover:border-gray-600 mr-6">Rezervace</button>
-                          <!-- <button type="button" class="appearance-none py-4 text-gray-600 border-b border-transparent hover:border-gray-600">Litecoin &middot; CA$358.24</button> -->
+                        <div class="flex justify-between -mb-px">
+                            <div class="hidden lg:flex text-gray-600 ">
+                                <button @click="activeTab = 'COURSE_DATES'" :class="{'border-blue-600 text-blue-600 hover:border-blue-600': activeTab == 'COURSE_DATES'}" class="focus:outline-none appearance-none py-4 border-b border-transparent mr-6 hover:border-gray-600">Kurzy</button>
+                                <button @click="activeTab = 'RESERVATIONS'" :class="{'border-blue-600 text-blue-600 hover:border-blue-600': activeTab == 'RESERVATIONS'}" class="focus:outline-none appearance-none py-4 border-b border-transparent hover:border-gray-600 mr-6">Rezervace</button>
+                                <!-- <button type="button" class="appearance-none py-4 text-gray-600 border-b border-transparent hover:border-gray-600">Litecoin &middot; CA$358.24</button> -->
+                            </div>
+                            <div class="flex text-sm">
+                                <button 
+                                    @click="timeRange = 'MONTH'" 
+                                    type="button"
+                                    :class="{'border-blue-600 hover:border-gray-600 text-blue-600': timeRange == 'MONTH'}"
+                                    class="appearance-none py-4 text-gray-600 border-b border-transparent hover:border-gray-600 mr-3" 
+                                    style="outline: none">Měsíc
+                                </button>
+                                <button 
+                                    @click="timeRange = 'YEAR'" 
+                                    type="button" 
+                                    :class="{'border-blue-600 hover:border-gray-600 text-blue-600': timeRange == 'YEAR'}"
+                                    class="appearance-none py-4 text-gray-600 border-b border-transparent hover:border-gray-600 mr-3" 
+                                    style="outline: none">Rok
+                                </button>
+                                <!-- <button type="button" class="appearance-none py-4 text-gray-600 border-b border-transparent hover:border-gray-600 mr-3">1W</button> -->
+                                <!-- <button type="button" class="appearance-none py-4 text-blue-600 border-b border-blue-600 mr-3">1M</button> -->
+                                <!-- <button type="button" class="appearance-none py-4 text-gray-600 border-b border-transparent hover:border-gray-600 mr-3">1Y</button> -->
+                                <!-- <button type="button" class="appearance-none py-4 text-gray-600 border-b border-transparent hover:border-gray-600">AL</button> -->
+                            </div>
                         </div>
-                        <div class="flex text-sm">
-                          <button type="button" class="appearance-none py-4 border-b border-blue-600 hover:border-gray-600 mr-3 text-blue-600">Měsíc</button>
-                          <button type="button" class="appearance-none py-4 text-gray-600 border-b border-transparent hover:border-gray-600 mr-3">Rok</button>
-                          <!-- <button type="button" class="appearance-none py-4 text-gray-600 border-b border-transparent hover:border-gray-600 mr-3">1W</button> -->
-                          <!-- <button type="button" class="appearance-none py-4 text-blue-600 border-b border-blue-600 mr-3">1M</button> -->
-                          <!-- <button type="button" class="appearance-none py-4 text-gray-600 border-b border-transparent hover:border-gray-600 mr-3">1Y</button> -->
-                          <!-- <button type="button" class="appearance-none py-4 text-gray-600 border-b border-transparent hover:border-gray-600">AL</button> -->
-                        </div>
-                      </div>
                     </div>
                     <div v-if="activeTab == 'COURSE_DATES'" class="hidden lg:flex">
-                      <div class="w-1/4 text-center py-8">
-                        <div class="border-r">
-                          <div class="text-gray-600er mb-2">
-                            <span class="text-5xl">12</span>
-                          </div>
-                          <div class="text-sm uppercase text-gray tracking-wide">
-                            Kurzů tento měsíc
-                          </div>
+                        <!-- Count of Course Dates -->
+                        <div class="w-1/4 text-center py-8">
+                            <div class="border-r">
+                                <div class="text-gray-600er mb-2">
+                                    <span v-if="timeRange == 'MONTH'" class="text-5xl">{{ courseDatesThisMonth }}</span>
+                                    <span v-if="timeRange == 'YEAR'" class="text-5xl">{{ courseDatesThisYear }}</span>
+                                </div>
+                                <div class="text-sm uppercase text-gray tracking-wide">Kurzů tento měsíc</div>
+                            </div>
                         </div>
-                      </div>
-                      <div class="w-1/4 text-center py-8">
-                        <div class="border-r">
-                          <div class="text-gray-600er mb-2">
-                            <span class="text-5xl">2</span>
-                          </div>
-                          <div class="text-sm uppercase text-gray tracking-wide">
-                            Probíhajicí kurzy
-                          </div>
+                        <!-- Count of In progress Course Dates -->
+                        <div class="w-1/4 text-center py-8">
+                            <div class="border-r">
+                                <div class="text-gray-600er mb-2">
+                                    <span class="text-5xl">{{ courseDatesInProgress }}</span>
+                                </div>
+                                <div class="text-sm uppercase text-gray tracking-wide">Probíhajicí kurzy</div>
+                            </div>
                         </div>
-                      </div>
-                      <div class="w-1/4 text-center py-8">
-                        <div class="border-r">
-                          <div class="text-gray-600er mb-2">
-                            <span class="text-5xl">7</span>
-                          </div>
-                          <div class="text-sm uppercase text-gray tracking-wide">
-                            Plně zaplněných kurzů
-                          </div>
+                        <div class="w-1/4 text-center py-8">
+                            <div class="border-r">
+                                <div class="text-gray-600er mb-2">
+                                    <span class="text-5xl">7</span>
+                                </div>
+                            <div class="text-sm uppercase text-gray tracking-wide">Plně zaplněných kurzů</div>
+                            </div>
                         </div>
-                      </div>
-                      <div class="w-1/4 text-center py-8">
-                        <div>
-                          <div class="text-gray-600er mb-2">
-                            <span class="text-5xl">8</span>
-                          </div>
-                          <div class="text-sm uppercase text-gray tracking-wide">
-                            Dokončených kurzů
-                          </div>
+                        <div class="w-1/4 text-center py-8">
+                            <div>
+                                <div class="text-gray-600er mb-2">
+                                    <span class="text-5xl">8</span>
+                                </div>
+                                <div class="text-sm uppercase text-gray tracking-wide">Dokončených kurzů</div>
+                            </div>
                         </div>
-                      </div>
                     </div>
                     <div v-if="activeTab == 'RESERVATIONS'" class="hidden lg:flex">
-                      <div class="w-2/4 text-center py-8">
-                        <div class="border-r">
-                          <div class="text-gray-600er mb-2">
-                            <span class="text-5xl">{{ stats.reservationsWaitingForApprovement.length }}</span>
-                          </div>
-                          <div class="text-sm uppercase text-gray tracking-wide">
-                            Rezervace čekající na schválení
-                          </div>
+                        <div class="w-1/2 text-center py-8">
+                            <div class="border-r">
+                                <div class="text-gray-600er mb-2">
+                                    <span class="text-5xl">{{ stats.reservationsWaitingForApprovement.length }}</span>
+                                </div>
+                                <div class="text-sm uppercase text-gray tracking-wide">Rezervace čekající na schválení</div>
+                            </div>
                         </div>
-                      </div>
-                      <div class="w-2/4 text-center py-8">
-                        <div class="border-r">
-                          <div class="text-gray-600er mb-2">
-                            <span class="text-5xl">{{ stats.queuedReservations.length }}</span>
-                          </div>
-                          <div class="text-sm uppercase text-gray tracking-wide">
-                            Počet náhradníků
-                          </div>
+                        <div class="w-1/2 text-center py-8">
+                            <div class="border-r">
+                                <div class="text-gray-600er mb-2">
+                                    <span class="text-5xl">{{ stats.queuedReservations.length }}</span>
+                                </div>
+                                <div class="text-sm uppercase text-gray tracking-wide">Počet náhradníků</div>
+                            </div>
                         </div>
-                      </div>
                     </div>
                 </div>
+
                 <div v-if="activeTab == 'COURSE_DATES'" class="flex flex-wrap -mx-4">
                     <div class="w-full mb-6 lg:mb-0 lg:w-1/2 px-4 pr-2 flex flex-col text-gray-700">
                         <div class="flex-grow flex flex-col bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden">
@@ -431,7 +435,7 @@
                     </div>
                 </div>
             </div> -->
-            </div>
+        </div>
     </div>
 </template>
 
@@ -444,6 +448,10 @@ export default {
             timeRange: 'MONTH', // YEAR
             activeTab: 'COURSE_DATES', // RESERVATIIONS
             activeDetailsTab: 'COURSE_DATES_REMAINING_BY_VENUE', //COURSE_DATES_FULL_BY_VENUE, COURSE_DATES_REMAINING_BY_MONTH, COURSE_DATES_FULL_BY_MONTH
+
+            courseDatesThisMonth: null,
+            courseDatesThisYear: null,
+            courseDatesInProgress: null,
         }
     },
 
@@ -451,7 +459,9 @@ export default {
         getStats() {
             axios.get('/admin/stats')
                 .then((response) => {
-                    this.stats = response.data.data;
+                    this.courseDatesThisMonth = response.data.data.courseDatesThisMonth;
+                    this.courseDatesThisYear = response.data.data.courseDatesThisYear;
+                    this.courseDatesInProgress = response.data.data.courseDatesInProgress;
                 });
         }
     },
