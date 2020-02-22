@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\prosvujusmev\Admin;
 
 use App\Http\Controllers\Controller;
+use App\prosvujusmev\Courses\Collections\CourseDatesSpotTakenStatsCollection;
 use App\prosvujusmev\Courses\CourseDate;
 use App\prosvujusmev\Reservations\Reservation;
 use Carbon\Carbon;
@@ -14,22 +15,26 @@ class StatsController extends Controller
 {
     public function index(Request $request)
     {
-        $courseDatesThisMonth = CourseDate::whereRaw('MONTH(from_date) = ' . \Carbon\Carbon::now()->format('m'))->get();
-        $courseDatesNextMonth = CourseDate::whereRaw('MONTH(from_date) = ' . \Carbon\Carbon::now()->addMonth()->format('m'))->get();
-        $reservationsWaitingForApprovement = Reservation::where('status', Reservation::STATUS_UNAPPROVED)->get();
-        $queuedReservations = Reservation::where('status', Reservation::STATUS_QUEUED)->get();
         return response()->json([
             'data' => [
-                'courseDatesThisMonth' => $this->getCountOfCourseDatesOfThisMonth(),
-                'courseDatesThisYear' => $this->getCountOfCourseDatesOfThisYear(),
-                'courseDatesInProgress' => $this->getCountOfCourseDatesInProgress(),
-                'fullCourseDatesThisMonth' => $this->getCountOfFullCourseDatesThisMonth(),
-                'fullCourseDatesThisYear' => $this->getCountOfFullCourseDatesThisYear(),
-                'completedCourseDatesThisMonth' => $this->getCountOfCompletedCourseDatesThisMonth(),
-                'completedCourseDatesThisYear' => $this->getCountOfCompletedCourseDatesThisYear(),
+                'countOfCourseDatesThisMonth' => $this->getCountOfCourseDatesOfThisMonth(),
+                'countOfCourseDatesThisYear' => $this->getCountOfCourseDatesOfThisYear(),
+                'countOfCourseDatesInProgress' => $this->getCountOfCourseDatesInProgress(),
+                'countOfFullCourseDatesThisMonth' => $this->getCountOfFullCourseDatesThisMonth(),
+                'countOfFullCourseDatesThisYear' => $this->getCountOfFullCourseDatesThisYear(),
+                'countOfCompletedCourseDatesThisMonth' => $this->getCountOfCompletedCourseDatesThisMonth(),
+                'countOfCompletedCourseDatesThisYear' => $this->getCountOfCompletedCourseDatesThisYear(),
+
+                'waitingForApprovementReservations' => Reservation::where('status', Reservation::STATUS_UNAPPROVED)->get(),
+                'queuedReservations' => Reservation::where('status', Reservation::STATUS_QUEUED)->get(),
+
+                'groupedCourseDatesByVenueThisMonth' => new CourseDatesSpotTakenStatsCollection($this->getCourseDatesOfThisMonth()),
+                'groupedCourseDatesByVenueThisYear' => new CourseDatesSpotTakenStatsCollection($this->getCourseDatesOfThisYear()),
             ],
         ]);
     }
+
+    
 
     /**
      *  Return count of Course Dates that happening this month
@@ -150,5 +155,35 @@ class StatsController extends Controller
                 $endOfYear
             ])->where('status', CourseDate::STATUS_COMPLETED)
             ->count();
+    }
+
+    /**
+     *  Return Course Dates that happening this month
+     * 
+     *  @return \Illuminate\Database\Eloquent\Collection 
+     */
+    private function getCourseDatesOfThisMonth(): Collection 
+    {
+        $startOfMonth = Carbon::now()->startOfMonth();
+        $endOfMonth = Carbon::now()->endOfMonth();
+        return CourseDate::whereBetween('from_date', [
+                $startOfMonth,
+                $endOfMonth
+            ])->get();
+    }
+
+    /**
+     *  Return Course Dates that happening this year
+     * 
+     *  @return \Illuminate\Database\Eloquent\Collection 
+     */
+    private function getCourseDatesOfThisYear(): Collection 
+    {
+        $startOfYear = Carbon::now()->startOfYear();
+        $endOfYear = Carbon::now()->endOfYear();
+        return CourseDate::whereBetween('from_date', [
+            $startOfYear,
+            $endOfYear
+        ])->get();
     }
 }

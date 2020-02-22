@@ -78,7 +78,7 @@ class CourseDate extends Model
         $fromDate->hour = 0;
         return $now->diffInDays($fromDate);
     }
-
+    
     public function getAttendees()
     {
         $attendees = [];

@@ -1,7 +1,7 @@
 <template>
     <div class="h-screen w-full bg-gray-100">
         <div class="font-sans bg-gray-400er flex flex-col min-h-screen w-full">
-            <div class="flex-grow w-full pt-4 pb-8 pr-4">
+            <div class="w-full pt-4 pb-8 pr-4">
                 <div class="bg-white border-t border-b sm:border-l sm:border-r sm:rounded shadow mb-4">
                     <div class="border-b px-6">
                         <div class="flex justify-between -mb-px">
@@ -37,17 +37,18 @@
                         <div class="w-1/4 text-center py-8">
                             <div class="border-r">
                                 <div class="text-gray-600er mb-2">
-                                    <span v-if="timeRange == 'MONTH'" class="text-5xl">{{ courseDatesThisMonth }}</span>
-                                    <span v-if="timeRange == 'YEAR'" class="text-5xl">{{ courseDatesThisYear }}</span>
+                                    <span v-if="timeRange == 'MONTH'" class="text-5xl">{{ countOfCourseDatesThisMonth }}</span>
+                                    <span v-if="timeRange == 'YEAR'" class="text-5xl">{{ countOfCourseDatesThisYear }}</span>
                                 </div>
-                                <div class="text-sm uppercase text-gray tracking-wide">Kurzů tento měsíc</div>
+                                <div v-if="timeRange == 'MONTH'" class="text-sm uppercase text-gray tracking-wide">Kurzů tento měsíc</div>
+                                <div v-if="timeRange == 'YEAR'" class="text-sm uppercase text-gray tracking-wide">Kurzů tento rok</div>
                             </div>
                         </div>
                         <!-- Count of In progress Course Dates -->
                         <div class="w-1/4 text-center py-8">
                             <div class="border-r">
                                 <div class="text-gray-600er mb-2">
-                                    <span class="text-5xl">{{ courseDatesInProgress }}</span>
+                                    <span class="text-5xl">{{ countOfCourseDatesInProgress }}</span>
                                 </div>
                                 <div class="text-sm uppercase text-gray tracking-wide">Probíhajicí kurzy</div>
                             </div>
@@ -56,8 +57,8 @@
                         <div class="w-1/4 text-center py-8">
                             <div class="border-r">
                                 <div class="text-gray-600er mb-2">
-                                    <span v-if="timeRange == 'MONTH'" class="text-5xl">{{ fullCourseDatesThisMonth }}</span>
-                                    <span v-if="timeRange == 'YEAR'" class="text-5xl">{{ fullCourseDatesThisYear }}</span>
+                                    <span v-if="timeRange == 'MONTH'" class="text-5xl">{{ countOfFullCourseDatesThisMonth }}</span>
+                                    <span v-if="timeRange == 'YEAR'" class="text-5xl">{{ countOfFullCourseDatesThisYear }}</span>
                                 </div>
                             <div class="text-sm uppercase text-gray tracking-wide">Plně zaplněných kurzů</div>
                             </div>
@@ -66,8 +67,8 @@
                         <div class="w-1/4 text-center py-8">
                             <div>
                                 <div class="text-gray-600er mb-2">
-                                    <span v-if="timeRange == 'MONTH'" class="text-5xl">{{ completedCourseDatesThisMonth }}</span>
-                                    <span v-if="timeRange == 'YEAR'" class="text-5xl">{{ completedCourseDatesThisYear }}</span>
+                                    <span v-if="timeRange == 'MONTH'" class="text-5xl">{{ countOfCompletedCourseDatesThisMonth }}</span>
+                                    <span v-if="timeRange == 'YEAR'" class="text-5xl">{{ countOfCompletedCourseDatesThisYear }}</span>
                                 </div>
                                 <div class="text-sm uppercase text-gray tracking-wide">Dokončených kurzů</div>
                             </div>
@@ -77,7 +78,7 @@
                         <div class="w-1/2 text-center py-8">
                             <div class="border-r">
                                 <div class="text-gray-600er mb-2">
-                                    <span class="text-5xl">{{ stats.reservationsWaitingForApprovement.length }}</span>
+                                    <span class="text-5xl">{{ waitingForApprovementReservations.length }}</span>
                                 </div>
                                 <div class="text-sm uppercase text-gray tracking-wide">Rezervace čekající na schválení</div>
                             </div>
@@ -85,7 +86,7 @@
                         <div class="w-1/2 text-center py-8">
                             <div class="border-r">
                                 <div class="text-gray-600er mb-2">
-                                    <span class="text-5xl">{{ stats.queuedReservations.length }}</span>
+                                    <span class="text-5xl">{{ queuedReservations.length }}</span>
                                 </div>
                                 <div class="text-sm uppercase text-gray tracking-wide">Počet náhradníků</div>
                             </div>
@@ -95,7 +96,7 @@
 
                 <div v-if="activeTab == 'COURSE_DATES'" class="flex flex-wrap -mx-4">
                     <div class="w-full mb-6 lg:mb-0 lg:w-1/2 px-4 pr-2 flex flex-col text-gray-700">
-                        <div class="flex-grow flex flex-col bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden">
+                        <div class="flex flex-col bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden">
                             <div class="border-b">
                                 <div class="flex justify-between px-6 -mb-px">
                                     <div @click="activeDetailsTab = 'COURSE_DATES_REMAINING_BY_VENUE'" :class="{'text-blue-600': activeDetailsTab == 'COURSE_DATES_REMAINING_BY_VENUE'}" class="py-4 px-2 font-normal cursor-pointer hover:text-gray-500">Zaplnění termínu podle místa</div>
@@ -108,54 +109,48 @@
                                     </div> -->
                                 </div>
                             </div>
-                            <div v-if="activeDetailsTab == 'COURSE_DATES_REMAINING_BY_VENUE'">
-                              <div class="flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
-                                  <div class="w-1/2">
-                                      <div class="px-4">PRAHA (Komunitní centrum Hrubého, Praha 8 - Kobylisy)</div>
-                                  </div>
-                                  <div class="flex w-3/5">
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right">30/40</div>
-                                      </div>
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right text-gray font-bold">75%</div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
-                                  <div class="w-1/2">
-                                      <div class="px-4">BRNO (Gymnázium Globe, s.r.o., Bzenecká 23, Brno)</div>
-                                  </div>
-                                  <div class="flex w-3/5">
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right">10/20</div>
-                                      </div>
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right text-gray font-bold">50%</div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
-                                  <div class="w-1/2">
-                                      <div class="px-4">OSTRAVA (SŠ stavební a dřevozpracující, U Studia 33, Ostrava - Zábřeh) </div>
-                                  </div>
-                                  <div class="flex w-3/5">
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right">8/10</div>
-                                      </div>
-                                      <div class="w-1/2 px-4">
-                                          <div class="text-right text-gray font-bold">80%</div>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="px-6 py-4">
-                                  <div class="text-center text-gray font-bold">
-                                      Celkově 48/70 → 68.6%
-                                  </div>
-                              </div>
+                            <div v-if="activeDetailsTab == 'COURSE_DATES_REMAINING_BY_VENUE' && timeRange == 'MONTH'">
+                                <div v-for="(stats, venue) in courseDatesSpotTakenStatsGroupedByVenueThisMonth" class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
+                                    <div class="w-1/2">
+                                        <div class="px-4">{{ venue }}</div>
+                                    </div>
+                                    <div class="flex w-3/5">
+                                        <div class="w-1/2 px-4">
+                                            <div class="text-right">{{ stats.spotsTaken }}/{{ stats.limit }}</div>
+                                        </div>
+                                        <div class="w-1/2 px-4">
+                                            <div class="text-right text-gray font-bold">{{ stats.percent }}%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="px-6 py-4">
+                                    <div class="text-center text-gray font-bold">
+                                        Celkově {{ courseDatesSpotTakenTotalStatsThisMonth.spotsTaken }}/{{ courseDatesSpotTakenTotalStatsThisMonth.limit }} → {{ courseDatesSpotTakenTotalStatsThisMonth.percent }}%
+                                    </div>
+                                </div>
+                            </div>
+                            <div v-if="activeDetailsTab == 'COURSE_DATES_REMAINING_BY_VENUE' && timeRange == 'YEAR'">
+                                <div v-for="(stats, venue) in courseDatesSpotTakenStatsGroupedByVenueThisYear" class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
+                                    <div class="w-1/2">
+                                        <div class="px-4">{{ venue }}</div>
+                                    </div>
+                                    <div class="flex w-3/5">
+                                        <div class="w-1/2 px-4">
+                                            <div class="text-right">{{ stats.spotsTaken }}/{{ stats.limit }}</div>
+                                        </div>
+                                        <div class="w-1/2 px-4">
+                                            <div class="text-right text-gray font-bold">{{ stats.percent }}%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="px-6 py-4">
+                                    <div class="text-center text-gray font-bold">
+                                        Celkově {{ courseDatesSpotTakenTotalStatsThisYear.spotsTaken }}/{{ courseDatesSpotTakenTotalStatsThisYear.limit }} → {{ courseDatesSpotTakenTotalStatsThisYear.percent }}%
+                                    </div>
+                                </div>
                             </div>
                             <div v-if="activeDetailsTab == 'COURSE_DATES_FULL_BY_VENUE'">
-                              <div class="flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
+                              <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
                                   <div class="w-1/2">
                                       <div class="px-4">PRAHA (Komunitní centrum Hrubého, Praha 8 - Kobylisy)</div>
                                   </div>
@@ -168,7 +163,7 @@
                                       </div>
                                   </div>
                               </div>
-                              <div class="flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
+                              <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
                                   <div class="w-1/2">
                                       <div class="px-4">BRNO (Gymnázium Globe, s.r.o., Bzenecká 23, Brno)</div>
                                   </div>
@@ -181,7 +176,7 @@
                                       </div>
                                   </div>
                               </div>
-                              <div class="flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
+                              <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
                                   <div class="w-1/2">
                                       <div class="px-4">OSTRAVA (SŠ stavební a dřevozpracující, U Studia 33, Ostrava - Zábřeh) </div>
                                   </div>
@@ -201,7 +196,7 @@
                               </div>
                             </div>
                             <div v-if="activeDetailsTab == 'COURSE_DATES_REMAINING_BY_MONTH'">
-                              <div class="flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
+                              <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
                                   <div class="w-1/2">
                                       <div class="px-4">Leden</div>
                                   </div>
@@ -214,7 +209,7 @@
                                       </div>
                                   </div>
                               </div>
-                              <div class="flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
+                              <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
                                   <div class="w-1/2">
                                       <div class="px-4">Únor</div>
                                   </div>
@@ -227,7 +222,7 @@
                                       </div>
                                   </div>
                               </div>
-                              <div class="flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
+                              <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
                                   <div class="w-1/2">
                                       <div class="px-4">Březen</div>
                                   </div>
@@ -247,7 +242,7 @@
                               </div>
                             </div>
                             <div v-if="activeDetailsTab == 'COURSE_DATES_FULL_BY_MONTH'">
-                              <div class="flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
+                              <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
                                   <div class="w-1/2">
                                       <div class="px-4">Leden</div>
                                   </div>
@@ -260,7 +255,7 @@
                                       </div>
                                   </div>
                               </div>
-                              <div class="flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
+                              <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
                                   <div class="w-1/2">
                                       <div class="px-4">Únor</div>
                                   </div>
@@ -273,7 +268,7 @@
                                       </div>
                                   </div>
                               </div>
-                              <div class="flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
+                              <div class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4">
                                   <div class="w-1/2">
                                       <div class="px-4">Březen</div>
                                   </div>
@@ -295,22 +290,30 @@
                         </div>
                     </div>
                     <div class="w-full lg:w-1/2 pl-2 px-4">
-                      <div v-if="activeDetailsTab == 'COURSE_DATES_REMAINING_BY_VENUE'" class="bg-white border-t border-b sm:rounded sm:border shadow p-4">
-                          <pie-chart :chartdata="{
-                              labels: [
-                                  'PRAHA (Komunitní centrum Hrubého, Praha 8 - Kobylisy)', 
-                                  'BRNO (Gymnázium Globe, s.r.o., Bzenecká 23, Brno)',
-                                  'OSTRAVA (SŠ stavební a dřevozpracující, U Studia 33, Ostrava - Zábřeh)'
-                              ],
-                              datasets: [
-                                  {
-                                      label: 'Zaplnění termínu podle místa',
-                                      backgroundColor: ['#49306B', '#635380', '#90708C'],
-                                      data: [30, 10, 8]
-                                  }
-                              ]
-                          }"></pie-chart>
-                      </div>
+                        <div v-if="activeDetailsTab == 'COURSE_DATES_REMAINING_BY_VENUE' && timeRange == 'MONTH'" class="bg-white border-t border-b sm:rounded sm:border shadow p-4">
+                            <doughnut-chart key="courseDatesSpotTakenStatsVenuesThisMonth" :chartdata="{
+                                labels: courseDatesSpotTakenStatsVenuesThisMonth,
+                                datasets: [
+                                    {
+                                        label: 'Zaplnění termínu podle místa',
+                                        backgroundColor: ['#44337A', '#553C9A', '#6B46C1', '#805AD5', '#9F7AEA', '#B794F4', '#D6BCFA', '#E9D8FD', '#FAF5FF', '#3C366B', '#434190', '#4C51BF', '#5A67D8', '#667EEA', '#7F9CF5', '#A3BFFA', '#C3DAFE', '#EBF4FF', '#2A4365', '#2C5282', '#2B6CB0', '#3182CE', '#4299E1', '#63B3ED', '#90CDF4', '#BEE3F8', '#EBF8FF', '#234E52'],
+                                        data: courseDatesSpotTakenStatsSpotsTakenThisMonth
+                                    }
+                                ]
+                            }"></doughnut-chart>
+                        </div>
+                        <div v-if="activeDetailsTab == 'COURSE_DATES_REMAINING_BY_VENUE' && timeRange == 'YEAR'" class="bg-white border-t border-b sm:rounded sm:border shadow p-4">
+                            <doughnut-chart key="courseDatesSpotTakenStatsVenuesThisYear" :chartdata="{
+                                labels: courseDatesSpotTakenStatsVenuesThisYear,
+                                datasets: [
+                                    {
+                                        label: 'Zaplnění termínu podle místa',
+                                        backgroundColor: ['#44337A', '#553C9A', '#6B46C1', '#805AD5', '#9F7AEA', '#B794F4', '#D6BCFA', '#E9D8FD', '#FAF5FF', '#3C366B', '#434190', '#4C51BF', '#5A67D8', '#667EEA', '#7F9CF5', '#A3BFFA', '#C3DAFE', '#EBF4FF', '#2A4365', '#2C5282', '#2B6CB0', '#3182CE', '#4299E1', '#63B3ED', '#90CDF4', '#BEE3F8', '#EBF8FF', '#234E52'],
+                                        data: courseDatesSpotTakenStatsSpotsTakenThisYear
+                                    }
+                                ]
+                            }"></doughnut-chart>
+                        </div>
                       <div v-if="activeDetailsTab == 'COURSE_DATES_FULL_BY_VENUE'" class="bg-white border-t border-b sm:rounded sm:border shadow p-4">
                           <doughnut-chart :chartdata="{
                               labels: [
@@ -363,14 +366,14 @@
                 </div>
                 <div v-if="activeTab == 'RESERVATIONS'" class="flex flex-wrap -mx-4">
                   <div class="w-full mb-6 lg:mb-0 lg:w-1/2 px-4 pr-2 flex flex-col text-gray-700">
-                      <div class="flex-grow flex flex-col bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden">
+                      <div class="flex flex-col bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden">
                           <div class="border-b">
                               <div class="flex justify-between px-6 -mb-px">
                                   <div class="py-4 px-2 font-normal cursor-pointer text-blue-600">Rezervace čekající na schválení</div>
                               </div>
                           </div>
                           <div>
-                            <a :href="'/admin/reservations/' + reservation.id" v-for="reservation in stats.reservationsWaitingForApprovement" class="flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4 hover:bg-gray-100 cursor-pointer">
+                            <a :href="'/admin/reservations/' + reservation.id" v-for="reservation in waitingForApprovementReservations" class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4 hover:bg-gray-100 cursor-pointer">
                                 <div class="w-1/2">
                                     <div class="px-4">{{ reservation.id }}</div>
                                 </div>
@@ -387,14 +390,14 @@
                       </div>
                   </div>
                   <div class="w-full mb-6 lg:mb-0 lg:w-1/2 px-4 pr-2 flex flex-col text-gray-700">
-                      <div class="flex-grow flex flex-col bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden">
+                      <div class="flex flex-col bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden">
                           <div class="border-b">
                               <div class="flex justify-between px-6 -mb-px">
                                   <div class="py-4 px-2 font-normal cursor-pointer text-blue-600">Rezervace náhradníků</div>
                               </div>
                           </div>
                           <div>
-                            <a :href="'/admin/reservations/' + reservation.id" v-for="reservation in stats.queuedReservations" class="flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4 hover:bg-gray-100 cursor-pointer">
+                            <a :href="'/admin/reservations/' + reservation.id" v-for="reservation in queuedReservations" class="flex px-6 py-6 text-gray-600er items-center border-b -mx-4 hover:bg-gray-100 cursor-pointer">
                                 <div class="w-1/2">
                                     <div class="px-4">{{ reservation.id }}</div>
                                 </div>
@@ -453,13 +456,44 @@ export default {
             activeTab: 'COURSE_DATES', // RESERVATIIONS
             activeDetailsTab: 'COURSE_DATES_REMAINING_BY_VENUE', //COURSE_DATES_FULL_BY_VENUE, COURSE_DATES_REMAINING_BY_MONTH, COURSE_DATES_FULL_BY_MONTH
 
-            courseDatesThisMonth: null,
-            courseDatesThisYear: null,
-            courseDatesInProgress: null,
-            fullCourseDatesThisMonth: null,
-            fullCourseDatesThisYear: null,
-            completedCourseDatesThisMonth: null,
-            completedCourseDatesThisYear: null,
+            countOfCourseDatesThisMonth: null,
+            countOfCourseDatesThisYear: null,
+            countOfCourseDatesInProgress: null,
+            countOfFullCourseDatesThisMonth: null,
+            countOfFullCourseDatesThisYear: null,
+            countOfCompletedCourseDatesThisMonth: null,
+            countOfCompletedCourseDatesThisYear: null,
+
+            waitingForApprovementReservations: [],
+            queuedReservations: [],
+
+            courseDatesSpotTakenStatsGroupedByVenueThisMonth: [],
+            courseDatesSpotTakenTotalStatsThisMonth: null,
+
+            courseDatesSpotTakenStatsGroupedByVenueThisYear: [],
+            courseDatesSpotTakenTotalStatsThisYear: null,
+        }
+    },
+
+    computed: {
+        courseDatesSpotTakenStatsVenuesThisMonth() {
+            return Object.keys(this.courseDatesSpotTakenStatsGroupedByVenueThisMonth);
+        },
+
+         courseDatesSpotTakenStatsSpotsTakenThisMonth() {
+            return Object.keys(this.courseDatesSpotTakenStatsGroupedByVenueThisMonth).map(key => {
+                return this.courseDatesSpotTakenStatsGroupedByVenueThisMonth[key].spotsTaken;
+            });
+        },
+
+        courseDatesSpotTakenStatsVenuesThisYear() {
+            return Object.keys(this.courseDatesSpotTakenStatsGroupedByVenueThisYear);
+        },
+
+         courseDatesSpotTakenStatsSpotsTakenThisYear() {
+            return Object.keys(this.courseDatesSpotTakenStatsGroupedByVenueThisYear).map(key => {
+                return this.courseDatesSpotTakenStatsGroupedByVenueThisYear[key].spotsTaken;
+            });
         }
     },
 
@@ -467,14 +501,22 @@ export default {
         getStats() {
             axios.get('/admin/stats')
                 .then((response) => {
-                    this.courseDatesThisMonth = response.data.data.courseDatesThisMonth;
-                    this.courseDatesThisYear = response.data.data.courseDatesThisYear;
-                    this.courseDatesInProgress = response.data.data.courseDatesInProgress;
-                    this.fullCourseDatesThisMonth = response.data.data.fullCourseDatesThisMonth;
-                    this.fullCourseDatesThisYear = response.data.data.fullCourseDatesThisYear;
-                    this.completedCourseDatesThisMonth = response.data.data.completedCourseDatesThisMonth;
-                    this.completedCourseDatesThisYear = response.data.data.completedCourseDatesThisYear;
+                    this.countOfCourseDatesThisMonth = response.data.data.countOfCourseDatesThisMonth;
+                    this.countOfCourseDatesThisYear = response.data.data.countOfCourseDatesThisYear;
+                    this.countOfCourseDatesInProgress = response.data.data.countOfCourseDatesInProgress;
+                    this.countOfFullCourseDatesThisMonth = response.data.data.countOfFullCourseDatesThisMonth;
+                    this.countOfFullCourseDatesThisYear = response.data.data.countOfFullCourseDatesThisYear;
+                    this.countOfCompletedCourseDatesThisMonth = response.data.data.countOfCompletedCourseDatesThisMonth;
+                    this.countOfCompletedCourseDatesThisYear = response.data.data.countOfCompletedCourseDatesThisYear;
 
+                    this.waitingForApprovementReservations = response.data.data.waitingForApprovementReservations;
+                    this.queuedReservations = response.data.data.queuedReservations;
+
+                    this.courseDatesSpotTakenStatsGroupedByVenueThisMonth = response.data.data.groupedCourseDatesByVenueThisMonth.data;
+                    this.courseDatesSpotTakenTotalStatsThisMonth = response.data.data.groupedCourseDatesByVenueThisMonth.total; 
+
+                    this.courseDatesSpotTakenStatsGroupedByVenueThisYear = response.data.data.groupedCourseDatesByVenueThisYear.data;
+                    this.courseDatesSpotTakenTotalStatsThisYear = response.data.data.groupedCourseDatesByVenueThisYear.total; 
                 });
         }
     },
