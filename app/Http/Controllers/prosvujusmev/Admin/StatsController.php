@@ -40,6 +40,11 @@ class StatsController extends Controller
                 'remainingCourseDateSpotsStatsInMonths' => new CourseDateRemainingSpotsByMonthsCollection($this->getCourseDatesOfThisYear()),
 
                 'fullCourseDatesStatsInMonths' => new FullCourseDatesByMonthsCollection($this->getCourseDatesOfThisYear()),
+
+                'countOfCourseDatesWithLectors' => CourseDate::future()->where('lecturer', '!=', null)->count(),
+                'countOfCourseDatesWithoutLectors' => CourseDate::future()->where('lecturer', null)->count(),
+                'countOfCourseDates' => CourseDate::future()->count(),
+                'lectorsCoverage' => CourseDate::future()->where('lecturer', null)->count() === 0 ? 100 : round(CourseDate::future()->where('lecturer', '!=', null)->count() / CourseDate::future()->count() * 100, 2)
             ],
         ]);
     }

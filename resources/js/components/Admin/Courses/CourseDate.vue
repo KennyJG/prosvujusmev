@@ -20,50 +20,50 @@
                     <div class="w-1/3 h-full p-4 border-r">
                         <div class="flex">
                             <div class="w-1/3 font-bold">Kurz</div>
-                            <div class="w-2/3">{{ actualCourseDate.course.name }}</div>
+                            <div class="w-2/3 pl-2">{{ actualCourseDate.course.name }}</div>
                         </div> 
                         <div class="flex mt-2">
                             <div class="w-1/3 font-bold">Začátek</div>
-                            <div v-show="!updating" class="w-2/3">{{ actualCourseDate.from_date_date }} {{ actualCourseDate.from_date_time }}</div>
-                            <div v-show="updating" class="w-2/3 flex flex-col">
+                            <div v-show="!updating" class="w-2/3 pl-2">{{ actualCourseDate.from_date_date }} {{ actualCourseDate.from_date_time }}</div>
+                            <div v-show="updating" class="w-2/3 pl-2 flex flex-col">
                                 <input class="p-2 border" type="date" v-model="updatedCourseDate.from_date_date">
                                 <input class="p-2 border" type="time" v-model="updatedCourseDate.from_date_time">
                             </div>
                         </div>
                         <div class="flex mt-2">
                             <div class="w-1/3 font-bold">Konec</div>
-                            <div v-show="!updating" class="w-2/3">{{ actualCourseDate.to_date_date }} {{ actualCourseDate.to_date_time }}</div>
-                            <div v-show="updating" class="w-2/3 flex flex-col">
+                            <div v-show="!updating" class="w-2/3 pl-2">{{ actualCourseDate.to_date_date }} {{ actualCourseDate.to_date_time }}</div>
+                            <div v-show="updating" class="w-2/3 flex pl-2 flex-col">
                                 <input class="p-2 border" type="date" v-model="updatedCourseDate.to_date_date">
                                 <input class="p-2 border" type="time" v-model="updatedCourseDate.to_date_time">
                             </div>
                         </div>
                         <div class="flex mt-2">
                             <div class="w-1/3 font-bold">Stav</div>
-                            <div class="w-2/3">{{ actualCourseDate.status }}</div>
+                            <div class="w-2/3 pl-2">{{ actualCourseDate.status }}</div>
                         </div>
                         <div class="flex mt-2">
                             <div class="w-1/3 font-bold">Místo konání</div>
-                            <div v-show="!updating" class="w-2/3">{{ actualCourseDate.venue }}</div>
+                            <div v-show="!updating" class="w-2/3 pl-2">{{ actualCourseDate.venue }}</div>
                             <input v-show="updating" class="w-2/3 p-2 border" type="text" v-model="updatedCourseDate.venue">
                         </div>
                         <div class="flex mt-2">
                             <div class="w-1/3 font-bold">Limit</div>
-                            <div v-show="!updating" class="w-2/3">{{ actualCourseDate.limit }}</div>
+                            <div v-show="!updating" class="w-2/3 pl-2">{{ actualCourseDate.limit }}</div>
                             <input v-show="updating" class="w-2/3 p-2 border" type="text" v-model="updatedCourseDate.limit">
                         </div>
                         <div class="flex mt-2">
                             <div class="w-1/3 font-bold">Zbývá míst</div>
-                            <div class="w-2/3">{{ actualCourseDate.remaining }}</div>
+                            <div class="w-2/3 pl-2">{{ actualCourseDate.remaining }}</div>
                         </div>
                         <div class="flex mt-2">
                             <div class="w-1/3 font-bold">Lektor</div>
-                            <div v-show="!updating" class="w-2/3">{{ actualCourseDate.lecturer }}</div>
+                            <div v-show="!updating" class="w-2/3 pl-2">{{ actualCourseDate.lecturer }}</div>
                             <input v-show="updating" class="w-2/3 p-2 border" type="text" v-model="updatedCourseDate.lecturer">
                         </div>
                         <div class="flex mt-2">
                             <div class="w-1/3 font-bold">Popis</div>
-                            <div v-show="!updating" class="w-2/3">{{ actualCourseDate.description }}</div>
+                            <div v-show="!updating" class="w-2/3 pl-2">{{ actualCourseDate.description }}</div>
                             <textarea v-show="updating" class="w-2/3 p-2 border" type="text" v-model="updatedCourseDate.description" rows="5"></textarea>
                         </div>
 

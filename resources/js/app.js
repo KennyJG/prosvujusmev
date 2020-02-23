@@ -4,11 +4,19 @@ window.Vue = require('vue');
  
 // Admin components
 Vue.component('navbar', require('./components/Admin/Navbar.vue').default);
+
 Vue.component('dashboard', require('./components/Admin/Dashboard.vue').default);
+Vue.component('dashboard-general', require('./components/Admin/Dashboard/General.vue').default);
+Vue.component('dashboard-lecturer', require('./components/Admin/Dashboard/Lecturer.vue').default);
+Vue.component('dashboard-orders', require('./components/Admin/Dashboard/Orders.vue').default);
+
 Vue.component('confirmation-modal', require('./components/Admin/Modals/Confirmation.vue').default);
+
 Vue.component('course-dates-list', require('./components/Admin/Courses/CourseDatesList.vue').default);
 Vue.component('course-date', require('./components/Admin/Courses/CourseDate.vue').default);
+
 Vue.component('courses-list', require('./components/Admin/Courses/CoursesList.vue').default);
+
 Vue.component('reservation', require('./components/Admin/Reservations/Reservation.vue').default);
 Vue.component('reservation-list', require('./components/Admin/Reservations/ReservationList.vue').default);
 

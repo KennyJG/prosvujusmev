@@ -31,7 +31,7 @@ class CourseDate extends Model
         'deleted_at',
     ];
 
-    protected $appends = ['fullDateForHumans', 'remaining', 'daysToCourseDate', 'createdAtForHumans', 'full'];
+    protected $appends = ['fullDateForHumans', 'remaining', 'daysToCourseDate', 'createdAtForHumans', 'full', 'courseName'];
 
     const STATUS_ACTIVE = 'ACTIVE';
     const STATUS_IN_PROGRESS = 'IN_PROGRESS';
@@ -91,8 +91,19 @@ class CourseDate extends Model
         return $attendees;
     }
 
+    public function scopeFuture($query)
+    {
+        $query->where('from_date', '>', \Carbon\Carbon::now())
+            ->where('to_date', '>', \Carbon\Carbon::now());
+    }
+
     public function getFullAttribute()
     {
         return $this->remaining <= 0;
+    }
+
+    public function getCourseNameAttribute()
+    {
+        return $this->course->name;
     }
 }

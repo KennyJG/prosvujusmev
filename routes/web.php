@@ -82,5 +82,7 @@ Route::group(['namespace' => 'prosvujusmev\\'], function () {
         // Route::delete('/courses/{course}/dates/{courseDate}', 'Courses\CourseDatesController@destroy');
 
         Route::get('/reservations', 'Reservations\ReservationsController@index');
+        
+        Route::get('/lecturers', 'Lecturers\LecturersController@index');
     });
 });
