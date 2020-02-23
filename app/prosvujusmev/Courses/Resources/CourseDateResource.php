@@ -27,6 +27,8 @@ class CourseDateResource extends JsonResource
             'reservations' => $this->reservations,
             'created_at' => (string)$this->created_at,
             'updated_at' => (string)$this->updated_at,
+            'first_information' => $this->firstInformation,
+            'final_information' => $this->finalInformation,
         ];
     }
 }

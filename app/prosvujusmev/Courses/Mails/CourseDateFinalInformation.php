@@ -3,6 +3,7 @@
 namespace App\prosvujusmev\Courses\Mails;
 
 use App\prosvujusmev\Courses\CourseDate;
+use App\prosvujusmev\EmailMessages\Repositories\EmailMessageRepository;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -30,8 +31,15 @@ class CourseDateFinalInformation extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.courses.final_information', [
-            'courseDate' => $this->courseDate,
-        ]);
+        $mailMessage = app(EmailMessageRepository::class)->getFinalInformation($this->courseDate);
+        if ($mailMessage) {
+            return $this->view('mails.courses.final_information', [
+                'text' => json_decode($mailMessage->data)->text,
+            ]);
+        } else {
+            return $this->view('mails.courses.default_final_information', [
+                'courseDate' => $this->courseDate,
+            ]);
+        }
     }
 }

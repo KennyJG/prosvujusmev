@@ -106,4 +106,32 @@ class CourseDate extends Model
     {
         return $this->course->name;
     }
+
+    public function getFirstInformationAttribute()
+    {
+        $emailMessage = \App\prosvujusmev\EmailMessages\EmailMessage::where('model_id', $this->id)
+            ->where('model_type', self::class)
+            ->where('type', \App\prosvujusmev\EmailMessages\EmailMessage::TYPE_FIRST_INFORMATION)
+            ->first();
+         
+        if ($emailMessage) {
+            return json_decode($emailMessage->data)->text;
+        }
+
+        return null;
+    }
+
+    public function getFinalInformationAttribute()
+    {
+        $emailMessage = \App\prosvujusmev\EmailMessages\EmailMessage::where('model_id', $this->id)
+            ->where('model_type', self::class)
+            ->where('type', \App\prosvujusmev\EmailMessages\EmailMessage::TYPE_FINAL_INFORMATION)
+            ->first();
+
+        if ($emailMessage) {
+            return json_decode($emailMessage->data)->text;
+        }
+
+        return null;
+    }
 }

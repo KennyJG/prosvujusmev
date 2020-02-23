@@ -69,6 +69,15 @@
 
                         <button v-show="updating" @click="updateCourseDate()" class="border rounded shadow bg-purple-600 w-full py-2 px-4 mt-10 text-white hover:bg-purple-800">Uložit</button>
                         <button v-show="updating" @click="toggleUpdateInputs()" class="border rounded shadow border border-purple-600 w-full py-2 px-4 mt-2 text-purple-600 hover:bg-purple-600 hover:text-white">Zrušit</button>
+
+                        <div class="flex mt-6">
+                            <div class="w-2/3 font-bold">Informace 14 dní před termínem</div>
+                            <div class="w-1/3 pl-4 cursor-pointer hover:text-blue-600" @click="showModal('first-information', function() { firstInformation = actualCourseDate.first_information })">Upravit</div>
+                        </div>
+                        <div class="flex mt-2">
+                            <div class="w-2/3 font-bold">Informace 7 dní před termínem</div>
+                            <div class="w-1/3 pl-4 cursor-pointer hover:text-blue-600" @click="showModal('final-information', function() { finalInformation = actualCourseDate.final_information })">Upravit</div>
+                        </div>
                     </div>
                     <div class="w-2/3 h-full p-4">
                         <div class="text-xl">Rezervace</div>
@@ -176,6 +185,30 @@
                     </div>
                 </modal>
 
+                <modal name="first-information" width="480" height="auto">
+                    <div class="px-2">
+                        <div class="pt-2">
+                            <textarea class="w-full p-2 border" type="text" v-model="firstInformation" rows="5" style="outline: none;"></textarea>
+                        </div>
+                        <div class="flex flex-row justify-end py-2">
+                            <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded" @click="saveFirstInformation()">Uložit</button>
+                            <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded" @click="hideModal('first-information')">Zrušit</button>
+                        </div>
+                    </div>
+                </modal>
+
+                <modal name="final-information" width="480" height="auto">
+                    <div class="px-2">
+                        <div class="pt-2">
+                            <textarea class="w-full p-2 border" type="text" v-model="finalInformation" rows="5" style="outline: none;"></textarea>
+                        </div>
+                        <div class="flex flex-row justify-end py-2">
+                            <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded" @click="saveFinalInformation()">Uložit</button>
+                            <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded" @click="hideModal('final-information')">Zrušit</button>
+                        </div>
+                    </div>
+                </modal>
+
                 <div v-show="successMessage !== null" class="fixed bottom-0 left-0 ml-4 mb-4 bg-green-100 border-l-4 border-green-500 text-green-700 p-4" role="alert">
                     <p class="font-bold">Úspěch</p>
                     <p>{{ successMessage }}</p>
@@ -206,6 +239,9 @@ export default {
             successMessage: null,
 
             attendedReservationIds: [],
+
+            firstInformation: null,
+            finalInformation: null,
         };
     },
 
@@ -355,7 +391,29 @@ export default {
                     this.hideModal('complete-course-date-confirmation');
                     this.hideModal('complete-course-date');
                 });
-        }
+        },
+
+        saveFirstInformation() {
+            axios.post('/admin/course-dates/' + this.actualCourseDate.id + '/first-information', { firstInformation: this.firstInformation })
+                .then((response) => {
+                    this.refreshCourseDate();
+                    this.displayMessageFromResponse(response);
+                    this.hideModal('first-information');
+                });
+        },
+
+        saveFinalInformation() {
+            axios.post('/admin/course-dates/' + this.actualCourseDate.id + '/final-information', { finalInformation: this.finalInformation })
+                .then((response) => {
+                    this.refreshCourseDate();
+                    this.displayMessageFromResponse(response);
+                    this.hideModal('final-information');
+                });
+        },
+    },
+
+    mounted() {
+
     }
 }
 </script>

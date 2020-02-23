@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::group(['namespace' => 'prosvujusmev\\'], function () {
     // PUBLIC VIEW RESPONSE ENDPOINTS
     Route::group(['prefix' => '/public'], function () {
@@ -62,6 +63,10 @@ Route::group(['namespace' => 'prosvujusmev\\'], function () {
         Route::put('/course-dates/{courseDate}', 'Courses\CourseDatesController@update');
         Route::delete('/course-dates/{courseDate}', 'Courses\CourseDatesController@destroy');
         Route::post('/course-dates/{courseDate}/complete', 'Courses\CourseDatesController@complete');
+
+        Route::post('/course-dates/{courseDate}/first-information', 'Courses\CourseDateFirstInformationController@save');
+        
+        Route::post('/course-dates/{courseDate}/final-information', 'Courses\CourseDateFinalInformationController@save');
 
         Route::get('/reservations', 'Reservations\ReservationsController@index');
         Route::get('/reservations/{reservation}', 'Reservations\ReservationsController@show');
