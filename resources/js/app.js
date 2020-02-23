@@ -19,7 +19,7 @@ Vue.component('course-date', require('./components/Admin/Courses/CourseDate.vue'
 Vue.component('courses-list', require('./components/Admin/Courses/CoursesList.vue').default);
 
 Vue.component('reservation', require('./components/Admin/Reservations/Reservation.vue').default);
-Vue.component('reservation-list', require('./components/Admin/Reservations/ReservationList.vue').default);
+Vue.component('reservations', require('./components/Admin/Reservations/Reservations.vue').default);
 
 // Site components
 Vue.component('site-navbar', require('./components/SiteNavbar.vue').default);
