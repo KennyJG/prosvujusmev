@@ -9,6 +9,7 @@ Vue.component('dashboard', require('./components/Admin/Dashboard.vue').default);
 Vue.component('dashboard-general', require('./components/Admin/Dashboard/General.vue').default);
 Vue.component('dashboard-lecturer', require('./components/Admin/Dashboard/Lecturer.vue').default);
 Vue.component('dashboard-orders', require('./components/Admin/Dashboard/Orders.vue').default);
+Vue.component('dashboard-attendees', require('./components/Admin/Dashboard/Attendees.vue').default);
 
 Vue.component('confirmation-modal', require('./components/Admin/Modals/Confirmation.vue').default);
 

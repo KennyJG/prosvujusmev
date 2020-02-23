@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\prosvujusmev\Admin;
 
 use App\Http\Controllers\Controller;
+use App\prosvujusmev\Attendees\Attendee;
 use App\prosvujusmev\Courses\Collections\CourseDateRemainingSpotsByMonthsCollection;
 use App\prosvujusmev\Courses\Collections\CourseDatesFullStatsCollection;
 use App\prosvujusmev\Courses\Collections\CourseDatesSpotTakenStatsCollection;
@@ -44,7 +45,9 @@ class StatsController extends Controller
                 'countOfCourseDatesWithLectors' => CourseDate::future()->where('lecturer', '!=', null)->count(),
                 'countOfCourseDatesWithoutLectors' => CourseDate::future()->where('lecturer', null)->count(),
                 'countOfCourseDates' => CourseDate::future()->count(),
-                'lectorsCoverage' => CourseDate::future()->where('lecturer', null)->count() === 0 ? 100 : round(CourseDate::future()->where('lecturer', '!=', null)->count() / CourseDate::future()->count() * 100, 2)
+                'lectorsCoverage' => CourseDate::future()->where('lecturer', null)->count() === 0 ? 100 : round(CourseDate::future()->where('lecturer', '!=', null)->count() / CourseDate::future()->count() * 100, 2),
+
+                'countOfAttendees' => $this->getCountOfAttendees(),
             ],
         ]);
     }
@@ -200,5 +203,15 @@ class StatsController extends Controller
             $startOfYear,
             $endOfYear
         ])->get();
+    }
+
+    /**
+     *  Get Count of attendess (only compelted reservations counts)
+     * 
+     *  @return int
+     */
+    public function getCountOfAttendees(): int
+    {
+        return Reservation::where('status', Reservation::STATUS_COMPLETED)->count();
     }
 }

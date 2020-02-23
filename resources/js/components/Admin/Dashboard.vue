@@ -11,9 +11,10 @@
                                 <button @click="activeTab = 'RESERVATIONS'" :class="{'border-blue-600 text-blue-600 hover:border-blue-600': activeTab == 'RESERVATIONS'}" class="focus:outline-none appearance-none py-4 border-b border-transparent hover:border-gray-600 mr-6">Rezervace</button>
                                 <button @click="activeTab = 'LECTURERS'" :class="{'border-blue-600 text-blue-600 hover:border-blue-600': activeTab == 'LECTURERS'}" class="focus:outline-none appearance-none py-4 border-b border-transparent hover:border-gray-600 mr-6">Lektoři</button>
                                 <button @click="activeTab = 'ORDERS'" :class="{'border-blue-600 text-blue-600 hover:border-blue-600': activeTab == 'ORDERS'}" class="focus:outline-none appearance-none py-4 border-b border-transparent hover:border-gray-600 mr-6">Objednávky</button>
+                                <button @click="activeTab = 'ATTENDEES'" :class="{'border-blue-600 text-blue-600 hover:border-blue-600': activeTab == 'ATTENDEES'}" class="focus:outline-none appearance-none py-4 border-b border-transparent hover:border-gray-600 mr-6">Účastníci</button>
                                 <!-- <button type="button" class="appearance-none py-4 text-gray-600 border-b border-transparent hover:border-gray-600">Litecoin &middot; CA$358.24</button> -->
                             </div>
-                            <div class="flex text-sm" v-if="activeTab !== 'GENERAL' && activeTab !== 'LECTURERS'">
+                            <div class="flex text-sm" v-if="activeTab !== 'GENERAL' && activeTab !== 'LECTURERS' && activeTab !== 'ATTENDEES'">
                                 <button 
                                     @click="timeRange = 'MONTH'" 
                                     type="button"
@@ -101,7 +102,7 @@
                                 <div class="text-gray-600er mb-2">
                                     <span class="text-5xl">{{ countOfCourseDatesWithLectors }}</span>
                                 </div>
-                                <div class="text-sm uppercase text-gray tracking-wide">Terminy s lektory</div>
+                                <div class="text-sm uppercase text-gray tracking-wide">Termínů s lektory</div>
                             </div>
                         </div>
                         <div class="w-1/3 text-center py-8">
@@ -109,7 +110,7 @@
                                 <div class="text-gray-600er mb-2">
                                     <span class="text-5xl">{{ countOfCourseDatesWithoutLectors }}</span>
                                 </div>
-                                <div class="text-sm uppercase text-gray tracking-wide">Terminy bez lektoru</div>
+                                <div class="text-sm uppercase text-gray tracking-wide">Termínů bez lektoru</div>
                             </div>
                         </div>
                         <div class="w-1/3 text-center py-8">
@@ -118,7 +119,17 @@
                                     <span v-if="countOfCourseDatesWithoutLectors == 0" class="text-5xl">100%</span>
                                     <span v-else :class="{'text-red-600': lectorsCoverage < 50}" class="text-5xl">{{ lectorsCoverage }}%</span>
                                 </div>
-                                <div class="text-sm uppercase text-gray tracking-wide">Pokryti kurzu lektory</div>
+                                <div class="text-sm uppercase text-gray tracking-wide">Pokrytí kurzů lektory</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="activeTab == 'ATTENDEES'" class="hidden lg:flex">
+                        <div class="w-full text-center py-8">
+                            <div class="border-r">
+                                <div class="text-gray-600er mb-2">
+                                    <span class="text-5xl">{{ countOfAttendees }}</span>
+                                </div>
+                                <div class="text-sm uppercase text-gray tracking-wide">Celkem účastníku</div>
                             </div>
                         </div>
                     </div>
@@ -395,6 +406,7 @@
                   </div>
                 </div>
                 <dashboard-lecturer v-if="activeTab == 'LECTURERS'"></dashboard-lecturer>
+                <dashboard-attendees v-if="activeTab == 'ATTENDEES'"></dashboard-attendees>
             </div>
             <!-- <div class="bg-white border-t">
                 <div class="container mx-auto px-4">
@@ -470,6 +482,8 @@ export default {
             countOfCourseDatesWithoutLectors: 0,
             countOfCourseDates: 0,
             lectorsCoverage: 0,
+
+            countOfAttendess: 0,
         }
     },
 
@@ -572,6 +586,8 @@ export default {
                     this.countOfCourseDatesWithoutLectors = response.data.data.countOfCourseDatesWithoutLectors;
                     this.countOfCourseDates = response.data.data.countOfCourseDates;
                     this.lectorsCoverage = response.data.data.lectorsCoverage;
+
+                    this.countOfAttendees = response.data.data.countOfAttendees;
                 });
         }
     },

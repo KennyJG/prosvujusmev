@@ -84,5 +84,7 @@ Route::group(['namespace' => 'prosvujusmev\\'], function () {
         Route::get('/reservations', 'Reservations\ReservationsController@index');
         
         Route::get('/lecturers', 'Lecturers\LecturersController@index');
+        
+        Route::get('/attendees', 'Attendees\AttendeesController@index');
     });
 });
