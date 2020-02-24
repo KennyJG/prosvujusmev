@@ -18,7 +18,7 @@
                             <div class="py-3 px-2 font-normal text-blue-600">{{ date }}</div>
                         </div>
                     </div> -->
-                    <a :href="'/admin/course-dates/' + course.id" v-for="(course, i) in localCourses" class="flex px-6 py-2 text-gray-600er items-center border-b -mx-4 course-pointer hover:bg-gray-200">
+                    <a :href="'/admin/courses/' + course.id + '/edit'" v-for="(course, i) in localCourses" class="flex px-6 py-2 text-gray-600er items-center border-b -mx-4 course-pointer hover:bg-gray-200">
                         <div class="w-full">
                             <div class="px-4">{{ course.name }}</div>
                         </div>
@@ -35,9 +35,7 @@
                     </a>
                     <!-- <div class="px-6 py-2">
                         <div class="text-center text-gray font-bold">test</div>
-                    </div> -->
-
-                        
+                    </div> -->        
                 </div>
             </div>
         </div>

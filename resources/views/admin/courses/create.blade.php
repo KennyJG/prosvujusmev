@@ -2,6 +2,10 @@
 @section('content')
 <div class="flex min-h-screen w-full bg-gray-100">
     <navbar></navbar>
+    <course-create></course-create>
+</div>
+{{-- <div class="flex min-h-screen w-full bg-gray-100">
+    <navbar></navbar>
     <div class="h-screen w-full bg-gray-100">
         <div class="flex-grow w-full pt-4 pb-8 pr-4">
             <div class="bg-white border-t border-b sm:border-l sm:border-r sm:rounded shadow mb-4">
@@ -21,7 +25,6 @@
                                         Název
                                     </label>
                                     <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-red rounded py-3 px-4 mb-3" id="name" type="text" name="name" required>
-                                    {{-- <p class="text-red text-xs italic">Please fill out this field.</p> --}}
                                 </div>
                             </div>
 
@@ -45,5 +48,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection

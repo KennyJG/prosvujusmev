@@ -17,6 +17,7 @@ Vue.component('course-dates-list', require('./components/Admin/Courses/CourseDat
 Vue.component('course-date', require('./components/Admin/Courses/CourseDate.vue').default);
 
 Vue.component('courses-list', require('./components/Admin/Courses/CoursesList.vue').default);
+Vue.component('course-create', require('./components/Admin/Courses/CourseCreate.vue').default);
 
 Vue.component('reservation', require('./components/Admin/Reservations/Reservation.vue').default);
 Vue.component('reservations', require('./components/Admin/Reservations/Reservations.vue').default);

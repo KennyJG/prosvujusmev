@@ -15,27 +15,27 @@
                 <div class="w-full">
                     <div class="border-b">
                         <div class="flex justify-between px-3 -mb-px">
-                            <div class="w-1/5 py-3 text-left px-2 font-normal text-blue-600">Datum</div>
-                            <div class="w-1/5 py-3 text-left px-2 font-normal text-blue-600">Kurz</div>
-                            <div class="w-1/5 py-3 text-left px-2 font-normal text-blue-600">Místo</div>
-                            <div class="w-1/5 py-3 text-left px-2 font-normal text-blue-600">Lektor</div>
-                            <div class="w-1/5 py-3 text-left px-2 font-normal text-blue-600">Volných </div>
+                            <div class="w-3/12 py-3 text-left px-2 font-normal text-blue-600">Datum</div>
+                            <div class="w-2/12 py-3 text-left px-2 font-normal text-blue-600">Kurz</div>
+                            <div class="w-3/12 py-3 text-left px-2 font-normal text-blue-600">Místo</div>
+                            <div class="w-3/12 py-3 text-left px-2 font-normal text-blue-600">Lektor</div>
+                            <div class="w-1/12 py-3 text-right px-2 font-normal text-blue-600">Volných </div>
                         </div>
                     </div>
                     <a :href="'/admin/course-dates/' + courseDate.id" v-for="(courseDate, i) in localCourseDates" class="flex px-6 py-2 text-gray-600er items-center border-b -mx-4 course-pointer hover:bg-gray-200">
-                        <div class="w-1/5">
+                        <div class="w-3/12">
                             <div class="px-4">{{ courseDate.fullDateForHumans }}</div>
                         </div>
-                        <div class="w-1/5 text-left">
+                        <div class="w-2/12 text-left">
                             <div class="px-4">{{ courseDate.course.name }}</div>
                         </div>
-                        <div class="w-1/5 text-left">
+                        <div class="w-3/12 text-left">
                             <div class="px-4">{{ courseDate.venue }}</div>
                         </div>
-                        <div class="w-1/5 text-left">
+                        <div class="w-3/12 text-left">
                             <div class="px-4">{{ courseDate.lecturer }}</div>
                         </div>
-                        <div class="w-1/5 text-left">
+                        <div class="w-1/12 text-right">
                             <div class="px-4">{{ courseDate.remaining }}</div>
                         </div>
                     </a>
