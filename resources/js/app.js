@@ -23,20 +23,23 @@ Vue.component('reservation', require('./components/Admin/Reservations/Reservatio
 Vue.component('reservations', require('./components/Admin/Reservations/Reservations.vue').default);
 
 // Site components
-Vue.component('site-navbar', require('./components/SiteNavbar.vue').default);
+Vue.component('site-navbar', require('./components/Navbar.vue').default);
 Vue.component('reservation-form', require('./components/Reservations/ReservationForm.vue').default);
 Vue.component('public-reservation', require('./components/Reservations/PublicReservation.vue').default);
+
+Vue.component('home-course', require('./components/Home/Courses/Course.vue').default);
+Vue.component('home-course', require('./components/Home/Courses/Course.vue').default);
+Vue.component('home-courses', require('./components/Home/Courses/Courses.vue').default);
+Vue.component('home-testamonial', require('./components/Home/Testamonial.vue').default);
+Vue.component('home-testamonials', require('./components/Home/Testamonials.vue').default);
+
+Vue.component('contacts', require('./components/Contacts/Contacts.vue').default);
 
 // Utils
 Vue.component('line-chart', require('./components/Utils/Charts/LineChart.vue').default);
 Vue.component('bar-chart', require('./components/Utils/Charts/BarChart.vue').default);
 Vue.component('pie-chart', require('./components/Utils/Charts/PieChart.vue').default);
 Vue.component('doughnut-chart', require('./components/Utils/Charts/DoughnutChart.vue').default);
-
-Vue.component('home-course', require('./components/Home/Courses/Course.vue').default);
-Vue.component('home-courses', require('./components/Home/Courses/Courses.vue').default);
-Vue.component('home-testamonial', require('./components/Home/Testamonial.vue').default);
-Vue.component('home-testamonials', require('./components/Home/Testamonials.vue').default);
 
 import VModal from 'vue-js-modal';
 Vue.use(VModal);

@@ -39,7 +39,10 @@ Route::group(['namespace' => 'prosvujusmev\\'], function () {
     Route::get('/', 'HomeController@index');
 
     Route::get('/reservations', 'Reservations\ReservationsController@index');
+    Route::get('/rezervace', 'Reservations\ReservationsController@index');
     Route::post('/reservations', 'Reservations\ReservationsController@store');
+
+    Route::get('/kontakty', 'ContactsController@index');
 
     Route::group(['prefix' => '/admin', 'namespace' => 'Admin\\'], function () {
         Route::get('/stats', 'StatsController@index');
@@ -65,7 +68,7 @@ Route::group(['namespace' => 'prosvujusmev\\'], function () {
         Route::post('/course-dates/{courseDate}/complete', 'Courses\CourseDatesController@complete');
 
         Route::post('/course-dates/{courseDate}/first-information', 'Courses\CourseDateFirstInformationController@save');
-        
+
         Route::post('/course-dates/{courseDate}/final-information', 'Courses\CourseDateFinalInformationController@save');
 
         Route::get('/reservations', 'Reservations\ReservationsController@index');
@@ -87,9 +90,9 @@ Route::group(['namespace' => 'prosvujusmev\\'], function () {
         // Route::delete('/courses/{course}/dates/{courseDate}', 'Courses\CourseDatesController@destroy');
 
         Route::get('/reservations', 'Reservations\ReservationsController@index');
-        
+
         Route::get('/lecturers', 'Lecturers\LecturersController@index');
-        
+
         Route::get('/attendees', 'Attendees\AttendeesController@index');
     });
 });
