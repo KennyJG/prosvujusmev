@@ -1829,6 +1829,73 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Courses/CourseCreate.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Courses/CourseCreate.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: [],
+  data: function data() {
+    return {
+      name: null,
+      description: null
+    };
+  },
+  methods: {
+    createCourse: function createCourse() {
+      axios.post('/admin/courses', {
+        name: this.name,
+        description: this.description
+      }).then(function (response) {
+        window.location.href = '/admin/courses';
+      });
+    }
+  },
+  mounted: function mounted() {}
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Courses/CourseDate.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Courses/CourseDate.vue?vue&type=script&lang=js& ***!
@@ -1838,6 +1905,39 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2039,7 +2139,9 @@ __webpack_require__.r(__webpack_exports__);
       updatedCourseDate: this.courseDate,
       errorMessage: null,
       successMessage: null,
-      attendedReservationIds: []
+      attendedReservationIds: [],
+      firstInformation: null,
+      finalInformation: null
     };
   },
   methods: {
@@ -2201,8 +2303,35 @@ __webpack_require__.r(__webpack_exports__);
 
         _this9.hideModal('complete-course-date');
       });
+    },
+    saveFirstInformation: function saveFirstInformation() {
+      var _this10 = this;
+
+      axios.post('/admin/course-dates/' + this.actualCourseDate.id + '/first-information', {
+        firstInformation: this.firstInformation
+      }).then(function (response) {
+        _this10.refreshCourseDate();
+
+        _this10.displayMessageFromResponse(response);
+
+        _this10.hideModal('first-information');
+      });
+    },
+    saveFinalInformation: function saveFinalInformation() {
+      var _this11 = this;
+
+      axios.post('/admin/course-dates/' + this.actualCourseDate.id + '/final-information', {
+        finalInformation: this.finalInformation
+      }).then(function (response) {
+        _this11.refreshCourseDate();
+
+        _this11.displayMessageFromResponse(response);
+
+        _this11.hideModal('final-information');
+      });
     }
-  }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -2216,8 +2345,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -2308,6 +2435,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -2834,24 +2963,141 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       stats: {},
       timeRange: 'MONTH',
       // YEAR
-      activeTab: 'COURSE_DATES',
-      // RESERVATIIONS
-      activeDetailsTab: 'COURSE_DATES_REMAINING_BY_VENUE' //COURSE_DATES_FULL_BY_VENUE, COURSE_DATES_REMAINING_BY_MONTH, COURSE_DATES_FULL_BY_MONTH
-
+      activeTab: 'GENERAL',
+      // RESERVATIIONS, LECTURERS
+      activeDetailsTab: 'COURSE_DATES_REMAINING_BY_VENUE',
+      //COURSE_DATES_FULL_BY_VENUE, COURSE_DATES_REMAINING_BY_MONTH, COURSE_DATES_FULL_BY_MONTH
+      countOfCourseDatesThisMonth: null,
+      countOfCourseDatesThisYear: null,
+      countOfCourseDatesInProgress: null,
+      countOfFullCourseDatesThisMonth: null,
+      countOfFullCourseDatesThisYear: null,
+      countOfCompletedCourseDatesThisMonth: null,
+      countOfCompletedCourseDatesThisYear: null,
+      waitingForApprovementReservations: [],
+      queuedReservations: [],
+      spotTakenCourseDateStatsThisMonth: [],
+      spotTakenCourseDateTotalStatsThisMonth: null,
+      spotTakenCourseDateStatsThisYear: [],
+      spotTakenCourseDateTotalStatsThisYear: null,
+      fullCourseDateStatsThisMonth: [],
+      fullCourseDateTotalStatsThisMonth: null,
+      fullCourseDateStatsThisYear: [],
+      fullCourseDateTotalStatsThisYear: null,
+      remainingCourseDateSpotsStatsInMonths: [],
+      remainingCourseDateSpotsTotalStatsInMonths: null,
+      fullCourseDatesStatsInMonths: [],
+      fullCourseDatesTotalStatsInMonths: null,
+      countOfCourseDatesWithLectors: 0,
+      countOfCourseDatesWithoutLectors: 0,
+      countOfCourseDates: 0,
+      lectorsCoverage: 0,
+      countOfAttendess: 0
     };
+  },
+  computed: {
+    spotTakenCourseDateStatsVenuesThisMonth: function spotTakenCourseDateStatsVenuesThisMonth() {
+      return Object.keys(this.spotTakenCourseDateStatsThisMonth);
+    },
+    spotTakenCourseDateStatsSpotTakenCountThisMonth: function spotTakenCourseDateStatsSpotTakenCountThisMonth() {
+      var _this = this;
+
+      return Object.keys(this.spotTakenCourseDateStatsThisMonth).map(function (key) {
+        return _this.spotTakenCourseDateStatsThisMonth[key].spotsTaken;
+      });
+    },
+    spotTakenCourseDateStatsVenuesThisYear: function spotTakenCourseDateStatsVenuesThisYear() {
+      return Object.keys(this.spotTakenCourseDateStatsThisYear);
+    },
+    spotTakenCourseDateStatsSpotTakenCountThisYear: function spotTakenCourseDateStatsSpotTakenCountThisYear() {
+      var _this2 = this;
+
+      return Object.keys(this.spotTakenCourseDateStatsThisYear).map(function (key) {
+        return _this2.spotTakenCourseDateStatsThisYear[key].spotsTaken;
+      });
+    },
+    fullCourseDateStatsVenuesThisMonth: function fullCourseDateStatsVenuesThisMonth() {
+      return Object.keys(this.fullCourseDateStatsThisMonth);
+    },
+    fullCourseDateStatsFullCountThisMonth: function fullCourseDateStatsFullCountThisMonth() {
+      var _this3 = this;
+
+      return Object.keys(this.fullCourseDateStatsThisMonth).map(function (key) {
+        return _this3.fullCourseDateStatsThisMonth[key].full;
+      });
+    },
+    fullCourseDateStatsVenuesThisYear: function fullCourseDateStatsVenuesThisYear() {
+      return Object.keys(this.fullCourseDateStatsThisYear);
+    },
+    fullCourseDateStatsFullCountThisYear: function fullCourseDateStatsFullCountThisYear() {
+      var _this4 = this;
+
+      return Object.keys(this.fullCourseDateStatsThisYear).map(function (key) {
+        return _this4.fullCourseDateStatsThisYear[key].full;
+      });
+    },
+    remainingCourseDateSpotsStatsMonthsInMonth: function remainingCourseDateSpotsStatsMonthsInMonth() {
+      return Object.keys(this.remainingCourseDateSpotsStatsInMonths);
+    },
+    remainingCourseDateSpotsRemainingCountInMonth: function remainingCourseDateSpotsRemainingCountInMonth() {
+      var _this5 = this;
+
+      return Object.keys(this.remainingCourseDateSpotsStatsInMonths).map(function (key) {
+        return _this5.remainingCourseDateSpotsStatsInMonths[key].remaining;
+      });
+    },
+    fullCourseDatesStatsMonthsInMonths: function fullCourseDatesStatsMonthsInMonths() {
+      return Object.keys(this.fullCourseDatesStatsInMonths);
+    },
+    fullCourseDatesStatsFullCountInMonths: function fullCourseDatesStatsFullCountInMonths() {
+      var _this6 = this;
+
+      return Object.keys(this.fullCourseDatesStatsInMonths).map(function (key) {
+        return _this6.fullCourseDatesStatsInMonths[key].full;
+      });
+    }
   },
   methods: {
     getStats: function getStats() {
-      var _this = this;
+      var _this7 = this;
 
       axios.get('/admin/stats').then(function (response) {
-        _this.stats = response.data.data;
+        _this7.countOfCourseDatesThisMonth = response.data.data.countOfCourseDatesThisMonth;
+        _this7.countOfCourseDatesThisYear = response.data.data.countOfCourseDatesThisYear;
+        _this7.countOfCourseDatesInProgress = response.data.data.countOfCourseDatesInProgress;
+        _this7.countOfFullCourseDatesThisMonth = response.data.data.countOfFullCourseDatesThisMonth;
+        _this7.countOfFullCourseDatesThisYear = response.data.data.countOfFullCourseDatesThisYear;
+        _this7.countOfCompletedCourseDatesThisMonth = response.data.data.countOfCompletedCourseDatesThisMonth;
+        _this7.countOfCompletedCourseDatesThisYear = response.data.data.countOfCompletedCourseDatesThisYear;
+        _this7.waitingForApprovementReservations = response.data.data.waitingForApprovementReservations;
+        _this7.queuedReservations = response.data.data.queuedReservations;
+        _this7.spotTakenCourseDateStatsThisMonth = response.data.data.spotTakenCourseDateStatsThisMonth.data;
+        _this7.spotTakenCourseDateTotalStatsThisMonth = response.data.data.spotTakenCourseDateStatsThisMonth.total;
+        _this7.spotTakenCourseDateStatsThisYear = response.data.data.spotTakenCourseDateStatsThisYear.data;
+        _this7.spotTakenCourseDateTotalStatsThisYear = response.data.data.spotTakenCourseDateStatsThisYear.total;
+        _this7.fullCourseDateStatsThisMonth = response.data.data.fullCourseDatesStatsThisMonth.data;
+        _this7.fullCourseDateTotalStatsThisMonth = response.data.data.fullCourseDatesStatsThisMonth.total;
+        _this7.fullCourseDateStatsThisYear = response.data.data.fullCourseDatesStatsThisYear.data;
+        _this7.fullCourseDateTotalStatsThisYear = response.data.data.fullCourseDatesStatsThisYear.total;
+        _this7.remainingCourseDateSpotsStatsInMonths = response.data.data.remainingCourseDateSpotsStatsInMonths.data;
+        _this7.remainingCourseDateSpotsTotalStatsInMonths = response.data.data.remainingCourseDateSpotsStatsInMonths.total;
+        _this7.fullCourseDatesStatsInMonths = response.data.data.fullCourseDatesStatsInMonths.data;
+        _this7.fullCourseDatesTotalStatsInMonths = response.data.data.fullCourseDatesStatsInMonths.total;
+        _this7.countOfCourseDatesWithLectors = response.data.data.countOfCourseDatesWithLectors;
+        _this7.countOfCourseDatesWithoutLectors = response.data.data.countOfCourseDatesWithoutLectors;
+        _this7.countOfCourseDates = response.data.data.countOfCourseDates;
+        _this7.lectorsCoverage = response.data.data.lectorsCoverage;
+        _this7.countOfAttendees = response.data.data.countOfAttendees;
       });
     }
   },
@@ -2859,6 +3105,296 @@ __webpack_require__.r(__webpack_exports__);
     this.getStats();
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Dashboard/Attendees.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Dashboard/Attendees.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      attendeesGroupedByVenues: []
+    };
+  },
+  computed: {
+    venues: function venues() {
+      return Object.keys(this.attendeesGroupedByVenues);
+    },
+    countOfAttendeesByVenue: function countOfAttendeesByVenue() {
+      var _this = this;
+
+      var countOfAttendees = [];
+      Object.keys(this.attendeesGroupedByVenues).forEach(function (venue) {
+        countOfAttendees.push(_this.attendeesGroupedByVenues[venue].length);
+      });
+      return countOfAttendees;
+    }
+  },
+  methods: {
+    getAttendessGroupedByVenues: function getAttendessGroupedByVenues() {
+      var _this2 = this;
+
+      axios.get('/admin/attendees?group_by=venues').then(function (response) {
+        _this2.attendeesGroupedByVenues = response.data.data;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getAttendessGroupedByVenues();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Dashboard/General.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Dashboard/General.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      courseDateGroups: []
+    };
+  },
+  methods: {
+    getCouseDatesGroupedByWeekend: function getCouseDatesGroupedByWeekend() {
+      var _this = this;
+
+      axios.get('/api/course-dates?group_by=weekend&scopes[]=future').then(function (response) {
+        _this.courseDateGroups = response.data.data;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getCouseDatesGroupedByWeekend();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Dashboard/Lecturer.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Dashboard/Lecturer.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      lecturers: [],
+      courseDateGroupedByMonth: []
+    };
+  },
+  methods: {
+    getCourseDates: function getCourseDates() {
+      var _this = this;
+
+      axios.get('/api/course-dates?group_by=month&scopes[]=future').then(function (response) {
+        _this.courseDateGroupedByMonth = response.data.data;
+      });
+    },
+    getLecturers: function getLecturers() {
+      var _this2 = this;
+
+      axios.get('/admin/lecturers').then(function (response) {
+        _this2.lecturers = response.data.data;
+      });
+    },
+    getLecturerCourseDatesCount: function getLecturerCourseDatesCount(lecturerName) {
+      var lecturerMonths = this.lecturers[lecturerName];
+      var courseDatesCount = 0;
+      Object.keys(lecturerMonths).forEach(function (month) {
+        courseDatesCount += lecturerMonths[month];
+      });
+      return courseDatesCount;
+    },
+    getLecturerCoverageOfMonthCourseDates: function getLecturerCoverageOfMonthCourseDates(lecturerName, month) {
+      return this.lecturers[lecturerName][month] / this.getCourseDatesCountInMonth(month) * 100;
+    },
+    getCourseDatesCountInMonth: function getCourseDatesCountInMonth(month) {
+      return this.courseDateGroupedByMonth[month].length;
+    },
+    getCourseDatesCount: function getCourseDatesCount() {
+      var _this3 = this;
+
+      var courseDatesCount = 0;
+      Object.keys(this.courseDateGroupedByMonth).forEach(function (month) {
+        courseDatesCount += _this3.courseDateGroupedByMonth[month].length;
+      });
+      return courseDatesCount;
+    },
+    getLecturerCoverageOfCourseDates: function getLecturerCoverageOfCourseDates(lecturerName) {
+      return this.getLecturerCourseDatesCount(lecturerName) / this.getCourseDatesCount() * 100;
+    }
+  },
+  mounted: function mounted() {
+    this.getCourseDates();
+    this.getLecturers();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Dashboard/Orders.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Dashboard/Orders.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
 
@@ -3119,17 +3655,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Reservations/ReservationList.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Reservations/ReservationList.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Reservations/Reservations.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Reservations/Reservations.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -20315,7 +20849,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\ninput:checked + svg {\n    display: block;\n}\n", ""]);
+exports.push([module.i, "input:checked + svg {\n  display: block;\n}\n", ""]);
 
 // exports
 
@@ -20334,7 +20868,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* Enter and leave animations can use different */\n /* durations and timing functions.              */\n.slide-fade-enter-active {\n     -webkit-transition: all .3s ease;\n     transition: all .3s ease;\n}\n.slide-fade-leave-active {\n     -webkit-transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n     transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter, .slide-fade-leave-to\n     /* .slide-fade-leave-active below version 2.1.8 */ {\n     -webkit-transform: translateX(10px);\n             transform: translateX(10px);\n     opacity: 0;\n}\n", ""]);
+exports.push([module.i, "/* Enter and leave animations can use different */\n\n/* durations and timing functions.              */\n.slide-fade-enter-active {\n  -webkit-transition: all .3s ease;\n  transition: all .3s ease;\n}\n.slide-fade-leave-active {\n  -webkit-transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter, .slide-fade-leave-to\n     /* .slide-fade-leave-active below version 2.1.8 */ {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -56503,6 +57037,160 @@ var reactiveProp = {
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Courses/CourseCreate.vue?vue&type=template&id=38719499&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Courses/CourseCreate.vue?vue&type=template&id=38719499& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "h-screen w-full bg-gray-100" }, [
+      _c(
+        "div",
+        { staticClass: "w-full flex flex-col text-gray-700 pt-4 pr-4" },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "w-full flex bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden"
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "w-full font-regular text-blue-600 flex justify-end"
+                },
+                [
+                  _c("div", { staticClass: "hidden lg:flex text-gray-800 " }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass:
+                          "focus:outline-none appearance-none py-4 px-2 border-b border-transparent hover:border-blue-600 hover:text-blue-600 mr-4",
+                        attrs: { href: "/admin/courses" }
+                      },
+                      [_vm._v("Zpět")]
+                    )
+                  ])
+                ]
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "w-full mb-4 flex flex-col text-gray-700 pt-4 pr-4" },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "w-full flex bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden"
+            },
+            [
+              _c("div", { staticClass: "w-full" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "flex px-4 py-4 text-gray-600er items-center border-b course-pointer"
+                  },
+                  [
+                    _c("div", { staticClass: "w-full" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "flex items-center border-b border-b-2 border-blue-500 py-2"
+                        },
+                        [
+                          _c("input", {
+                            staticClass:
+                              "appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Název kurzu",
+                              "aria-label": "Název kurzu"
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "flex items-center border-b border-b-2 border-blue-500 py-2 mt-4"
+                        },
+                        [
+                          _c("textarea", {
+                            staticClass:
+                              "appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none",
+                            attrs: {
+                              placeholder: "Popis kurzu...",
+                              "aria-label": "Popis kurzu"
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mt-4 flex justify-end" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-sm border-4 text-white py-1 px-2 rounded",
+                            attrs: { type: "button" }
+                          },
+                          [_vm._v("Vytvořit")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass:
+                              "border-transparent border-4 text-blue-500 hover:text-blue-800 text-sm py-1 px-2 rounded",
+                            attrs: { href: "/admin/courses", type: "button" }
+                          },
+                          [_vm._v("Zrušit")]
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              ])
+            ]
+          )
+        ]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Courses/CourseDate.vue?vue&type=template&id=7f7390ea&":
 /*!***************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Courses/CourseDate.vue?vue&type=template&id=7f7390ea& ***!
@@ -56643,7 +57331,7 @@ var render = function() {
               _c("div", { staticClass: "flex" }, [
                 _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Kurz")]),
                 _vm._v(" "),
-                _c("div", { staticClass: "w-2/3" }, [
+                _c("div", { staticClass: "w-2/3 pl-2" }, [
                   _vm._v(_vm._s(_vm.actualCourseDate.course.name))
                 ])
               ]),
@@ -56664,7 +57352,7 @@ var render = function() {
                         expression: "!updating"
                       }
                     ],
-                    staticClass: "w-2/3"
+                    staticClass: "w-2/3 pl-2"
                   },
                   [
                     _vm._v(
@@ -56686,7 +57374,7 @@ var render = function() {
                         expression: "updating"
                       }
                     ],
-                    staticClass: "w-2/3 flex flex-col"
+                    staticClass: "w-2/3 pl-2 flex flex-col"
                   },
                   [
                     _c("input", {
@@ -56760,7 +57448,7 @@ var render = function() {
                         expression: "!updating"
                       }
                     ],
-                    staticClass: "w-2/3"
+                    staticClass: "w-2/3 pl-2"
                   },
                   [
                     _vm._v(
@@ -56782,7 +57470,7 @@ var render = function() {
                         expression: "updating"
                       }
                     ],
-                    staticClass: "w-2/3 flex flex-col"
+                    staticClass: "w-2/3 flex pl-2 flex-col"
                   },
                   [
                     _c("input", {
@@ -56843,7 +57531,7 @@ var render = function() {
               _c("div", { staticClass: "flex mt-2" }, [
                 _c("div", { staticClass: "w-1/3 font-bold" }, [_vm._v("Stav")]),
                 _vm._v(" "),
-                _c("div", { staticClass: "w-2/3" }, [
+                _c("div", { staticClass: "w-2/3 pl-2" }, [
                   _vm._v(_vm._s(_vm.actualCourseDate.status))
                 ])
               ]),
@@ -56864,7 +57552,7 @@ var render = function() {
                         expression: "!updating"
                       }
                     ],
-                    staticClass: "w-2/3"
+                    staticClass: "w-2/3 pl-2"
                   },
                   [_vm._v(_vm._s(_vm.actualCourseDate.venue))]
                 ),
@@ -56918,7 +57606,7 @@ var render = function() {
                         expression: "!updating"
                       }
                     ],
-                    staticClass: "w-2/3"
+                    staticClass: "w-2/3 pl-2"
                   },
                   [_vm._v(_vm._s(_vm.actualCourseDate.limit))]
                 ),
@@ -56961,7 +57649,7 @@ var render = function() {
                   _vm._v("Zbývá míst")
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "w-2/3" }, [
+                _c("div", { staticClass: "w-2/3 pl-2" }, [
                   _vm._v(_vm._s(_vm.actualCourseDate.remaining))
                 ])
               ]),
@@ -56982,7 +57670,7 @@ var render = function() {
                         expression: "!updating"
                       }
                     ],
-                    staticClass: "w-2/3"
+                    staticClass: "w-2/3 pl-2"
                   },
                   [_vm._v(_vm._s(_vm.actualCourseDate.lecturer))]
                 ),
@@ -57036,7 +57724,7 @@ var render = function() {
                         expression: "!updating"
                       }
                     ],
-                    staticClass: "w-2/3"
+                    staticClass: "w-2/3 pl-2"
                   },
                   [_vm._v(_vm._s(_vm.actualCourseDate.description))]
                 ),
@@ -57116,7 +57804,53 @@ var render = function() {
                   }
                 },
                 [_vm._v("Zrušit")]
-              )
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-6" }, [
+                _c("div", { staticClass: "w-2/3 font-bold" }, [
+                  _vm._v("Informace 14 dní před termínem")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "w-1/3 pl-4 cursor-pointer hover:text-blue-600",
+                    on: {
+                      click: function($event) {
+                        _vm.showModal("first-information", function() {
+                          _vm.firstInformation =
+                            _vm.actualCourseDate.first_information
+                        })
+                      }
+                    }
+                  },
+                  [_vm._v("Upravit")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex mt-2" }, [
+                _c("div", { staticClass: "w-2/3 font-bold" }, [
+                  _vm._v("Informace 7 dní před termínem")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "w-1/3 pl-4 cursor-pointer hover:text-blue-600",
+                    on: {
+                      click: function($event) {
+                        _vm.showModal("final-information", function() {
+                          _vm.finalInformation =
+                            _vm.actualCourseDate.final_information
+                        })
+                      }
+                    }
+                  },
+                  [_vm._v("Upravit")]
+                )
+              ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "w-2/3 h-full p-4" }, [
@@ -57749,6 +58483,136 @@ var render = function() {
           ),
           _vm._v(" "),
           _c(
+            "modal",
+            {
+              attrs: { name: "first-information", width: "480", height: "auto" }
+            },
+            [
+              _c("div", { staticClass: "px-2" }, [
+                _c("div", { staticClass: "pt-2" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.firstInformation,
+                        expression: "firstInformation"
+                      }
+                    ],
+                    staticClass: "w-full p-2 border",
+                    staticStyle: { outline: "none" },
+                    attrs: { type: "text", rows: "5" },
+                    domProps: { value: _vm.firstInformation },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.firstInformation = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex flex-row justify-end py-2" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded",
+                      on: {
+                        click: function($event) {
+                          return _vm.saveFirstInformation()
+                        }
+                      }
+                    },
+                    [_vm._v("Uložit")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded",
+                      on: {
+                        click: function($event) {
+                          return _vm.hideModal("first-information")
+                        }
+                      }
+                    },
+                    [_vm._v("Zrušit")]
+                  )
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "modal",
+            {
+              attrs: { name: "final-information", width: "480", height: "auto" }
+            },
+            [
+              _c("div", { staticClass: "px-2" }, [
+                _c("div", { staticClass: "pt-2" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.finalInformation,
+                        expression: "finalInformation"
+                      }
+                    ],
+                    staticClass: "w-full p-2 border",
+                    staticStyle: { outline: "none" },
+                    attrs: { type: "text", rows: "5" },
+                    domProps: { value: _vm.finalInformation },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.finalInformation = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex flex-row justify-end py-2" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 rounded",
+                      on: {
+                        click: function($event) {
+                          return _vm.saveFinalInformation()
+                        }
+                      }
+                    },
+                    [_vm._v("Uložit")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-3 ml-1 rounded",
+                      on: {
+                        click: function($event) {
+                          return _vm.hideModal("final-information")
+                        }
+                      }
+                    },
+                    [_vm._v("Zrušit")]
+                  )
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
             "div",
             {
               directives: [
@@ -57837,154 +58701,73 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "h-screen w-full bg-gray-100" }, [
-    _c("div", { staticClass: "flex-grow w-full pt-4 pb-8 pr-4" }, [
-      _c(
-        "div",
-        {
-          staticClass:
-            "bg-white border-t border-b sm:border-l sm:border-r sm:rounded shadow mb-4"
-        },
-        [
-          _c("div", { staticClass: "w-full h-full p-6" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "w-full h-full mt-6" }, [
-              _c("table", { staticClass: "table w-full" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "w-full mb-4 flex flex-col text-gray-700 pt-4 pr-4" },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "w-full flex bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden"
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "w-full" },
+              [
                 _vm._m(1),
                 _vm._v(" "),
-                _c(
-                  "tbody",
-                  _vm._l(_vm.localCourseDates, function(courseDate, i) {
-                    return _c("tr", { class: { "bg-gray-200": i % 2 == 0 } }, [
-                      _c(
-                        "td",
-                        {
-                          staticClass:
-                            "border border-r-0 px-1 py-1 text-left text-blue-600 hover:text-blue-400"
-                        },
-                        [
-                          _c(
-                            "a",
-                            {
-                              attrs: {
-                                href: "/admin/course-dates/" + courseDate.id
-                              }
-                            },
-                            [_vm._v(_vm._s(courseDate.fullDateForHumans))]
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        {
-                          staticClass: "border border-r-0 px-1 py-1 text-left"
-                        },
-                        [_vm._v(_vm._s(courseDate.course.name))]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        {
-                          staticClass: "border border-r-0 px-1 py-1 text-left"
-                        },
-                        [_vm._v(_vm._s(courseDate.venue))]
-                      ),
-                      _vm._v(" "),
-                      _c("td", { staticClass: "border px-1 py-1 text-left" }, [
-                        _vm._v(_vm._s(courseDate.remaining))
-                      ]),
-                      _vm._v(" "),
-                      _c("td", { staticClass: "border border-l-0" }, [
-                        _c("div", { staticClass: "inline-flex w-full" }, [
-                          _c(
-                            "a",
-                            {
-                              staticClass:
-                                "w-full text-center hover:bg-gray-400 text-gray-800 font-bold py-1 bg-gray-100",
-                              class: {
-                                "bg-gray-100": i % 2 == 0,
-                                "bg-gray-300": i % 2 != 0
-                              },
-                              attrs: { href: "#" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.deleteCourseDate(courseDate.id)
-                                }
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                                            Odstranit\n                                        "
-                              )
-                            ]
-                          )
-                        ])
-                      ])
-                    ])
-                  }),
-                  0
-                )
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _vm.showDeleteSuccessMessage
-            ? _c(
-                "div",
-                {
-                  staticClass:
-                    "fixed bottom-0 right-0 mb-4 mr-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded cursor-pointer",
-                  attrs: { role: "alert" },
-                  on: {
-                    click: function($event) {
-                      _vm.showDeleteSuccessMessage = false
-                    }
-                  }
-                },
-                [
-                  _c("strong", { staticClass: "font-bold" }, [
-                    _vm._v("Úspěch!")
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "block sm:inline pr-6" }, [
-                    _vm._v("Termín byl odstraňěn.")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "span",
+                _vm._l(_vm.localCourseDates, function(courseDate, i) {
+                  return _c(
+                    "a",
                     {
-                      staticClass: "absolute top-0 bottom-0 right-0 px-4 py-3"
+                      staticClass:
+                        "flex px-6 py-2 text-gray-600er items-center border-b -mx-4 course-pointer hover:bg-gray-200",
+                      attrs: { href: "/admin/course-dates/" + courseDate.id }
                     },
                     [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "fill-current h-6 w-6 text-green-500",
-                          attrs: {
-                            role: "button",
-                            xmlns: "http://www.w3.org/2000/svg",
-                            viewBox: "0 0 20 20"
-                          }
-                        },
-                        [
-                          _c("title", [_vm._v("Close")]),
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"
-                            }
-                          })
-                        ]
-                      )
+                      _c("div", { staticClass: "w-3/12" }, [
+                        _c("div", { staticClass: "px-4" }, [
+                          _vm._v(_vm._s(courseDate.fullDateForHumans))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "w-2/12 text-left" }, [
+                        _c("div", { staticClass: "px-4" }, [
+                          _vm._v(_vm._s(courseDate.course.name))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "w-3/12 text-left" }, [
+                        _c("div", { staticClass: "px-4" }, [
+                          _vm._v(_vm._s(courseDate.venue))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "w-3/12 text-left" }, [
+                        _c("div", { staticClass: "px-4" }, [
+                          _vm._v(_vm._s(courseDate.lecturer))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "w-1/12 text-right" }, [
+                        _c("div", { staticClass: "px-4" }, [
+                          _vm._v(_vm._s(courseDate.remaining))
+                        ])
+                      ])
                     ]
                   )
-                ]
-              )
-            : _vm._e()
-        ]
-      )
-    ])
+                })
+              ],
+              2
+            )
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -57994,18 +58777,36 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "w-full border-b pb-2 flex items-end justify-between" },
+      { staticClass: "w-full flex flex-col text-gray-700 pt-4 pr-4" },
       [
-        _c("div", { staticClass: "text-3xl" }, [_vm._v("Termíny")]),
-        _vm._v(" "),
         _c(
-          "a",
+          "div",
           {
             staticClass:
-              "bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded",
-            attrs: { href: "/admin/course-dates/create" }
+              "w-full flex bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden"
           },
-          [_vm._v("Přidat\n                    ")]
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "w-full font-regular text-blue-600 flex justify-end"
+              },
+              [
+                _c("div", { staticClass: "hidden lg:flex text-gray-800 " }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "focus:outline-none appearance-none py-4 px-2 border-b border-transparent hover:border-blue-600 hover:text-blue-600 mr-4",
+                      attrs: { href: "/admin/course-dates/create" }
+                    },
+                    [_vm._v("Vytvořit termín")]
+                  )
+                ])
+              ]
+            )
+          ]
         )
       ]
     )
@@ -58014,19 +58815,47 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Datum")]),
+    return _c("div", { staticClass: "border-b" }, [
+      _c("div", { staticClass: "flex justify-between px-3 -mb-px" }, [
+        _c(
+          "div",
+          {
+            staticClass: "w-3/12 py-3 text-left px-2 font-normal text-blue-600"
+          },
+          [_vm._v("Datum")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Kurz")]),
+        _c(
+          "div",
+          {
+            staticClass: "w-2/12 py-3 text-left px-2 font-normal text-blue-600"
+          },
+          [_vm._v("Kurz")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Místo")]),
+        _c(
+          "div",
+          {
+            staticClass: "w-3/12 py-3 text-left px-2 font-normal text-blue-600"
+          },
+          [_vm._v("Místo")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "px-1 py-1 text-left" }, [
-          _vm._v("Volných míst")
-        ]),
+        _c(
+          "div",
+          {
+            staticClass: "w-3/12 py-3 text-left px-2 font-normal text-blue-600"
+          },
+          [_vm._v("Lektor")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "px-1 py-1 text-right" }, [_vm._v("Akce")])
+        _c(
+          "div",
+          {
+            staticClass: "w-1/12 py-3 text-right px-2 font-normal text-blue-600"
+          },
+          [_vm._v("Volných ")]
+        )
       ])
     ])
   }
@@ -58052,167 +58881,104 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "h-screen w-full bg-gray-100" }, [
-    _c("div", { staticClass: "flex-grow w-full pt-4 pb-8 pr-4" }, [
+  return _c(
+    "div",
+    { staticClass: "h-screen w-full bg-gray-100" },
+    [
+      _vm._m(0),
+      _vm._v(" "),
       _c(
         "div",
-        {
-          staticClass:
-            "bg-white border-t border-b sm:border-l sm:border-r sm:rounded shadow mb-4"
-        },
+        { staticClass: "w-full mb-4 flex flex-col text-gray-700 pt-4 pr-4" },
         [
-          _c("div", { staticClass: "w-full h-full p-6" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "w-full h-full mt-6" },
-              [
-                _c("table", { staticClass: "table w-full" }, [
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c(
-                    "tbody",
-                    _vm._l(_vm.localCourses, function(course, i) {
-                      return _c(
-                        "tr",
-                        { class: { "bg-gray-200": i % 2 == 0 } },
-                        [
-                          _c(
-                            "td",
-                            { staticClass: "border border-r-0 px-1 py-1" },
-                            [_vm._v(_vm._s(course.name))]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "td",
-                            { staticClass: "border border-l-0 text-right" },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "inline-flex w-full flex justify-end"
-                                },
-                                [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass:
-                                        "text-center hover:bg-gray-400 text-gray-800 px-2 font-bold py-1 bg-gray-100",
-                                      class: {
-                                        "bg-gray-100": i % 2 == 0,
-                                        "bg-gray-300": i % 2 != 0
-                                      },
-                                      attrs: {
-                                        href:
-                                          "/admin/courses/" +
-                                          course.id +
-                                          "/edit"
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                            Editovat\n                                        "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass:
-                                        "text-center hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 bg-gray-100",
-                                      class: {
-                                        "bg-gray-100": i % 2 == 0,
-                                        "bg-gray-300": i % 2 != 0
-                                      },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.deleteCourse(course.id)
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                            Odstranit\n                                        "
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ]
-                          )
-                        ]
-                      )
-                    }),
-                    0
-                  )
-                ]),
-                _vm._v(" "),
-                _c("confirmation-modal")
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _vm.showDeleteSuccessMessage
-            ? _c(
+          _c(
+            "div",
+            {
+              staticClass:
+                "w-full flex bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden"
+            },
+            [
+              _c(
                 "div",
-                {
-                  staticClass:
-                    "fixed bottom-0 right-0 mb-4 mr-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded cursor-pointer",
-                  attrs: { role: "alert" },
-                  on: {
-                    click: function($event) {
-                      _vm.showDeleteSuccessMessage = false
-                    }
-                  }
-                },
-                [
-                  _c("strong", { staticClass: "font-bold" }, [
-                    _vm._v("Úspěch!")
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "block sm:inline pr-6" }, [
-                    _vm._v("Kurz byl odstraňěn.")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "span",
+                { staticClass: "w-full" },
+                _vm._l(_vm.localCourses, function(course, i) {
+                  return _c(
+                    "a",
                     {
-                      staticClass: "absolute top-0 bottom-0 right-0 px-4 py-3"
+                      staticClass:
+                        "flex px-6 py-2 text-gray-600er items-center border-b -mx-4 course-pointer hover:bg-gray-200",
+                      attrs: { href: "/admin/courses/" + course.id + "/edit" }
                     },
                     [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "fill-current h-6 w-6 text-green-500",
-                          attrs: {
-                            role: "button",
-                            xmlns: "http://www.w3.org/2000/svg",
-                            viewBox: "0 0 20 20"
-                          }
-                        },
-                        [
-                          _c("title", [_vm._v("Close")]),
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"
-                            }
-                          })
-                        ]
-                      )
+                      _c("div", { staticClass: "w-full" }, [
+                        _c("div", { staticClass: "px-4" }, [
+                          _vm._v(_vm._s(course.name))
+                        ])
+                      ])
+                    ]
+                  )
+                }),
+                0
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("confirmation-modal"),
+      _vm._v(" "),
+      _vm.showDeleteSuccessMessage
+        ? _c(
+            "div",
+            {
+              staticClass:
+                "fixed bottom-0 right-0 mb-4 mr-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded cursor-pointer",
+              attrs: { role: "alert" },
+              on: {
+                click: function($event) {
+                  _vm.showDeleteSuccessMessage = false
+                }
+              }
+            },
+            [
+              _c("strong", { staticClass: "font-bold" }, [_vm._v("Úspěch!")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "block sm:inline pr-6" }, [
+                _vm._v("Kurz byl odstraňěn.")
+              ]),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticClass: "absolute top-0 bottom-0 right-0 px-4 py-3" },
+                [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "fill-current h-6 w-6 text-green-500",
+                      attrs: {
+                        role: "button",
+                        xmlns: "http://www.w3.org/2000/svg",
+                        viewBox: "0 0 20 20"
+                      }
+                    },
+                    [
+                      _c("title", [_vm._v("Close")]),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"
+                        }
+                      })
                     ]
                   )
                 ]
               )
-            : _vm._e()
-        ]
-      )
-    ])
-  ])
+            ]
+          )
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -58221,33 +58987,39 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      { staticClass: "w-full border-b pb-2 flex items-end justify-between" },
+      { staticClass: "w-full flex flex-col text-gray-700 pt-4 pr-4" },
       [
-        _c("div", { staticClass: "text-3xl" }, [_vm._v("Kurzy")]),
-        _vm._v(" "),
         _c(
-          "a",
+          "div",
           {
             staticClass:
-              "bg-transparent hover:bg-gray-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded",
-            attrs: { href: "/admin/courses/create" }
+              "w-full flex bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden"
           },
-          [_vm._v("Přidat\n                    ")]
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "w-full font-regular text-blue-600 flex justify-end"
+              },
+              [
+                _c("div", { staticClass: "hidden lg:flex text-gray-800 " }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "focus:outline-none appearance-none py-4 px-2 border-b border-transparent hover:border-blue-600 hover:text-blue-600 mr-4",
+                      attrs: { href: "/admin/courses/create" }
+                    },
+                    [_vm._v("Vytvořit kurz")]
+                  )
+                ])
+              ]
+            )
+          ]
         )
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Jméno")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "px-1 py-1 text-right" }, [_vm._v("Akce")])
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -58278,449 +59050,1752 @@ var render = function() {
         staticClass: "font-sans bg-gray-400er flex flex-col min-h-screen w-full"
       },
       [
-        _c("div", { staticClass: "flex-grow w-full pt-4 pb-8 pr-4" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                "bg-white border-t border-b sm:border-l sm:border-r sm:rounded shadow mb-4"
-            },
-            [
-              _c("div", { staticClass: "border-b px-6" }, [
-                _c("div", { staticClass: "flex justify-between -mb-px" }, [
-                  _c("div", { staticClass: "hidden lg:flex text-gray-600 " }, [
+        _c(
+          "div",
+          { staticClass: "w-full pt-4 pb-8 pr-4" },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "bg-white border-t border-b sm:border-l sm:border-r sm:rounded shadow mb-4"
+              },
+              [
+                _c("div", { staticClass: "border-b px-6" }, [
+                  _c("div", { staticClass: "flex justify-between -mb-px" }, [
                     _c(
-                      "button",
-                      {
-                        staticClass:
-                          "focus:outline-none appearance-none py-4 border-b border-transparent mr-6 hover:border-gray-600",
-                        class: {
-                          "border-blue-600 text-blue-600 hover:border-blue-600":
-                            _vm.activeTab == "COURSE_DATES"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.activeTab = "COURSE_DATES"
-                          }
-                        }
-                      },
-                      [_vm._v("Kurzy")]
+                      "div",
+                      { staticClass: "hidden lg:flex text-gray-600 " },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "focus:outline-none appearance-none py-4 border-b border-transparent hover:border-gray-600 mr-6",
+                            class: {
+                              "border-blue-600 text-blue-600 hover:border-blue-600":
+                                _vm.activeTab == "GENERAL"
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.activeTab = "GENERAL"
+                              }
+                            }
+                          },
+                          [_vm._v("Obecné")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "focus:outline-none appearance-none py-4 border-b border-transparent mr-6 hover:border-gray-600",
+                            class: {
+                              "border-blue-600 text-blue-600 hover:border-blue-600":
+                                _vm.activeTab == "COURSE_DATES"
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.activeTab = "COURSE_DATES"
+                              }
+                            }
+                          },
+                          [_vm._v("Kurzy")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "focus:outline-none appearance-none py-4 border-b border-transparent hover:border-gray-600 mr-6",
+                            class: {
+                              "border-blue-600 text-blue-600 hover:border-blue-600":
+                                _vm.activeTab == "RESERVATIONS"
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.activeTab = "RESERVATIONS"
+                              }
+                            }
+                          },
+                          [_vm._v("Rezervace")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "focus:outline-none appearance-none py-4 border-b border-transparent hover:border-gray-600 mr-6",
+                            class: {
+                              "border-blue-600 text-blue-600 hover:border-blue-600":
+                                _vm.activeTab == "LECTURERS"
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.activeTab = "LECTURERS"
+                              }
+                            }
+                          },
+                          [_vm._v("Lektoři")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "focus:outline-none appearance-none py-4 border-b border-transparent hover:border-gray-600 mr-6",
+                            class: {
+                              "border-blue-600 text-blue-600 hover:border-blue-600":
+                                _vm.activeTab == "ORDERS"
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.activeTab = "ORDERS"
+                              }
+                            }
+                          },
+                          [_vm._v("Objednávky")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "focus:outline-none appearance-none py-4 border-b border-transparent hover:border-gray-600 mr-6",
+                            class: {
+                              "border-blue-600 text-blue-600 hover:border-blue-600":
+                                _vm.activeTab == "ATTENDEES"
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.activeTab = "ATTENDEES"
+                              }
+                            }
+                          },
+                          [_vm._v("Účastníci")]
+                        )
+                      ]
                     ),
                     _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass:
-                          "focus:outline-none appearance-none py-4 border-b border-transparent hover:border-gray-600 mr-6",
-                        class: {
-                          "border-blue-600 text-blue-600 hover:border-blue-600":
-                            _vm.activeTab == "RESERVATIONS"
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.activeTab = "RESERVATIONS"
-                          }
-                        }
-                      },
-                      [_vm._v("Rezervace")]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(0)
-                ])
-              ]),
-              _vm._v(" "),
-              _vm.activeTab == "COURSE_DATES"
-                ? _c("div", { staticClass: "hidden lg:flex" }, [
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _vm._m(2),
-                    _vm._v(" "),
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _vm._m(4)
+                    _vm.activeTab !== "GENERAL" &&
+                    _vm.activeTab !== "LECTURERS" &&
+                    _vm.activeTab !== "ATTENDEES"
+                      ? _c("div", { staticClass: "flex text-sm" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "appearance-none py-4 text-gray-600 border-b border-transparent hover:border-gray-600 mr-3",
+                              class: {
+                                "border-blue-600 hover:border-gray-600 text-blue-600":
+                                  _vm.timeRange == "MONTH"
+                              },
+                              staticStyle: { outline: "none" },
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.timeRange = "MONTH"
+                                }
+                              }
+                            },
+                            [_vm._v("Měsíc\n                            ")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "appearance-none py-4 text-gray-600 border-b border-transparent hover:border-gray-600 mr-3",
+                              class: {
+                                "border-blue-600 hover:border-gray-600 text-blue-600":
+                                  _vm.timeRange == "YEAR"
+                              },
+                              staticStyle: { outline: "none" },
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.timeRange = "YEAR"
+                                }
+                              }
+                            },
+                            [_vm._v("Rok\n                            ")]
+                          )
+                        ])
+                      : _vm._e()
                   ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.activeTab == "RESERVATIONS"
-                ? _c("div", { staticClass: "hidden lg:flex" }, [
-                    _c("div", { staticClass: "w-2/4 text-center py-8" }, [
-                      _c("div", { staticClass: "border-r" }, [
-                        _c("div", { staticClass: "text-gray-600er mb-2" }, [
-                          _c("span", { staticClass: "text-5xl" }, [
-                            _vm._v(
-                              _vm._s(
-                                _vm.stats.reservationsWaitingForApprovement
-                                  .length
+                ]),
+                _vm._v(" "),
+                _vm.activeTab == "COURSE_DATES"
+                  ? _c("div", { staticClass: "hidden lg:flex" }, [
+                      _c("div", { staticClass: "w-1/4 text-center py-8" }, [
+                        _c("div", { staticClass: "border-r" }, [
+                          _c("div", { staticClass: "text-gray-600er mb-2" }, [
+                            _vm.timeRange == "MONTH"
+                              ? _c("span", { staticClass: "text-5xl" }, [
+                                  _vm._v(
+                                    _vm._s(_vm.countOfCourseDatesThisMonth)
+                                  )
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.timeRange == "YEAR"
+                              ? _c("span", { staticClass: "text-5xl" }, [
+                                  _vm._v(_vm._s(_vm.countOfCourseDatesThisYear))
+                                ])
+                              : _vm._e()
+                          ]),
+                          _vm._v(" "),
+                          _vm.timeRange == "MONTH"
+                            ? _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "text-sm uppercase text-gray tracking-wide"
+                                },
+                                [_vm._v("Kurzů tento měsíc")]
                               )
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "text-sm uppercase text-gray tracking-wide"
-                          },
-                          [
-                            _vm._v(
-                              "\n                        Rezervace čekající na schválení\n                      "
-                            )
-                          ]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "w-2/4 text-center py-8" }, [
-                      _c("div", { staticClass: "border-r" }, [
-                        _c("div", { staticClass: "text-gray-600er mb-2" }, [
-                          _c("span", { staticClass: "text-5xl" }, [
-                            _vm._v(_vm._s(_vm.stats.queuedReservations.length))
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "text-sm uppercase text-gray tracking-wide"
-                          },
-                          [
-                            _vm._v(
-                              "\n                        Počet náhradníků\n                      "
-                            )
-                          ]
-                        )
-                      ])
-                    ])
-                  ])
-                : _vm._e()
-            ]
-          ),
-          _vm._v(" "),
-          _vm.activeTab == "COURSE_DATES"
-            ? _c("div", { staticClass: "flex flex-wrap -mx-4" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "w-full mb-6 lg:mb-0 lg:w-1/2 px-4 pr-2 flex flex-col text-gray-700"
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "flex-grow flex flex-col bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden"
-                      },
-                      [
-                        _c("div", { staticClass: "border-b" }, [
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.timeRange == "YEAR"
+                            ? _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "text-sm uppercase text-gray tracking-wide"
+                                },
+                                [_vm._v("Kurzů tento rok")]
+                              )
+                            : _vm._e()
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "w-1/4 text-center py-8" }, [
+                        _c("div", { staticClass: "border-r" }, [
+                          _c("div", { staticClass: "text-gray-600er mb-2" }, [
+                            _c("span", { staticClass: "text-5xl" }, [
+                              _vm._v(_vm._s(_vm.countOfCourseDatesInProgress))
+                            ])
+                          ]),
+                          _vm._v(" "),
                           _c(
                             "div",
-                            { staticClass: "flex justify-between px-6 -mb-px" },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "py-4 px-2 font-normal cursor-pointer hover:text-gray-500",
-                                  class: {
-                                    "text-blue-600":
-                                      _vm.activeDetailsTab ==
-                                      "COURSE_DATES_REMAINING_BY_VENUE"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.activeDetailsTab =
-                                        "COURSE_DATES_REMAINING_BY_VENUE"
-                                    }
-                                  }
-                                },
-                                [_vm._v("Zaplnění termínu podle místa")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "py-4 px-2 font-normal cursor-pointer hover:text-gray-500",
-                                  class: {
-                                    "text-blue-600":
-                                      _vm.activeDetailsTab ==
-                                      "COURSE_DATES_FULL_BY_VENUE"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.activeDetailsTab =
-                                        "COURSE_DATES_FULL_BY_VENUE"
-                                    }
-                                  }
-                                },
-                                [_vm._v("Plných termínu podle místa")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "py-4 abnfpx-2 font-normal cursor-pointer hover:text-gray-500",
-                                  class: {
-                                    "text-blue-600":
-                                      _vm.activeDetailsTab ==
-                                      "COURSE_DATES_REMAINING_BY_MONTH"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.activeDetailsTab =
-                                        "COURSE_DATES_REMAINING_BY_MONTH"
-                                    }
-                                  }
-                                },
-                                [_vm._v("Zbývajicí míst v měsícíc")]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "py-4 px-2 font-normal cursor-pointer hover:text-gray-500",
-                                  class: {
-                                    "text-blue-600":
-                                      _vm.activeDetailsTab ==
-                                      "COURSE_DATES_FULL_BY_MONTH"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.activeDetailsTab =
-                                        "COURSE_DATES_FULL_BY_MONTH"
-                                    }
-                                  }
-                                },
-                                [_vm._v("Plné kurzy v měsících")]
-                              )
-                            ]
+                            {
+                              staticClass:
+                                "text-sm uppercase text-gray tracking-wide"
+                            },
+                            [_vm._v("Probíhajicí kurzy")]
                           )
-                        ]),
-                        _vm._v(" "),
-                        _vm.activeDetailsTab ==
-                        "COURSE_DATES_REMAINING_BY_VENUE"
-                          ? _c("div", [
-                              _vm._m(5),
-                              _vm._v(" "),
-                              _vm._m(6),
-                              _vm._v(" "),
-                              _vm._m(7),
-                              _vm._v(" "),
-                              _vm._m(8)
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.activeDetailsTab == "COURSE_DATES_FULL_BY_VENUE"
-                          ? _c("div", [
-                              _vm._m(9),
-                              _vm._v(" "),
-                              _vm._m(10),
-                              _vm._v(" "),
-                              _vm._m(11),
-                              _vm._v(" "),
-                              _vm._m(12)
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.activeDetailsTab ==
-                        "COURSE_DATES_REMAINING_BY_MONTH"
-                          ? _c("div", [
-                              _vm._m(13),
-                              _vm._v(" "),
-                              _vm._m(14),
-                              _vm._v(" "),
-                              _vm._m(15),
-                              _vm._v(" "),
-                              _vm._m(16)
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.activeDetailsTab == "COURSE_DATES_FULL_BY_MONTH"
-                          ? _c("div", [
-                              _vm._m(17),
-                              _vm._v(" "),
-                              _vm._m(18),
-                              _vm._v(" "),
-                              _vm._m(19),
-                              _vm._v(" "),
-                              _vm._m(20)
-                            ])
-                          : _vm._e()
-                      ]
-                    )
-                  ]
-                ),
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "w-1/4 text-center py-8" }, [
+                        _c("div", { staticClass: "border-r" }, [
+                          _c("div", { staticClass: "text-gray-600er mb-2" }, [
+                            _vm.timeRange == "MONTH"
+                              ? _c("span", { staticClass: "text-5xl" }, [
+                                  _vm._v(
+                                    _vm._s(_vm.countOfFullCourseDatesThisMonth)
+                                  )
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.timeRange == "YEAR"
+                              ? _c("span", { staticClass: "text-5xl" }, [
+                                  _vm._v(
+                                    _vm._s(_vm.countOfFullCourseDatesThisYear)
+                                  )
+                                ])
+                              : _vm._e()
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "text-sm uppercase text-gray tracking-wide"
+                            },
+                            [_vm._v("Plně zaplněných kurzů")]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "w-1/4 text-center py-8" }, [
+                        _c("div", [
+                          _c("div", { staticClass: "text-gray-600er mb-2" }, [
+                            _vm.timeRange == "MONTH"
+                              ? _c("span", { staticClass: "text-5xl" }, [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.countOfCompletedCourseDatesThisMonth
+                                    )
+                                  )
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.timeRange == "YEAR"
+                              ? _c("span", { staticClass: "text-5xl" }, [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.countOfCompletedCourseDatesThisYear
+                                    )
+                                  )
+                                ])
+                              : _vm._e()
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "text-sm uppercase text-gray tracking-wide"
+                            },
+                            [_vm._v("Dokončených kurzů")]
+                          )
+                        ])
+                      ])
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
-                _c("div", { staticClass: "w-full lg:w-1/2 pl-2 px-4" }, [
-                  _vm.activeDetailsTab == "COURSE_DATES_REMAINING_BY_VENUE"
-                    ? _c(
+                _vm.activeTab == "RESERVATIONS"
+                  ? _c("div", { staticClass: "hidden lg:flex" }, [
+                      _c("div", { staticClass: "w-1/2 text-center py-8" }, [
+                        _c("div", { staticClass: "border-r" }, [
+                          _c("div", { staticClass: "text-gray-600er mb-2" }, [
+                            _c("span", { staticClass: "text-5xl" }, [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.waitingForApprovementReservations.length
+                                )
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "text-sm uppercase text-gray tracking-wide"
+                            },
+                            [_vm._v("Rezervace čekající na schválení")]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "w-1/2 text-center py-8" }, [
+                        _c("div", { staticClass: "border-r" }, [
+                          _c("div", { staticClass: "text-gray-600er mb-2" }, [
+                            _c("span", { staticClass: "text-5xl" }, [
+                              _vm._v(_vm._s(_vm.queuedReservations.length))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "text-sm uppercase text-gray tracking-wide"
+                            },
+                            [_vm._v("Počet náhradníků")]
+                          )
+                        ])
+                      ])
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.activeTab == "LECTURERS"
+                  ? _c("div", { staticClass: "hidden lg:flex" }, [
+                      _c("div", { staticClass: "w-1/3 text-center py-8" }, [
+                        _c("div", { staticClass: "border-r" }, [
+                          _c("div", { staticClass: "text-gray-600er mb-2" }, [
+                            _c("span", { staticClass: "text-5xl" }, [
+                              _vm._v(_vm._s(_vm.countOfCourseDatesWithLectors))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "text-sm uppercase text-gray tracking-wide"
+                            },
+                            [_vm._v("Termínů s lektory")]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "w-1/3 text-center py-8" }, [
+                        _c("div", { staticClass: "border-r" }, [
+                          _c("div", { staticClass: "text-gray-600er mb-2" }, [
+                            _c("span", { staticClass: "text-5xl" }, [
+                              _vm._v(
+                                _vm._s(_vm.countOfCourseDatesWithoutLectors)
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "text-sm uppercase text-gray tracking-wide"
+                            },
+                            [_vm._v("Termínů bez lektoru")]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "w-1/3 text-center py-8" }, [
+                        _c("div", { staticClass: "border-r" }, [
+                          _c("div", { staticClass: "text-gray-600er mb-2" }, [
+                            _vm.countOfCourseDatesWithoutLectors == 0
+                              ? _c("span", { staticClass: "text-5xl" }, [
+                                  _vm._v("100%")
+                                ])
+                              : _c(
+                                  "span",
+                                  {
+                                    staticClass: "text-5xl",
+                                    class: {
+                                      "text-red-600": _vm.lectorsCoverage < 50
+                                    }
+                                  },
+                                  [_vm._v(_vm._s(_vm.lectorsCoverage) + "%")]
+                                )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "text-sm uppercase text-gray tracking-wide"
+                            },
+                            [_vm._v("Pokrytí kurzů lektory")]
+                          )
+                        ])
+                      ])
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.activeTab == "ATTENDEES"
+                  ? _c("div", { staticClass: "hidden lg:flex" }, [
+                      _c("div", { staticClass: "w-full text-center py-8" }, [
+                        _c("div", { staticClass: "border-r" }, [
+                          _c("div", { staticClass: "text-gray-600er mb-2" }, [
+                            _c("span", { staticClass: "text-5xl" }, [
+                              _vm._v(_vm._s(_vm.countOfAttendees))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "text-sm uppercase text-gray tracking-wide"
+                            },
+                            [_vm._v("Celkem účastníku")]
+                          )
+                        ])
+                      ])
+                    ])
+                  : _vm._e()
+              ]
+            ),
+            _vm._v(" "),
+            _vm.activeTab == "GENERAL" ? _c("dashboard-general") : _vm._e(),
+            _vm._v(" "),
+            _vm.activeTab == "COURSE_DATES"
+              ? _c("div", { staticClass: "flex flex-wrap -mx-4" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "w-full mb-6 lg:mb-0 lg:w-1/2 px-4 pr-2 flex flex-col text-gray-700"
+                    },
+                    [
+                      _c(
                         "div",
                         {
                           staticClass:
-                            "bg-white border-t border-b sm:rounded sm:border shadow p-4"
+                            "flex flex-col bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden"
                         },
                         [
-                          _c("pie-chart", {
-                            attrs: {
-                              chartdata: {
-                                labels: [
-                                  "PRAHA (Komunitní centrum Hrubého, Praha 8 - Kobylisy)",
-                                  "BRNO (Gymnázium Globe, s.r.o., Bzenecká 23, Brno)",
-                                  "OSTRAVA (SŠ stavební a dřevozpracující, U Studia 33, Ostrava - Zábřeh)"
+                          _c("div", { staticClass: "border-b" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "flex justify-between px-6 -mb-px"
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "py-4 px-2 font-normal cursor-pointer hover:text-gray-500",
+                                    class: {
+                                      "text-blue-600":
+                                        _vm.activeDetailsTab ==
+                                        "COURSE_DATES_REMAINING_BY_VENUE"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.activeDetailsTab =
+                                          "COURSE_DATES_REMAINING_BY_VENUE"
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Zaplnění termínu podle místa")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "py-4 px-2 font-normal cursor-pointer hover:text-gray-500",
+                                    class: {
+                                      "text-blue-600":
+                                        _vm.activeDetailsTab ==
+                                        "COURSE_DATES_FULL_BY_VENUE"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.activeDetailsTab =
+                                          "COURSE_DATES_FULL_BY_VENUE"
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Plných termínu podle místa")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "py-4 abnfpx-2 font-normal cursor-pointer hover:text-gray-500",
+                                    class: {
+                                      "text-blue-600":
+                                        _vm.activeDetailsTab ==
+                                        "COURSE_DATES_REMAINING_BY_MONTH"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.activeDetailsTab =
+                                          "COURSE_DATES_REMAINING_BY_MONTH"
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Zbývajicí míst v měsících")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "py-4 px-2 font-normal cursor-pointer hover:text-gray-500",
+                                    class: {
+                                      "text-blue-600":
+                                        _vm.activeDetailsTab ==
+                                        "COURSE_DATES_FULL_BY_MONTH"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.activeDetailsTab =
+                                          "COURSE_DATES_FULL_BY_MONTH"
+                                      }
+                                    }
+                                  },
+                                  [_vm._v("Plné kurzy v měsících")]
+                                )
+                              ]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _vm.activeDetailsTab ==
+                            "COURSE_DATES_REMAINING_BY_VENUE" &&
+                          _vm.timeRange == "MONTH"
+                            ? _c(
+                                "div",
+                                [
+                                  _vm._l(
+                                    _vm.spotTakenCourseDateStatsThisMonth,
+                                    function(stats, venue) {
+                                      return _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "flex px-6 py-6 text-gray-600er items-center border-b -mx-4"
+                                        },
+                                        [
+                                          _c("div", { staticClass: "w-1/2" }, [
+                                            _c("div", { staticClass: "px-4" }, [
+                                              _vm._v(_vm._s(venue))
+                                            ])
+                                          ]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            { staticClass: "flex w-3/5" },
+                                            [
+                                              _c(
+                                                "div",
+                                                { staticClass: "w-1/2 px-4" },
+                                                [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass: "text-right"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          stats.spotsTaken
+                                                        ) +
+                                                          "/" +
+                                                          _vm._s(stats.limit)
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "div",
+                                                { staticClass: "w-1/2 px-4" },
+                                                [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass:
+                                                        "text-right text-gray font-bold",
+                                                      class: {
+                                                        "text-red-600":
+                                                          stats.percent >= 75
+                                                      }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(stats.percent) +
+                                                          "%"
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    }
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "px-6 py-4" }, [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "text-center text-gray font-bold",
+                                        class: {
+                                          "text-red-600":
+                                            _vm
+                                              .spotTakenCourseDateTotalStatsThisMonth
+                                              .percent >= 75
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                    Celkově " +
+                                            _vm._s(
+                                              _vm
+                                                .spotTakenCourseDateTotalStatsThisMonth
+                                                .spotsTaken
+                                            ) +
+                                            "/" +
+                                            _vm._s(
+                                              _vm
+                                                .spotTakenCourseDateTotalStatsThisMonth
+                                                .limit
+                                            ) +
+                                            " → " +
+                                            _vm._s(
+                                              _vm
+                                                .spotTakenCourseDateTotalStatsThisMonth
+                                                .percent
+                                            ) +
+                                            "%\n                                "
+                                        )
+                                      ]
+                                    )
+                                  ])
                                 ],
-                                datasets: [
-                                  {
-                                    label: "Zaplnění termínu podle místa",
-                                    backgroundColor: [
-                                      "#49306B",
-                                      "#635380",
-                                      "#90708C"
-                                    ],
-                                    data: [30, 10, 8]
-                                  }
-                                ]
-                              }
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.activeDetailsTab == "COURSE_DATES_FULL_BY_VENUE"
-                    ? _c(
-                        "div",
-                        {
-                          staticClass:
-                            "bg-white border-t border-b sm:rounded sm:border shadow p-4"
-                        },
-                        [
-                          _c("doughnut-chart", {
-                            attrs: {
-                              chartdata: {
-                                labels: [
-                                  "PRAHA (Komunitní centrum Hrubého, Praha 8 - Kobylisy)",
-                                  "BRNO (Gymnázium Globe, s.r.o., Bzenecká 23, Brno)",
-                                  "OSTRAVA (SŠ stavební a dřevozpracující, U Studia 33, Ostrava - Zábřeh)"
+                                2
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.activeDetailsTab ==
+                            "COURSE_DATES_REMAINING_BY_VENUE" &&
+                          _vm.timeRange == "YEAR"
+                            ? _c(
+                                "div",
+                                [
+                                  _vm._l(
+                                    _vm.spotTakenCourseDateStatsThisYear,
+                                    function(stats, venue) {
+                                      return _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "flex px-6 py-6 text-gray-600er items-center border-b -mx-4"
+                                        },
+                                        [
+                                          _c("div", { staticClass: "w-1/2" }, [
+                                            _c("div", { staticClass: "px-4" }, [
+                                              _vm._v(_vm._s(venue))
+                                            ])
+                                          ]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            { staticClass: "flex w-3/5" },
+                                            [
+                                              _c(
+                                                "div",
+                                                { staticClass: "w-1/2 px-4" },
+                                                [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass: "text-right"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          stats.spotsTaken
+                                                        ) +
+                                                          "/" +
+                                                          _vm._s(stats.limit)
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "div",
+                                                { staticClass: "w-1/2 px-4" },
+                                                [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass:
+                                                        "text-right text-gray font-bold",
+                                                      class: {
+                                                        "text-red-600":
+                                                          stats.percent >= 75
+                                                      }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(stats.percent) +
+                                                          "%"
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    }
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "px-6 py-4" }, [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "text-center text-gray font-bold",
+                                        class: {
+                                          "text-red-600":
+                                            _vm
+                                              .spotTakenCourseDateTotalStatsThisYear
+                                              .percent >= 75
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                    Celkově " +
+                                            _vm._s(
+                                              _vm
+                                                .spotTakenCourseDateTotalStatsThisYear
+                                                .spotsTaken
+                                            ) +
+                                            "/" +
+                                            _vm._s(
+                                              _vm
+                                                .spotTakenCourseDateTotalStatsThisYear
+                                                .limit
+                                            ) +
+                                            " → " +
+                                            _vm._s(
+                                              _vm
+                                                .spotTakenCourseDateTotalStatsThisYear
+                                                .percent
+                                            ) +
+                                            "%\n                                "
+                                        )
+                                      ]
+                                    )
+                                  ])
                                 ],
-                                datasets: [
-                                  {
-                                    label: "Plných termínu podle místa",
-                                    backgroundColor: [
-                                      "#49306B",
-                                      "#635380",
-                                      "#90708C"
-                                    ],
-                                    data: [0, 2, 1]
-                                  }
-                                ]
-                              }
-                            }
-                          })
-                        ],
-                        1
+                                2
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.activeDetailsTab ==
+                            "COURSE_DATES_FULL_BY_VENUE" &&
+                          _vm.timeRange == "MONTH"
+                            ? _c(
+                                "div",
+                                [
+                                  _vm._l(
+                                    _vm.fullCourseDateStatsThisMonth,
+                                    function(stats, venue) {
+                                      return _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "flex px-6 py-6 text-gray-600er items-center border-b -mx-4"
+                                        },
+                                        [
+                                          _c("div", { staticClass: "w-1/2" }, [
+                                            _c("div", { staticClass: "px-4" }, [
+                                              _vm._v(_vm._s(venue))
+                                            ])
+                                          ]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            { staticClass: "flex w-3/5" },
+                                            [
+                                              _c(
+                                                "div",
+                                                { staticClass: "w-1/2 px-4" },
+                                                [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass: "text-right"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(stats.full) +
+                                                          "/" +
+                                                          _vm._s(stats.all)
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "div",
+                                                { staticClass: "w-1/2 px-4" },
+                                                [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass:
+                                                        "text-right text-gray font-bold",
+                                                      class: {
+                                                        "text-red-600":
+                                                          stats.percent >= 75
+                                                      }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(stats.percent) +
+                                                          "%"
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    }
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "px-6 py-4" }, [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "text-center text-gray font-bold",
+                                        class: {
+                                          "text-red-600":
+                                            _vm
+                                              .fullCourseDateTotalStatsThisMonth
+                                              .percent >= 75
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                    Celkově " +
+                                            _vm._s(
+                                              _vm
+                                                .fullCourseDateTotalStatsThisMonth
+                                                .full
+                                            ) +
+                                            "/" +
+                                            _vm._s(
+                                              _vm
+                                                .fullCourseDateTotalStatsThisMonth
+                                                .all
+                                            ) +
+                                            " → " +
+                                            _vm._s(
+                                              _vm
+                                                .fullCourseDateTotalStatsThisMonth
+                                                .percent
+                                            ) +
+                                            "%\n                                "
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ],
+                                2
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.activeDetailsTab ==
+                            "COURSE_DATES_FULL_BY_VENUE" &&
+                          _vm.timeRange == "YEAR"
+                            ? _c(
+                                "div",
+                                [
+                                  _vm._l(
+                                    _vm.fullCourseDateStatsThisYear,
+                                    function(stats, venue) {
+                                      return _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "flex px-6 py-6 text-gray-600er items-center border-b -mx-4"
+                                        },
+                                        [
+                                          _c("div", { staticClass: "w-1/2" }, [
+                                            _c("div", { staticClass: "px-4" }, [
+                                              _vm._v(_vm._s(venue))
+                                            ])
+                                          ]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            { staticClass: "flex w-3/5" },
+                                            [
+                                              _c(
+                                                "div",
+                                                { staticClass: "w-1/2 px-4" },
+                                                [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass: "text-right"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(stats.full) +
+                                                          "/" +
+                                                          _vm._s(stats.all)
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "div",
+                                                { staticClass: "w-1/2 px-4" },
+                                                [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass:
+                                                        "text-right text-gray font-bold",
+                                                      class: {
+                                                        "text-red-600":
+                                                          stats.percent >= 75
+                                                      }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(stats.percent) +
+                                                          "%"
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    }
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "px-6 py-4" }, [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "text-center text-gray font-bold",
+                                        class: {
+                                          "text-red-600":
+                                            _vm.fullCourseDateTotalStatsThisYear
+                                              .percent >= 75
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                    Celkově " +
+                                            _vm._s(
+                                              _vm
+                                                .fullCourseDateTotalStatsThisYear
+                                                .full
+                                            ) +
+                                            "/" +
+                                            _vm._s(
+                                              _vm
+                                                .fullCourseDateTotalStatsThisYear
+                                                .all
+                                            ) +
+                                            " → " +
+                                            _vm._s(
+                                              _vm
+                                                .fullCourseDateTotalStatsThisYear
+                                                .percent
+                                            ) +
+                                            "%\n                                "
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ],
+                                2
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.activeDetailsTab ==
+                          "COURSE_DATES_REMAINING_BY_MONTH"
+                            ? _c(
+                                "div",
+                                [
+                                  _vm._l(
+                                    _vm.remainingCourseDateSpotsStatsInMonths,
+                                    function(stats, monthName) {
+                                      return _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "flex px-6 py-6 text-gray-600er items-center border-b -mx-4"
+                                        },
+                                        [
+                                          _c("div", { staticClass: "w-1/2" }, [
+                                            _c("div", { staticClass: "px-4" }, [
+                                              _vm._v(_vm._s(monthName))
+                                            ])
+                                          ]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            { staticClass: "flex w-3/5" },
+                                            [
+                                              _c(
+                                                "div",
+                                                { staticClass: "w-1/2 px-4" },
+                                                [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass: "text-right"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          stats.remaining
+                                                        ) +
+                                                          "/" +
+                                                          _vm._s(stats.all)
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "div",
+                                                { staticClass: "w-1/2 px-4" },
+                                                [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass:
+                                                        "text-right text-gray font-bold",
+                                                      class: {
+                                                        "text-red-600":
+                                                          stats.percent <= 25
+                                                      }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(stats.percent) +
+                                                          "%"
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    }
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "px-6 py-4" }, [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "text-center text-gray font-bold",
+                                        class: {
+                                          "text-red-600":
+                                            _vm
+                                              .remainingCourseDateSpotsTotalStatsInMonths
+                                              .percent <= 25
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                    Celkově " +
+                                            _vm._s(
+                                              _vm
+                                                .remainingCourseDateSpotsTotalStatsInMonths
+                                                .remaining
+                                            ) +
+                                            "/" +
+                                            _vm._s(
+                                              _vm
+                                                .remainingCourseDateSpotsTotalStatsInMonths
+                                                .all
+                                            ) +
+                                            " → " +
+                                            _vm._s(
+                                              _vm
+                                                .remainingCourseDateSpotsTotalStatsInMonths
+                                                .percent
+                                            ) +
+                                            "%\n                                "
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ],
+                                2
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.activeDetailsTab == "COURSE_DATES_FULL_BY_MONTH"
+                            ? _c(
+                                "div",
+                                [
+                                  _vm._l(
+                                    _vm.fullCourseDatesStatsInMonths,
+                                    function(stats, monthName) {
+                                      return _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "flex px-6 py-6 text-gray-600er items-center border-b -mx-4"
+                                        },
+                                        [
+                                          _c("div", { staticClass: "w-1/2" }, [
+                                            _c("div", { staticClass: "px-4" }, [
+                                              _vm._v(_vm._s(monthName))
+                                            ])
+                                          ]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            { staticClass: "flex w-3/5" },
+                                            [
+                                              _c(
+                                                "div",
+                                                { staticClass: "w-1/2 px-4" },
+                                                [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass: "text-right"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(stats.full) +
+                                                          "/" +
+                                                          _vm._s(stats.all)
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "div",
+                                                { staticClass: "w-1/2 px-4" },
+                                                [
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass:
+                                                        "text-right text-gray font-bold",
+                                                      class: {
+                                                        "text-red-600":
+                                                          stats.percent >= 75
+                                                      }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(stats.percent) +
+                                                          "%"
+                                                      )
+                                                    ]
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    }
+                                  ),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "px-6 py-4" }, [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "text-center text-gray font-bold",
+                                        class: {
+                                          "text-red-600":
+                                            _vm
+                                              .fullCourseDatesTotalStatsInMonths
+                                              .percent >= 75
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                    Celkově " +
+                                            _vm._s(
+                                              _vm
+                                                .fullCourseDatesTotalStatsInMonths
+                                                .full
+                                            ) +
+                                            "/" +
+                                            _vm._s(
+                                              _vm
+                                                .fullCourseDatesTotalStatsInMonths
+                                                .all
+                                            ) +
+                                            " → " +
+                                            _vm._s(
+                                              _vm
+                                                .fullCourseDatesTotalStatsInMonths
+                                                .percent
+                                            ) +
+                                            "%\n                                "
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ],
+                                2
+                              )
+                            : _vm._e()
+                        ]
                       )
-                    : _vm._e(),
+                    ]
+                  ),
                   _vm._v(" "),
-                  _vm.activeDetailsTab == "COURSE_DATES_REMAINING_BY_MONTH"
-                    ? _c(
-                        "div",
-                        {
-                          staticClass:
-                            "bg-white border-t border-b sm:rounded sm:border shadow p-4"
-                        },
-                        [
-                          _c("line-chart", {
-                            attrs: {
-                              chartdata: {
-                                labels: ["Leden", "Únor", "Březen"],
-                                datasets: [
-                                  {
-                                    label: "Zbývajicí míst v měsících",
-                                    backgroundColor: [
-                                      "#49306B",
-                                      "#635380",
-                                      "#90708C"
-                                    ],
-                                    data: [2, 8, 20]
-                                  }
-                                ]
-                              }
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.activeDetailsTab == "COURSE_DATES_FULL_BY_MONTH"
-                    ? _c(
-                        "div",
-                        {
-                          staticClass:
-                            "bg-white border-t border-b sm:rounded sm:border shadow p-4"
-                        },
-                        [
-                          _c("bar-chart", {
-                            attrs: {
-                              chartdata: {
-                                labels: ["Leden", "Únor", "Březen"],
-                                datasets: [
-                                  {
-                                    label: "Plné kurzy v měsících",
-                                    backgroundColor: [
-                                      "#49306B",
-                                      "#635380",
-                                      "#90708C"
-                                    ],
-                                    data: [4, 1, 0]
-                                  }
-                                ]
-                              }
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    : _vm._e()
-                ])
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.activeTab == "RESERVATIONS"
-            ? _c("div", { staticClass: "flex flex-wrap -mx-4" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "w-full mb-6 lg:mb-0 lg:w-1/2 px-4 pr-2 flex flex-col text-gray-700"
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "flex-grow flex flex-col bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden"
-                      },
-                      [
-                        _vm._m(21),
-                        _vm._v(" "),
-                        _c(
+                  _c("div", { staticClass: "w-full lg:w-1/2 pl-2 px-4" }, [
+                    _vm.activeDetailsTab == "COURSE_DATES_REMAINING_BY_VENUE" &&
+                    _vm.timeRange == "MONTH"
+                      ? _c(
                           "div",
-                          _vm._l(
-                            _vm.stats.reservationsWaitingForApprovement,
-                            function(reservation) {
+                          {
+                            staticClass:
+                              "bg-white border-t border-b sm:rounded sm:border shadow p-4"
+                          },
+                          [
+                            _c("doughnut-chart", {
+                              key: "spotTakenCourseDateStatsVenuesThisMonth",
+                              attrs: {
+                                chartdata: {
+                                  labels:
+                                    _vm.spotTakenCourseDateStatsVenuesThisMonth,
+                                  datasets: [
+                                    {
+                                      label: "Zaplnění termínu podle místa",
+                                      backgroundColor: [
+                                        "#44337A",
+                                        "#553C9A",
+                                        "#6B46C1",
+                                        "#805AD5",
+                                        "#9F7AEA",
+                                        "#B794F4",
+                                        "#D6BCFA",
+                                        "#E9D8FD",
+                                        "#FAF5FF",
+                                        "#3C366B",
+                                        "#434190",
+                                        "#4C51BF",
+                                        "#5A67D8",
+                                        "#667EEA",
+                                        "#7F9CF5",
+                                        "#A3BFFA",
+                                        "#C3DAFE",
+                                        "#EBF4FF",
+                                        "#2A4365",
+                                        "#2C5282",
+                                        "#2B6CB0",
+                                        "#3182CE",
+                                        "#4299E1",
+                                        "#63B3ED",
+                                        "#90CDF4",
+                                        "#BEE3F8",
+                                        "#EBF8FF",
+                                        "#234E52"
+                                      ],
+                                      data:
+                                        _vm.spotTakenCourseDateStatsSpotTakenCountThisMonth
+                                    }
+                                  ]
+                                }
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.activeDetailsTab == "COURSE_DATES_REMAINING_BY_VENUE" &&
+                    _vm.timeRange == "YEAR"
+                      ? _c(
+                          "div",
+                          {
+                            staticClass:
+                              "bg-white border-t border-b sm:rounded sm:border shadow p-4"
+                          },
+                          [
+                            _c("doughnut-chart", {
+                              key: "spotTakenCourseDateStatsVenuesThisYear",
+                              attrs: {
+                                chartdata: {
+                                  labels:
+                                    _vm.spotTakenCourseDateStatsVenuesThisYear,
+                                  datasets: [
+                                    {
+                                      label: "Zaplnění termínu podle místa",
+                                      backgroundColor: [
+                                        "#44337A",
+                                        "#553C9A",
+                                        "#6B46C1",
+                                        "#805AD5",
+                                        "#9F7AEA",
+                                        "#B794F4",
+                                        "#D6BCFA",
+                                        "#E9D8FD",
+                                        "#FAF5FF",
+                                        "#3C366B",
+                                        "#434190",
+                                        "#4C51BF",
+                                        "#5A67D8",
+                                        "#667EEA",
+                                        "#7F9CF5",
+                                        "#A3BFFA",
+                                        "#C3DAFE",
+                                        "#EBF4FF",
+                                        "#2A4365",
+                                        "#2C5282",
+                                        "#2B6CB0",
+                                        "#3182CE",
+                                        "#4299E1",
+                                        "#63B3ED",
+                                        "#90CDF4",
+                                        "#BEE3F8",
+                                        "#EBF8FF",
+                                        "#234E52"
+                                      ],
+                                      data:
+                                        _vm.spotTakenCourseDateStatsSpotTakenCountThisYear
+                                    }
+                                  ]
+                                }
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.activeDetailsTab == "COURSE_DATES_FULL_BY_VENUE" &&
+                    _vm.timeRange == "MONTH"
+                      ? _c(
+                          "div",
+                          {
+                            staticClass:
+                              "bg-white border-t border-b sm:rounded sm:border shadow p-4"
+                          },
+                          [
+                            _c("doughnut-chart", {
+                              key: "fullCourseDateStatsVenuesThisMonth",
+                              attrs: {
+                                chartdata: {
+                                  labels:
+                                    _vm.fullCourseDateStatsVenuesThisMonth,
+                                  datasets: [
+                                    {
+                                      label: "Zaplnění termínu podle místa",
+                                      backgroundColor: [
+                                        "#44337A",
+                                        "#553C9A",
+                                        "#6B46C1",
+                                        "#805AD5",
+                                        "#9F7AEA",
+                                        "#B794F4",
+                                        "#D6BCFA",
+                                        "#E9D8FD",
+                                        "#FAF5FF",
+                                        "#3C366B",
+                                        "#434190",
+                                        "#4C51BF",
+                                        "#5A67D8",
+                                        "#667EEA",
+                                        "#7F9CF5",
+                                        "#A3BFFA",
+                                        "#C3DAFE",
+                                        "#EBF4FF",
+                                        "#2A4365",
+                                        "#2C5282",
+                                        "#2B6CB0",
+                                        "#3182CE",
+                                        "#4299E1",
+                                        "#63B3ED",
+                                        "#90CDF4",
+                                        "#BEE3F8",
+                                        "#EBF8FF",
+                                        "#234E52"
+                                      ],
+                                      data:
+                                        _vm.fullCourseDateStatsFullCountThisMonth
+                                    }
+                                  ]
+                                }
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.activeDetailsTab == "COURSE_DATES_FULL_BY_VENUE" &&
+                    _vm.timeRange == "YEAR"
+                      ? _c(
+                          "div",
+                          {
+                            staticClass:
+                              "bg-white border-t border-b sm:rounded sm:border shadow p-4"
+                          },
+                          [
+                            _c("doughnut-chart", {
+                              key: "fullCourseDateStatsVenuesThisYear",
+                              attrs: {
+                                chartdata: {
+                                  labels: _vm.fullCourseDateStatsVenuesThisYear,
+                                  datasets: [
+                                    {
+                                      label: "Zaplnění termínu podle místa",
+                                      backgroundColor: [
+                                        "#44337A",
+                                        "#553C9A",
+                                        "#6B46C1",
+                                        "#805AD5",
+                                        "#9F7AEA",
+                                        "#B794F4",
+                                        "#D6BCFA",
+                                        "#E9D8FD",
+                                        "#FAF5FF",
+                                        "#3C366B",
+                                        "#434190",
+                                        "#4C51BF",
+                                        "#5A67D8",
+                                        "#667EEA",
+                                        "#7F9CF5",
+                                        "#A3BFFA",
+                                        "#C3DAFE",
+                                        "#EBF4FF",
+                                        "#2A4365",
+                                        "#2C5282",
+                                        "#2B6CB0",
+                                        "#3182CE",
+                                        "#4299E1",
+                                        "#63B3ED",
+                                        "#90CDF4",
+                                        "#BEE3F8",
+                                        "#EBF8FF",
+                                        "#234E52"
+                                      ],
+                                      data:
+                                        _vm.fullCourseDateStatsFullCountThisYear
+                                    }
+                                  ]
+                                }
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.activeDetailsTab == "COURSE_DATES_REMAINING_BY_MONTH"
+                      ? _c(
+                          "div",
+                          {
+                            staticClass:
+                              "bg-white border-t border-b sm:rounded sm:border shadow p-4"
+                          },
+                          [
+                            _c("doughnut-chart", {
+                              key: "remainingCourseDateSpotsStatsMonthsInMonth",
+                              attrs: {
+                                chartdata: {
+                                  labels:
+                                    _vm.remainingCourseDateSpotsStatsMonthsInMonth,
+                                  datasets: [
+                                    {
+                                      label: "Zbývajicí míst v měsících",
+                                      backgroundColor: [
+                                        "#44337A",
+                                        "#553C9A",
+                                        "#6B46C1",
+                                        "#805AD5",
+                                        "#9F7AEA",
+                                        "#B794F4",
+                                        "#D6BCFA",
+                                        "#E9D8FD",
+                                        "#FAF5FF",
+                                        "#3C366B",
+                                        "#434190",
+                                        "#4C51BF",
+                                        "#5A67D8",
+                                        "#667EEA",
+                                        "#7F9CF5",
+                                        "#A3BFFA",
+                                        "#C3DAFE",
+                                        "#EBF4FF",
+                                        "#2A4365",
+                                        "#2C5282",
+                                        "#2B6CB0",
+                                        "#3182CE",
+                                        "#4299E1",
+                                        "#63B3ED",
+                                        "#90CDF4",
+                                        "#BEE3F8",
+                                        "#EBF8FF",
+                                        "#234E52"
+                                      ],
+                                      data:
+                                        _vm.remainingCourseDateSpotsRemainingCountInMonth
+                                    }
+                                  ]
+                                }
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.activeDetailsTab == "COURSE_DATES_FULL_BY_MONTH"
+                      ? _c(
+                          "div",
+                          {
+                            staticClass:
+                              "bg-white border-t border-b sm:rounded sm:border shadow p-4"
+                          },
+                          [
+                            _c("doughnut-chart", {
+                              key: "fullCourseDatesStatsMonthsInMonths",
+                              attrs: {
+                                chartdata: {
+                                  labels:
+                                    _vm.fullCourseDatesStatsMonthsInMonths,
+                                  datasets: [
+                                    {
+                                      label: "Plné kurzy v měsících",
+                                      backgroundColor: [
+                                        "#44337A",
+                                        "#553C9A",
+                                        "#6B46C1",
+                                        "#805AD5",
+                                        "#9F7AEA",
+                                        "#B794F4",
+                                        "#D6BCFA",
+                                        "#E9D8FD",
+                                        "#FAF5FF",
+                                        "#3C366B",
+                                        "#434190",
+                                        "#4C51BF",
+                                        "#5A67D8",
+                                        "#667EEA",
+                                        "#7F9CF5",
+                                        "#A3BFFA",
+                                        "#C3DAFE",
+                                        "#EBF4FF",
+                                        "#2A4365",
+                                        "#2C5282",
+                                        "#2B6CB0",
+                                        "#3182CE",
+                                        "#4299E1",
+                                        "#63B3ED",
+                                        "#90CDF4",
+                                        "#BEE3F8",
+                                        "#EBF8FF",
+                                        "#234E52"
+                                      ],
+                                      data:
+                                        _vm.fullCourseDatesStatsFullCountInMonths
+                                    }
+                                  ]
+                                }
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.activeTab == "RESERVATIONS"
+              ? _c("div", { staticClass: "flex flex-wrap -mx-4" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "w-full mb-6 lg:mb-0 lg:w-1/2 px-4 pr-2 flex flex-col text-gray-700"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "flex flex-col bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden"
+                        },
+                        [
+                          _vm._m(0),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            _vm._l(
+                              _vm.waitingForApprovementReservations,
+                              function(reservation) {
+                                return _c(
+                                  "a",
+                                  {
+                                    staticClass:
+                                      "flex px-6 py-6 text-gray-600er items-center border-b -mx-4 hover:bg-gray-100 cursor-pointer",
+                                    attrs: {
+                                      href:
+                                        "/admin/reservations/" + reservation.id
+                                    }
+                                  },
+                                  [
+                                    _c("div", { staticClass: "w-1/2" }, [
+                                      _c("div", { staticClass: "px-4" }, [
+                                        _vm._v(_vm._s(reservation.id))
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "flex w-3/5" }, [
+                                      _c("div", { staticClass: "w-1/2 px-4" }, [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass: "text-right font-bold"
+                                          },
+                                          [
+                                            _vm._v(
+                                              _vm._s(reservation.source_code)
+                                            )
+                                          ]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("div", { staticClass: "w-1/2 px-4" }, [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass: "text-right text-gray"
+                                          },
+                                          [
+                                            _vm._v(
+                                              _vm._s(reservation.source_type)
+                                            )
+                                          ]
+                                        )
+                                      ])
+                                    ])
+                                  ]
+                                )
+                              }
+                            ),
+                            0
+                          )
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "w-full mb-6 lg:mb-0 lg:w-1/2 px-4 pr-2 flex flex-col text-gray-700"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "flex flex-col bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden"
+                        },
+                        [
+                          _vm._m(1),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            _vm._l(_vm.queuedReservations, function(
+                              reservation
+                            ) {
                               return _c(
                                 "a",
                                 {
                                   staticClass:
-                                    "flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4 hover:bg-gray-100 cursor-pointer",
+                                    "flex px-6 py-6 text-gray-600er items-center border-b -mx-4 hover:bg-gray-100 cursor-pointer",
                                   attrs: {
                                     href:
                                       "/admin/reservations/" + reservation.id
@@ -58760,616 +60835,27 @@ var render = function() {
                                   ])
                                 ]
                               )
-                            }
-                          ),
-                          0
-                        )
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "w-full mb-6 lg:mb-0 lg:w-1/2 px-4 pr-2 flex flex-col text-gray-700"
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "flex-grow flex flex-col bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden"
-                      },
-                      [
-                        _vm._m(22),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          _vm._l(_vm.stats.queuedReservations, function(
-                            reservation
-                          ) {
-                            return _c(
-                              "a",
-                              {
-                                staticClass:
-                                  "flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4 hover:bg-gray-100 cursor-pointer",
-                                attrs: {
-                                  href: "/admin/reservations/" + reservation.id
-                                }
-                              },
-                              [
-                                _c("div", { staticClass: "w-1/2" }, [
-                                  _c("div", { staticClass: "px-4" }, [
-                                    _vm._v(_vm._s(reservation.id))
-                                  ])
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "flex w-3/5" }, [
-                                  _c("div", { staticClass: "w-1/2 px-4" }, [
-                                    _c(
-                                      "div",
-                                      { staticClass: "text-right font-bold" },
-                                      [_vm._v(_vm._s(reservation.source_code))]
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "w-1/2 px-4" }, [
-                                    _c(
-                                      "div",
-                                      { staticClass: "text-right text-gray" },
-                                      [_vm._v(_vm._s(reservation.source_type))]
-                                    )
-                                  ])
-                                ])
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      ]
-                    )
-                  ]
-                )
-              ])
-            : _vm._e()
-        ])
+                            }),
+                            0
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.activeTab == "LECTURERS" ? _c("dashboard-lecturer") : _vm._e(),
+            _vm._v(" "),
+            _vm.activeTab == "ATTENDEES" ? _c("dashboard-attendees") : _vm._e()
+          ],
+          1
+        )
       ]
     )
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex text-sm" }, [
-      _c(
-        "button",
-        {
-          staticClass:
-            "appearance-none py-4 border-b border-blue-600 hover:border-gray-600 mr-3 text-blue-600",
-          attrs: { type: "button" }
-        },
-        [_vm._v("Měsíc")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass:
-            "appearance-none py-4 text-gray-600 border-b border-transparent hover:border-gray-600 mr-3",
-          attrs: { type: "button" }
-        },
-        [_vm._v("Rok")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w-1/4 text-center py-8" }, [
-      _c("div", { staticClass: "border-r" }, [
-        _c("div", { staticClass: "text-gray-600er mb-2" }, [
-          _c("span", { staticClass: "text-5xl" }, [_vm._v("12")])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "text-sm uppercase text-gray tracking-wide" },
-          [
-            _vm._v(
-              "\n                        Kurzů tento měsíc\n                      "
-            )
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w-1/4 text-center py-8" }, [
-      _c("div", { staticClass: "border-r" }, [
-        _c("div", { staticClass: "text-gray-600er mb-2" }, [
-          _c("span", { staticClass: "text-5xl" }, [_vm._v("2")])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "text-sm uppercase text-gray tracking-wide" },
-          [
-            _vm._v(
-              "\n                        Probíhajicí kurzy\n                      "
-            )
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w-1/4 text-center py-8" }, [
-      _c("div", { staticClass: "border-r" }, [
-        _c("div", { staticClass: "text-gray-600er mb-2" }, [
-          _c("span", { staticClass: "text-5xl" }, [_vm._v("7")])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "text-sm uppercase text-gray tracking-wide" },
-          [
-            _vm._v(
-              "\n                        Plně zaplněných kurzů\n                      "
-            )
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w-1/4 text-center py-8" }, [
-      _c("div", [
-        _c("div", { staticClass: "text-gray-600er mb-2" }, [
-          _c("span", { staticClass: "text-5xl" }, [_vm._v("8")])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "text-sm uppercase text-gray tracking-wide" },
-          [
-            _vm._v(
-              "\n                        Dokončených kurzů\n                      "
-            )
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4"
-      },
-      [
-        _c("div", { staticClass: "w-1/2" }, [
-          _c("div", { staticClass: "px-4" }, [
-            _vm._v("PRAHA (Komunitní centrum Hrubého, Praha 8 - Kobylisy)")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex w-3/5" }, [
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right" }, [_vm._v("30/40")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right text-gray font-bold" }, [
-              _vm._v("75%")
-            ])
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4"
-      },
-      [
-        _c("div", { staticClass: "w-1/2" }, [
-          _c("div", { staticClass: "px-4" }, [
-            _vm._v("BRNO (Gymnázium Globe, s.r.o., Bzenecká 23, Brno)")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex w-3/5" }, [
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right" }, [_vm._v("10/20")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right text-gray font-bold" }, [
-              _vm._v("50%")
-            ])
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4"
-      },
-      [
-        _c("div", { staticClass: "w-1/2" }, [
-          _c("div", { staticClass: "px-4" }, [
-            _vm._v(
-              "OSTRAVA (SŠ stavební a dřevozpracující, U Studia 33, Ostrava - Zábřeh) "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex w-3/5" }, [
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right" }, [_vm._v("8/10")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right text-gray font-bold" }, [
-              _vm._v("80%")
-            ])
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "px-6 py-4" }, [
-      _c("div", { staticClass: "text-center text-gray font-bold" }, [
-        _vm._v(
-          "\n                                  Celkově 48/70 → 68.6%\n                              "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4"
-      },
-      [
-        _c("div", { staticClass: "w-1/2" }, [
-          _c("div", { staticClass: "px-4" }, [
-            _vm._v("PRAHA (Komunitní centrum Hrubého, Praha 8 - Kobylisy)")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex w-3/5" }, [
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right" }, [_vm._v("0/4")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right text-gray font-bold" }, [
-              _vm._v("0%")
-            ])
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4"
-      },
-      [
-        _c("div", { staticClass: "w-1/2" }, [
-          _c("div", { staticClass: "px-4" }, [
-            _vm._v("BRNO (Gymnázium Globe, s.r.o., Bzenecká 23, Brno)")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex w-3/5" }, [
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right" }, [_vm._v("2/4")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right text-gray font-bold" }, [
-              _vm._v("50%")
-            ])
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4"
-      },
-      [
-        _c("div", { staticClass: "w-1/2" }, [
-          _c("div", { staticClass: "px-4" }, [
-            _vm._v(
-              "OSTRAVA (SŠ stavební a dřevozpracující, U Studia 33, Ostrava - Zábřeh) "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex w-3/5" }, [
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right" }, [_vm._v("1/1")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c(
-              "div",
-              { staticClass: "text-right text-gray font-bold text-red-600" },
-              [_vm._v("100%")]
-            )
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "px-6 py-4" }, [
-      _c("div", { staticClass: "text-center text-gray font-bold" }, [
-        _vm._v(
-          "\n                                  Celkově 3/9 → 33.33%\n                              "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4"
-      },
-      [
-        _c("div", { staticClass: "w-1/2" }, [
-          _c("div", { staticClass: "px-4" }, [_vm._v("Leden")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex w-3/5" }, [
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right" }, [_vm._v("2/40")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c(
-              "div",
-              { staticClass: "text-right text-gray font-bold text-red-600" },
-              [_vm._v("5%")]
-            )
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4"
-      },
-      [
-        _c("div", { staticClass: "w-1/2" }, [
-          _c("div", { staticClass: "px-4" }, [_vm._v("Únor")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex w-3/5" }, [
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right" }, [_vm._v("8/20")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right text-gray font-bold" }, [
-              _vm._v("40%")
-            ])
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4"
-      },
-      [
-        _c("div", { staticClass: "w-1/2" }, [
-          _c("div", { staticClass: "px-4" }, [_vm._v("Březen")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex w-3/5" }, [
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right" }, [_vm._v("20/20")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right text-gray font-bold" }, [
-              _vm._v("100%")
-            ])
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "px-6 py-4" }, [
-      _c("div", { staticClass: "text-center text-gray font-bold" }, [
-        _vm._v(
-          "\n                                  Celkově 30/80 → 37.5%\n                              "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4"
-      },
-      [
-        _c("div", { staticClass: "w-1/2" }, [
-          _c("div", { staticClass: "px-4" }, [_vm._v("Leden")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex w-3/5" }, [
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right" }, [_vm._v("4/5")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right text-gray font-bold" }, [
-              _vm._v("80%")
-            ])
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4"
-      },
-      [
-        _c("div", { staticClass: "w-1/2" }, [
-          _c("div", { staticClass: "px-4" }, [_vm._v("Únor")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex w-3/5" }, [
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right" }, [_vm._v("1/4")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right text-gray font-bold" }, [
-              _vm._v("25%")
-            ])
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "flex-grow flex px-6 py-6 text-gray-600er items-center border-b -mx-4"
-      },
-      [
-        _c("div", { staticClass: "w-1/2" }, [
-          _c("div", { staticClass: "px-4" }, [_vm._v("Březen")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "flex w-3/5" }, [
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right" }, [_vm._v("0/5")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "w-1/2 px-4" }, [
-            _c("div", { staticClass: "text-right text-gray font-bold" }, [
-              _vm._v("0%")
-            ])
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "px-6 py-4" }, [
-      _c("div", { staticClass: "text-center text-gray font-bold" }, [
-        _vm._v(
-          "\n                                  Celkově 5/14 → 35.7%\n                              "
-        )
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -59399,6 +60885,520 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Dashboard/Attendees.vue?vue&type=template&id=39087b63&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Dashboard/Attendees.vue?vue&type=template&id=39087b63& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "flex flex-wrap" }, [
+    _c("div", { staticClass: "w-1/2 mb-4 text-gray-700 pr-2" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "w-full bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden"
+        },
+        [
+          _c(
+            "div",
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _vm._l(_vm.attendeesGroupedByVenues, function(attendees, venue) {
+                return _c(
+                  "div",
+                  {
+                    staticClass:
+                      "flex px-6 py-2 text-gray-600er items-center border-b -mx-4 course-pointer hover:bg-gray-200"
+                  },
+                  [
+                    _c("div", { staticClass: "w-1/2" }, [
+                      _c("div", { staticClass: "px-4" }, [
+                        _vm._v(_vm._s(venue))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "w-1/2 text-right" }, [
+                      _c("div", { staticClass: "px-4" }, [
+                        _vm._v(_vm._s(attendees.length))
+                      ])
+                    ])
+                  ]
+                )
+              })
+            ],
+            2
+          )
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "w-1/2 mb-4 text-gray-700 pl-2" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "bg-white border-t border-b sm:rounded sm:border shadow p-4"
+        },
+        [
+          _vm.countOfAttendeesByVenue.length != 0
+            ? _c("doughnut-chart", {
+                key: "venues",
+                ref: "venue-chart",
+                attrs: {
+                  chartdata: {
+                    labels: _vm.venues,
+                    datasets: [
+                      {
+                        label: "Počet účastníků podle místa",
+                        backgroundColor: [
+                          "#44337A",
+                          "#553C9A",
+                          "#6B46C1",
+                          "#805AD5",
+                          "#9F7AEA",
+                          "#B794F4",
+                          "#D6BCFA",
+                          "#E9D8FD",
+                          "#FAF5FF",
+                          "#3C366B",
+                          "#434190",
+                          "#4C51BF",
+                          "#5A67D8",
+                          "#667EEA",
+                          "#7F9CF5",
+                          "#A3BFFA",
+                          "#C3DAFE",
+                          "#EBF4FF",
+                          "#2A4365",
+                          "#2C5282",
+                          "#2B6CB0",
+                          "#3182CE",
+                          "#4299E1",
+                          "#63B3ED",
+                          "#90CDF4",
+                          "#BEE3F8",
+                          "#EBF8FF",
+                          "#234E52"
+                        ],
+                        data: _vm.countOfAttendeesByVenue
+                      }
+                    ]
+                  }
+                }
+              })
+            : _vm._e()
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "border-b" }, [
+      _c("div", { staticClass: "flex justify-between px-3 -mb-px" }, [
+        _c("div", { staticClass: "py-3 px-2 font-normal" }, [
+          _vm._v("Počet účastníků podle místa")
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Dashboard/General.vue?vue&type=template&id=620b9652&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Dashboard/General.vue?vue&type=template&id=620b9652& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "flex flex-wrap" },
+    _vm._l(_vm.courseDateGroups, function(courseDateGroup, date) {
+      return _c(
+        "div",
+        {
+          staticClass: "w-full mb-4 lg:w-1/2 flex px-2 flex-col text-gray-700"
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass:
+                "w-full flex bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden"
+            },
+            [
+              _c(
+                "div",
+                { staticClass: "w-full" },
+                [
+                  _c("div", { staticClass: "border-b" }, [
+                    _c(
+                      "div",
+                      { staticClass: "flex justify-between px-3 -mb-px" },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "py-3 px-2 font-normal text-blue-600"
+                          },
+                          [_vm._v(_vm._s(date))]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(courseDateGroup, function(courseDate) {
+                    return _c(
+                      "a",
+                      {
+                        staticClass:
+                          "flex px-6 py-2 text-gray-600er items-center border-b -mx-4 course-pointer hover:bg-gray-200",
+                        attrs: { href: "/admin/course-dates/" + courseDate.id }
+                      },
+                      [
+                        _c("div", { staticClass: "w-1/4" }, [
+                          _c("div", { staticClass: "px-4" }, [
+                            _vm._v(_vm._s(courseDate.courseName))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "w-1/4 text-right" }, [
+                          _c("div", { staticClass: "px-4" }, [
+                            _vm._v(_vm._s(courseDate.venue))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "w-1/4 text-right" }, [
+                          _c("div", { staticClass: "px-4" }, [
+                            _vm._v(_vm._s(courseDate.lecturer))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "w-1/4 text-right" }, [
+                          _c("div", { staticClass: "px-4" }, [
+                            _vm._v(
+                              _vm._s(courseDate.limit - courseDate.remaining) +
+                                " / " +
+                                _vm._s(courseDate.limit)
+                            )
+                          ])
+                        ])
+                      ]
+                    )
+                  })
+                ],
+                2
+              )
+            ]
+          )
+        ]
+      )
+    }),
+    0
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Dashboard/Lecturer.vue?vue&type=template&id=2d59b28c&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Dashboard/Lecturer.vue?vue&type=template&id=2d59b28c& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "flex" },
+    [
+      _c(
+        "div",
+        { staticClass: "flex flex-wrap w-3/5" },
+        _vm._l(_vm.lecturers, function(monthStats, lecturer) {
+          return lecturer != null && lecturer != ""
+            ? _c("div", { staticClass: "w-1/3 mb-4 text-gray-700 px-2" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "w-full bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden"
+                  },
+                  [
+                    _c(
+                      "div",
+                      [
+                        _c("div", { staticClass: "border-b" }, [
+                          _c(
+                            "div",
+                            { staticClass: "flex justify-between px-3 -mb-px" },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "py-3 px-2 font-normal text-blue-600"
+                                },
+                                [_vm._v(_vm._s(lecturer))]
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _vm._l(monthStats, function(
+                          countOfCourseDatesInMonth,
+                          month
+                        ) {
+                          return _c(
+                            "div",
+                            {
+                              staticClass:
+                                "flex px-6 py-2 text-gray-600er items-center border-b -mx-4 course-pointer hover:bg-gray-200"
+                            },
+                            [
+                              _c("div", { staticClass: "w-1/2" }, [
+                                _c("div", { staticClass: "px-4" }, [
+                                  _vm._v(_vm._s(month))
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "w-1/2 text-right" }, [
+                                _c("div", { staticClass: "px-4" }, [
+                                  _vm._v(
+                                    _vm._s(countOfCourseDatesInMonth) +
+                                      " / " +
+                                      _vm._s(
+                                        _vm.getCourseDatesCountInMonth(month)
+                                      ) +
+                                      " (" +
+                                      _vm._s(
+                                        _vm.getLecturerCoverageOfMonthCourseDates(
+                                          lecturer,
+                                          month
+                                        )
+                                      ) +
+                                      "%)"
+                                  )
+                                ])
+                              ])
+                            ]
+                          )
+                        }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "px-6 py-2 flex font-bold" }, [
+                          _c("div", { staticClass: "w-full py-4" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "text-center text-gray font-bold"
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                Celkově " +
+                                    _vm._s(
+                                      _vm.getLecturerCourseDatesCount(lecturer)
+                                    ) +
+                                    " / " +
+                                    _vm._s(_vm.getCourseDatesCount()) +
+                                    " (" +
+                                    _vm._s(
+                                      _vm.getLecturerCoverageOfCourseDates(
+                                        lecturer
+                                      )
+                                    ) +
+                                    "%)\n                            "
+                                )
+                              ]
+                            )
+                          ])
+                        ])
+                      ],
+                      2
+                    )
+                  ]
+                )
+              ])
+            : _vm._e()
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _vm._l(_vm.lecturers, function(monthStats, lecturer) {
+        return lecturer == "" || lecturer == null
+          ? _c("div", { staticClass: "w-2/5 mb-4 text-gray-700 px-2" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "w-full bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden"
+                },
+                [
+                  _c(
+                    "div",
+                    [
+                      _vm._m(0, true),
+                      _vm._v(" "),
+                      _vm._l(monthStats, function(
+                        countOfCourseDatesInMonth,
+                        month
+                      ) {
+                        return _c(
+                          "div",
+                          {
+                            staticClass:
+                              "flex px-6 py-2 text-gray-600er items-center border-b -mx-4 course-pointer hover:bg-gray-200"
+                          },
+                          [
+                            _c("div", { staticClass: "w-1/2" }, [
+                              _c("div", { staticClass: "px-4" }, [
+                                _vm._v(_vm._s(month))
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "w-1/2 text-right" }, [
+                              _c("div", { staticClass: "px-4" }, [
+                                _vm._v(
+                                  _vm._s(countOfCourseDatesInMonth) +
+                                    " / " +
+                                    _vm._s(
+                                      _vm.getCourseDatesCountInMonth(month)
+                                    ) +
+                                    " (" +
+                                    _vm._s(
+                                      _vm.getLecturerCoverageOfMonthCourseDates(
+                                        lecturer,
+                                        month
+                                      )
+                                    ) +
+                                    "%)"
+                                )
+                              ])
+                            ])
+                          ]
+                        )
+                      }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "px-6 py-2 flex font-bold" }, [
+                        _c("div", { staticClass: "w-full py-4" }, [
+                          _c(
+                            "div",
+                            { staticClass: "text-center text-gray font-bold" },
+                            [
+                              _vm._v(
+                                "\n                            Celkově " +
+                                  _vm._s(
+                                    _vm.getLecturerCourseDatesCount(lecturer)
+                                  ) +
+                                  " / " +
+                                  _vm._s(_vm.getCourseDatesCount()) +
+                                  " (" +
+                                  _vm._s(
+                                    _vm.getLecturerCoverageOfCourseDates(
+                                      lecturer
+                                    )
+                                  ) +
+                                  "%)\n                        "
+                              )
+                            ]
+                          )
+                        ])
+                      ])
+                    ],
+                    2
+                  )
+                ]
+              )
+            ])
+          : _vm._e()
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "border-b" }, [
+      _c("div", { staticClass: "flex justify-between px-3 -mb-px" }, [
+        _c("div", { staticClass: "py-3 px-2 font-normal text-red-600" }, [
+          _vm._v("Bez lektora")
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Dashboard/Orders.vue?vue&type=template&id=063f69eb&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Dashboard/Orders.vue?vue&type=template&id=063f69eb& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "flex flex-wrap -mx-4" })
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -60012,10 +62012,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Reservations/ReservationList.vue?vue&type=template&id=d2c247e6&":
-/*!*************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Reservations/ReservationList.vue?vue&type=template&id=d2c247e6& ***!
-  \*************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Reservations/Reservations.vue?vue&type=template&id=55972134&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Reservations/Reservations.vue?vue&type=template&id=55972134& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60028,190 +62028,91 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "h-screen w-full bg-gray-100" }, [
-    _c("div", { staticClass: "flex-grow w-full pt-4 pb-8 pr-4" }, [
-      _c(
-        "div",
-        {
-          staticClass:
-            "bg-white border-t border-b sm:border-l sm:border-r sm:rounded shadow mb-4"
-        },
-        [
-          _c("div", { staticClass: "w-full h-full p-6" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "w-full h-full mt-6" }, [
-              _c("table", { staticClass: "table w-full" }, [
-                _vm._m(1),
+    _c(
+      "div",
+      { staticClass: "w-full mb-4 flex flex-col text-gray-700 pt-4 pr-4" },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "w-full flex bg-white border-t border-b sm:rounded sm:border shadow overflow-hidden"
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "w-full" },
+              [
+                _vm._m(0),
                 _vm._v(" "),
-                _c(
-                  "tbody",
-                  _vm._l(_vm.reservations, function(reservation, i) {
-                    return _c("tr", { class: { "bg-gray-200": i % 2 == 0 } }, [
-                      _c(
-                        "td",
-                        {
-                          staticClass:
-                            "border border-r-0 px-1 py-1 text-left text-blue-400"
-                        },
-                        [
-                          _c(
-                            "a",
-                            {
-                              attrs: {
-                                href: "/admin/reservations/" + reservation.id
-                              }
-                            },
-                            [_vm._v(_vm._s(reservation.id))]
-                          )
-                        ]
-                      ),
+                _vm._l(_vm.reservations, function(reservation, i) {
+                  return _c(
+                    "a",
+                    {
+                      staticClass:
+                        "flex px-6 py-2 text-gray-600er items-center border-b -mx-4 course-pointer hover:bg-gray-200",
+                      attrs: { href: "/admin/reservations/" + reservation.id }
+                    },
+                    [
+                      _c("div", { staticClass: "w-1/12" }, [
+                        _c("div", { staticClass: "px-2" }, [
+                          _vm._v(_vm._s(reservation.id))
+                        ])
+                      ]),
                       _vm._v(" "),
-                      _c(
-                        "td",
-                        {
-                          staticClass: "border border-r-0 px-1 py-1 text-left"
-                        },
-                        [_vm._v(_vm._s(reservation.course_date.course.name))]
-                      ),
+                      _c("div", { staticClass: "w-1/12 text-left" }, [
+                        _c("div", { staticClass: "px-2" }, [
+                          _vm._v(_vm._s(reservation.course_date.course.name))
+                        ])
+                      ]),
                       _vm._v(" "),
-                      _c(
-                        "td",
-                        {
-                          staticClass: "border border-r-0 px-1 py-1 text-left"
-                        },
-                        [
+                      _c("div", { staticClass: "w-2/12 text-left" }, [
+                        _c("div", { staticClass: "px-2" }, [
                           _vm._v(
                             _vm._s(reservation.course_date.fullDateForHumans)
                           )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        {
-                          staticClass: "border border-r-0 px-1 py-1 text-left"
-                        },
-                        [_vm._v(_vm._s(reservation.course_date.venue))]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        {
-                          staticClass: "border border-r-0 px-1 py-1 text-left"
-                        },
-                        [_vm._v(_vm._s(reservation.source_type))]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        {
-                          staticClass: "border border-r-0 px-1 py-1 text-left"
-                        },
-                        [_vm._v(_vm._s(reservation.source_code))]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "td",
-                        {
-                          staticClass: "border border-r-0 px-1 py-1 text-left"
-                        },
-                        [_vm._v(_vm._s(reservation.status))]
-                      ),
-                      _vm._v(" "),
-                      _c("td", { staticClass: "border px-4 py-2 text-left" }, [
-                        _vm._v(_vm._s(reservation.createdAtForHumans))
+                        ])
                       ]),
                       _vm._v(" "),
-                      _c("td", { staticClass: "border border-l-0" }, [
-                        _c("div", { staticClass: "inline-flex w-full" }, [
-                          _c(
-                            "a",
-                            {
-                              staticClass:
-                                "w-full text-center hover:bg-gray-400 text-gray-800 font-bold py-1",
-                              class: {
-                                "bg-gray-100": i % 2 == 0,
-                                "bg-gray-300": i % 2 != 0
-                              },
-                              attrs: { href: "#" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.deleteReservation(reservation.id)
-                                }
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                                            Odstranit\n                                        "
-                              )
-                            ]
-                          )
+                      _c("div", { staticClass: "w-1/12 text-left" }, [
+                        _c("div", { staticClass: "px-2" }, [
+                          _vm._v(_vm._s(reservation.course_date.venue))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "w-1/12 text-left" }, [
+                        _c("div", { staticClass: "px-2" }, [
+                          _vm._v(_vm._s(reservation.source_type))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "w-2/12 text-left" }, [
+                        _c("div", { staticClass: "px-2" }, [
+                          _vm._v(_vm._s(reservation.source_code))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "w-2/12 text-left" }, [
+                        _c("div", { staticClass: "px-2" }, [
+                          _vm._v(_vm._s(reservation.status))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "w-2/12 text-left" }, [
+                        _c("div", { staticClass: "px-2" }, [
+                          _vm._v(_vm._s(reservation.createdAtForHumans))
                         ])
                       ])
-                    ])
-                  }),
-                  0
-                )
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _vm.showDeleteSuccessMessage
-            ? _c(
-                "div",
-                {
-                  staticClass:
-                    "fixed bottom-0 right-0 mb-4 mr-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded cursor-pointer",
-                  attrs: { role: "alert" },
-                  on: {
-                    click: function($event) {
-                      _vm.showDeleteSuccessMessage = false
-                    }
-                  }
-                },
-                [
-                  _c("strong", { staticClass: "font-bold" }, [
-                    _vm._v("Úspěch!")
-                  ]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "block sm:inline pr-6" }, [
-                    _vm._v("Termín byl odstraňěn.")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass: "absolute top-0 bottom-0 right-0 px-4 py-3"
-                    },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "fill-current h-6 w-6 text-green-500",
-                          attrs: {
-                            role: "button",
-                            xmlns: "http://www.w3.org/2000/svg",
-                            viewBox: "0 0 20 20"
-                          }
-                        },
-                        [
-                          _c("title", [_vm._v("Close")]),
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"
-                            }
-                          })
-                        ]
-                      )
                     ]
                   )
-                ]
-              )
-            : _vm._e()
-        ]
-      )
-    ])
+                })
+              ],
+              2
+            )
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -60219,35 +62120,71 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "w-full border-b pb-2 flex items-end justify-between" },
-      [_c("div", { staticClass: "text-3xl" }, [_vm._v("Rezervace")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("ID")]),
+    return _c("div", { staticClass: "border-b" }, [
+      _c("div", { staticClass: "flex justify-between px-3 -mb-px" }, [
+        _c(
+          "div",
+          {
+            staticClass: "w-1/12 py-3 text-left px-2 font-normal text-blue-600"
+          },
+          [_vm._v("ID")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Kurz")]),
+        _c(
+          "div",
+          {
+            staticClass: "w-1/12 py-3 text-left px-2 font-normal text-blue-600"
+          },
+          [_vm._v("Kurz")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Termín")]),
+        _c(
+          "div",
+          {
+            staticClass: "w-2/12 py-3 text-left px-2 font-normal text-blue-600"
+          },
+          [_vm._v("Termín")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Místo")]),
+        _c(
+          "div",
+          {
+            staticClass: "w-1/12 py-3 text-left px-2 font-normal text-blue-600"
+          },
+          [_vm._v("Místo")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Zdroj")]),
+        _c(
+          "div",
+          {
+            staticClass: "w-1/12 py-3 text-left px-2 font-normal text-blue-600"
+          },
+          [_vm._v("Zdroj")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Kód")]),
+        _c(
+          "div",
+          {
+            staticClass: "w-2/12 py-3 text-left px-2 font-normal text-blue-600"
+          },
+          [_vm._v("Kód")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Stav")]),
+        _c(
+          "div",
+          {
+            staticClass: "w-2/12 py-3 text-left px-2 font-normal text-blue-600"
+          },
+          [_vm._v("Stav")]
+        ),
         _vm._v(" "),
-        _c("th", { staticClass: "px-1 py-1 text-left" }, [_vm._v("Vytvořeno")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "px-1 py-1 text-right" }, [_vm._v("Akce")])
+        _c(
+          "div",
+          {
+            staticClass: "w-2/12 py-3 text-left px-2 font-normal text-blue-600"
+          },
+          [_vm._v("Vytvořeno")]
+        )
       ])
     ])
   }
@@ -75330,12 +77267,17 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.component('navbar', __webpack_require__(/*! ./components/Admin/Navbar.vue */ "./resources/js/components/Admin/Navbar.vue")["default"]);
 Vue.component('dashboard', __webpack_require__(/*! ./components/Admin/Dashboard.vue */ "./resources/js/components/Admin/Dashboard.vue")["default"]);
+Vue.component('dashboard-general', __webpack_require__(/*! ./components/Admin/Dashboard/General.vue */ "./resources/js/components/Admin/Dashboard/General.vue")["default"]);
+Vue.component('dashboard-lecturer', __webpack_require__(/*! ./components/Admin/Dashboard/Lecturer.vue */ "./resources/js/components/Admin/Dashboard/Lecturer.vue")["default"]);
+Vue.component('dashboard-orders', __webpack_require__(/*! ./components/Admin/Dashboard/Orders.vue */ "./resources/js/components/Admin/Dashboard/Orders.vue")["default"]);
+Vue.component('dashboard-attendees', __webpack_require__(/*! ./components/Admin/Dashboard/Attendees.vue */ "./resources/js/components/Admin/Dashboard/Attendees.vue")["default"]);
 Vue.component('confirmation-modal', __webpack_require__(/*! ./components/Admin/Modals/Confirmation.vue */ "./resources/js/components/Admin/Modals/Confirmation.vue")["default"]);
 Vue.component('course-dates-list', __webpack_require__(/*! ./components/Admin/Courses/CourseDatesList.vue */ "./resources/js/components/Admin/Courses/CourseDatesList.vue")["default"]);
 Vue.component('course-date', __webpack_require__(/*! ./components/Admin/Courses/CourseDate.vue */ "./resources/js/components/Admin/Courses/CourseDate.vue")["default"]);
 Vue.component('courses-list', __webpack_require__(/*! ./components/Admin/Courses/CoursesList.vue */ "./resources/js/components/Admin/Courses/CoursesList.vue")["default"]);
+Vue.component('course-create', __webpack_require__(/*! ./components/Admin/Courses/CourseCreate.vue */ "./resources/js/components/Admin/Courses/CourseCreate.vue")["default"]);
 Vue.component('reservation', __webpack_require__(/*! ./components/Admin/Reservations/Reservation.vue */ "./resources/js/components/Admin/Reservations/Reservation.vue")["default"]);
-Vue.component('reservation-list', __webpack_require__(/*! ./components/Admin/Reservations/ReservationList.vue */ "./resources/js/components/Admin/Reservations/ReservationList.vue")["default"]); // Site components
+Vue.component('reservations', __webpack_require__(/*! ./components/Admin/Reservations/Reservations.vue */ "./resources/js/components/Admin/Reservations/Reservations.vue")["default"]); // Site components
 
 Vue.component('site-navbar', __webpack_require__(/*! ./components/SiteNavbar.vue */ "./resources/js/components/SiteNavbar.vue")["default"]);
 Vue.component('reservation-form', __webpack_require__(/*! ./components/Reservations/ReservationForm.vue */ "./resources/js/components/Reservations/ReservationForm.vue")["default"]);
@@ -75385,6 +77327,75 @@ window.axios.defaults.headers.common = {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Courses/CourseCreate.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/Admin/Courses/CourseCreate.vue ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CourseCreate_vue_vue_type_template_id_38719499___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CourseCreate.vue?vue&type=template&id=38719499& */ "./resources/js/components/Admin/Courses/CourseCreate.vue?vue&type=template&id=38719499&");
+/* harmony import */ var _CourseCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CourseCreate.vue?vue&type=script&lang=js& */ "./resources/js/components/Admin/Courses/CourseCreate.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CourseCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CourseCreate_vue_vue_type_template_id_38719499___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CourseCreate_vue_vue_type_template_id_38719499___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Admin/Courses/CourseCreate.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Courses/CourseCreate.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Courses/CourseCreate.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CourseCreate.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Courses/CourseCreate.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseCreate_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Courses/CourseCreate.vue?vue&type=template&id=38719499&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Courses/CourseCreate.vue?vue&type=template&id=38719499& ***!
+  \***********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseCreate_vue_vue_type_template_id_38719499___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CourseCreate.vue?vue&type=template&id=38719499& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Courses/CourseCreate.vue?vue&type=template&id=38719499&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseCreate_vue_vue_type_template_id_38719499___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseCreate_vue_vue_type_template_id_38719499___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -75682,6 +77693,282 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Admin/Dashboard/Attendees.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/Admin/Dashboard/Attendees.vue ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Attendees_vue_vue_type_template_id_39087b63___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Attendees.vue?vue&type=template&id=39087b63& */ "./resources/js/components/Admin/Dashboard/Attendees.vue?vue&type=template&id=39087b63&");
+/* harmony import */ var _Attendees_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Attendees.vue?vue&type=script&lang=js& */ "./resources/js/components/Admin/Dashboard/Attendees.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Attendees_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Attendees_vue_vue_type_template_id_39087b63___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Attendees_vue_vue_type_template_id_39087b63___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Admin/Dashboard/Attendees.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Dashboard/Attendees.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Dashboard/Attendees.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Attendees_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Attendees.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Dashboard/Attendees.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Attendees_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Dashboard/Attendees.vue?vue&type=template&id=39087b63&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Dashboard/Attendees.vue?vue&type=template&id=39087b63& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Attendees_vue_vue_type_template_id_39087b63___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Attendees.vue?vue&type=template&id=39087b63& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Dashboard/Attendees.vue?vue&type=template&id=39087b63&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Attendees_vue_vue_type_template_id_39087b63___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Attendees_vue_vue_type_template_id_39087b63___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Dashboard/General.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/Admin/Dashboard/General.vue ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _General_vue_vue_type_template_id_620b9652___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./General.vue?vue&type=template&id=620b9652& */ "./resources/js/components/Admin/Dashboard/General.vue?vue&type=template&id=620b9652&");
+/* harmony import */ var _General_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./General.vue?vue&type=script&lang=js& */ "./resources/js/components/Admin/Dashboard/General.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _General_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _General_vue_vue_type_template_id_620b9652___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _General_vue_vue_type_template_id_620b9652___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Admin/Dashboard/General.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Dashboard/General.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Dashboard/General.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_General_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./General.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Dashboard/General.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_General_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Dashboard/General.vue?vue&type=template&id=620b9652&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Dashboard/General.vue?vue&type=template&id=620b9652& ***!
+  \********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_General_vue_vue_type_template_id_620b9652___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./General.vue?vue&type=template&id=620b9652& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Dashboard/General.vue?vue&type=template&id=620b9652&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_General_vue_vue_type_template_id_620b9652___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_General_vue_vue_type_template_id_620b9652___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Dashboard/Lecturer.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/Admin/Dashboard/Lecturer.vue ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Lecturer_vue_vue_type_template_id_2d59b28c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Lecturer.vue?vue&type=template&id=2d59b28c& */ "./resources/js/components/Admin/Dashboard/Lecturer.vue?vue&type=template&id=2d59b28c&");
+/* harmony import */ var _Lecturer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Lecturer.vue?vue&type=script&lang=js& */ "./resources/js/components/Admin/Dashboard/Lecturer.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Lecturer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Lecturer_vue_vue_type_template_id_2d59b28c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Lecturer_vue_vue_type_template_id_2d59b28c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Admin/Dashboard/Lecturer.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Dashboard/Lecturer.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Dashboard/Lecturer.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Lecturer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Lecturer.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Dashboard/Lecturer.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Lecturer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Dashboard/Lecturer.vue?vue&type=template&id=2d59b28c&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Dashboard/Lecturer.vue?vue&type=template&id=2d59b28c& ***!
+  \*********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Lecturer_vue_vue_type_template_id_2d59b28c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Lecturer.vue?vue&type=template&id=2d59b28c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Dashboard/Lecturer.vue?vue&type=template&id=2d59b28c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Lecturer_vue_vue_type_template_id_2d59b28c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Lecturer_vue_vue_type_template_id_2d59b28c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Dashboard/Orders.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/Admin/Dashboard/Orders.vue ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Orders_vue_vue_type_template_id_063f69eb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Orders.vue?vue&type=template&id=063f69eb& */ "./resources/js/components/Admin/Dashboard/Orders.vue?vue&type=template&id=063f69eb&");
+/* harmony import */ var _Orders_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Orders.vue?vue&type=script&lang=js& */ "./resources/js/components/Admin/Dashboard/Orders.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Orders_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Orders_vue_vue_type_template_id_063f69eb___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Orders_vue_vue_type_template_id_063f69eb___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Admin/Dashboard/Orders.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Dashboard/Orders.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Dashboard/Orders.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Orders_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Orders.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Dashboard/Orders.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Orders_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Dashboard/Orders.vue?vue&type=template&id=063f69eb&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Dashboard/Orders.vue?vue&type=template&id=063f69eb& ***!
+  \*******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Orders_vue_vue_type_template_id_063f69eb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Orders.vue?vue&type=template&id=063f69eb& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Dashboard/Orders.vue?vue&type=template&id=063f69eb&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Orders_vue_vue_type_template_id_063f69eb___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Orders_vue_vue_type_template_id_063f69eb___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Admin/Modals/Confirmation.vue":
 /*!***************************************************************!*\
   !*** ./resources/js/components/Admin/Modals/Confirmation.vue ***!
@@ -75889,17 +78176,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Admin/Reservations/ReservationList.vue":
-/*!************************************************************************!*\
-  !*** ./resources/js/components/Admin/Reservations/ReservationList.vue ***!
-  \************************************************************************/
+/***/ "./resources/js/components/Admin/Reservations/Reservations.vue":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Admin/Reservations/Reservations.vue ***!
+  \*********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ReservationList_vue_vue_type_template_id_d2c247e6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ReservationList.vue?vue&type=template&id=d2c247e6& */ "./resources/js/components/Admin/Reservations/ReservationList.vue?vue&type=template&id=d2c247e6&");
-/* harmony import */ var _ReservationList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReservationList.vue?vue&type=script&lang=js& */ "./resources/js/components/Admin/Reservations/ReservationList.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Reservations_vue_vue_type_template_id_55972134___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Reservations.vue?vue&type=template&id=55972134& */ "./resources/js/components/Admin/Reservations/Reservations.vue?vue&type=template&id=55972134&");
+/* harmony import */ var _Reservations_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Reservations.vue?vue&type=script&lang=js& */ "./resources/js/components/Admin/Reservations/Reservations.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -75909,9 +78196,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ReservationList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ReservationList_vue_vue_type_template_id_d2c247e6___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ReservationList_vue_vue_type_template_id_d2c247e6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Reservations_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Reservations_vue_vue_type_template_id_55972134___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Reservations_vue_vue_type_template_id_55972134___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -75921,38 +78208,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/Admin/Reservations/ReservationList.vue"
+component.options.__file = "resources/js/components/Admin/Reservations/Reservations.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/Admin/Reservations/ReservationList.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************!*\
-  !*** ./resources/js/components/Admin/Reservations/ReservationList.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************/
+/***/ "./resources/js/components/Admin/Reservations/Reservations.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Reservations/Reservations.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservationList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ReservationList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Reservations/ReservationList.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservationList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Reservations_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Reservations.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Reservations/Reservations.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Reservations_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/Admin/Reservations/ReservationList.vue?vue&type=template&id=d2c247e6&":
-/*!*******************************************************************************************************!*\
-  !*** ./resources/js/components/Admin/Reservations/ReservationList.vue?vue&type=template&id=d2c247e6& ***!
-  \*******************************************************************************************************/
+/***/ "./resources/js/components/Admin/Reservations/Reservations.vue?vue&type=template&id=55972134&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/Admin/Reservations/Reservations.vue?vue&type=template&id=55972134& ***!
+  \****************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservationList_vue_vue_type_template_id_d2c247e6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ReservationList.vue?vue&type=template&id=d2c247e6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Reservations/ReservationList.vue?vue&type=template&id=d2c247e6&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservationList_vue_vue_type_template_id_d2c247e6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Reservations_vue_vue_type_template_id_55972134___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Reservations.vue?vue&type=template&id=55972134& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Reservations/Reservations.vue?vue&type=template&id=55972134&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Reservations_vue_vue_type_template_id_55972134___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservationList_vue_vue_type_template_id_d2c247e6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Reservations_vue_vue_type_template_id_55972134___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
