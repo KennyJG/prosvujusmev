@@ -44,6 +44,8 @@ Route::group(['namespace' => 'prosvujusmev\\'], function () {
 
     Route::get('/kontakty', 'ContactsController@index');
 
+    Route::get('/cenik', 'PricesController@index');
+
     Route::group(['prefix' => '/admin', 'namespace' => 'Admin\\'], function () {
         Route::get('/stats', 'StatsController@index');
 

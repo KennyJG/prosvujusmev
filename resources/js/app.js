@@ -35,6 +35,8 @@ Vue.component('home-testamonials', require('./components/Home/Testamonials.vue')
 
 Vue.component('contacts', require('./components/Contacts/Contacts.vue').default);
 
+Vue.component('prices', require('./components/Prices/Prices.vue').default);
+
 // Utils
 Vue.component('line-chart', require('./components/Utils/Charts/LineChart.vue').default);
 Vue.component('bar-chart', require('./components/Utils/Charts/BarChart.vue').default);
