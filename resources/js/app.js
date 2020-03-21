@@ -33,6 +33,11 @@ Vue.component('bar-chart', require('./components/Utils/Charts/BarChart.vue').def
 Vue.component('pie-chart', require('./components/Utils/Charts/PieChart.vue').default);
 Vue.component('doughnut-chart', require('./components/Utils/Charts/DoughnutChart.vue').default);
 
+Vue.component('home-course', require('./components/Home/Courses/Course.vue').default);
+Vue.component('home-courses', require('./components/Home/Courses/Courses.vue').default);
+Vue.component('home-testamonial', require('./components/Home/Testamonial.vue').default);
+Vue.component('home-testamonials', require('./components/Home/Testamonials.vue').default);
+
 import VModal from 'vue-js-modal';
 Vue.use(VModal);
 
