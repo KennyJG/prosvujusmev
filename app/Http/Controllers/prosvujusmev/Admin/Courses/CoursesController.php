@@ -29,6 +29,7 @@ class CoursesController extends Controller
 
         Course::create([
             'name' => $request->name,
+            'slug' => \Illuminate\Support\Str::slug($request->name),
             'description' => $request->description,
         ]);
 

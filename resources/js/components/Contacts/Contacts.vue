@@ -17,7 +17,6 @@
             <a href="mailto: info@prosvujusmev.cz" class="bg-purple-300 hover:bg-purple-400 py-3 px-6 uppercase text-lg font-bold text-white rounded-full">Poslat Email</a>
             <a href="https://www.facebook.com/prosvujusmev.cz/" target="_blank" class="bg-blue-500 hover:bg-blue-600 py-3 px-6 uppercase text-lg font-bold text-white rounded-full mt-3">Facebook</a>
         </div>
-     
 </main>
   
 </template>

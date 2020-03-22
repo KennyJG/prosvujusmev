@@ -35,6 +35,8 @@ Vue.component('home-testamonials', require('./components/Home/Testamonials.vue')
 
 Vue.component('contacts', require('./components/Contacts/Contacts.vue').default);
 
+Vue.component('course', require('./components/Courses/Course.vue').default);
+
 Vue.component('prices', require('./components/Prices/Prices.vue').default);
 
 // Utils

@@ -27,6 +27,14 @@ class RouteServiceProvider extends ServiceProvider
             return \App\prosvujusmev\Reservations\Reservation::where('uuid', $uuid)->firstOrFail();
         });
 
+        Route::bind('course', function ($course) {
+            $courseModel = \App\prosvujusmev\Courses\Course::find($course);
+            if ($courseModel) {
+                return $courseModel;
+            }
+            return \App\prosvujusmev\Courses\Course::where('slug', $course)->firstOrFail();
+        });
+
         parent::boot();
     }
 
