@@ -24,8 +24,11 @@ Vue.component('reservations', require('./components/Admin/Reservations/Reservati
 
 // Site components
 Vue.component('site-navbar', require('./components/Navbar.vue').default);
+
 Vue.component('reservation-form', require('./components/Reservations/ReservationForm.vue').default);
 Vue.component('public-reservation', require('./components/Reservations/PublicReservation.vue').default);
+
+Vue.component('order-form', require('./components/Orders/OrderForm.vue').default);
 
 Vue.component('home-course', require('./components/Home/Courses/Course.vue').default);
 Vue.component('home-course', require('./components/Home/Courses/Course.vue').default);

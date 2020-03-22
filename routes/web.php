@@ -42,6 +42,9 @@ Route::group(['namespace' => 'prosvujusmev\\'], function () {
     Route::get('/rezervace', 'Reservations\ReservationsController@index');
     Route::post('/reservations', 'Reservations\ReservationsController@store');
 
+    Route::get('/orders', 'Orders\OrdersController@index');
+    Route::get('/koupit', 'Orders\OrdersController@index');
+
     Route::get('/kurzy/{course}', 'Courses\CoursesController@show');
 
     Route::get('/terminy', 'Courses\CourseDatesController@index');
