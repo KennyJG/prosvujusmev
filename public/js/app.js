@@ -3444,6 +3444,82 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Navbar.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Navbar.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {},
+  data: function data() {
+    return {
+      hideMenu: false
+    };
+  },
+  methods: {
+    // hideMenu: function() {
+    //     this.hideMenu =
+    // }
+    isActive: function isActive(value) {
+      return window.location.href.indexOf(value) > -1;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Reservations/Reservation.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Reservations/Reservation.vue?vue&type=script&lang=js& ***!
@@ -3688,6 +3764,43 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Contacts/Contacts.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Contacts/Contacts.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Courses/Course.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Home/Courses/Course.vue?vue&type=script&lang=js& ***!
@@ -3713,8 +3826,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['title', 'description', 'imageSource']
+  props: ['title', 'link', 'description', 'imageSource'],
+  data: function data() {
+    return {
+      hovered: false
+    };
+  }
 });
 
 /***/ }),
@@ -3745,21 +3874,251 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       courses: [{
-        title: 'TEST',
-        description: 'TEST desc',
-        imageSource: 'tesxt'
+        title: 'Tužka I.',
+        link: '/kurzy/tuzka-i',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quidem blanditiis unde asperiores? Officia amet perspiciatis ad quibusdam incidunt eaque, nobis, eveniet neque porro id commodi quisquam debitis!',
+        imageSource: '/images/tuzka1_1.jpg'
       }, {
-        title: 'TEST',
-        description: 'TEST desc',
-        imageSource: 'tesxt'
+        title: 'Tužka II.',
+        link: '/kurzy/tuzka-ii',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quidem blanditiis unde asperiores? Officia amet perspiciatis ad quibusdam incidunt eaque, nobis, eveniet neque porro id commodi quisquam debitis!',
+        imageSource: '/images/tuzka2_1.jpg'
+      }, {
+        title: 'Pastel-křída',
+        link: '/kurzy/pastel-krida',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quidem blanditiis unde asperiores? Officia amet perspiciatis ad quibusdam incidunt eaque, nobis, eveniet neque porro id commodi quisquam debitis!',
+        imageSource: '/images/pastel_krida_1.jpg'
+      }, {
+        title: 'Pastelka',
+        link: '/kurzy/pastelka',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quidem blanditiis unde asperiores? Officia amet perspiciatis ad quibusdam incidunt eaque, nobis, eveniet neque porro id commodi quisquam debitis!',
+        imageSource: '/images/pastelka_1.jpg'
+      }, {
+        title: 'Akryl',
+        link: '/kurzy/akryl',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quidem blanditiis unde asperiores? Officia amet perspiciatis ad quibusdam incidunt eaque, nobis, eveniet neque porro id commodi quisquam debitis!',
+        imageSource: '/images/akryl_1.jpg'
+      }, {
+        title: 'Olejomalba',
+        link: '/kurzy/olejomalba',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quidem blanditiis unde asperiores? Officia amet perspiciatis ad quibusdam incidunt eaque, nobis, eveniet neque porro id commodi quisquam debitis!',
+        imageSource: '/images/olejomalba_1.jpg'
       }]
     };
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Testamonial.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Home/Testamonial.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['text']
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Testamonials.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Home/Testamonials.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      testamonials: ['Naprosto úšasná paní lektorka, milý výklad, vytvořila příjemnou pohodlnou atmosféru, naučila mě o moc víc neý jsem čekala a cítila jsem se při tom skvěle. Hodnotím největší jedničkou na světě.', 'Na výbornou, velký zájem od vás obou naučit a moc hezky i lidem z ulice vysvětlit postupy a techniku. Moc chválím. Díky', 'Naučili mě se znovu dívat + mě přesvědčili, že opravdu lze naučit kreslit každého. Děkuji za skvělé vedení a instrukce v celém kurzu.', 'Načila jsem se novou techniku, jak vypracovat detaily a spostu zajímavých věcí. Poznala jsem nové lidi a ukázali mi, že člověk najde vždy něco nového i sám v sobě.'],
+      activeTestamonial: 0
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Navbar.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Navbar.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    isActive: function isActive(value) {
+      return window.location.pathname == value;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Prices/Prices.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Prices/Prices.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
 
@@ -4475,85 +4834,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getCourses();
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SiteNavbar.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SiteNavbar.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {},
-  data: function data() {
-    return {
-      showMenu: false
-    };
-  },
-  methods: {
-    hideMenu: function hideMenu() {
-      this.showMenu = !this.showMenu;
-    }
   }
 });
 
@@ -20849,6 +21129,44 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 // module
 exports.push([module.i, "input:checked + svg {\n  display: block;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Courses/Course.vue?vue&type=style&index=0&id=3e6836a7&scoped=true&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Home/Courses/Course.vue?vue&type=style&index=0&id=3e6836a7&scoped=true&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "img.inactive[data-v-3e6836a7] {\n  -webkit-filter: grayscale(1); /* Webkit */\n  filter: gray; /* IE6-9 */\n  filter: grayscale(1); /* W3C */\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Testamonials.vue?vue&type=style&index=0&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Home/Testamonials.vue?vue&type=style&index=0&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "/* Enter and leave animations can use different */\n\n/* durations and timing functions.              */\n.slide-fade-enter-active {\n  -webkit-transition: all .3s ease;\n  transition: all .3s ease;\n}\n.slide-fade-leave-active {\n  -webkit-transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.slide-fade-enter, .slide-fade-leave-to\n/* .slide-fade-leave-active below version 2.1.8 */ {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -56127,6 +56445,66 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Courses/Course.vue?vue&type=style&index=0&id=3e6836a7&scoped=true&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Home/Courses/Course.vue?vue&type=style&index=0&id=3e6836a7&scoped=true&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Course.vue?vue&type=style&index=0&id=3e6836a7&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Courses/Course.vue?vue&type=style&index=0&id=3e6836a7&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Testamonials.vue?vue&type=style&index=0&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Home/Testamonials.vue?vue&type=style&index=0&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./Testamonials.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Testamonials.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Reservations/PublicReservation.vue?vue&type=style&index=0&lang=css&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Reservations/PublicReservation.vue?vue&type=style&index=0&lang=css& ***!
@@ -61509,6 +61887,200 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Navbar.vue?vue&type=template&id=0a74dadb&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Navbar.vue?vue&type=template&id=0a74dadb& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "p-4 pt-0 mx-auto flex flex-wrap " }, [
+    _c("div", { staticClass: "pt-4 w-64" }, [
+      _c(
+        "div",
+        {
+          staticClass:
+            "w-full py-4 px-2 text-gray-900 bg-white rounded-lg text-left capitalize font-medium shadow border-t border-b sm:rounded sm:border"
+        },
+        [
+          _c(
+            "svg",
+            {
+              staticClass: "w-8 h-8 mx-auto mb-5 text-blue-600",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                viewBox: "0 0 496 512"
+              }
+            },
+            [
+              _c("path", {
+                attrs: {
+                  fill: "currentColor",
+                  d:
+                    "M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm194.8 170.2C334.3 380.4 292.5 400 248 400s-86.3-19.6-114.8-53.8c-13.6-16.3 11-36.7 24.6-20.5 22.4 26.9 55.2 42.2 90.2 42.2s67.8-15.4 90.2-42.2c13.4-16.2 38.1 4.2 24.6 20.5z"
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass:
+                "cursor-pointer px-2 py-1 hover:bg-gray-200 hover:text-gray-700 rounded block mb-3 flex items-center",
+              class: _vm.isActive("/admin/dashboard") ? "bg-gray-200" : "",
+              attrs: { href: "/admin/dashboard" }
+            },
+            [
+              _c("div", { staticClass: "rounded-full bg-gray-200" }, [
+                _c(
+                  "svg",
+                  {
+                    staticClass:
+                      "fill-current inline-block h-8 w-8 rounded-full p-2 bg-gray-200",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      viewBox: "0 0 24 24"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        "fill-rule": "evenodd",
+                        d:
+                          "M3.889 3h6.222a.9.9 0 0 1 .889.91v8.18a.9.9 0 0 1-.889.91H3.89A.9.9 0 0 1 3 12.09V3.91A.9.9 0 0 1 3.889 3zM3.889 15h6.222c.491 0 .889.384.889.857v4.286c0 .473-.398.857-.889.857H3.89C3.398 21 3 20.616 3 20.143v-4.286c0-.473.398-.857.889-.857zM13.889 11h6.222a.9.9 0 0 1 .889.91v8.18a.9.9 0 0 1-.889.91H13.89a.9.9 0 0 1-.889-.91v-8.18a.9.9 0 0 1 .889-.91zM13.889 3h6.222c.491 0 .889.384.889.857v4.286c0 .473-.398.857-.889.857H13.89C13.398 9 13 8.616 13 8.143V3.857c0-.473.398-.857.889-.857z"
+                      }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "mx-2" }, [_vm._v("Přehled")])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass:
+                "cursor-pointer px-2 py-1 hover:bg-gray-200 hover:text-gray-700 rounded block mb-3 flex items-center",
+              class: _vm.isActive("/admin/courses") ? "bg-gray-200" : "",
+              attrs: { href: "/admin/courses" }
+            },
+            [
+              _c("div", { staticClass: "rounded-full bg-gray-200" }, [
+                _c(
+                  "svg",
+                  {
+                    staticClass:
+                      "fill-current inline-block h-8 w-8 rounded-full p-2 bg-gray-200",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      viewBox: "0 0 512 512"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M204.3 5C104.9 24.4 24.8 104.3 5.2 203.4c-37 187 131.7 326.4 258.8 306.7 41.2-6.4 61.4-54.6 42.5-91.7-23.1-45.4 9.9-98.4 60.9-98.4h79.7c35.8 0 64.8-29.6 64.9-65.3C511.5 97.1 368.1-26.9 204.3 5zM96 320c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm32-128c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128-64c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 64c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"
+                      }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "mx-2" }, [_vm._v("Kurzy")])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass:
+                "cursor-pointer px-2 py-1 hover:bg-gray-200 hover:text-gray-700 rounded block mb-3 flex items-center",
+              class: _vm.isActive("/admin/course-dates") ? "bg-gray-200" : "",
+              attrs: { href: "/admin/course-dates" }
+            },
+            [
+              _c("div", { staticClass: "rounded-full bg-gray-200" }, [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "fill-current inline-block h-8 w-8 p-2",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      viewBox: "0 0 448 512"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M148 288h-40c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"
+                      }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "mx-2" }, [_vm._v("Termíny")])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass:
+                "cursor-pointer px-2 py-1 hover:bg-gray-200 hover:text-gray-700 rounded block mb-3 flex items-center",
+              class: _vm.isActive("/admin/reservations") ? "bg-gray-200" : "",
+              attrs: { href: "/admin/reservations" }
+            },
+            [
+              _c("div", { staticClass: "rounded-full bg-gray-200" }, [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "fill-current inline-block h-8 w-8 p-2",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      viewBox: "0 0 576 512"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M528 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm0 400H48V80h480v352zM208 256c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm-89.6 128h179.2c12.4 0 22.4-8.6 22.4-19.2v-19.2c0-31.8-30.1-57.6-67.2-57.6-10.8 0-18.7 8-44.8 8-26.9 0-33.4-8-44.8-8-37.1 0-67.2 25.8-67.2 57.6v19.2c0 10.6 10 19.2 22.4 19.2zM360 320h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm0-64h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8zm0-64h112c4.4 0 8-3.6 8-8v-16c0-4.4-3.6-8-8-8H360c-4.4 0-8 3.6-8 8v16c0 4.4 3.6 8 8 8z"
+                      }
+                    })
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "mx-2" }, [_vm._v("Rezervace")])
+            ]
+          )
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Reservations/Reservation.vue?vue&type=template&id=c0e88c62&":
 /*!*********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Admin/Reservations/Reservation.vue?vue&type=template&id=c0e88c62& ***!
@@ -62000,10 +62572,1788 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Courses/Course.vue?vue&type=template&id=3e6836a7&":
-/*!**********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Home/Courses/Course.vue?vue&type=template&id=3e6836a7& ***!
-  \**********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Contacts/Contacts.vue?vue&type=template&id=83e75f58&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Contacts/Contacts.vue?vue&type=template&id=83e75f58& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "main",
+    {
+      staticClass:
+        "flex flex-col lg:flex-row jusitfy-between items-center py-12 lg:mt-12"
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass:
+            "mb-16 lg:mb-0 mt-8 lg:mt-0 lg:w-3/4 lg:pl-12 flex justify-center"
+        },
+        [
+          _c(
+            "svg",
+            {
+              staticClass: "w-5/6 h-64 sm:h-auto",
+              attrs: {
+                id: "ae37f038-3a9e-4b82-ad68-fc94ba16af2a",
+                "data-name": "Layer 1",
+                xmlns: "http://www.w3.org/2000/svg",
+                "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                width: "1096",
+                height: "574.74",
+                viewBox: "0 0 1096 574.74"
+              }
+            },
+            [
+              _c(
+                "defs",
+                [
+                  _c(
+                    "linearGradient",
+                    {
+                      attrs: {
+                        id: "eb6c86d6-45fa-49e0-9a60-1b0612516196",
+                        x1: "819.07",
+                        y1: "732.58",
+                        x2: "819.07",
+                        y2: "560.46",
+                        gradientUnits: "userSpaceOnUse"
+                      }
+                    },
+                    [
+                      _c("stop", {
+                        attrs: {
+                          offset: "0",
+                          "stop-color": "gray",
+                          "stop-opacity": "0.25"
+                        }
+                      }),
+                      _c("stop", {
+                        attrs: {
+                          offset: "0.54",
+                          "stop-color": "gray",
+                          "stop-opacity": "0.12"
+                        }
+                      }),
+                      _c("stop", {
+                        attrs: {
+                          offset: "1",
+                          "stop-color": "gray",
+                          "stop-opacity": "0.1"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _c(
+                    "pattern",
+                    {
+                      attrs: {
+                        id: "ad310e25-2b04-44c8-bb7b-982389166780",
+                        "data-name": "New Pattern 3",
+                        width: "36.88",
+                        height: "49.48",
+                        patternUnits: "userSpaceOnUse",
+                        viewBox: "0 0 36.88 49.48"
+                      }
+                    },
+                    [
+                      _c("rect", {
+                        attrs: { width: "36.88", height: "49.48", fill: "none" }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M4.33,13.19c4.5,0,4.51-7,0-7s-4.52,7,0,7Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M4.51,17.16c4.51,0,4.52-7,0-7s-4.51,7,0,7Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M4.51,20.94c4.51,0,4.52-7,0-7s-4.51,7,0,7Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M3.38,24.72c4.51,0,4.51-7,0-7s-4.51,7,0,7Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M1.09,28.29l.2.38a3.52,3.52,0,0,0,4.78,1.25,3.58,3.58,0,0,0,1.26-4.79l-.19-.37A3.52,3.52,0,0,0,2.35,23.5a3.59,3.59,0,0,0-1.26,4.79Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M1.49,30.1l.18.57a3.73,3.73,0,0,0,1.61,2.09,3.59,3.59,0,0,0,2.7.35A3.54,3.54,0,0,0,8.42,28.8l-.18-.56a3.68,3.68,0,0,0-1.61-2.1,3.61,3.61,0,0,0-2.69-.35A3.56,3.56,0,0,0,1.49,30.1Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M1.58,33.88v.38a3.54,3.54,0,0,0,3.5,3.5,3.56,3.56,0,0,0,3.5-3.5v-.38a3.54,3.54,0,0,0-3.5-3.5,3.57,3.57,0,0,0-3.5,3.5Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M4.89,42.3c4.51,0,4.51-7,0-7s-4.51,7,0,7Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M1.77,42v.19a3.54,3.54,0,0,0,3.5,3.5,3.56,3.56,0,0,0,3.5-3.5V42a3.54,3.54,0,0,0-3.5-3.5A3.56,3.56,0,0,0,1.77,42Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: { d: "M6,49.29c4.5,0,4.51-7,0-7s-4.52,7,0,7Z" }
+                      }),
+                      _c("path", {
+                        attrs: { d: "M10,14.14c4.5,0,4.51-7,0-7s-4.52,7,0,7Z" }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M6.59,20.94c4.51,0,4.52-7,0-7s-4.51,7,0,7Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: { d: "M8.48,27c4.51,0,4.51-7,0-7s-4.51,7,0,7Z" }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M8.48,29.26c4.51,0,4.51-7,0-7s-4.51,7,0,7Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M14.91,33.79c4.5,0,4.51-7,0-7s-4.51,7,0,7Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M9.81,38.52c4.5,0,4.51-7,0-7s-4.52,7,0,7Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M10.56,45.13c4.51,0,4.51-7,0-7s-4.51,7,0,7Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M10.56,49.48c4.51,0,4.51-7,0-7s-4.51,7,0,7Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M12.83,18.12c2.57,0,2.58-4,0-4s-2.58,4,0,4Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: { d: "M13,20.39c2.57,0,2.58-4,0-4s-2.58,4,0,4Z" }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M13.1,21v.19a2,2,0,0,0,4,0V21a2,2,0,0,0-4,0Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M15.1,25.87c2.57,0,2.58-4,0-4s-2.58,4,0,4Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M16.61,11.07a1,1,0,0,0,0-2,1,1,0,0,0,0,2Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M21.71,16.55a1,1,0,0,0,0-2,1,1,0,0,0,0,2Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M16.85,8.94V8.56a1,1,0,0,0-2,0v.38a1,1,0,0,0,2,0Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M16.48,4.78V4.59a1,1,0,0,0-2,0v.19a1,1,0,0,0,2,0Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: { d: "M15.48,2a1,1,0,0,0,0-2,1,1,0,0,0,0,2Z" }
+                      }),
+                      _c("path", {
+                        attrs: { d: "M10.56,2a1,1,0,0,0,0-2,1,1,0,0,0,0,2Z" }
+                      }),
+                      _c("path", {
+                        attrs: { d: "M10.37,4.65a1,1,0,0,0,0-2,1,1,0,0,0,0,2Z" }
+                      }),
+                      _c("path", {
+                        attrs: { d: "M7.35,6.16a1,1,0,0,0,0-2,1,1,0,0,0,0,2Z" }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M11.88,7.1h.38a1,1,0,0,0,0-2h-.38a1,1,0,0,0,0,2Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M13.28,11l.57,1.32a1,1,0,0,0,1.37.36,1,1,0,0,0,.36-1.37L15,10a1,1,0,0,0-1.37-.36A1,1,0,0,0,13.28,11Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M18.44,19.33v.19a1,1,0,0,0,2,0v-.19a1,1,0,0,0-2,0Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M20.68,24.93l.19.38c.57,1.15,2.3.14,1.72-1l-.19-.38c-.57-1.15-2.3-.14-1.72,1Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M22.13,29.38a2.48,2.48,0,0,0-.84,1.86,1,1,0,0,0,2,0,.56.56,0,0,1,.25-.44,1,1,0,0,0,0-1.42,1,1,0,0,0-1.41,0Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M20.32,33.41l-.54,1.71c-.38,1.23,1.55,1.76,1.93.53l.54-1.71c.38-1.23-1.55-1.76-1.93-.53Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M19.44,37h-.19a1,1,0,0,0,0,2h.19a1,1,0,0,0,0-2Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M17.64,41.5l-.19.38c-.58,1.15,1.15,2.16,1.72,1l.19-.38c.58-1.15-1.15-2.16-1.72-1Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M15.8,47.87v.56a1,1,0,0,0,2,0v-.56a1,1,0,0,0-2,0Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M14.34,49.43a1,1,0,0,0,0-2,1,1,0,0,0,0,2Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M14.34,41.31a1,1,0,0,0,0-2,1,1,0,0,0,0,2Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M17.13,36.47a2,2,0,0,0,1-1.64,1,1,0,0,0-2,0c0-.13.19-.2,0-.08-1.15.58-.14,2.3,1,1.72Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M17.37,31.29a1,1,0,0,0,0-2,1,1,0,0,0,0,2Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d: "M18.12,28.46a1,1,0,0,0,0-2,1,1,0,0,0,0,2Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M19,24.94l.19-.38c.58-1.15-1.15-2.16-1.72-1l-.19.38c-.58,1.15,1.15,2.16,1.72,1Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: { d: "M17.93,16a1,1,0,0,0,0-2,1,1,0,0,0,0,2Z" }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M24.64,16.05l.57.94a1,1,0,0,0,1.72-1L26.37,15a1,1,0,0,0-1.73,1Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M34.88,29.72v.19a1,1,0,0,0,2,0v-.19a1,1,0,0,0-2,0Z"
+                        }
+                      }),
+                      _c("path", {
+                        attrs: { d: "M24,39.23a1,1,0,0,0,0-2,1,1,0,0,0,0,2Z" }
+                      }),
+                      _c("path", {
+                        attrs: { d: "M22.85,29a1,1,0,0,0,0-2,1,1,0,0,0,0,2Z" }
+                      }),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M18.24,21.9l.57-.56c.93-.89-.48-2.3-1.41-1.41l-.58.56c-.93.89.49,2.3,1.42,1.41Z"
+                        }
+                      })
+                    ]
+                  ),
+                  _c("linearGradient", {
+                    attrs: {
+                      id: "a964f849-fa65-4178-8cc4-fb8fb10b3617",
+                      x1: "462.91",
+                      y1: "660.68",
+                      x2: "462.91",
+                      y2: "559.69",
+                      "xlink:href": "#eb6c86d6-45fa-49e0-9a60-1b0612516196"
+                    }
+                  })
+                ],
+                1
+              ),
+              _c("title", [_vm._v("contact us")]),
+              _c("g", { attrs: { opacity: "0.1" } }, [
+                _c("ellipse", {
+                  attrs: {
+                    cx: "479.42",
+                    cy: "362.12",
+                    rx: "11.38",
+                    ry: "14.9",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M540.43,461a18,18,0,0,0,2.38-9.11c0-8.23-5.1-14.9-11.39-14.9S520,443.68,520,451.91a18,18,0,0,0,2.38,9.11,18.61,18.61,0,0,0,0,18.21,18.61,18.61,0,0,0,0,18.21,17.94,17.94,0,0,0-2.38,9.11c0,8.22,5.1,14.9,11.38,14.9s11.39-6.68,11.39-14.9a17.94,17.94,0,0,0-2.38-9.11,18.61,18.61,0,0,0,0-18.21,18.61,18.61,0,0,0,0-18.21Z",
+                    transform: "translate(-52 -162.63)",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "479.42",
+                    cy: "271.07",
+                    rx: "11.38",
+                    ry: "14.9",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "479.42",
+                    cy: "252.86",
+                    rx: "11.38",
+                    ry: "14.9",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M488.82,290.86a53.08,53.08,0,0,1-4.24-6.24l29.9-4.91-32.34.24a54.62,54.62,0,0,1-1-43.2l43.39,22.51-40-29.42a54.53,54.53,0,1,1,90,61,54.54,54.54,0,0,1,6.22,9.94L541.92,321l41.39-13.89a54.53,54.53,0,0,1-8.79,51.2,54.52,54.52,0,1,1-85.7,0,54.52,54.52,0,0,1,0-67.42Z",
+                    transform: "translate(-52 -162.63)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M586.19,324.57a54.27,54.27,0,0,1-11.67,33.71,54.52,54.52,0,1,1-85.7,0C481.51,349,586.19,318.45,586.19,324.57Z",
+                    transform: "translate(-52 -162.63)",
+                    opacity: "0.1"
+                  }
+                })
+              ]),
+              _c("g", { attrs: { opacity: "0.1" } }, [
+                _c("ellipse", {
+                  attrs: {
+                    cx: "612.28",
+                    cy: "330.26",
+                    rx: "8.51",
+                    ry: "11.13",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M671,445.26a13.43,13.43,0,0,0,1.77-6.8c0-6.15-3.81-11.14-8.5-11.14s-8.51,5-8.51,11.14a13.33,13.33,0,0,0,1.78,6.8,13.9,13.9,0,0,0,0,13.61,13.9,13.9,0,0,0,0,13.61,13.33,13.33,0,0,0-1.78,6.8c0,6.15,3.81,11.14,8.51,11.14s8.5-5,8.5-11.14a13.43,13.43,0,0,0-1.77-6.8,14,14,0,0,0,0-13.61,14,14,0,0,0,0-13.61Z",
+                    transform: "translate(-52 -162.63)",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "612.28",
+                    cy: "262.22",
+                    rx: "8.51",
+                    ry: "11.13",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "612.28",
+                    cy: "248.61",
+                    rx: "8.51",
+                    ry: "11.13",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M632.44,318.11a39,39,0,0,1-3.17-4.66l22.35-3.67-24.17.18a40.84,40.84,0,0,1-.78-32.29L659.1,294.5l-29.91-22a40.75,40.75,0,1,1,67.29,45.6,41.2,41.2,0,0,1,4.65,7.43l-29,15.07,30.93-10.38a40.76,40.76,0,0,1-6.57,38.26,40.74,40.74,0,1,1-64,0,40.74,40.74,0,0,1,0-50.38Z",
+                    transform: "translate(-52 -162.63)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M705.2,343.3a40.57,40.57,0,0,1-8.72,25.19,40.74,40.74,0,1,1-64,0C627,361.56,705.2,338.73,705.2,343.3Z",
+                    transform: "translate(-52 -162.63)",
+                    opacity: "0.1"
+                  }
+                })
+              ]),
+              _c("g", { attrs: { opacity: "0.1" } }, [
+                _c("ellipse", {
+                  attrs: {
+                    cx: "1038.58",
+                    cy: "322.12",
+                    rx: "11.38",
+                    ry: "14.9",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1081.57,421a18,18,0,0,1-2.38-9.11c0-8.23,5.1-14.9,11.39-14.9s11.38,6.67,11.38,14.9a18,18,0,0,1-2.38,9.11,18.61,18.61,0,0,1,0,18.21,18.61,18.61,0,0,1,0,18.21,17.94,17.94,0,0,1,2.38,9.11c0,8.22-5.1,14.9-11.38,14.9s-11.39-6.68-11.39-14.9a17.94,17.94,0,0,1,2.38-9.11,18.61,18.61,0,0,1,0-18.21,18.61,18.61,0,0,1,0-18.21Z",
+                    transform: "translate(-52 -162.63)",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "1038.58",
+                    cy: "231.07",
+                    rx: "11.38",
+                    ry: "14.9",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "1038.58",
+                    cy: "212.86",
+                    rx: "11.38",
+                    ry: "14.9",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1133.18,250.86a53.08,53.08,0,0,0,4.24-6.24l-29.9-4.91,32.34.24a54.62,54.62,0,0,0,1-43.2l-43.39,22.51,40-29.42a54.53,54.53,0,1,0-90,61,54.54,54.54,0,0,0-6.22,9.94L1080.08,281l-41.39-13.89a54.53,54.53,0,0,0,8.79,51.2,54.52,54.52,0,1,0,85.7,0,54.52,54.52,0,0,0,0-67.42Z",
+                    transform: "translate(-52 -162.63)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1035.81,284.57a54.27,54.27,0,0,0,11.67,33.71,54.52,54.52,0,1,0,85.7,0C1140.49,309,1035.81,278.45,1035.81,284.57Z",
+                    transform: "translate(-52 -162.63)",
+                    opacity: "0.1"
+                  }
+                })
+              ]),
+              _c("g", { attrs: { opacity: "0.1" } }, [
+                _c("ellipse", {
+                  attrs: {
+                    cx: "928.72",
+                    cy: "324.26",
+                    rx: "8.51",
+                    ry: "11.13",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M974,439.26a13.43,13.43,0,0,1-1.77-6.8c0-6.15,3.81-11.14,8.5-11.14s8.51,5,8.51,11.14a13.33,13.33,0,0,1-1.78,6.8,13.9,13.9,0,0,1,0,13.61,13.9,13.9,0,0,1,0,13.61,13.33,13.33,0,0,1,1.78,6.8c0,6.15-3.81,11.14-8.51,11.14s-8.5-5-8.5-11.14a13.43,13.43,0,0,1,1.77-6.8,14,14,0,0,1,0-13.61,14,14,0,0,1,0-13.61Z",
+                    transform: "translate(-52 -162.63)",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "928.72",
+                    cy: "256.22",
+                    rx: "8.51",
+                    ry: "11.13",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "928.72",
+                    cy: "242.61",
+                    rx: "8.51",
+                    ry: "11.13",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1012.56,312.11a39,39,0,0,0,3.17-4.66l-22.35-3.67,24.17.18a40.84,40.84,0,0,0,.78-32.29L985.9,288.5l29.91-22a40.75,40.75,0,1,0-67.29,45.6,41.2,41.2,0,0,0-4.65,7.43l29,15.07L942,324.23a40.76,40.76,0,0,0,6.57,38.26,40.74,40.74,0,1,0,64,0,40.74,40.74,0,0,0,0-50.38Z",
+                    transform: "translate(-52 -162.63)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M939.8,337.3a40.57,40.57,0,0,0,8.72,25.19,40.74,40.74,0,1,0,64,0C1018,355.56,939.8,332.73,939.8,337.3Z",
+                    transform: "translate(-52 -162.63)",
+                    opacity: "0.1"
+                  }
+                })
+              ]),
+              _c("g", { attrs: { opacity: "0.1" } }, [
+                _c("ellipse", {
+                  attrs: {
+                    cx: "61.59",
+                    cy: "322.12",
+                    rx: "11.38",
+                    ry: "14.9",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M122.59,421a18,18,0,0,0,2.38-9.11c0-8.23-5.1-14.9-11.38-14.9s-11.38,6.67-11.38,14.9a18,18,0,0,0,2.37,9.11,18.67,18.67,0,0,0,0,18.21,18.67,18.67,0,0,0,0,18.21,17.93,17.93,0,0,0-2.37,9.11c0,8.22,5.09,14.9,11.38,14.9S125,474.77,125,466.55a17.94,17.94,0,0,0-2.38-9.11,18.61,18.61,0,0,0,0-18.21,18.61,18.61,0,0,0,0-18.21Z",
+                    transform: "translate(-52 -162.63)",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "61.59",
+                    cy: "231.07",
+                    rx: "11.38",
+                    ry: "14.9",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "61.59",
+                    cy: "212.86",
+                    rx: "11.38",
+                    ry: "14.9",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M71,250.86a54.33,54.33,0,0,1-4.24-6.24l29.91-4.91L64.3,240a54.62,54.62,0,0,1-1-43.2l43.4,22.51-40-29.42a54.52,54.52,0,1,1,90,61,54.54,54.54,0,0,1,6.22,9.94L124.08,281l41.4-13.89a54.59,54.59,0,0,1-8.8,51.2,54.52,54.52,0,1,1-85.7,0,54.52,54.52,0,0,1,0-67.42Z",
+                    transform: "translate(-52 -162.63)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M168.35,284.57a54.27,54.27,0,0,1-11.67,33.71,54.52,54.52,0,1,1-85.7,0C63.67,309,168.35,278.45,168.35,284.57Z",
+                    transform: "translate(-52 -162.63)",
+                    opacity: "0.1"
+                  }
+                })
+              ]),
+              _c("g", { attrs: { opacity: "0.1" } }, [
+                _c("ellipse", {
+                  attrs: {
+                    cx: "171.44",
+                    cy: "324.26",
+                    rx: "8.51",
+                    ry: "11.13",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M230.17,439.26a13.43,13.43,0,0,0,1.77-6.8c0-6.15-3.8-11.14-8.5-11.14s-8.51,5-8.51,11.14a13.43,13.43,0,0,0,1.78,6.8,13.9,13.9,0,0,0,0,13.61,13.9,13.9,0,0,0,0,13.61,13.43,13.43,0,0,0-1.78,6.8c0,6.15,3.81,11.14,8.51,11.14s8.5-5,8.5-11.14a13.43,13.43,0,0,0-1.77-6.8,14,14,0,0,0,0-13.61,14,14,0,0,0,0-13.61Z",
+                    transform: "translate(-52 -162.63)",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "171.44",
+                    cy: "256.22",
+                    rx: "8.51",
+                    ry: "11.13",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "171.44",
+                    cy: "242.61",
+                    rx: "8.51",
+                    ry: "11.13",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M191.6,312.11a40.21,40.21,0,0,1-3.17-4.66l22.35-3.67-24.17.18a40.84,40.84,0,0,1-.78-32.29l32.43,16.83-29.91-22a40.75,40.75,0,1,1,67.29,45.6,40.12,40.12,0,0,1,4.65,7.43l-29,15.07,30.93-10.38a40.76,40.76,0,0,1-6.57,38.26,40.74,40.74,0,1,1-64,0,40.74,40.74,0,0,1,0-50.38Z",
+                    transform: "translate(-52 -162.63)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M264.36,337.3a40.57,40.57,0,0,1-8.72,25.19,40.74,40.74,0,1,1-64,0C186.14,355.56,264.36,332.73,264.36,337.3Z",
+                    transform: "translate(-52 -162.63)",
+                    opacity: "0.1"
+                  }
+                })
+              ]),
+              _c("ellipse", {
+                attrs: {
+                  cx: "548",
+                  cy: "493.13",
+                  rx: "548",
+                  ry: "8.86",
+                  fill: "#6c63ff",
+                  opacity: "0.1"
+                }
+              }),
+              _c("ellipse", {
+                attrs: {
+                  cx: "548",
+                  cy: "565.88",
+                  rx: "548",
+                  ry: "8.86",
+                  fill: "#6c63ff",
+                  opacity: "0.1"
+                }
+              }),
+              _c("ellipse", {
+                attrs: {
+                  cx: "548",
+                  cy: "341.3",
+                  rx: "548",
+                  ry: "8.86",
+                  fill: "#6c63ff",
+                  opacity: "0.1"
+                }
+              }),
+              _c("ellipse", {
+                attrs: {
+                  cx: "548",
+                  cy: "417.21",
+                  rx: "548",
+                  ry: "8.86",
+                  fill: "#6c63ff",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M860.79,273a18.3,18.3,0,0,0-10.6,1.16,15.65,15.65,0,0,1-12.74,0,17.88,17.88,0,0,0-15,.29,9.24,9.24,0,0,1-4.31,1.08c-6.08,0-11.13-6.12-12.18-14.19a11.88,11.88,0,0,0,3-3.27c3.56-5.74,9.07-9.43,15.27-9.43s11.64,3.64,15.2,9.32a11.68,11.68,0,0,0,10.09,5.54h.16C854.57,263.45,858.76,267.33,860.79,273Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M879.3,247.65l-9.82,6.22,6-10.84a9.7,9.7,0,0,0-5.94-2.11h-.16a11.35,11.35,0,0,1-2-.15L864,242.88l1.43-2.6a11.79,11.79,0,0,1-5.83-4.42l-6,3.78,3.76-6.84c-3.48-4.18-8.18-6.74-13.34-6.74-6.2,0-11.71,3.68-15.28,9.42a11.41,11.41,0,0,1-10.09,5.44h-.33c-6.84,0-12.38,7.75-12.38,17.31s5.54,17.32,12.38,17.32a9.39,9.39,0,0,0,4.31-1.08,17.86,17.86,0,0,1,15-.3,15.55,15.55,0,0,0,12.74,0,17.92,17.92,0,0,1,14.86.29,9.3,9.3,0,0,0,4.26,1.06c6.84,0,12.38-7.76,12.38-17.32A21.93,21.93,0,0,0,879.3,247.65Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M443.26,267.59a12.84,12.84,0,0,0-7.43.81,10.92,10.92,0,0,1-8.91,0,12.48,12.48,0,0,0-10.49.21,6.62,6.62,0,0,1-3,.75c-4.25,0-7.79-4.28-8.53-9.93a8.32,8.32,0,0,0,2.13-2.29c2.49-4,6.35-6.6,10.69-6.6s8.15,2.55,10.64,6.52a8.19,8.19,0,0,0,7.07,3.88h.11C438.9,260.92,441.83,263.64,443.26,267.59Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M456.21,249.86l-6.87,4.36,4.17-7.59a6.75,6.75,0,0,0-4.15-1.48h-.12a7.49,7.49,0,0,1-1.42-.11l-2.33,1.48,1-1.82a8.3,8.3,0,0,1-4.08-3.09l-4.17,2.64,2.64-4.78a12.21,12.21,0,0,0-9.34-4.73c-4.34,0-8.2,2.58-10.69,6.6a8,8,0,0,1-7.07,3.81h-.23c-4.79,0-8.67,5.42-8.67,12.12s3.88,12.12,8.67,12.12a6.5,6.5,0,0,0,3-.76,12.5,12.5,0,0,1,10.48-.2,11.1,11.1,0,0,0,4.49,1,11,11,0,0,0,4.43-.94,12.54,12.54,0,0,1,10.4.2,6.48,6.48,0,0,0,3,.74c4.78,0,8.66-5.43,8.66-12.12A15.33,15.33,0,0,0,456.21,249.86Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M321.59,346a12.82,12.82,0,0,1,7.42.81,10.94,10.94,0,0,0,8.92,0,12.52,12.52,0,0,1,10.49.2,6.47,6.47,0,0,0,3,.76c4.25,0,7.79-4.29,8.52-9.94a8.15,8.15,0,0,1-2.12-2.29c-2.5-4-6.36-6.59-10.69-6.59s-8.15,2.54-10.65,6.52a8.19,8.19,0,0,1-7.06,3.88h-.11C325.94,339.37,323,342.08,321.59,346Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M308.63,328.3l6.88,4.36-4.18-7.58a6.79,6.79,0,0,1,4.16-1.49h.11a8.52,8.52,0,0,0,1.43-.1l2.33,1.47-1-1.81a8.29,8.29,0,0,0,4.07-3.09l4.17,2.64L324,317.91a12.2,12.2,0,0,1,9.34-4.72c4.33,0,8.2,2.58,10.69,6.6a8,8,0,0,0,7.06,3.81h.24c4.78,0,8.66,5.43,8.66,12.12s-3.88,12.12-8.66,12.12a6.49,6.49,0,0,1-3-.75,12.48,12.48,0,0,0-10.49-.21,10.86,10.86,0,0,1-4.48,1,11,11,0,0,1-4.44-.94,12.52,12.52,0,0,0-10.39.2,6.48,6.48,0,0,1-3,.74c-4.79,0-8.67-5.42-8.67-12.12A15.44,15.44,0,0,1,308.63,328.3Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M716.31,652.89c2.61-4.84-.35-10.76-3.75-15.07s-7.56-8.8-7.47-14.29c.13-7.89,8.51-12.56,15.2-16.74a74.3,74.3,0,0,0,13.65-11,20.13,20.13,0,0,0,4.19-5.62c1.39-3.08,1.35-6.6,1.26-10q-.43-16.89-1.67-33.76",
+                  transform: "translate(-52 -162.63)",
+                  fill: "none",
+                  stroke: "#3f3d56",
+                  "stroke-miterlimit": "10",
+                  "stroke-width": "4"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M750.45,545.85a12.31,12.31,0,0,0-6.15-10.09l-2.76,5.45.09-6.6a12.31,12.31,0,1,0,8.82,11.24Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M728.49,629.17a12.31,12.31,0,0,1-23.24-5,12,12,0,0,1,.8-5,12.32,12.32,0,0,1,23,.13l-7.69,6.26,8.46-2A12.24,12.24,0,0,1,728.49,629.17Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M722.41,605.27a12.31,12.31,0,0,1-3.9-24.15l-.07,5.07,2.79-5.52h0a12.31,12.31,0,1,1,1.15,24.6Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M752.3,585.38a12.31,12.31,0,1,1,5.44-23l-2.17,6L760,564a12.31,12.31,0,0,1-7.74,21.37Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M748.79,549.13c-2.84.31-5.6,1.19-8.46,1.37s-6-.51-7.78-2.72a39.48,39.48,0,0,1-2.28-4,8.76,8.76,0,0,0-3.1-2.92,12.31,12.31,0,1,0,23,8.18C749.72,549.05,749.25,549.08,748.79,549.13Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M752.3,585.38a12.31,12.31,0,0,1-11.71-17.56,9.11,9.11,0,0,1,2.47,2.48,41.72,41.72,0,0,0,2.44,4.07c1.92,2.25,5.2,3,8.17,2.85s5.84-1,8.8-1.25c.41,0,.82-.06,1.24-.07A12.31,12.31,0,0,1,752.3,585.38Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M722.41,605.27a12.31,12.31,0,0,1-11.81-17.33,10,10,0,0,1,2.61,2.5,41.23,41.23,0,0,0,2.67,4.15c2.07,2.31,5.57,3.13,8.71,3s6-.81,9-1A12.33,12.33,0,0,1,722.41,605.27Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M728.49,629.17a12.31,12.31,0,0,1-23.24-5,12,12,0,0,1,.8-5,12.29,12.29,0,0,1,2.7,2.41c1.17,1.42,1.94,3,3.3,4.37,2.51,2.47,6.58,3.49,10.19,3.58A51.7,51.7,0,0,0,728.49,629.17Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M106.31,580.89c2.61-4.84-.35-10.76-3.75-15.07S95,557,95.09,551.53c.13-7.89,8.51-12.56,15.2-16.74a74.3,74.3,0,0,0,13.65-11,20.13,20.13,0,0,0,4.19-5.62c1.39-3.08,1.35-6.6,1.26-10q-.44-16.89-1.67-33.76",
+                  transform: "translate(-52 -162.63)",
+                  fill: "none",
+                  stroke: "#3f3d56",
+                  "stroke-miterlimit": "10",
+                  "stroke-width": "4"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M140.45,473.85a12.31,12.31,0,0,0-6.15-10.09l-2.76,5.45.09-6.6a12.31,12.31,0,1,0,8.82,11.24Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M118.49,557.17a12.31,12.31,0,0,1-23.24-5,12,12,0,0,1,.8-5,12.32,12.32,0,0,1,23,.13l-7.69,6.26,8.46-2A12.24,12.24,0,0,1,118.49,557.17Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M112.41,533.27a12.31,12.31,0,0,1-3.9-24.15l-.07,5.07,2.79-5.52h0a12.31,12.31,0,1,1,1.15,24.6Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M142.3,513.38a12.31,12.31,0,1,1,5.44-23l-2.17,6L150,492a12.31,12.31,0,0,1-7.74,21.37Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M138.79,477.13c-2.84.31-5.6,1.19-8.46,1.37s-6-.51-7.78-2.72a39.48,39.48,0,0,1-2.28-4,8.76,8.76,0,0,0-3.1-2.92,12.31,12.31,0,1,0,23,8.18C139.72,477.05,139.25,477.08,138.79,477.13Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M142.3,513.38a12.31,12.31,0,0,1-11.71-17.56,9.11,9.11,0,0,1,2.47,2.48,41.72,41.72,0,0,0,2.44,4.07c1.92,2.25,5.2,3,8.17,2.85s5.84-1,8.8-1.25c.41,0,.82-.06,1.24-.07A12.31,12.31,0,0,1,142.3,513.38Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M112.41,533.27a12.31,12.31,0,0,1-11.81-17.33,10,10,0,0,1,2.61,2.5,41.23,41.23,0,0,0,2.67,4.15c2.07,2.31,5.57,3.13,8.71,3s6-.81,9-1A12.33,12.33,0,0,1,112.41,533.27Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M118.49,557.17a12.31,12.31,0,0,1-23.24-5,12,12,0,0,1,.8-5,12.29,12.29,0,0,1,2.7,2.41c1.17,1.42,1.94,3,3.3,4.37,2.51,2.47,6.58,3.49,10.19,3.58A51.7,51.7,0,0,0,118.49,557.17Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M512.52,498.52c-2.61-4.83.35-10.75,3.76-15.06s7.55-8.8,7.46-14.29c-.12-7.9-8.5-12.56-15.2-16.74a74,74,0,0,1-13.64-11,19.78,19.78,0,0,1-4.2-5.61c-1.38-3.09-1.34-6.6-1.26-10q.45-16.89,1.67-33.76",
+                  transform: "translate(-52 -162.63)",
+                  fill: "none",
+                  stroke: "#3f3d56",
+                  "stroke-miterlimit": "10",
+                  "stroke-width": "4"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M478.39,391.49a12.3,12.3,0,0,1,6.14-10.09l2.76,5.45-.08-6.6a12.62,12.62,0,0,1,4.05-.49,12.31,12.31,0,1,1-12.87,11.73Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M500.34,474.81a12.31,12.31,0,1,0-.59-9.91l7.69,6.26-8.46-2A12.24,12.24,0,0,0,500.34,474.81Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M506.42,450.91a12.31,12.31,0,0,0,3.91-24.15l.06,5.07-2.79-5.52h0A12.31,12.31,0,0,0,494.7,438a12.16,12.16,0,0,0,.53,4.2A12.3,12.3,0,0,0,506.42,450.91Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M476.54,431a12.31,12.31,0,1,0-5.45-23l2.18,6-4.48-4.29a12.21,12.21,0,0,0-4,8.5,11.91,11.91,0,0,0,.31,3.39A12.3,12.3,0,0,0,476.54,431Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M480.05,394.77c2.84.31,5.6,1.19,8.45,1.37s6-.51,7.79-2.72a39.4,39.4,0,0,0,2.27-4,8.79,8.79,0,0,1,3.11-2.92,12.31,12.31,0,1,1-23,8.17C479.12,394.68,479.58,394.72,480.05,394.77Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M476.54,431a12.32,12.32,0,0,0,11.71-17.56,9.15,9.15,0,0,0-2.48,2.48,41.72,41.72,0,0,1-2.44,4.07c-1.91,2.25-5.19,3-8.16,2.85s-5.84-1-8.8-1.25c-.41,0-.83-.06-1.24-.07A12.3,12.3,0,0,0,476.54,431Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M506.42,450.91a12.3,12.3,0,0,0,11.81-17.33,9.83,9.83,0,0,0-2.6,2.5,41.23,41.23,0,0,1-2.67,4.15c-2.08,2.31-5.57,3.13-8.72,3s-6-.81-9-1A12.3,12.3,0,0,0,506.42,450.91Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M500.34,474.81a12.31,12.31,0,0,0,22.45-10,11.82,11.82,0,0,0-2.7,2.41c-1.17,1.42-2,3-3.3,4.37-2.52,2.47-6.58,3.49-10.2,3.58A53.94,53.94,0,0,1,500.34,474.81Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("circle", {
+                attrs: {
+                  cx: "779.73",
+                  cy: "238.18",
+                  r: "99.96",
+                  fill: "#3f3d56"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M874.64,426.59c-3.48-3.48-11.85-8.73-16-10.69-4.79-2.3-6.55-2.26-9.94.19-2.82,2-4.65,3.93-7.89,3.22s-9.66-5.55-15.87-11.74S813.91,395,813.22,391.71s1.21-5.08,3.23-7.9c2.44-3.39,2.51-5.15.19-9.94-2-4.15-7.19-12.5-10.7-16s-4.27-2.73-6.19-2a35.8,35.8,0,0,0-5.67,3c-3.48,2.33-5.43,4.27-6.8,7.19s-2.92,8.34,5.05,22.53a125.69,125.69,0,0,0,22.1,29.47l0,0,0,0A125.88,125.88,0,0,0,844,440.2c14.18,8,19.61,6.41,22.53,5.05s4.86-3.29,7.18-6.8a35.33,35.33,0,0,0,3-5.67C877.37,430.86,878.15,430.08,874.64,426.59Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M831.73,300.86a100,100,0,1,0,99.95,99.95A100,100,0,0,0,831.73,300.86Zm0,186.62a86.67,86.67,0,1,1,86.67-86.67A86.67,86.67,0,0,1,831.73,487.48Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("circle", {
+                attrs: {
+                  cx: "550.08",
+                  cy: "390.01",
+                  r: "99.96",
+                  fill: "#3f3d56"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M658.93,522.44,629,552.89a.54.54,0,0,0,0,.78L650,576a3.62,3.62,0,0,1-2.55,6.17,3.64,3.64,0,0,1-2.56-1.06L624,558.86a.57.57,0,0,0-.8,0L618.11,564a22.37,22.37,0,0,1-16,6.73,22.86,22.86,0,0,1-16.28-6.92l-4.89-5a.57.57,0,0,0-.8,0l-20.84,22.2a3.61,3.61,0,0,1-5.11,0,3.6,3.6,0,0,1,0-5.11l20.92-22.28a.6.6,0,0,0,0-.78l-29.93-30.45a.55.55,0,0,0-.94.39v60.93a8.92,8.92,0,0,0,8.89,8.89H651a8.92,8.92,0,0,0,8.89-8.89V522.83A.55.55,0,0,0,658.93,522.44Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M602.08,563.5A15.14,15.14,0,0,0,613,559l43.59-44.37a8.7,8.7,0,0,0-5.5-2H553.15a8.64,8.64,0,0,0-5.5,2L591.25,559A15.08,15.08,0,0,0,602.08,563.5Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M600.82,452.69a100,100,0,1,0,99.95,99.95A100,100,0,0,0,600.82,452.69Zm0,186.62a86.67,86.67,0,1,1,86.67-86.67A86.67,86.67,0,0,1,600.82,639.31Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("circle", {
+                attrs: {
+                  cx: "312.85",
+                  cy: "315.36",
+                  r: "99.96",
+                  fill: "#3f3d56"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M364.85,430.16,325,522.1l3.72,3.72,36.14-15.94L401,525.82l3.72-3.72Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M364.85,378A100,100,0,1,0,464.8,478,100,100,0,0,0,364.85,378Zm0,186.62A86.67,86.67,0,1,1,451.52,478,86.67,86.67,0,0,1,364.85,564.66Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M840.93,603.88q-1.36-3.32-2.79-6.62a19.65,19.65,0,0,0-3.41-5.89,6.24,6.24,0,0,0-2-1.5,8.53,8.53,0,0,0-2.61-.52,20.83,20.83,0,0,0-4.1-.11c-.53-.16-1.13-.37-1.72-.61a14.28,14.28,0,0,0,10.64-13.25c0-.2,0-.41,0-.61a14.25,14.25,0,0,0-14.19-14.31,14,14,0,0,0-7.45,2.13,13.37,13.37,0,0,0-15,7.23,16.53,16.53,0,0,0-5.1,12.3c0,.21,0,.43,0,.63.26,7.77,5.28,14,11.62,14.63a6.66,6.66,0,0,0-1.84,1.23c-1.94,1.87-2.26,4.84-2.47,7.54l-.15,2L797,609.35a.62.62,0,0,0-.15,1.09l3.21,2.29c0,.19,0,.38,0,.57s0,.43.06.65a4.59,4.59,0,0,0-1.24,1.77,8.18,8.18,0,0,0-.29,3.24l.12,2.79a21.91,21.91,0,0,0,.85,6.21c.42,1.24,2.24,4.23,3.55,4.25-1.21,5.5-1.53,17.1-1.53,17.1-.15.15.27.29,1,.41.72,5.52,3.07,21,7.24,27.81a58.64,58.64,0,0,1,1.57,6.76s1.19,14.71,2.76,19.08c1.34,3.72,2.4,12.9,2.69,15.56a1.53,1.53,0,0,0-1.11,1.14c-.79,2.38-5.91,6-5.91,6a24.76,24.76,0,0,0-4.42,2.83c-1.61,1.45-1.55,2.76,5.6,1.94,13.8-1.59,16.16-6,16.16-6s-.22-.74-.55-1.7a18.46,18.46,0,0,0-1.81-4.27c-.2-.19-.4.13-.64.63a85.63,85.63,0,0,1-.94-19.31s.39-6.76-1.58-11.53a21.83,21.83,0,0,1,0-7.55c.79-3.18-3.15-18.69-3.15-18.69L816.23,651a3.28,3.28,0,0,1,.63,1.33l.06.23.06.33a.62.62,0,0,0,.16.31c1.54,6.4,5.76,24.13,5.76,26.73,0,3.18,3.94,11.13,3.94,11.13s1.57,13.12,4.33,18.28c2.1,3.93,2.15,9.69,2.05,12.23h0s-.47,3.27-1.26,4.06a9.66,9.66,0,0,0-1.49,2.59l-.09.19s-1.18,2.39-.39,2.79a19.37,19.37,0,0,0,9.46,1.19s1.58-2,1.58-2.78a12.52,12.52,0,0,0-.18-1.42c-.29-1.88-.83-4.84-.84-4.87.33-1.28-1-4.84-1-4.84l-.4-11.13a51.38,51.38,0,0,0-2.76-22.27s-2-7.15-1.57-9.14-.79-23.06-.79-23.06l-.12-.3a22.78,22.78,0,0,1,.12-4.47c.39-4.77-1.18-14.71-1.58-15.1a13.1,13.1,0,0,1-.56-3.29c.09-.83.36-3.26.73-6.28a112.91,112.91,0,0,0,11.62-1,1.45,1.45,0,0,0,1-.4,1.4,1.4,0,0,0,.23-.81C845.39,615.24,843.2,609.42,840.93,603.88ZM833,616.49c.41-2.85.85-5.61,1.29-7.66l.06.18a55.65,55.65,0,0,1,1.9,6.3A21.43,21.43,0,0,1,833,616.49Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "url(#eb6c86d6-45fa-49e0-9a60-1b0612516196)"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M802.37,648.68s2.36,21.23,7.47,29.48a57.21,57.21,0,0,1,1.57,6.68s1.18,14.54,2.75,18.86,2.75,16.12,2.75,16.12,5.5,6.28,7.47,1.18a82.82,82.82,0,0,1-1.18-20.44s.39-6.68-1.57-11.4a21.32,21.32,0,0,1,0-7.46c.78-3.15-3.15-18.47-3.15-18.47l-3.14-15.33Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#be6f72"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M827.13,724.93s-2.36,4.32-16.11,5.89c-7.14.81-7.19-.48-5.58-1.92a24.9,24.9,0,0,1,4.4-2.8s5.11-3.53,5.89-5.89,3.54-.39,3.54-.39c3.93,5.89,4.72-1.58,5.5-.79a17.73,17.73,0,0,1,1.81,4.21C826.91,724.19,827.13,724.93,827.13,724.93Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#ff6f61"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M827.13,724.93s-2.36,4.32-16.11,5.89c-7.14.81-7.19-.48-5.58-1.92,1.12.71,3.38,1,7.93-.83,6.55-2.68,11.3-4.23,13.21-4.83C826.91,724.19,827.13,724.93,827.13,724.93Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M823.2,700.56s.39-6.68-1.57-11.4a21.32,21.32,0,0,1,0-7.46c.78-3.15-3.15-18.47-3.15-18.47l-3.14-15.33-2.72.16,3.11,15.17s3.93,15.32,3.15,18.47a21.32,21.32,0,0,0,0,7.46c2,4.72,1.57,11.4,1.57,11.4A82.82,82.82,0,0,0,821.63,721a3.44,3.44,0,0,1-1.14,1.62c1.46.66,3,.63,3.89-1.62A82.82,82.82,0,0,1,823.2,700.56Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M820.64,562.42a14,14,0,0,0-7.42,2.11,13.35,13.35,0,0,0-15,7.15,16.28,16.28,0,0,0-5.09,12.16c0,8.36,5.63,15.13,12.57,15.13,5,0,9.38-3.56,11.39-8.71a13.8,13.8,0,0,0,3.54.46,14.15,14.15,0,0,0,0-28.3Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#3f3d56"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M832.24,650.65l1.18,3.14s1.18,20.83.78,22.8,1.58,9,1.58,9a50.31,50.31,0,0,1,2.75,22l.39,11s1.57,4.32.79,5.11S833,723,833,723s.79-8.25-2-13.36-4.32-18.08-4.32-18.08-3.93-7.86-3.93-11-6.29-28.69-6.29-28.69Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#be6f72"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M801.58,650.26s.4-14.15,2-18.47a29.33,29.33,0,0,0,1.75-6.27s23.79,4.3,25.76,2.73c0,0,.39,5.5.79,5.89s2,10.22,1.57,14.94,0,4.71,0,4.71-16.12,2.36-16.51,0-1.57-2.35-1.57-2.35S800.8,651,801.58,650.26Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#3f3d56"
+                }
+              }),
+              _c("g", { attrs: { opacity: "0.1" } }, [
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M814.55,650.26s-9.94-.27-12.94-.81c0,.51,0,.81,0,.81-.78.78,13.76,1.18,13.76,1.18a1,1,0,0,1,.54.22C815.38,650.26,814.55,650.26,814.55,650.26Z",
+                    transform: "translate(-52 -162.63)"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M831.85,634.14c-.4-.39-.79-5.89-.79-5.89a1.69,1.69,0,0,1-.67.24c.14,1.66.41,4.21.67,4.47s2,10.22,1.57,14.94,0,4.71,0,4.71-12.75,1.87-15.84.62c0,.17.09.36.12.56.39,2.36,16.51,0,16.51,0s-.4,0,0-4.71S832.24,634.54,831.85,634.14Z",
+                    transform: "translate(-52 -162.63)"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M814.55,650.26s-9.94-.27-12.94-.81c0,.51,0,.81,0,.81-.78.78,13.76,1.18,13.76,1.18a1,1,0,0,1,.54.22C815.38,650.26,814.55,650.26,814.55,650.26Z",
+                    transform: "translate(-52 -162.63)",
+                    fill: "url(#ad310e25-2b04-44c8-bb7b-982389166780)"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M831.85,634.14c-.4-.39-.79-5.89-.79-5.89a1.69,1.69,0,0,1-.67.24c.14,1.66.41,4.21.67,4.47s2,10.22,1.57,14.94,0,4.71,0,4.71-12.75,1.87-15.84.62c0,.17.09.36.12.56.39,2.36,16.51,0,16.51,0s-.4,0,0-4.71S832.24,634.54,831.85,634.14Z",
+                    transform: "translate(-52 -162.63)",
+                    fill: "url(#ad310e25-2b04-44c8-bb7b-982389166780)"
+                  }
+                })
+              ]),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M818.9,587.18a5.21,5.21,0,0,0,1.5,1.94,3.36,3.36,0,0,0,1.41.61c-.88.51-1.84.89-2.72,1.4a48.36,48.36,0,0,0-4,3,8.14,8.14,0,0,1-4.59,1.78,5.62,5.62,0,0,0,.64-5.59,5.22,5.22,0,0,1-.7-1.94c0-1.13,1-2,1.93-2.6.75-.51,1.52-1,2.3-1.49.61-.38,1.53-1.18,2.3-1.15s.86.71,1,1.41A11.09,11.09,0,0,0,818.9,587.18Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#be6f72"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M818.9,587.18a5.21,5.21,0,0,0,1.5,1.94,3.36,3.36,0,0,0,1.41.61c-.88.51-1.84.89-2.72,1.4a48.36,48.36,0,0,0-4,3,8.14,8.14,0,0,1-4.59,1.78,5.62,5.62,0,0,0,.64-5.59,5.22,5.22,0,0,1-.7-1.94c0-1.13,1-2,1.93-2.6.75-.51,1.52-1,2.3-1.49.61-.38,1.53-1.18,2.3-1.15s.86.71,1,1.41A11.09,11.09,0,0,0,818.9,587.18Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("circle", {
+                attrs: { cx: "776.11", cy: "438.7", r: "9.04", fill: "#be6f72" }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M840.88,729.64c0,.79-1.57,2.75-1.57,2.75a19.46,19.46,0,0,1-9.43-1.18c-.79-.39.39-2.75.39-2.75l.09-.19a9.54,9.54,0,0,1,1.49-2.56c.78-.78,1.25-4,1.25-4,2.44-4,6.77,1.73,6.77,1.73s.55,3,.84,4.82C840.81,728.91,840.88,729.44,840.88,729.64Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#ff6f61"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M840.88,729.64c0,.79-1.57,2.75-1.57,2.75a19.46,19.46,0,0,1-9.43-1.18c-.79-.39.39-2.75.39-2.75l.09-.19a19,19,0,0,0,8.56,1.76l1.79-1.79C840.81,728.91,840.88,729.44,840.88,729.64Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("circle", {
+                attrs: {
+                  cx: "758.03",
+                  cy: "419.83",
+                  r: "8.84",
+                  fill: "#be6f72"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M802.9,600.14c-1.94,1.85-2.26,4.78-2.46,7.45l-.3,3.91a19.72,19.72,0,0,0-.07,3.17c0,.65.16,1.31.22,2s.08,1.56.09,2.35l0,5.78a6.82,6.82,0,0,0,.64,3.47,2.36,2.36,0,0,0,3,1.08,3.42,3.42,0,0,0,1.24-1.92,29.85,29.85,0,0,0,2-7.32c.08-.87.09-1.74.17-2.61s.23-1.78.36-2.66c.56-3.68.81-7.4,1.06-11.11.07-1.1,1.06-5.43-.38-5.91-.7-.23-2.15.49-2.82.73A7.94,7.94,0,0,0,802.9,600.14Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#be6f72"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M802.9,600.14c-1.94,1.85-2.26,4.78-2.46,7.45l-.3,3.91a19.72,19.72,0,0,0-.07,3.17c0,.65.16,1.31.22,2s.08,1.56.09,2.35l0,5.78a6.82,6.82,0,0,0,.64,3.47,2.36,2.36,0,0,0,3,1.08,3.42,3.42,0,0,0,1.24-1.92,29.85,29.85,0,0,0,2-7.32c.08-.87.09-1.74.17-2.61s.23-1.78.36-2.66c.56-3.68.81-7.4,1.06-11.11.07-1.1,1.06-5.43-.38-5.91-.7-.23-2.15.49-2.82.73A7.94,7.94,0,0,0,802.9,600.14Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M821.23,588.16s-6.68,5.11-10.61,6.29c0,0-2.33,2.66-2.73,3.3s-1.2,7.7-2,9.28-2.75,5.11,0,8.64c0,0,.78,3.54.39,4.72s-1.82,5.5-.52,5.7,5.24,2.94,8.77,2.16,16.71,3,16.71,3S833.42,611,835,607.42l-3.54-1.18s-9.82-5.89-3.93-14.93C827.52,591.31,822,590.13,821.23,588.16Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#ff6f61"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M796.84,611.83l8.12,5.75a.6.6,0,0,0,.71,0l2.2-1.65a.62.62,0,0,0,0-.94l-6.25-5.55a.6.6,0,0,0-.61-.12L797,610.76A.61.61,0,0,0,796.84,611.83Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#3f3d56"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M799.57,629.15a21.76,21.76,0,0,1-.85-6.13l-.12-2.77a8,8,0,0,1,.29-3.2,5.23,5.23,0,0,1,3.37-2.95,11.64,11.64,0,0,1,4.59-.33,1.18,1.18,0,0,1,.59.16,1.1,1.1,0,0,1,.32.54,3.62,3.62,0,0,1,.18,2.89,3,3,0,0,1-.92.95c-1.09.78-2.36,1.3-3.39,2.15a1.23,1.23,0,0,0-.46.58,1.35,1.35,0,0,0,0,.63,10.08,10.08,0,0,0,.52,1.61,1.59,1.59,0,0,0,.45.68c.19.16.44.22.64.37.43.35,1.33.81,1.28,1.36-.15,2-1.35,4.24-1.82,6.22C803.34,635.78,800.15,630.84,799.57,629.15Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#be6f72"
+                }
+              }),
+              _c("g", { attrs: { opacity: "0.1" } }, [
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M812.2,628.25l-.22,0a6.73,6.73,0,0,0,2.57,0l.25,0A9,9,0,0,0,812.2,628.25Z",
+                    transform: "translate(-52 -162.63)"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M832.83,606.83c-1.41,3.17-3.49,20.34-3.86,23.75,1.38.36,2.29.62,2.29.62S833.42,611,835,607.42Z",
+                    transform: "translate(-52 -162.63)"
+                  }
+                })
+              ]),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M828.42,601.61a3,3,0,0,0,1.29,1.95,17.31,17.31,0,0,1,2.29,2.32,16.43,16.43,0,0,1,2.27,4.55,55.75,55.75,0,0,1,1.89,6.22c-5,2.32-10.68,2.21-16,3.74a12.77,12.77,0,0,0-6,3.55,8.27,8.27,0,0,0-2.21,6.51.85.85,0,0,0,.12.39.84.84,0,0,0,.7.28,6,6,0,0,0,3.67-1.26,17.46,17.46,0,0,0,2.81-2.76,4.52,4.52,0,0,1,2-1.48c2.89-.88,6-.83,9-.88a113.42,113.42,0,0,0,13.41-1.06,1.08,1.08,0,0,0,1.2-1.2c.44-5.9-1.75-11.66-4-17.13q-1.35-3.29-2.78-6.55a19.4,19.4,0,0,0-3.4-5.82,6,6,0,0,0-2-1.48A8.46,8.46,0,0,0,830,591a19,19,0,0,0-4.39-.08,9.36,9.36,0,0,0-.42,2.27c.08,2.7,1.26,5.23,2.42,7.67C827.76,601.23,828.19,601.25,828.42,601.61Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#be6f72"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M812.41,606.67a7.33,7.33,0,0,0-1,3.82,5.14,5.14,0,0,0,.25,1.56,5.06,5.06,0,0,0,3.19,3",
+                  transform: "translate(-52 -162.63)",
+                  fill: "none",
+                  stroke: "#000",
+                  "stroke-miterlimit": "10",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M817.5,573.82a4.59,4.59,0,0,0-1.45.23c-1.31-2-4.39-3.38-8-3.38-4.78,0-8.65,2.47-8.65,5.51s3.87,5.5,8.65,5.5a12.17,12.17,0,0,0,5.19-1.1,4.71,4.71,0,1,0,4.24-6.76Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#3f3d56"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M817.89,582.07a4.7,4.7,0,0,1-4.24-2.67,12.17,12.17,0,0,1-5.19,1.1c-4.77,0-8.64-2.46-8.64-5.5a3.31,3.31,0,0,1,0-.55,3.73,3.73,0,0,0-.44,1.73c0,3,3.87,5.5,8.65,5.5a12.17,12.17,0,0,0,5.19-1.1,4.71,4.71,0,0,0,8.87-1.17A4.69,4.69,0,0,1,817.89,582.07Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M798.23,574a13.35,13.35,0,0,1,15-7.15,14.14,14.14,0,0,1,21.52,10.86c0-.39,0-.78,0-1.18a14.14,14.14,0,0,0-21.57-12,13.35,13.35,0,0,0-15,7.15,16.28,16.28,0,0,0-5.09,12.16c0,.4,0,.79,0,1.18A16,16,0,0,1,798.23,574Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M888.39,577c2.61-4.83-.35-10.76-3.76-15.07s-7.55-8.79-7.46-14.29c.12-7.89,8.5-12.55,15.2-16.74a73.9,73.9,0,0,0,13.64-11,19.93,19.93,0,0,0,4.2-5.61c1.38-3.09,1.34-6.6,1.26-10q-.44-16.9-1.67-33.76",
+                  transform: "translate(-52 -162.63)",
+                  fill: "none",
+                  stroke: "#3f3d56",
+                  "stroke-miterlimit": "10",
+                  "stroke-width": "4"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M922.52,469.93a12.29,12.29,0,0,0-6.14-10.08l-2.76,5.45.08-6.6a12.08,12.08,0,0,0-4.05-.49,12.31,12.31,0,1,0,12.87,11.72Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M900.57,553.26a12.31,12.31,0,1,1,.59-9.92l-7.69,6.26,8.46-2A12.24,12.24,0,0,1,900.57,553.26Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M894.49,529.35a12.31,12.31,0,0,1-3.91-24.15l-.06,5.07,2.79-5.51h0a12.32,12.32,0,0,1,12.87,11.73,12.3,12.3,0,0,1-11.72,12.87Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M924.37,509.47a12.31,12.31,0,1,1,5.45-23l-2.18,6,4.48-4.3a12.24,12.24,0,0,1,4,8.5,11.88,11.88,0,0,1-.31,3.39A12.31,12.31,0,0,1,924.37,509.47Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M920.87,473.21c-2.84.32-5.61,1.2-8.46,1.38s-6-.51-7.79-2.73a38.2,38.2,0,0,1-2.27-4,8.85,8.85,0,0,0-3.1-2.92,12.31,12.31,0,1,0,23,8.17C921.79,473.13,921.33,473.16,920.87,473.21Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M924.37,509.47a12.32,12.32,0,0,1-11.71-17.56,9.11,9.11,0,0,1,2.48,2.47,39.47,39.47,0,0,0,2.44,4.07c1.91,2.26,5.19,3,8.16,2.86s5.84-1,8.8-1.25c.41,0,.83-.07,1.24-.08A12.31,12.31,0,0,1,924.37,509.47Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M894.49,529.35A12.3,12.3,0,0,1,882.68,512a10.15,10.15,0,0,1,2.6,2.5c1,1.35,1.55,2.91,2.67,4.15,2.08,2.32,5.57,3.13,8.72,3.06s6-.82,9-1.05A12.31,12.31,0,0,1,894.49,529.35Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M900.57,553.26a12.32,12.32,0,0,1-22.45-10,12.06,12.06,0,0,1,2.7,2.41c1.18,1.43,1.95,3,3.3,4.38,2.52,2.47,6.58,3.48,10.2,3.58A53.94,53.94,0,0,0,900.57,553.26Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M1047.39,729c2.61-4.83-.35-10.76-3.76-15.07s-7.55-8.79-7.46-14.29c.12-7.89,8.5-12.55,15.2-16.74a73.9,73.9,0,0,0,13.64-11,19.93,19.93,0,0,0,4.2-5.61c1.38-3.09,1.34-6.6,1.26-10q-.43-16.9-1.67-33.76",
+                  transform: "translate(-52 -162.63)",
+                  fill: "none",
+                  stroke: "#3f3d56",
+                  "stroke-miterlimit": "10",
+                  "stroke-width": "4"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M1081.52,621.93a12.29,12.29,0,0,0-6.14-10.08l-2.76,5.45.08-6.6a12.08,12.08,0,0,0-4-.49,12.31,12.31,0,1,0,12.87,11.72Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M1059.57,705.26a12.31,12.31,0,1,1,.59-9.92l-7.69,6.26,8.46-2A12.24,12.24,0,0,1,1059.57,705.26Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M1053.49,681.35a12.31,12.31,0,0,1-3.91-24.15l-.06,5.07,2.79-5.51h0a12.32,12.32,0,0,1,12.87,11.73,12.3,12.3,0,0,1-11.72,12.87Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M1083.37,661.47a12.31,12.31,0,1,1,5.45-23l-2.18,6,4.48-4.3a12.24,12.24,0,0,1,4,8.5,11.88,11.88,0,0,1-.31,3.39A12.31,12.31,0,0,1,1083.37,661.47Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#6c63ff"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M1079.87,625.21c-2.84.32-5.61,1.2-8.46,1.38s-6-.51-7.79-2.73a38.2,38.2,0,0,1-2.27-4,8.85,8.85,0,0,0-3.1-2.92,12.31,12.31,0,1,0,23,8.17C1080.79,625.13,1080.33,625.16,1079.87,625.21Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M1083.37,661.47a12.32,12.32,0,0,1-11.71-17.56,9.11,9.11,0,0,1,2.48,2.47,39.47,39.47,0,0,0,2.44,4.07c1.91,2.26,5.19,3,8.16,2.86s5.84-1,8.8-1.25c.41,0,.83-.07,1.24-.08A12.31,12.31,0,0,1,1083.37,661.47Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M1053.49,681.35A12.3,12.3,0,0,1,1041.68,664a10.15,10.15,0,0,1,2.6,2.5c1,1.35,1.55,2.91,2.67,4.15,2.08,2.32,5.57,3.13,8.72,3.06s6-.82,9-1.05A12.31,12.31,0,0,1,1053.49,681.35Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M1059.57,705.26a12.32,12.32,0,0,1-22.45-10,12.06,12.06,0,0,1,2.7,2.41c1.18,1.43,2,3,3.3,4.38,2.52,2.47,6.58,3.48,10.2,3.58A53.94,53.94,0,0,0,1059.57,705.26Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M530,587.91a9.81,9.81,0,0,0-3.91-7.92,11.5,11.5,0,0,0-9.61-11.28,11.48,11.48,0,0,0-7.65-8.55h0a9.76,9.76,0,0,0-1.42-.33l-.14,0-.25,0-.2,0-.22,0-.27,0h-.61a11.26,11.26,0,0,0-10.88,9.62c-3.51-.81-6.72.24-7.31,2.46a3,3,0,0,0,.1,1.78c.6,1.72,2.55,3.37,5.16,4.18l.34.1.51.13.11,0h0a8.84,8.84,0,0,0-.84,3.79,8.74,8.74,0,0,0,4.71,7.8l-.23.14a3.12,3.12,0,0,0-.76,1.06,15.86,15.86,0,0,0-1.47,3.54c-.25,1.06-.29,2.16-.6,3.21-.58,1.93-2.06,3.56-2.23,5.57-.08.9.07,2-.57,2.58a3.11,3.11,0,0,1-.51.36,4.13,4.13,0,0,0-1.11,1.17,3.88,3.88,0,0,1-.78,1.12c-.58.43-1.53.39-1.81,1.06s.45,1.46.28,2.19-.79.87-1.24,1.28a4.45,4.45,0,0,0-1.07,2,6.56,6.56,0,0,1-5.4-1.38,10.09,10.09,0,0,1,.56,2,8.76,8.76,0,0,0-2.91-1.46,9.19,9.19,0,0,1-3.1-2.3l1.66-.23L469,600.41l-2.17-.45,1.94,3.73a1.19,1.19,0,0,0-.66.79,3.39,3.39,0,0,0-.07,1.27,22.73,22.73,0,0,0,.5,3l.56,2.62c.05.24.11.49.18.73a6.89,6.89,0,0,0-2.17.24,18.88,18.88,0,0,0-4.51-1.07,2.5,2.5,0,0,0-1,0,2.59,2.59,0,0,0-.95.77,30.76,30.76,0,0,0-3.35,4.72c-4,6.86-9.21,12.85-14.14,19.05-3.4,1.38-6.83,2.69-10.26,4l-7.38,2.82a11.19,11.19,0,0,1-4.58,1c-.7,0-1.57-.15-2,.45a4.21,4.21,0,0,0-.45,1l-.76.08h0a8.74,8.74,0,0,0-1.77-3.26,1.12,1.12,0,0,0-.83.64c-.18.33-.29.69-.5,1-.39.58-1.08.86-1.57,1.35s-.8,1.25-1.34,1.75a5.3,5.3,0,0,1-2.51,1,15.84,15.84,0,0,0-3.93,1.49,6.33,6.33,0,0,1-1.45.67,5.45,5.45,0,0,1-1.71.06l-3.9-.29a3.08,3.08,0,0,0-1.05.05,2,2,0,0,0-1.24,2,3.15,3.15,0,0,0,1.24,2.15,7.94,7.94,0,0,0,2.22,1.15A65.15,65.15,0,0,0,409.79,658v.79a17.75,17.75,0,0,0,8,1.9,1.24,1.24,0,0,0,.6-.11,1.32,1.32,0,0,0,.5-.78,32.17,32.17,0,0,0,1.56-7.66h0a4,4,0,0,0,1.41-.36c1.34-.37,2.68.55,4.07.7,1.71.19,3.29-.81,4.91-1.42l.7-.23a7.68,7.68,0,0,1-1.62,1.55c-.67.48-1.42.84-2.07,1.34a14.26,14.26,0,0,1-1.76,1.36,11.05,11.05,0,0,1-1.35.52,8.91,8.91,0,0,0-1.93,1,3.91,3.91,0,0,0-1.31,1.28,1.92,1.92,0,0,0-.11,1.8,1.9,1.9,0,0,0,1.29.9,5.29,5.29,0,0,0,1.59,0c2.12-.16,4.23-.35,6.34-.54a16.92,16.92,0,0,0,2.65-.38c.46-.11.92-.26,1.38-.39a12.31,12.31,0,0,1,2.41-.36,2,2,0,0,1,.7.07c.49.16.84.66,1.34.76a2,2,0,0,0,1-.13,22.3,22.3,0,0,1,4.69-.5c.69,0,1.5-.17,1.82-.81s-.26-1.67-.52-2.52a7.71,7.71,0,0,1-.22-1.66,10.39,10.39,0,0,0-1.16-3.94,10.29,10.29,0,0,1-.87-1.8,45.47,45.47,0,0,0,8.63-4.38,15.43,15.43,0,0,1,4.92-2.37,13.38,13.38,0,0,1,6.18.72,140.61,140.61,0,0,1,14.17,4.94c2.21.91,4.41,1.87,6.69,2.56a10.43,10.43,0,0,0,2.38,2.31,11,11,0,0,0,5.15,1.41,67.48,67.48,0,0,0,7.25.27,12.23,12.23,0,0,0,5.4-1,5.55,5.55,0,0,0,1.13-.75,4.48,4.48,0,0,0,3.56-1.31A8.63,8.63,0,0,0,512,646.5c.59-2.28.14-5,1.54-6.82.37-.5.86-.9,1.23-1.4a3.94,3.94,0,0,0,.64-2.31.47.47,0,0,1,.06-.09,8.47,8.47,0,0,0,.6-2.3,13.14,13.14,0,0,1,.65-1.82,56.19,56.19,0,0,0,1.86-5.39,31.49,31.49,0,0,0,.86-3.7c.15-1,.24-2,.32-3a18.63,18.63,0,0,1,.91-4.63,37.68,37.68,0,0,0,2.1-11.08v-.22a7.43,7.43,0,0,0,6.58-7.56,7.89,7.89,0,0,0-.69-3.23A10,10,0,0,0,530,587.91Zm-35.78,43.47c.11.39.24.77.37,1.15-.59-.57-1.16-1.16-1.75-1.74.23.08.47.15.69.24A3.73,3.73,0,0,1,494.19,631.38Zm-2.83-1.92c-3.46-3-7.46-5.33-11-8.24,1.93.95,3.81,2.06,5.67,3.12q3.31,1.89,6.71,3.63A5.49,5.49,0,0,1,491.36,629.46Zm1.47-7.56.17-.17c0,.43,0,.82,0,1.19l-.93-.32A8.28,8.28,0,0,0,492.83,621.9ZM462.43,630a28.63,28.63,0,0,0,3.68-5.25c1.37,2.39,3.6,4.12,5.49,6.13C468.55,630.49,465.49,630.16,462.43,630Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "url(#a964f849-fa65-4178-8cc4-fb8fb10b3617)"
+                }
+              }),
+              _c("polygon", {
+                attrs: {
+                  points:
+                    "415.35 438.25 417.53 438.69 424.96 449.68 421.69 450.12 415.35 438.25",
+                  fill: "#2f2e41"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M414.49,645.46a42.78,42.78,0,0,0,2.18,5.67,54,54,0,0,0,7.25-2.07,22.86,22.86,0,0,0-1.51-2,7.46,7.46,0,0,0-2.05-1.57,5.64,5.64,0,0,0-2.49,0C416.75,645.46,415.62,645.48,414.49,645.46Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#fbbebe"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M420.37,648.39a4.52,4.52,0,0,1-2.48-2.82A9.08,9.08,0,0,0,416,642.2a1.08,1.08,0,0,0-.84.63c-.18.32-.29.68-.49,1-.4.57-1.1.85-1.6,1.33s-.8,1.23-1.34,1.72a5.32,5.32,0,0,1-2.53,1,16.41,16.41,0,0,0-4,1.47,6.9,6.9,0,0,1-1.47.66,5.82,5.82,0,0,1-1.72,0l-3.94-.28a3.08,3.08,0,0,0-1,0,1.91,1.91,0,0,0-1.25,2,3,3,0,0,0,1.25,2.12,8.3,8.3,0,0,0,2.24,1.14,65.9,65.9,0,0,0,10.56,3v.78a18.28,18.28,0,0,0,8.05,1.87,1.36,1.36,0,0,0,.6-.1,1.32,1.32,0,0,0,.5-.78,31.2,31.2,0,0,0,1.65-8.56,6.82,6.82,0,0,0-.17-2.21c-.22-.71.52-.41-.16-.69",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#2f2e41"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M495.93,633.54c-11.68.7-23.22-2.72-34.92-3.08a17.05,17.05,0,0,0-4.34.27,21.87,21.87,0,0,0-4.3,1.67c-6.27,2.92-12.76,5.34-19.24,7.75l-7.45,2.77a11.28,11.28,0,0,1-4.61,1c-.71,0-1.58-.15-2,.44-1.21,1.8-.64,4.43.16,6.45.26.65.7,1.36,1.4,1.43a4.07,4.07,0,0,0,1.42-.36c1.35-.36,2.7.55,4.1.7,1.72.18,3.32-.8,4.95-1.4,2.7-1,5.64-1,8.48-1.44,4.75-.79,9.16-3,13.28-5.51a15.5,15.5,0,0,1,4.95-2.34,13.7,13.7,0,0,1,6.23.71,143,143,0,0,1,14.29,4.86,66.61,66.61,0,0,0,7.46,2.73,27,27,0,0,0,16.73-1c1.87-.74,3.9-2,4-4.06.07-1.15-.83-2.16-1.42-3.15-.38-.63-.77-1.26-1.18-1.87C501.92,637.21,499.48,633.33,495.93,633.54Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#2f2e41"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M495.93,633.54c-11.68.7-23.22-2.72-34.92-3.08a17.05,17.05,0,0,0-4.34.27,21.87,21.87,0,0,0-4.3,1.67c-6.27,2.92-12.76,5.34-19.24,7.75l-7.45,2.77a11.28,11.28,0,0,1-4.61,1c-.71,0-1.58-.15-2,.44-1.21,1.8-.64,4.43.16,6.45.26.65.7,1.36,1.4,1.43a4.07,4.07,0,0,0,1.42-.36c1.35-.36,2.7.55,4.1.7,1.72.18,3.32-.8,4.95-1.4,2.7-1,5.64-1,8.48-1.44,4.75-.79,9.16-3,13.28-5.51a15.5,15.5,0,0,1,4.95-2.34,13.7,13.7,0,0,1,6.23.71,143,143,0,0,1,14.29,4.86,66.61,66.61,0,0,0,7.46,2.73,27,27,0,0,0,16.73-1c1.87-.74,3.9-2,4-4.06.07-1.15-.83-2.16-1.42-3.15-.38-.63-.77-1.26-1.18-1.87C501.92,637.21,499.48,633.33,495.93,633.54Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M436.92,646q2.74.93,5.53,1.72c1-1.71,3-2.9,3.43-4.86a.46.46,0,0,0,0-.26.48.48,0,0,0-.21-.19,10.48,10.48,0,0,0-4.34-1.27c-1.2-.07-1.75,1.18-2.29,2.06C438.83,643.59,437.41,646.19,436.92,646Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#fbbebe"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M439.48,644.78a4,4,0,0,1-2.69-1.77c-.25-.45-.53-1.06-1.05-1s-.69.6-.8,1.07a30,30,0,0,1-1.51,5.19,9.74,9.74,0,0,1-3.23,4.25c-.68.47-1.43.82-2.1,1.32a14.43,14.43,0,0,1-1.77,1.34,10.51,10.51,0,0,1-1.36.5,9.43,9.43,0,0,0-1.94,1,3.85,3.85,0,0,0-1.33,1.27,1.83,1.83,0,0,0-.1,1.77,1.89,1.89,0,0,0,1.29.88,5.44,5.44,0,0,0,1.61,0c2.13-.15,4.26-.34,6.39-.53a18.44,18.44,0,0,0,2.67-.37l1.39-.38a11.06,11.06,0,0,1,2.43-.36,1.89,1.89,0,0,1,.71.07c.49.16.84.65,1.35.75a2.26,2.26,0,0,0,1-.13,22.08,22.08,0,0,1,4.73-.49c.7,0,1.52-.18,1.84-.8.4-.78-.26-1.65-.53-2.49a8,8,0,0,1-.22-1.63,9.94,9.94,0,0,0-1.17-3.88c-.54-1-1.28-2.1-.9-3.16a3,3,0,0,0,.36-1.09C444.4,644.39,440.46,645,439.48,644.78Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#2f2e41"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M478.42,614.8a9.12,9.12,0,0,1-4.66-4.62c-.19-.44-.35-.91-.54-1.35a10.26,10.26,0,0,0-2.78-3.87,1.37,1.37,0,0,0-1-.43,1.09,1.09,0,0,0-.75.81,3.09,3.09,0,0,0-.08,1.25,22.27,22.27,0,0,0,.5,2.92l.57,2.58a5.66,5.66,0,0,0,.35,1.15,4,4,0,0,0,.95,1.13c.52.48,1.05.94,1.58,1.4a5.43,5.43,0,0,0,1,.69,5.81,5.81,0,0,0,1.77.52,15.06,15.06,0,0,1,6.64,2.56s0-1.73,0-1.92a2.54,2.54,0,0,0-.5-1.39A8.87,8.87,0,0,0,478.42,614.8Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#fbbebe"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M478.42,614.8a9.12,9.12,0,0,1-4.66-4.62c-.19-.44-.35-.91-.54-1.35a10.26,10.26,0,0,0-2.78-3.87,1.37,1.37,0,0,0-1-.43,1.09,1.09,0,0,0-.75.81,3.09,3.09,0,0,0-.08,1.25,22.27,22.27,0,0,0,.5,2.92l.57,2.58a5.66,5.66,0,0,0,.35,1.15,4,4,0,0,0,.95,1.13c.52.48,1.05.94,1.58,1.4a5.43,5.43,0,0,0,1,.69,5.81,5.81,0,0,0,1.77.52,15.06,15.06,0,0,1,6.64,2.56s0-1.73,0-1.92a2.54,2.54,0,0,0-.5-1.39A8.87,8.87,0,0,0,478.42,614.8Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("ellipse", {
+                attrs: {
+                  cx: "450.2",
+                  cy: "429.57",
+                  rx: "2.84",
+                  ry: "2.86",
+                  fill: "#2f2e41"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M500.44,590.48a3.07,3.07,0,0,0-2.24.32,3.11,3.11,0,0,0-.77,1.05,15.25,15.25,0,0,0-1.48,3.48c-.25,1-.29,2.13-.61,3.16-.58,1.9-2.07,3.51-2.24,5.49-.08.89.07,1.93-.58,2.53a3.68,3.68,0,0,1-.51.37,3.84,3.84,0,0,0-1.12,1.15,3.77,3.77,0,0,1-.79,1.09c-.58.43-1.54.39-1.82,1s.45,1.44.28,2.16-.8.86-1.25,1.26a4.37,4.37,0,0,0-1.08,2,6.67,6.67,0,0,1-5.44-1.35,17.32,17.32,0,0,1,.85,6.22,2.54,2.54,0,0,1-.5,1.92,34.64,34.64,0,0,1,6.67,1.16,4.6,4.6,0,0,0,2.91,0,4.86,4.86,0,0,0,1.34-1.06c1.2-1.22,2.46-2.55,2.75-4.24a24.91,24.91,0,0,0,.05-2.87,16.18,16.18,0,0,1,.73-3.49,41.53,41.53,0,0,0,1.27-7.18c.13-1.5,1.43-2.7,2.11-4,1.28-2.53,2.6-5.16,2.69-8C501.7,591.73,501.38,590.58,500.44,590.48Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#2f2e41"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M500.44,590.48a3.07,3.07,0,0,0-2.24.32,3.11,3.11,0,0,0-.77,1.05,15.25,15.25,0,0,0-1.48,3.48c-.25,1-.29,2.13-.61,3.16-.58,1.9-2.07,3.51-2.24,5.49-.08.89.07,1.93-.58,2.53a3.68,3.68,0,0,1-.51.37,3.84,3.84,0,0,0-1.12,1.15,3.77,3.77,0,0,1-.79,1.09c-.58.43-1.54.39-1.82,1s.45,1.44.28,2.16-.8.86-1.25,1.26a4.37,4.37,0,0,0-1.08,2,6.67,6.67,0,0,1-5.44-1.35,17.32,17.32,0,0,1,.85,6.22,2.54,2.54,0,0,1-.5,1.92,34.64,34.64,0,0,1,6.67,1.16,4.6,4.6,0,0,0,2.91,0,4.86,4.86,0,0,0,1.34-1.06c1.2-1.22,2.46-2.55,2.75-4.24a24.91,24.91,0,0,0,.05-2.87,16.18,16.18,0,0,1,.73-3.49,41.53,41.53,0,0,0,1.27-7.18c.13-1.5,1.43-2.7,2.11-4,1.28-2.53,2.6-5.16,2.69-8C501.7,591.73,501.38,590.58,500.44,590.48Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M497.78,636c-2.43-1.16-4.21-3.31-6.18-5.16-3.75-3.53-8.34-6-12.29-9.33-2.62-2.19-5-4.74-7.83-6.58a19.57,19.57,0,0,0-8.39-2.93,2.23,2.23,0,0,0-1,0,2.3,2.3,0,0,0-.95.75,30.22,30.22,0,0,0-3.39,4.65c-5,8.5-12.11,15.64-18,23.54a1.5,1.5,0,0,0-.29.56,1.39,1.39,0,0,0,.22.87l1.2,2.34c.67,1.32,1.75,2.85,3.19,2.59a3.49,3.49,0,0,0,1.67-1.07l5.38-5.15,5.64-5.39c3.3-3.15,6.66-6.38,8.82-10.42,1.68,2.92,4.67,4.83,6.71,7.5.78,1,1.42,2.13,2.12,3.21,1.11,1.72,2.38,3.34,3.64,5l6.47,8.25a12.38,12.38,0,0,0,3,3,11.45,11.45,0,0,0,5.19,1.39,68.59,68.59,0,0,0,7.31.26,12.6,12.6,0,0,0,5.45-1,4.94,4.94,0,0,0,2.95-4.39,6.44,6.44,0,0,0-.93-2.73C505.15,641.59,502.13,638.07,497.78,636Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#2f2e41"
+                }
+              }),
+              _c("ellipse", {
+                attrs: {
+                  cx: "451.95",
+                  cy: "431.55",
+                  rx: "2.19",
+                  ry: "2.2",
+                  fill: "#e8e8f0"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M503.47,592.53a4.21,4.21,0,0,1,.24,3.16,12.82,12.82,0,0,1-1.41,2.91,13.85,13.85,0,0,1-1.83,2.6c3.38.16,6.65-1.16,9.62-2.76,2.4-1.29,4.79-2.88,6.07-5.29a2.8,2.8,0,0,1-2.24-.42,8,8,0,0,1-1.71-1.59l-1.69-1.9a7.61,7.61,0,0,1-1-1.37,3.78,3.78,0,0,1-.45-2.21,12.87,12.87,0,0,1-2.24,1.86c-1.21.79-2.54,1.36-3.76,2.14-.42.28-1.38.72-1.13,1.28S503.13,591.93,503.47,592.53Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#fbbebe"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M503.47,592.53a4.21,4.21,0,0,1,.24,3.16,12.82,12.82,0,0,1-1.41,2.91,13.85,13.85,0,0,1-1.83,2.6c3.38.16,6.65-1.16,9.62-2.76,2.4-1.29,4.79-2.88,6.07-5.29a2.8,2.8,0,0,1-2.24-.42,8,8,0,0,1-1.71-1.59l-1.69-1.9a7.61,7.61,0,0,1-1-1.37,3.78,3.78,0,0,1-.45-2.21,12.87,12.87,0,0,1-2.24,1.86c-1.21.79-2.54,1.36-3.76,2.14-.42.28-1.38.72-1.13,1.28S503.13,591.93,503.47,592.53Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M503.51,592.86a2.85,2.85,0,0,0,0,3.3c.1.12.46.87.61.88a.55.55,0,0,0,.38-.2,25.1,25.1,0,0,0,2.14-2.55,4.76,4.76,0,0,1,2.72-1.78,5.88,5.88,0,0,1,3.75,1.17,3.56,3.56,0,0,1,1.29,1,3.49,3.49,0,0,1,.42,1.43,68.9,68.9,0,0,1,.38,9.09,35.82,35.82,0,0,1-.43,6.55c-.22,1.11-.54,2.2-.69,3.33a21.24,21.24,0,0,0-.14,3v4.18a11,11,0,0,0,.16,2.29c.2.91.63,1.76.92,2.65a17.33,17.33,0,0,1,.61,3.13l.57,4.32c.18,1.36.32,2.85-.51,4-.37.49-.86.89-1.24,1.38-1.41,1.84-1,4.47-1.55,6.72a8.38,8.38,0,0,1-2.74,4.2,4.53,4.53,0,0,1-3.61,1.29c-1.76-.33-2.81-2.16-3.29-3.89s-.65-3.61-1.69-5.07a13.45,13.45,0,0,0-3.34-2.79,5.77,5.77,0,0,1-2.61-3.39c-.11-.63,0-1.28-.11-1.92a4.53,4.53,0,0,0-2.79-3.67c-.9-.35-2-.48-2.52-1.3a6.07,6.07,0,0,0,2.63-3.53,18.13,18.13,0,0,0,.64-4.46l.3-5c.14-2.25.2-4.47,1.19-6.49.44-.9,1-1.75,1.45-2.64a28.66,28.66,0,0,0,1.55-3.87c.72-2.06,1.44-4.12,2.08-6.2a11.68,11.68,0,0,1,1.14-2.89C501.72,594.19,502.5,593.06,503.51,592.86Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#e8e8f0"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M492.36,625.5l1.33,0,.28-2a4.17,4.17,0,0,1,.28-1.17,7,7,0,0,1,.77-1.12c1.3-1.85,1.21-4.3,1.53-6.55a33.33,33.33,0,0,1,2.92-8.56l2.58-5.75a7.94,7.94,0,0,0,.56-1.47,8.82,8.82,0,0,0,.16-1.7c0-.89.28-4.13.31-5,0-.33-.73-.15-.88-.44-.32-.64-.76,1.09-1.37,1.47a3.36,3.36,0,0,0-1.19,1.74c-.56,1.44-.9,3-1.42,4.43a9.05,9.05,0,0,1-2.41,3.92c-.53.46-1.14.83-1.64,1.33-1.6,1.58-1.76,4.09-1.81,6.35C492.32,612.36,492.06,625.5,492.36,625.5Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#2f2e41"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M511.5,590.47a4.54,4.54,0,0,0-2.37,3.25,16.44,16.44,0,0,1-1.2,4c-1.62,2.82-5.75,3.64-6.9,6.69a12.3,12.3,0,0,0-.46,3.15c-.2,2.19-.92,4.3-1.14,6.48a28.87,28.87,0,0,0,.12,5.09L501,636.35a23,23,0,0,1-.43,7.58,7.3,7.3,0,0,0,4.34-.72c1.35-.62,2.59-1.47,3.9-2.19,2.24-1.24,4.72-2.11,6.69-3.76a4.09,4.09,0,0,0,.9-1A8.65,8.65,0,0,0,517,634a12.2,12.2,0,0,1,.65-1.78,52.45,52.45,0,0,0,1.88-5.32,30.53,30.53,0,0,0,.86-3.64c.16-1,.25-2,.33-3a17.6,17.6,0,0,1,.92-4.55,36.65,36.65,0,0,0,2.11-10.92,5.71,5.71,0,0,0-.11-1.6,8.56,8.56,0,0,0-.88-1.83c-.6-1.13-1-2.37-1.52-3.52a17.31,17.31,0,0,0-5.91-6.21C514.17,590.84,512.81,590,511.5,590.47Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#2f2e41"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M481.29,618.57a10.43,10.43,0,0,1-2.75-2.09c-.36-.42-.66-.89-1-1.31a6.81,6.81,0,0,0-3.46-2,16.9,16.9,0,0,0-4-.39,7.26,7.26,0,0,0-2.67.32,2.72,2.72,0,0,0-1.77,1.9,3.15,3.15,0,0,0,1.35,2.8,6.36,6.36,0,0,0,2.69,1.3,21.5,21.5,0,0,0,2.43.29c4.78.5,9.05,3.1,13.24,5.47q5.52,3.14,11.26,5.84a23.4,23.4,0,0,0,.19-3.45c0-.86-.07-2.18-.88-2.69a17.66,17.66,0,0,0-3.58-1.07,56.34,56.34,0,0,1-7.21-2.92C483.81,620,482.54,619.3,481.29,618.57Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#fbbebe"
+                }
+              }),
+              _c("ellipse", {
+                attrs: {
+                  cx: "450.2",
+                  cy: "420.35",
+                  rx: "8.52",
+                  ry: "8.57",
+                  fill: "#fbbebe"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M513.93,600.18a13.66,13.66,0,0,0-1.65,3.09c-1,2.16-2.7,4-3.53,6.29s-.84,5.23-2.55,7.1a2.49,2.49,0,0,0-.75,1.08,5.16,5.16,0,0,1-.08.78c-.25.68-1.36.71-1.57,1.41-.06.2,0,.42-.1.62-.17.45-.77.52-1.16.79-.83.56-.66,1.86-1.25,2.67a2.25,2.25,0,0,1-2.13.75,7.5,7.5,0,0,1-2.21-.83,2.13,2.13,0,0,0-.8-.25,1.65,1.65,0,0,0-.92.32,5.67,5.67,0,0,0-2.3,4.85,15.84,15.84,0,0,0,1.32,5.43,2.18,2.18,0,0,0,.43.81,1.91,1.91,0,0,0,2.12.16,10,10,0,0,1,2.07-.93c1.32-.24,2.61.67,3.95.59a5.49,5.49,0,0,0,2.66-1.17,14.7,14.7,0,0,0,3.58-3c.58-.77,1-1.64,1.52-2.46a31.54,31.54,0,0,1,2.15-2.87l4.92-6a13.83,13.83,0,0,0,1.32-1.82,12.83,12.83,0,0,0,1-2.75,21.07,21.07,0,0,0,1-4.89,18.79,18.79,0,0,0-.36-4.1,14.49,14.49,0,0,0-1-3.91C518.54,599.68,515.94,597.84,513.93,600.18Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#2f2e41"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M531.05,589a9.6,9.6,0,0,0-3.94-7.8,11.41,11.41,0,0,0-9.69-11.11,11.07,11.07,0,0,0-21.81.59c-3.54-.8-6.78.24-7.37,2.42s1.91,5,5.64,6a10.51,10.51,0,0,0,3.62.36,11.08,11.08,0,0,0,7.62,4.75,11.37,11.37,0,0,0,8.32,8.58,9.55,9.55,0,0,0,2.57,3.55c0,.27,0,.55,0,.83a7.21,7.21,0,1,0,14.42,0,7.7,7.7,0,0,0-.69-3.19A9.64,9.64,0,0,0,531.05,589Z",
+                  transform: "translate(-52 -162.63)",
+                  fill: "#f86d70"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M490.64,573.56c.59-2.18,3.83-3.22,7.37-2.42a11.26,11.26,0,0,1,11-9.48l.73,0a10.84,10.84,0,0,0-3.14-.47,11.26,11.26,0,0,0-11,9.48c-3.54-.8-6.78.24-7.37,2.42s1.91,5,5.64,6a11,11,0,0,0,2.14.37C492.44,578.39,490.05,575.79,490.64,573.56Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M518.37,597.59a7.52,7.52,0,0,1,0-.82,9.34,9.34,0,0,1-2.57-3.55,11.34,11.34,0,0,1-8.32-8.59,11.05,11.05,0,0,1-7.63-4.74,9.6,9.6,0,0,1-2.13-.06,11.11,11.11,0,0,0,7.35,4.37,11.37,11.37,0,0,0,8.32,8.58,9.55,9.55,0,0,0,2.57,3.55c0,.27,0,.55,0,.83a7.34,7.34,0,0,0,7.17,7.46A7.46,7.46,0,0,1,518.37,597.59Z",
+                  transform: "translate(-52 -162.63)",
+                  opacity: "0.1"
+                }
+              }),
+              _c("ellipse", {
+                attrs: {
+                  cx: "505.04",
+                  cy: "584.74",
+                  rx: "1.31",
+                  ry: "1.75",
+                  transform: "translate(-302.82 261.95) rotate(-37.22)",
+                  fill: "#fbbebe"
+                }
+              })
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _vm._m(0)
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "lg:w-1/4 flex flex-col items-center lg:items-start text-center lg:text-left lg:pl-12"
+      },
+      [
+        _c(
+          "h2",
+          {
+            staticClass:
+              "uppercase text-4xl text-orange-500 text-secondary tracking-widest mb-6"
+          },
+          [_vm._v("Kontakt")]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "text-gray-600 leading-relaxed mb-12 lg:pl-2" },
+          [
+            _c("ul", [
+              _c("li", [_vm._v("Ivana Hesová (Hanzalová)")]),
+              _vm._v(" "),
+              _c("li", [_vm._v("Martin Hes")]),
+              _vm._v(" "),
+              _c("li", [
+                _c("span", { staticClass: "font-bold" }, [_vm._v("Tel.:")]),
+                _vm._v(" 722 161 891")
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("span", { staticClass: "font-bold" }, [_vm._v("IČ:")]),
+                _vm._v(" 87709228")
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("span", { staticClass: "font-bold" }, [_vm._v("E-mail:")]),
+                _vm._v(" info@prosvujusmev.cz")
+              ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass:
+              "bg-purple-300 hover:bg-purple-400 py-3 px-6 uppercase text-lg font-bold text-white rounded-full",
+            attrs: { href: "mailto: info@prosvujusmev.cz" }
+          },
+          [_vm._v("Poslat Email")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass:
+              "bg-blue-500 hover:bg-blue-600 py-3 px-6 uppercase text-lg font-bold text-white rounded-full mt-3",
+            attrs: {
+              href: "https://www.facebook.com/prosvujusmev.cz/",
+              target: "_blank"
+            }
+          },
+          [_vm._v("Facebook")]
+        )
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Courses/Course.vue?vue&type=template&id=3e6836a7&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Home/Courses/Course.vue?vue&type=template&id=3e6836a7&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -62016,44 +64366,62 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "w-full lg:w-1/3 md:px-4 mb-4 md:mb-0" }, [
-    _c("div", { staticClass: "bg-white overflow-hidden relative" }, [
-      _c("img", {
-        staticClass: "h-56 w-full object-cover object-center rounded",
-        staticStyle: { filter: "grayscale(100%)" },
-        attrs: { src: _vm.imageSource, alt: "" }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "p-4 h-auto md:h-40 lg:h-48" }, [
-        _c(
-          "a",
-          {
-            staticClass:
-              "block text-gray-800 hover:text-purple-300 font-semibold mb-2 text-lg md:text-base lg:text-lg",
-            attrs: { href: "#" }
+    _c(
+      "div",
+      {
+        staticClass: "bg-white overflow-hidden relative",
+        on: {
+          mouseover: function($event) {
+            _vm.hovered = true
           },
-          [
-            _vm._v(
-              "\n                 " + _vm._s(_vm.title) + "\n             "
-            )
-          ]
-        ),
+          mouseleave: function($event) {
+            _vm.hovered = false
+          }
+        }
+      },
+      [
+        _c("a", { attrs: { href: _vm.link } }, [
+          _c("img", {
+            staticClass:
+              "h-56 w-full object-cover object-center rounded cursor-pointer",
+            class: { inactive: !_vm.hovered },
+            attrs: { src: _vm.imageSource, alt: "" }
+          })
+        ]),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "text-gray-600 text-sm leading-relaxed block md:text-xs lg:text-sm"
-          },
-          [
-            _vm._v(
-              "\n                 " +
-                _vm._s(_vm.description) +
-                "\n             "
-            )
-          ]
-        )
-      ])
-    ])
+        _c("div", { staticClass: "p-4 h-auto md:h-40 lg:h-48" }, [
+          _c(
+            "a",
+            {
+              staticClass:
+                "block text-gray-800 font-semibold mb-2 text-lg md:text-base lg:text-lg",
+              class: { "text-purple-300": _vm.hovered },
+              attrs: { href: _vm.link }
+            },
+            [
+              _vm._v(
+                "\n                 " + _vm._s(_vm.title) + "\n             "
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "text-gray-600 text-sm leading-relaxed block md:text-xs lg:text-sm"
+            },
+            [
+              _vm._v(
+                "\n                 " +
+                  _vm._s(_vm.description) +
+                  "\n             "
+              )
+            ]
+          )
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = []
@@ -62078,7 +64446,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", { staticClass: "py-12", attrs: { id: "courses" } }, [
+  return _c("section", { staticClass: "py-12", attrs: { id: "kurzy" } }, [
     _vm._m(0),
     _vm._v(" "),
     _c(
@@ -62091,6 +64459,7 @@ var render = function() {
         return _c("home-course", {
           key: course.title,
           attrs: {
+            link: course.link,
             title: course.title,
             description: course.description,
             "image-source": course.imageSource
@@ -62120,6 +64489,2957 @@ var staticRenderFns = [
               "uppercase text-4xl text-gray-800 hover:text-purple-300 font-bold leading-none tracking-wide mb-2"
           },
           [_vm._v("Naše kurzy")]
+        )
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Testamonial.vue?vue&type=template&id=68e08432&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Home/Testamonial.vue?vue&type=template&id=68e08432& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass:
+        "text-center w-full text-xl mx-auto text-gray-600 leading-relaxed"
+    },
+    [
+      _c("div", { staticClass: "w-full text-center" }, [
+        _c(
+          "svg",
+          {
+            staticClass:
+              "fill-current inline-block h-16 w-16 mb-10 text-purple-300 opacity-75",
+            attrs: {
+              xmlns: "http://www.w3.org/2000/svg",
+              viewBox: "0 0 512 512"
+            }
+          },
+          [
+            _c("path", {
+              attrs: {
+                d:
+                  "M464 32H336c-26.5 0-48 21.5-48 48v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48zm-288 0H48C21.5 32 0 53.5 0 80v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48z"
+              }
+            })
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "h-24 overflow-scroll" }, [
+        _vm._v(_vm._s(_vm.text))
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Testamonials.vue?vue&type=template&id=9248b99e&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Home/Testamonials.vue?vue&type=template&id=9248b99e& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "section",
+    {
+      staticClass: "py-12 my-12 flex justify-center",
+      attrs: { id: "reference" }
+    },
+    [
+      _c("div", { staticClass: "w-3/5" }, [
+        _c(
+          "div",
+          {
+            staticClass:
+              " flex flex-col items-center sm:items-start text-center sm:text-left mb-6 italic"
+          },
+          _vm._l(_vm.testamonials, function(testamonial, key) {
+            return _c("home-testamonial", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: key == _vm.activeTestamonial,
+                  expression: "key == activeTestamonial"
+                }
+              ],
+              key: testamonial,
+              attrs: { text: testamonial }
+            })
+          }),
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "flex justify-center pt-4" },
+          _vm._l(_vm.testamonials, function(testamonial, key) {
+            return _c(
+              "svg",
+              {
+                staticClass:
+                  "fill-current inline-block h-4 w-4 mb-10 text-purple-300 opacity-75 cursor-pointer mx-1 rounded-full",
+                class: { "bg-purple-300": _vm.activeTestamonial == key },
+                attrs: {
+                  xmlns: "http://www.w3.org/2000/svg",
+                  viewBox: "0 0 512 512"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.activeTestamonial = key
+                  }
+                }
+              },
+              [
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200z"
+                  }
+                })
+              ]
+            )
+          }),
+          0
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b& ***!
+  \*********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "header",
+    {
+      staticClass:
+        "flex flex-col sm:flex-row items-center justify-between py-6 relative"
+    },
+    [
+      _c("h3", { staticClass: "text-2xl font-bold uppercase text-blue-900" }, [
+        _vm._v("Logo")
+      ]),
+      _vm._v(" "),
+      _c("nav", { staticClass: "hidden md:flex text-lg" }, [
+        _c(
+          "a",
+          {
+            staticClass: "text-gray-800 hover:text-purple-300 py-3 px-6",
+            class: _vm.isActive("/") ? "text-purple-600" : "",
+            attrs: { href: "/#" }
+          },
+          [_vm._v("Home")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "text-gray-800 hover:text-purple-300 py-3 px-6",
+            attrs: { href: "/#kurzy" }
+          },
+          [_vm._v("Kurzy")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "text-gray-800 hover:text-purple-300 py-3 px-6",
+            attrs: { href: "#" }
+          },
+          [_vm._v("Koupit")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "text-gray-800 hover:text-purple-300 py-3 px-6",
+            class: _vm.isActive("/rezervace") ? "text-purple-600" : "",
+            attrs: { href: "/rezervace" }
+          },
+          [_vm._v("Rezervace")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "text-gray-800 hover:text-purple-300 py-3 px-6",
+            class: _vm.isActive("/cenik") ? "text-purple-600" : "",
+            attrs: { href: "/cenik" }
+          },
+          [_vm._v("Ceník")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "text-gray-800 hover:text-purple-300 py-3 px-6",
+            attrs: { href: "#" }
+          },
+          [_vm._v("Termíny")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "text-gray-800 hover:text-purple-300 py-3 px-6",
+            attrs: { href: "#" }
+          },
+          [_vm._v("Galerie")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "text-gray-800 hover:text-purple-300 py-3 px-6",
+            attrs: { href: "/#reference" }
+          },
+          [_vm._v("Reference")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "text-gray-800 hover:text-purple-300 py-3 px-6",
+            class: _vm.isActive("/kontakty") ? "text-purple-600" : "",
+            attrs: { href: "/kontakty" }
+          },
+          [_vm._v("Kontakty")]
+        )
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "flex md:hidden flex-col absolute top-0 right-0 p-4 mt-5"
+      },
+      [
+        _c("span", { staticClass: "w-5 h-px mb-1 bg-orange-500" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "w-5 h-px mb-1 bg-orange-500" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "w-5 h-px mb-1 bg-orange-500" })
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Prices/Prices.vue?vue&type=template&id=32533c18&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Prices/Prices.vue?vue&type=template&id=32533c18& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass:
+          "flex flex-col-reverse lg:flex-row jusitfy-between items-start py-12 lg:mt-12"
+      },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "mb-16 lg:mb-0 mt-8 lg:mt-0 lg:w-2/4 lg:pl-12 flex justify-center"
+          },
+          [
+            _c(
+              "svg",
+              {
+                staticClass: "w-full h-64 sm:h-auto",
+                attrs: {
+                  id: "44ab1b28-df60-43dd-96f3-344df6392e15",
+                  "data-name": "Layer 1",
+                  xmlns: "http://www.w3.org/2000/svg",
+                  "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                  width: "1091.78",
+                  height: "828.58",
+                  viewBox: "0 0 1091.78 828.58"
+                }
+              },
+              [
+                _c(
+                  "defs",
+                  [
+                    _c(
+                      "linearGradient",
+                      {
+                        attrs: {
+                          id: "c6e87aad-8151-4bb2-867f-5915ddeef7a8",
+                          x1: "581.24",
+                          y1: "811.56",
+                          x2: "581.24",
+                          y2: "226.06",
+                          gradientUnits: "userSpaceOnUse"
+                        }
+                      },
+                      [
+                        _c("stop", {
+                          attrs: {
+                            offset: "0",
+                            "stop-color": "gray",
+                            "stop-opacity": "0.25"
+                          }
+                        }),
+                        _c("stop", {
+                          attrs: {
+                            offset: "0.54",
+                            "stop-color": "gray",
+                            "stop-opacity": "0.12"
+                          }
+                        }),
+                        _c("stop", {
+                          attrs: {
+                            offset: "1",
+                            "stop-color": "gray",
+                            "stop-opacity": "0.1"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _c("title", [_vm._v("business deal")]),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1132,274.72c-.19.89-.37,1.78-.58,2.66-6.56,30.25-17.28,59.4-33.22,86.17-.53.89-1.06,1.78-1.6,2.67a247.62,247.62,0,0,1-37.45,47.27c-7.94,7.84-16.6,15.29-26.9,20.66-14.43,7.54-31.3,10.6-47.88,13.1-17.22,2.61-34.68,4.79-52.09,7.14Q923,455.62,913.83,457c-16.82,2.49-33.52,5.37-49.82,9.19-20.15,4.71-39.68,10.88-58.13,19.56q-2.21,1-4.37,2.12c-1.44.72-2.89,1.45-4.31,2.19s-2.82,1.48-4.21,2.24c-.72.39-1.44.78-2.15,1.19s-1.41.77-2.1,1.17c-2.08,1.16-4.12,2.35-6.16,3.55l-.08.05c-1.35.79-2.68,1.6-4,2.41-7.54,4.58-14.92,9.36-22.3,14.17l-4.64,3-7.19,4.65c-1.4.91-2.83,1.82-4.24,2.72-1,.66-2,1.32-3.09,2-5.24,3.3-10.55,6.54-16,9.63-1.29.74-2.59,1.48-3.9,2.2a221.65,221.65,0,0,1-34.42,15.52l-.16.06a157,157,0,0,1-18.28,5.16c-3.57.78-7.15,1.42-10.77,1.91a115.46,115.46,0,0,1-29.2.41c-19.07-2.21-36.94-9.53-56-12-39.24-5-77.35,11.11-114.25,23.73q-13.61,4.65-27.42,8.71c-6.12,1.81-12.26,3.52-18.45,5.17A694.23,694.23,0,0,1,292.49,608a325.86,325.86,0,0,1-49.15,1.09c-6.23-.38-12.39-1-18.44-2-20.7-3.2-40-9.91-55.58-22.2-12.76-10.09-21.89-23.24-28.84-37a161.46,161.46,0,0,1-14.91-44.54c-.38-2.11-.72-4.23-1-6.35q-.75-5.44-1.12-10.94a156.59,156.59,0,0,1,6.88-57.85c6.6-20.92,17.6-41,22.44-62.08q.3-1.34.57-2.67a92.43,92.43,0,0,0,1.47-9.69c2.47-25.9-7-51.15-14.43-76.48-.26-.88-.52-1.77-.77-2.66q-1.2-4.22-2.3-8.43c-6.88-26.78-8.79-55.45-2.66-82.18.19-.89.42-1.78.64-2.66a120.32,120.32,0,0,1,22.62-46.33c11.48-14.4,26.55-26.39,42.65-36.92q11.77-7.7,24.34-14.39,9-4.8,18.44-9.09c50.45-23,108-34.23,164.91-31.75,3,.13,6,.29,9,.51s6.28.48,9.42.77C463.33,47.72,499,56.31,534.42,65.7c11.87,3.15,23.72,6.38,35.56,9.55,5.27,1.4,10.53,2.8,15.8,4.16,25.81,6.67,52,12.71,78.52,17.22q9.21,1.59,18.44,2.9A528.2,528.2,0,0,0,747.23,105q12.59.25,25.19-.22,6.36-.23,12.73-.69C829,101,871.38,90.66,913.83,81q9.21-2.1,18.45-4.14c8.08-1.78,16.16-3.5,24.28-5.09,50.53-9.93,95.57-4.22,142.55,16.27,10.68,4.65,21.35,10.27,27.89,19s8.18,19.45,9.4,29.8c1.73,14.74,2.86,29.67,3.29,44.68,0,.88,0,1.77.06,2.66C1140.43,214.5,1138.17,245.11,1132,274.72Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M796.82,363.55h-3.3v1.18l0,1.49h3.74Zm-37.43,0a.17.17,0,0,0,0,.07c-.09.73-.19,1.46-.29,2.2l0,.2,0,.2H787.7v-.16l2-2.51Zm-76.65,0V277.38h32.9c-.35-.23-.71-.47-1.08-.69l-.48-.31-.62-.38c-.36-.21-.72-.42-1.1-.62s-.61-.34-.93-.51l-.22-.12-.05,0H682.74V270l-.77.3-.81.38-.06,0-.17.09-.51.27-.51.27c-.5.27-1,.57-1.5.88l-.48.32-1,.64c-1.29.86-2.56,1.76-3.87,2.6-.33.21-.66.42-1,.61-.71.42-1.44.82-2.19,1.18-.32.16-.63.3-1,.43l-.54.21-.5.17h0a23.42,23.42,0,0,1-3.6.94v84.24H614.9c0,.1.07.18.1.28.27.8.54,1.59.8,2.39h48.5v92.36q.38,0,.75,0l.87.05,1.57.09L670,459l1.15.11,1.25.13h.19l2.21.27.47.06,1.07.15,1.53.22h0l3.67-.16h0l.5.09c.2,0,.41.06.62.1V366.22H759l0-.2,0-.2c.1-.74.2-1.47.29-2.2a.17.17,0,0,1,0-.07Zm114.08,0h-3.3v1.18l0,1.49h3.74Zm-39.49,0c-.12.89-.23,1.78-.35,2.67h31.89l2.17-2.67Zm-74.59,0V277.38h32.9c-.35-.23-.71-.47-1.08-.69l-.48-.31-.62-.38c-.36-.21-.72-.42-1.1-.62s-.61-.34-.93-.51l-.22-.12-.07,0h-28.4V270l-.77.3-.81.38-.06,0-.17.09-.51.27-.51.27c-.5.27-1,.57-1.5.88l-.48.32-1,.64c-1.29.86-2.56,1.76-3.87,2.6-.33.21-.66.42-1,.61-.71.42-1.44.82-2.19,1.18-.32.16-.63.3-1,.43l-.54.21-.5.17h0a23.42,23.42,0,0,1-3.6.94v84.24H614.9c0,.1.07.18.1.28.27.79.55,1.59.81,2.39H664.3v92.35l.75,0,.87.05,1.57.09L670,459l1.15.11,1.25.13h.19l2.21.27.47.06,1.07.15,1.53.22h0l3.67-.16h0l.5.09c.2,0,.41.06.62.1V366.22H757c.12-.89.23-1.78.35-2.67ZM932.28,184.11h207.47c0-.89,0-1.78-.06-2.66H932.28V76.83q-9.24,2-18.45,4.14V181.45H688.19l-.57-.51.86-.76h0l83.93-75.42q-12.6.48-25.19.22l-64.49,57.94V99.53q-9.24-1.31-18.44-2.9V160L570,75.25c-11.84-3.17-23.69-6.4-35.56-9.55L662.67,180.94l-.57.51H426.7V44.25q-4.71-.44-9.42-.77c-3-.22-6-.38-9-.51V181.45H243.34V74.72Q234,79,224.9,83.81v97.64H135.29c-.22.88-.45,1.77-.64,2.66H224.9v90.61H139.61c.25.89.51,1.78.77,2.66H224.9v86.17H153.34q-.27,1.33-.57,2.67H224.9V607.15c6,.93,12.21,1.58,18.44,2V366.22H408.25V587.75c6.19-1.65,12.33-3.36,18.45-5.17V366.22H664.3V559.77a157,157,0,0,0,18.28-5.16l.16-.06V366.22H913.83V457q9.2-1.35,18.45-2.59V366.22H1096.6c.54-.89,1.07-1.78,1.6-2.67H932.28V277.38h199.14c.21-.88.39-1.77.58-2.66H932.28Zm-688.94,0H408.25v90.61H243.34Zm0,179.44V277.38H408.25v86.17ZM426.7,184.11H664.3v90.61H426.7Zm0,179.44V277.38H664.3v86.17Zm487.13,0H682.74V277.38H913.83Zm0-88.83H682.74V186.54l3.24-2.43H913.83ZM759.39,363.55a.17.17,0,0,0,0,.07c-.09.73-.19,1.46-.29,2.2l0,.2,0,.2H787.7v-.16l2-2.51Zm37.43,0h-3.3v1.18l0,1.49h3.74Zm-114.08,0V277.38h32.9c-.35-.23-.71-.47-1.08-.69l-.48-.31-.62-.38c-.36-.21-.72-.42-1.1-.62s-.61-.34-.93-.51l-.22-.12-.05,0H682.74V270l-.77.3-.81.38-.06,0-.17.09-.51.27-.51.27c-.5.27-1,.57-1.5.88l-.48.32-1,.64c-1.29.86-2.56,1.76-3.87,2.6-.33.21-.66.42-1,.61-.71.42-1.44.82-2.19,1.18-.32.16-.63.3-1,.43l-.54.21-.5.17h0a23.42,23.42,0,0,1-3.6.94v84.24H614.9c0,.1.07.18.1.28.27.8.54,1.59.8,2.39h48.5v92.36q.38,0,.75,0l.87.05,1.57.09L670,459l1.15.11,1.25.13h.19l2.21.27.47.06,1.07.15,1.53.22h0l3.67-.16h0l.5.09c.2,0,.41.06.62.1V366.22H759l0-.2,0-.2c.1-.74.2-1.47.29-2.2a.17.17,0,0,1,0-.07Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M322.63,121.73h1.43a2.9,2.9,0,0,1-1.75-2.33h0c0-1.84,2.75-3.34,6.11-3.34h42.76c3.36,0,6.1,1.5,6.1,3.34h0c0,1.83-2.74,3.34-6.1,3.34h-1.43a2.87,2.87,0,0,1,1.75,2.32c0,1.57-2,2.89-4.67,3.24h12.31c3.35,0,6.1,1.5,6.1,3.34s-2.75,3.34-6.1,3.34H336.37c-3.35,0-6.1-1.51-6.1-3.34,0-1.57,2-2.88,4.67-3.24H322.63c-3.36,0-6.1-1.5-6.1-3.34S319.27,121.73,322.63,121.73Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M786.07,153.5h1.43a2.9,2.9,0,0,1-1.74-2.33h0c0-1.84,2.74-3.34,6.1-3.34h42.76c3.36,0,6.11,1.5,6.11,3.34h0c0,1.83-2.75,3.33-6.11,3.33H833.2a2.9,2.9,0,0,1,1.74,2.33c0,1.57-2,2.89-4.67,3.24h12.31c3.36,0,6.1,1.5,6.1,3.34s-2.74,3.34-6.1,3.34H799.82c-3.36,0-6.11-1.51-6.11-3.34,0-1.57,2-2.89,4.67-3.24H786.07c-3.35,0-6.1-1.5-6.1-3.34S782.72,153.5,786.07,153.5Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M257,289.46h1.42a2.89,2.89,0,0,1-1.74-2.33h0c0-1.83,2.75-3.34,6.1-3.34h42.77c3.35,0,6.1,1.51,6.1,3.34h0c0,1.84-2.75,3.34-6.1,3.34h-1.43a2.86,2.86,0,0,1,1.74,2.32c0,1.57-2,2.89-4.67,3.24h12.31c3.36,0,6.11,1.51,6.11,3.34s-2.75,3.34-6.11,3.34H270.78c-3.36,0-6.1-1.5-6.1-3.34,0-1.56,2-2.88,4.67-3.24H257c-3.36,0-6.11-1.5-6.11-3.34S253.68,289.46,257,289.46Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "852.65",
+                    cy: "602.96",
+                    rx: "64.96",
+                    ry: "213.77",
+                    transform: "translate(37.13 1281.96) rotate(-78.45)",
+                    fill: "#6c63ff",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M828.56,420.59s11.37-55.81,54.78-50.64c0,0,30,2.06,36.17,21.7v43.41Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#3a3768"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "1012.18 405.56 625.61 373.51 576 383.85 579.1 453.1 582.48 453.51 586.33 557.5 965.66 625.71 1005.98 591.6 1005.98 478.87 1011.14 475.84 1012.18 405.56",
+                    fill: "#d48a9b"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "1012.7 405.56 1011.66 475.84 969.8 495.48 969.28 422.09 1012.7 405.56",
+                    opacity: "0.05"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "1005.98 478.94 1006.49 589.54 966.18 623.65 968.77 495.48 1005.98 478.94",
+                    opacity: "0.05"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "583 457.65 969.08 504.76 969.28 495.82 582.71 454.13 583 457.65",
+                    opacity: "0.05"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "1005.98 483 1005.98 478.94 967.73 495.82 967.73 504.78 1005.98 483",
+                    opacity: "0.05"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "575.48 383.85 625.09 373.51 1011.66 405.56 968.25 422.09 575.48 383.85",
+                    fill: "#efc6cd"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "970.48 407.55 989.45 408.79 958.01 418.2 942 417.05 970.48 407.55",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "970.48 406.72 989.45 407.96 958.01 417.38 942 416.22 970.48 406.72",
+                    fill: "#fff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1022.32,444.56c.75-.32,1.54.29,2.34.44.46.09.93,0,1.39.09.93.12,1.85.74,2.74.43",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#d3dae1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1021.34,445.13c.74-.32,1.54.28,2.34.44.46.08.93,0,1.39.08.93.13,1.85.75,2.74.44",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#d3dae1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1019.08,446.27c.75-.32,1.55.28,2.35.43.45.09.93,0,1.38.09.94.13,1.86.75,2.74.43",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#d3dae1"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "888.48 398.21 907.45 399.46 876.01 408.87 860 407.71 888.48 398.21",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "888.48 397.39 907.45 398.63 876.01 408.04 860 406.89 888.48 397.39",
+                    fill: "#fff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M940.32,435.23c.75-.32,1.54.28,2.34.44.46.08.93,0,1.39.08.93.13,1.85.75,2.74.44",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#d3dae1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M939.34,435.8c.74-.32,1.54.28,2.34.43.46.09.93,0,1.39.09.93.13,1.85.75,2.74.43",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#d3dae1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M937.08,436.93c.75-.32,1.55.29,2.35.44.45.09.93,0,1.38.09.94.12,1.86.75,2.74.43",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#d3dae1"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "927.81 402.88 946.79 404.12 915.35 413.54 899.33 412.38 927.81 402.88",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "927.81 402.06 946.79 403.3 915.35 412.71 899.33 411.55 927.81 402.06",
+                    fill: "#fff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M979.65,439.9c.75-.32,1.55.28,2.35.43.45.09.92,0,1.38.09.93.12,1.86.75,2.74.43",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#d3dae1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M978.67,440.46c.75-.32,1.55.29,2.35.44.45.09.92,0,1.38.09.93.12,1.86.75,2.74.43",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#d3dae1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M976.42,441.6c.74-.32,1.54.28,2.34.44.46.08.93,0,1.39.08.93.13,1.85.75,2.74.44",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#d3dae1"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "498.32",
+                    cy: "749.7",
+                    rx: "202.48",
+                    ry: "41.68",
+                    fill: "#6c63ff",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M774.16,444.09C772,425.11,763.45,407,763.45,407l.65-6.4s.14-3.2-.07-8a36.4,36.4,0,0,1,1.17-8.88c1.75-5.55-2.19-12.37-2.63-13s.22-12.8-3.72-18.77-30.18-17.07-30.18-17.07-1.41-2.95-3.4-6.4l.18-.35a37.6,37.6,0,0,0-6-8.09c-1.61-1.72-3.16-2.7-4.41-2.22a36,36,0,0,1-1.16-5.07c.26.07.53.14.79.19a8.16,8.16,0,0,0,3.3.08c2.44-.55,4.06-2.74,5.42-4.8,6.78-10.3,12.62-21.6,13.81-33.79a21.48,21.48,0,0,0-.35-7.46,25.17,25.17,0,0,0-2.34-5.45,43.8,43.8,0,0,0-6.6-9.73c-4.67-4.92-11.11-7.93-17.73-9.71a61.38,61.38,0,0,0-22.9-1.71c-2,.23-4,.56-6,.69a62.32,62.32,0,0,1-7.61-.13l-13.09-.76-.06-.2-2.18-.13c-.86,1.71,0,3.74,1.07,5.34s2.3,3.27,2.21,5.16-1.46,3.41-2.53,5-1.88,3.67-.81,5.23a3,3,0,0,0,.53.58c1.13,1.17,3.1,1.3,4.81,1.28h.3a32.57,32.57,0,0,0-6.63,19.72,33.16,33.16,0,0,0,18.09,29.38c.19.65.38,1.32.56,2a61.26,61.26,0,0,1,2.1,21.62l-.23.5-.14-.53s-15.42,10.46-20,13.23-9.18,12.16-9.4,14.72-7.44,41.17-7.44,41.17a94.59,94.59,0,0,0-3.62,11.92L628,424.25s-19,1.71-24.5.43l.16,1.06a83.09,83.09,0,0,0-14.76-2,15.65,15.65,0,0,0-8,1.07l-.19.09-.15.07a31.7,31.7,0,0,0-8.4,2.36c-.32.13-.61.26-.89.39l.06-1.31-20.56-1.06-10.5-2.13s-3.72-3-5.91-2.56-6.78-2.56-6.78-2.56A18.33,18.33,0,0,0,524.2,416c-.35-2.42-.57-3.89-.57-3.89s-8.17-32.42-14.29-51.48c-4.1-12.73-10-19-13.48-21.73-1.55-2.7-2.57-4.44-2.57-4.44-.67-2.34-4.35-7.61-5.29-7.74-.15-.24-.26-.36-.32-.36a1.17,1.17,0,0,0-.59.09c-1.72-8.56-2.72-19.29-.09-28.64a31.61,31.61,0,0,0,11.54-24.36c0-.14,0-.28,0-.42s0-.29,0-.43a31.47,31.47,0,0,0-7.43-20.3l-.34-.38a2.65,2.65,0,0,0,.26-.21,5.36,5.36,0,0,0,1.89-5.16c-.45-1.92-1.95-3.43-2.72-5.25a34,34,0,0,1-1.11-4.28,13.2,13.2,0,0,0-3.15-5.49l.15.4c-3.92-4.41-10.66-6.6-16.73-5.62-4.51.72-8.71,2.82-13.24,3.47-3.25.46-6.56.16-9.83.49a25.51,25.51,0,0,0-8.72,2.52,5,5,0,0,0-1.85,1.36,7.32,7.32,0,0,0-.92,2.57c-1.11,4.05-4.63,6.94-7.18,10.32a24.15,24.15,0,0,0-4.84,13.34,10.44,10.44,0,0,0,.35,3.65c.22.71.56,1.38.72,2.1.5,2.2-.65,4.39-1.21,6.57a12.79,12.79,0,0,0,.71,8.34c3.95,8.84,16.92,11.79,19.62,21.07a25.81,25.81,0,0,0,6.49,2c.18.92.34,1.85.47,2.79a.75.75,0,0,0-.17.1c-3.5,3.41-4.37,10-4.37,10l-.42.34c-1.43,1.18-6.32,5.14-10.74,8.19-5.25,3.63-14,15.79-20.12,19.42s-11.16,26-9.84,34.13,6.78,30.93,4.59,39.25,3.28,46.29,3.28,46.29a55.91,55.91,0,0,1,10.72,3.18l-.11,1.66-.33,5s-9.91,35.84-6.12,63.43-1.75,30.43-1.75,30.43,1.16,12.23-1.75,16.5-3.5,13.65-3.5,13.65-.29,21.05.29,27,.87,16.79-1.17,19.35-5.83,19.33-5.54,24.45-7.29,16.79-3.21,31.86-12,15.36-12,15.36,2.05,23,6.42,29.58l.64.94c-.11.38-.22.78-.34,1.21-1.65,6-3.91,15.47-2.34,17.76,2.33,3.42,3.5,2.84,3.5,2.84l.87,15.36s17.5,14.79,30.92,14.23,10.79-14.23,10.79-14.23l-11.43-29.64-.39-1,12.7-24s3.5-10.52,4.37-14.22S449,698.51,449,698.51s12-28.44,12.25-31.86,1.17-21.89,3.5-25.6,8.75-25,8.75-25l.16.14a8.43,8.43,0,0,1,2.18,8.39c-1.47,5.4-.59,16.49-.59,16.49s-.58,9.39-1.75,14.23-1.45,44.37.59,53.75c1.63,7.51,1.58,21.57,1.5,26.89-1.37,5.65-2.57,12.67-.34,13.5,3.8,1.43,23.05,1.14,23.05,1.14s8.16-2.85,19.25,7.11,45.2-2.84,45.2-2.84,10.5-2.85-10.21-11.09c-14.45-5.75-23.78-9.58-29.88-13.68.14-.27.29-.54.42-.83,0,0-8.46-8-1.46-22.18s6.71-26.17,6.71-26.17l1.17-47.79L526,569.67l-2.71-66.58.48-.16c.46,12.24,2.85,41.38,15.36,35.73,15.75-7.11,2.33-25.6,2.33-25.6l-7.07-13.78,2.11-.72L528.59,473a57.65,57.65,0,0,1-.3-15.07,59.71,59.71,0,0,0-.18-8.8c10.36-1.81,20.28-3.73,22.06-3.29,2.1.51,13.85.61,18.47.63-1.51,1.18-2.72,2.35-2.72,2.35l18.81,12.66s6.38-3.49,7.71-7.19a8.3,8.3,0,0,0,3.52-1.88c.2,4.37,1.36,9.1,5.4,9.21a7,7,0,0,0,2.94-.58l30.76-6.09-2.64,16.49,1.84,3.27c-.93,13.91-2,28.68-2.94,41.67l-.43,2.84.22.05c-1.46,20-2.63,35.15-2.63,35.15a18.43,18.43,0,0,1,7.67-7.71l.2,29.68s1.54,46.93,1.54,53.33.21,20.69.21,20.69,3.29,17.49,5.25,23.25,3.5,32,3.5,32,4.6,7.25,2.63,10,7.66,8.74,7.66,8.74-6.13,8.32-6.57,13.87c-.05.64.58,1.32,1.72,2-.36.29-.73.58-1.14.86-2.84,1.9-7,3.22-13.26,2.68-17.07-1.5-29.1,14.29-18.6,17.49s42,3.84,42,3.84,9.54-5.95,17-3.27c-.11,6.26.2,12,.25,12.76l-.09.07c-4.46,4-13,10.88-21.34,13.69-12,4.05-14.66,20.48.87,22.61s38.28-2.56,38.28-2.56,11.81-8.74,20.78-10.66,16.63-6.19,15.1-11.31c-1-3.27-3.57-11.84-5.31-17.6q-.15-.52-.3-1c.27-.6.54-1.22.79-1.86,0,0-4.59-23.89-.87-29.86s1.75-65.71,1.75-65.71-6.35-15.14-3.06-24.31-5.25-22.19-5.25-22.19.93-26.09,3.43-40.63q.17-.93.33-1.8a81.92,81.92,0,0,0,12.2-4.71s2.19-32.86,3.5-40.32c.13-.7.31-1.83.53-3.3l1-5.27h0l1.18-6h0l4-20.45,7.22-9.34,18.6-19S776.35,463.08,774.16,444.09ZM487.32,326.76l-.14.1a1.74,1.74,0,0,1-.05-.22A.9.9,0,0,0,487.32,326.76Zm183.77,23.29-.72,1.57L673,349l-3.57,4,1.2-2.52Zm-17.76,36.7c-.69,1.83-1.43,3.81-2.2,5.87l1.41-4.21Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "url(#c6e87aad-8151-4bb2-867f-5915ddeef7a8)"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M595.94,446.58s-2.45,16.31,4.9,16.52,12.26-12.58,12.26-12.58l-3-10.23Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#585b8a"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M595.94,446.58s-2.45,16.31,4.9,16.52,12.26-12.58,12.26-12.58l-3-10.23Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.2"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M431.31,799.62c-13.08.57-30.14-14.21-30.14-14.21l-.85-15.35s-1.13.57-3.41-2.84c-1.53-2.29.67-11.78,2.28-17.75.78-2.92,1.42-5,1.42-5l28.7,7.68,1.37,3.63,11.14,29.62S444.38,799.05,431.31,799.62Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#636992"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M563.18,756.14s-33.25,12.79-44,2.84-18.76-7.11-18.76-7.11-18.76.29-22.46-1.14c-2.18-.83-1-7.94.36-13.6.92-3.91,1.92-7.14,1.92-7.14s32.68-11.09,37.8-4.27a24.51,24.51,0,0,0,5.45,5.2c5.92,4.28,15.17,8.16,29.8,14.13C573.41,753.29,563.18,756.14,563.18,756.14Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#636992"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M533.34,496.35l9.09,18.19s13.08,18.48-2.27,25.58S525.1,499.2,525.1,499.2Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#ffd6d6"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M495.25,338.61s9.95,4.55,15.92,23.59,13.93,51.45,13.93,51.45,5.4,36.66,4.54,45.76a59,59,0,0,0,.29,15.06l7.67,25.58-15.35,5.4-23.59-90.38Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#dce6f2"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M495.25,338.61s9.95,4.55,15.92,23.59,13.93,51.45,13.93,51.45,5.4,36.66,4.54,45.76a59,59,0,0,0,.29,15.06l7.67,25.58-15.35,5.4-23.59-90.38Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.05"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M429.31,752.16l1.37,3.63L429,759c-6.54,2.84-22.74.57-22.74.57s-3-3.81-7.1-10.08c.78-2.92,1.42-5,1.42-5Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M524.53,732.26c-8.29,18.78-36.47,11.81-44.3,9.46-1.29-.39-2-.65-2-.65s.05-1.53.07-3.94c.92-3.91,1.92-7.14,1.92-7.14s32.68-11.09,37.8-4.27a24.51,24.51,0,0,0,5.45,5.2A9.64,9.64,0,0,0,524.53,732.26Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M523.1,708.39c-6.82,14.2,1.43,22.17,1.43,22.17-8.29,18.77-36.47,11.81-44.3,9.45-1.29-.38-2-.64-2-.64s.57-19.62-1.42-29-1.71-48.88-.57-53.71,1.7-14.22,1.7-14.22-.85-11.08.57-16.48a8.51,8.51,0,0,0-2.12-8.38l-.15-.15s-6.25,21.32-8.53,25-3.12,22.17-3.41,25.58-11.94,31.84-11.94,31.84-4.54,13.07-5.39,16.76-4.27,14.22-4.27,14.22L429,757.27c-6.54,2.84-22.74.57-22.74.57s-3.12-4-7.39-10.52-6.25-29.55-6.25-29.55,15.63-.29,11.65-15.35,3.41-26.72,3.13-31.84,3.41-21.88,5.4-24.44,1.7-13.36,1.13-19.33-.28-27-.28-27,.57-9.38,3.41-13.64,1.71-16.49,1.71-16.49,5.39-2.84,1.7-30.41,6-63.38,6-63.38l.33-5,.52-8.1s81.29-5.12,87.83,1.13a21.56,21.56,0,0,1,4.15,5.95A59.2,59.2,0,0,1,524,485l3.41,86.12,3.41,63.38-1.14,47.75S529.93,694.17,523.1,708.39Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#565988"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M499,538.42l-8.53,184.74L480.23,740c-1.29-.38-2-.64-2-.64s.57-19.62-1.42-29-1.71-48.88-.57-53.71,1.7-14.22,1.7-14.22-.85-11.08.57-16.48a8.51,8.51,0,0,0-2.12-8.38l.14-1Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d: "M407.14,736.81s22.17-8.81,25.58-6-26.14,7.1-26.14,7.1Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M516.57,713.5c-.85.29-22.45,8-20.46,16.2S516.57,713.5,516.57,713.5Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M449.07,293s7.24,17.48,3.41,26.44,41.35,24.3,41.35,24.3-13.21-34.11-.42-53.3S449.07,293,449.07,293Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#ffd6d6"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M713.61,799.05c-8.74,1.92-20.25,10.66-20.25,10.66s-22.17,4.69-37.31,2.56-12.57-18.55-.85-22.6c8.13-2.8,16.46-9.71,20.81-13.67,1.92-1.77,3.06-3,3.06-3l42.43-8.53s.69,2.37,1.65,5.64c1.7,5.77,4.21,14.33,5.17,17.59C729.81,792.87,722.35,797.13,713.61,799.05Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#505484"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M702.74,766.22s-17.91,1.92-25.37-2.34-18.12,2.56-18.12,2.56-30.7-.64-40.93-3.84,1.49-19,18.12-17.48c6.06.55,10.16-.78,12.93-2.68A13.62,13.62,0,0,0,655,734l36,2.13,5,12.76Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#505484"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M696.55,754.71s-41.84-6.84-47.18-12.27A13.62,13.62,0,0,0,655,734l36,2.13,5,12.76Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M634.52,515.33l.43,62.45s1.49,46.9,1.49,53.3.21,20.67.21,20.67,3.2,17.48,5.12,23.24,3.41,32,3.41,32,4.48,7.25,2.56,10,7.46,8.74,7.46,8.74-6,8.32-6.39,13.86S696.55,753,696.55,753L677.8,560.73l-14.93-48.17Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#575988"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M634.52,515.33l.43,62.45s1.49,46.9,1.49,53.3.21,20.67.21,20.67,3.2,17.48,5.12,23.24,3.41,32,3.41,32,4.48,7.25,2.56,10,7.46,8.74,7.46,8.74-6,8.32-6.39,13.86S696.55,753,696.55,753L677.8,560.73l-14.93-48.17Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M723.15,770.16c-13.93,33.21-47.06,7.58-47.06,7.58s0-.64-.08-1.74c1.92-1.77,3.06-3,3.06-3l42.43-8.53S722.19,766.89,723.15,770.16Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M723.63,767.29c-13.65,35-47.54,8.74-47.54,8.74s-1.07-18.12,1.07-26.43-2.35-33.26-2.35-33.26-2.56-22.17-4.9-27.28-2.13-15.35-2.13-16.2.85-7.68-1.07-12.37-3-16.2-3-16.2,0-16.2-1.92-25.79l-6.61-33-11.94-67.58,3.73-.64,66.83-11.72s12.58,64,8.31,70.56c-.92,1.44-1.73,4.59-2.4,8.65-2.44,14.52-3.35,40.59-3.35,40.59s8.31,13,5.12,22.17,3,24.3,3,24.3,1.92,59.69-1.71,65.66S723.63,767.29,723.63,767.29Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#575988"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M717.23,330.94s-60.54,42.63-46.9,21.31c7.35-11.48,6-26.1,3.12-37.14a87.64,87.64,0,0,0-6-16.29s51.44-21.88,44.62-2.27a36.74,36.74,0,0,0-2,14.24A38,38,0,0,0,717.23,330.94Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#d28690"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M608.23,428.57s-25.58-7.39-29.84-.14,1.28,23.16,9,25.72,25.44-8.67,25.44-8.67Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#d28690"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M637.51,416l-10.66,9.81s-18.55,1.7-23.88.42c0,0,4.91,32.83-2.13,36.88l43.06-8.74Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#585b8a"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M637.51,416l-10.66,9.81s-18.55,1.7-23.88.42c0,0,4.91,32.83-2.13,36.88l43.06-8.74Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M500.65,275.09a32,32,0,0,1-32,32c-16.42-7.89-32-14.31-32-32a32,32,0,1,1,63.95,0Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M500.65,274.23A31.94,31.94,0,1,1,493.41,254,32,32,0,0,1,500.65,274.23Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#ffd6d6"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M519.3,469.9a72.32,72.32,0,0,1-9.91,5.14s-16.2-2.35-18.54.42-23,3.84-23,3.84-31.55-1.49-36.24-5.54a19.2,19.2,0,0,0-4.79-2.84l.52-8.1s81.29-5.12,87.83,1.13A21.56,21.56,0,0,1,519.3,469.9Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M523.25,464.17c-.64,3.62-13.86,9.16-13.86,9.16s-16.2-2.34-18.54.43-23,3.84-23,3.84-31.55-1.5-36.24-5.55-15.14-6-15.14-6-5.33-37.94-3.19-46.25-3.2-31.13-4.48-39.23,3.62-30.48,9.59-34.1,14.5-15.78,19.61-19.4c4.31-3.05,9.07-7,10.46-8.19l.41-.34s.86-6.61,4.27-10,34.74,21.53,34.74,21.53.22,1.92,2.35-1.7c.48-.81,4.61,5.15,5.33,7.67,0,0,17.05,29.85,18.12,36s5.54,26.22,6.39,31.12c.22,1.26.58,5.68,1,11.6.08,1.16.15,2.39.24,3.67.63,9.82,1.31,22.36,1.72,31.84,0,1.08.09,2.12.12,3.12A106.15,106.15,0,0,1,523.25,464.17Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#dce6f2"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M415,387.21s11.72,14.28,15.56,14.28S415,387.21,415,387.21Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M439.69,417.91s-19.19,20.89-16.63,24.73S439.69,417.91,439.69,417.91Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d: "M425.62,459.48s22-24.09,23-32.4Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M453.33,461.18s25.37-13.43,27.5-24.09S453.33,461.18,453.33,461.18Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M485.52,331.58,482,340.1l5.86,2.77,5.76,16.1s15.88,31.76,15.24,48.28,2.88,41.35,2.88,41.35l9.16-1.7-4.32-48.59A70.09,70.09,0,0,0,511,376.5c-7.32-16.76-20.94-47.7-21.8-47.7-1.17,0-.35.43-.35.43Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M486.37,330.72l-3.52,8.53,5.87,2.77,5.75,16.1s15.88,31.76,15.24,48.28,2.88,41.35,2.88,41.35l9.17-1.7-4.33-48.59a69.82,69.82,0,0,0-5.57-21.81c-7.32-16.77-20.94-47.7-21.79-47.7-1.18,0-.36.43-.36.43Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#575989"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M590.18,456c-4.46-.34-15.16-5.75-19.41-8l-1.8-1,.22-16.51a29,29,0,0,1,3.26-1.65c5.68-2.48,17.33-5.85,23.17,5C603.5,448.39,595.83,456.38,590.18,456Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#ffd6d6"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M493.41,254a4.73,4.73,0,0,1-1.49.61c-3.71.81-7.93-2.38-11.11-.33-1.94,1.26-2.39,3.87-2.65,6.17q-.68,6-1.36,11.92a14.71,14.71,0,0,1-.88,4.11c-1.57,3.59-5.88,5.28-9.81,5.22a5.85,5.85,0,0,1-4.23-1.4c-.69-.7-1.06-1.68-1.82-2.32-5-4.19-6.52,6.08-5.2,9,2.12,4.77,9.65,9.37,6.49,15.43a5.78,5.78,0,0,1-2.32,2.33A32,32,0,1,1,493.41,254Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M459.21,277.94c.75.63,1.13,1.61,1.82,2.31a5.86,5.86,0,0,0,4.23,1.4c3.93.06,8.24-1.62,9.8-5.23a14.24,14.24,0,0,0,.89-4.1l1.36-11.92c.26-2.3.7-4.91,2.65-6.17,3.18-2,7.4,1.14,11.11.33a5.43,5.43,0,0,0,4-6.26c-.43-1.91-1.89-3.42-2.64-5.24a34.24,34.24,0,0,1-1.09-4.27c-2.07-7.76-11.18-12.12-19.1-10.82-4.4.73-8.49,2.83-12.9,3.47-3.16.46-6.39.16-9.58.5a24.18,24.18,0,0,0-8.5,2.51,4.94,4.94,0,0,0-1.8,1.36,7.51,7.51,0,0,0-.9,2.56c-1.07,4-4.51,6.95-7,10.32A24.59,24.59,0,0,0,426.82,262a10.67,10.67,0,0,0,.34,3.65c.21.7.54,1.38.7,2.1.49,2.19-.63,4.38-1.18,6.56a13.12,13.12,0,0,0,.7,8.34c3.84,8.83,16.49,11.78,19.12,21.05a21,21,0,0,0,7.44,2c2.58.05,5.36-1.06,6.56-3.35,3.15-6-4.37-10.66-6.49-15.42C452.68,284,454.17,273.74,459.21,277.94Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#353045"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M712.12,296.55a36.74,36.74,0,0,0-2,14.24c-1.54,1.31-3.22-2.61-5-1.6-4.88,2.82-10.52,9.53-16.56,9.53a33.17,33.17,0,0,1-15.07-3.61,87.64,87.64,0,0,0-6-16.29S718.94,276.94,712.12,296.55Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M721.78,283.76a33.26,33.26,0,1,1-33.26-33.26A33.25,33.25,0,0,1,721.78,283.76Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#d28690"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M720.36,338.33s-6.26,6.82-7.11,7.38-19,77-19.32,77.89-21.61,69.91-21.61,69.91l-34.11,16.77,2.85-84.42,25-69.62s8.25-9.38,10.8-12.79,34.39-23.88,34.39-23.88l5.44,11.21Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#f0f3f7"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M715.85,332.49l-39.22,28.08L676,345.15c2.56-3.41,34.39-23.87,34.39-23.87Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M716.7,330.78l-39.22,28.08-.61-15.41c2.56-3.42,34.39-23.88,34.39-23.88Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#f0f3f7"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M675.56,336.59l1.31,6.86-8.77,8.91,7-15.67s-15,10.45-19.5,13.22-9,12.15-9.17,14.71-7.25,41.14-7.25,41.14-5.33,14.28-3.83,18.33-8.1,131.74-8.1,131.74A19,19,0,0,1,640.07,546l-3.42-75.46s4.16-50.2,4.37-50.84,9.7-29.74,9.7-29.74Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#585b8a"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M677.73,344.3l-.68,14s-9.49,29.95-12.68,34.85-12.9,34.11-12.9,34.11L646,478l-9.38,4.27L632,473.76l7.68-49s14.49-41.35,16.63-45.62L667,356.62Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M676.87,343.45l-.67,14s-9.49,29.95-12.69,34.85-12.89,34.11-12.89,34.11l-5.44,50.73-9.38,4.26-4.69-8.52,7.68-49s14.49-41.36,16.62-45.62l10.77-22.49Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#663d5c"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M566.31,450.31,584.64,463s12.93-7.25,5.4-11.94-14.21-5.4-16.63-5.4S566.31,450.31,566.31,450.31Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#d28690"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M580,426.85a2.82,2.82,0,0,0-1.33,2.41c0,3.89.44,14.19,3.7,9.54,4-5.69,3.27-10.8,9.38-7.11a36,36,0,0,1,9.8,9l-1.7-12.22S587.29,422.27,580,426.85Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#d28690"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M722.13,576.08c-.92,1.44-1.73,4.59-2.4,8.65C682.35,595.94,655,572.24,655,572.24a326.27,326.27,0,0,1-8.1-34.1c-.67-3.94-.52-11.58.1-20.9l66.83-11.72S726.4,569.47,722.13,576.08Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M760.5,385.29c-1.7,5.55-1.06,16.84-1.06,16.84l-15.35,72.48s-7.46,55.85-8.74,63.31-3.41,40.29-3.41,40.29c-43.49,21.32-77-7.67-77-7.67a326.8,326.8,0,0,1-8.1-34.11c-2.14-12.66,4.16-63.38,7.14-85.91.89-6.67,1.49-10.87,1.49-10.87l11.19-41.57s13.75-35.07,18.87-45.3,25.68-33.21,25.68-33.21c2.55-1.62,6.63,4.1,9.66,9.31,2.29,3.94,4,7.6,4,7.6s25.58,11.08,29.41,17,3.2,18.12,3.63,18.76S762.21,379.75,760.5,385.29Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#585b8a"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M700.18,359.5s1.92,11.3-3,14.71c-4.75,3.3-40.11,72.83-42.31,77.17.89-6.68,1.49-10.88,1.49-10.88l11.19-41.56s13.76-35.07,18.87-45.31,25.69-33.21,25.69-33.21c2.55-1.62,6.62,4.1,9.65,9.31C717.19,339.22,707.66,357.16,700.18,359.5Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M699.33,358.65s1.91,11.3-3,14.71S656.23,446.18,654,450.52c.89-6.67,1.49-10.87,1.49-10.87l11.19-41.57s13.75-35.07,18.87-45.3,25.68-33.21,25.68-33.21c2.55-1.62,6.63,4.1,9.66,9.31C716.34,338.36,706.8,356.31,699.33,358.65Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#585b8a"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "695.95 425.05 683.92 487.64 683.92 487.65 682.77 493.64 682.77 493.65 680.18 507.12 669.13 504.78 663.98 503.69 592.71 488.59 587.47 487.48 575.51 484.95 577.85 469.41 578.82 462.95 587.45 405.65 695.95 425.05",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M683.55,511.92s-28.35,10.23-22.17,22.38,45.83-9.38,45.83-9.38Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#d28690"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M703.8,599.1c0,.85,1.07,11.73,5.33,15.56S703.8,599.1,703.8,599.1Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M675.24,637.68s5.11,14.07,25.36,19.83S675.24,637.68,675.24,637.68Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M721.78,283.76a33.25,33.25,0,0,1-16.67,28.83,17.7,17.7,0,0,1-5-4.17c-1.45-1.76-2.58-4.16-1.71-6.26.7-1.69,2.55-2.76,3-4.51a6.64,6.64,0,0,0-.16-3.22c-.37-1.65-.72-3.3-1.08-4.94-.31-1.4-.86-3.05-2.25-3.39s-2.55.82-3.64,1.68c-2.67,2.11-7.79,3.54-11,1.81s-2.31-7.52-2.83-10.65a1.86,1.86,0,0,0-.7-1.41,2.92,2.92,0,0,0-1.45-.1c-1.73,0-3.12-1.55-3.62-3.21a27.63,27.63,0,0,1-.58-5.15c-.19-1.73-.82-3.56-2.3-4.45A7.11,7.11,0,0,0,668,264l-6.27.07a33.26,33.26,0,0,1,60,19.72Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M695.16,287.78c1.09-.86,2.29-2,3.64-1.67s1.93,2,2.24,3.38l1.08,4.93a6.7,6.7,0,0,1,.17,3.23c-.51,1.76-2.35,2.82-3.06,4.51-.87,2.1.27,4.5,1.71,6.25a18,18,0,0,0,10.29,6.15,7.56,7.56,0,0,0,3.21.07c2.38-.55,4-2.74,5.28-4.79,6.61-10.3,12.3-21.59,13.46-33.77a21.66,21.66,0,0,0-.34-7.45,25,25,0,0,0-2.28-5.45,44,44,0,0,0-6.43-9.73c-4.55-4.9-10.83-7.91-17.28-9.69A58.52,58.52,0,0,0,684.54,242c-2,.23-3.92.56-5.89.69a59.28,59.28,0,0,1-7.42-.12l-14.72-.88c-.84,1.71,0,3.74,1,5.34s2.24,3.26,2.16,5.16-1.43,3.4-2.47,5-1.83,3.67-.79,5.23,3.16,1.66,5,1.64l7.42-.08a7.09,7.09,0,0,1,3.77.65c1.48.89,2.11,2.73,2.3,4.45a29.43,29.43,0,0,0,.58,5.15c.51,1.66,1.89,3.23,3.62,3.21a2.7,2.7,0,0,1,1.45.11,1.84,1.84,0,0,1,.7,1.4c.52,3.13-.44,8.91,2.83,10.65S692.49,289.89,695.16,287.78Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#663d5c"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M737.43,353.47a16.3,16.3,0,0,0-17.15,10.95c-4,11.39-10.67,31.94-9,40.06,2.35,11.51,5.12,30.7,5.12,30.7s12.15,7,6,14.06-7.89,17.06-7.89,17.06-7.89,3.41-9.59,10.66-13.22,17.26-13.22,17.26l-17.26,17.27s28.56,29,34.32,30.48l17.69-20.68,20.89-27.71,18.12-19s4.26-10,2.13-29-10.45-37.09-10.45-37.09l.64-6.4S759.74,356.24,737.43,353.47Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M739.13,353.47A16.3,16.3,0,0,0,722,364.42c-4,11.39-10.67,31.94-9,40.06,2.34,11.51,5.11,30.7,5.11,30.7s12.15,7,6,14.06-7.88,17.06-7.88,17.06-7.89,3.41-9.6,10.66-13.21,17.26-13.21,17.26l-17.27,17.27s28.56,29,34.32,30.48l17.69-20.68L749,493.58l18.12-19s4.27-10,2.13-29-10.44-37.09-10.44-37.09l.64-6.4S761.44,356.24,739.13,353.47Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#585b8a"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M721.28,418.34s18.12,22.16,25.8,17.26S721.28,418.34,721.28,418.34Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M728.1,401.28c1.92.64,17.7,22.6,25.8,20S728.1,401.28,728.1,401.28Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M732.58,439s1.07,12.58,14.07,10.87S732.58,439,732.58,439Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "621.02 301.83 613.99 317.5 622.77 308.59 621.02 301.83",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "621.02 300.98 613.99 316.65 622.77 307.74 621.02 300.98",
+                    fill: "#f0f3f7"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "592.71 488.59 587.47 487.48 577.85 469.41 578.82 462.95 592.71 488.59",
+                    opacity: "0.3"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "683.92 487.65 682.77 493.64 682.77 493.65 669.13 504.78 663.98 503.69 683.92 487.65",
+                    opacity: "0.3"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M523.12,453.43c-2.64.44-5.2.84-7.54,1.14-13,1.71-43.92-13.64-43.92-13.64s-37.73-31.55-48.6-61.39,13-34.32,13-34.32c9-5.12,28.57,9.16,31.34,11.51s5.12,8.31,4.9,12.15,6.4,8.74,6.4,8.74,11.3,19.61,14.07,21.74,3.41,4.05,4.26,7.68,8.31,6.61,11.51,6.39,7,1.07,7,2.77c0,1.37,3.13,2.05,5.7,2.27C522,429.4,522.75,443.72,523.12,453.43Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M523,450.31c-2,.32-3.92.61-5.72.85-13,1.71-43.91-13.64-43.91-13.64s-37.73-31.55-48.6-61.39,13-34.32,13-34.32c9-5.12,28.56,9.16,31.33,11.51s5.12,8.31,4.91,12.15,6.39,8.74,6.39,8.74,11.3,19.61,14.07,21.74,3.41,4.05,4.27,7.68,8.31,6.6,11.51,6.39,7,1.07,7,2.77c0,1,1.78,1.67,3.76,2,.08,1.16.15,2.39.24,3.67C521.91,428.29,522.59,440.83,523,450.31Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M572.45,428.84,571.64,448h-.87l-1.8-1,.22-16.51A29,29,0,0,1,572.45,428.84Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M436.06,343.51s-23.87,4.48-13,34.32,48.6,61.4,48.6,61.4,30.91,15.34,43.92,13.64,32.82-6.18,35.38-5.54,19.83.64,19.83.64l.85-20-20-1.07-10.23-2.13s-3.63-3-5.76-2.56-6.6-2.56-6.6-2.56-3.42-2.77-6-2.77-7.46-.64-7.46-2.34-3.84-3-7-2.77S497.88,409,497,405.33s-1.49-5.54-4.26-7.67-14.07-21.75-14.07-21.75-6.61-4.9-6.4-8.73-2.13-9.81-4.9-12.16S445,338.4,436.06,343.51Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#dce6f2"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d: "M497.46,412.15s-9.17,9.17-6.83,10.87Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M507.26,419.4s-11.94,9.17-8.74,9.81S507.26,419.4,507.26,419.4Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d: "M487,433c1.71.86,27.07,16,36.67,15.78Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M488.72,331.79s-4.48,14.71-6.19,14.71c-1.34,0-23.84-18.22-33.23-25.88l.41-.34s.85-6.61,4.26-10S488.72,331.79,488.72,331.79Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M487.86,330.08s-4.47,14.71-6.18,14.71c-1.35,0-23.85-18.22-33.24-25.88l.41-.34s.86-6.61,4.27-10S487.86,330.08,487.86,330.08Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#dce6f2"
+                  }
+                }),
+                _c("g", { attrs: { opacity: "0.15" } }, [
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M427.49,282.54v0c3,6.85,11.26,10.17,16.05,15.63C440.69,291.46,432.36,288.17,427.49,282.54Z",
+                      transform: "translate(-54.11 -35.71)"
+                    }
+                  }),
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M458.06,298.32c-1.19,2.29-4,3.4-6.56,3.35a19.14,19.14,0,0,1-6.58-1.68,12.79,12.79,0,0,1,1.7,3.62,20.9,20.9,0,0,0,7.44,2c2.59.06,5.37-1.05,6.56-3.35,1.91-3.65-.08-6.77-2.41-9.72A6.35,6.35,0,0,1,458.06,298.32Z",
+                      transform: "translate(-54.11 -35.71)"
+                    }
+                  }),
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M495.17,248.2c-.43-1.92-1.89-3.43-2.64-5.24a32.72,32.72,0,0,1-1.09-4.28,13.26,13.26,0,0,0-3.07-5.49,12.76,12.76,0,0,1,.51,1.51A34.39,34.39,0,0,0,490,239c.75,1.81,2.21,3.32,2.64,5.24a5.43,5.43,0,0,1-4,6.26c-3.7.81-7.92-2.39-11.1-.33-1.95,1.25-2.4,3.86-2.66,6.16q-.67,6-1.36,11.93a14.3,14.3,0,0,1-.88,4.1c-1.57,3.6-5.88,5.29-9.81,5.23a5.89,5.89,0,0,1-4.22-1.4,27.87,27.87,0,0,0-1.83-2.32c-5-4.2-6.52,6.07-5.2,9a18.12,18.12,0,0,0,2.44,3.67c-1.1-3.3.44-12.8,5.32-8.73a25.82,25.82,0,0,1,1.82,2.32,5.93,5.93,0,0,0,4.23,1.4c3.93.06,8.24-1.63,9.81-5.23a14.3,14.3,0,0,0,.88-4.11q.68-6,1.36-11.92c.26-2.3.71-4.91,2.65-6.16,3.19-2.06,7.41,1.14,11.11.32A5.42,5.42,0,0,0,495.17,248.2Z",
+                      transform: "translate(-54.11 -35.71)"
+                    }
+                  })
+                ]),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M716.57,312.08a7.73,7.73,0,0,1-3.21-.08,18,18,0,0,1-10.28-6.14c-1.45-1.76-2.59-4.16-1.71-6.26.7-1.69,2.54-2.75,3-4.51a6.7,6.7,0,0,0-.17-3.23l-1.08-4.93c-.31-1.4-.85-3.05-2.24-3.38s-2.55.81-3.64,1.67c-2.67,2.11-7.8,3.55-11,1.81s-2.31-7.52-2.83-10.65a1.87,1.87,0,0,0-.7-1.4,2.85,2.85,0,0,0-1.46-.11c-1.73,0-3.11-1.55-3.62-3.21a28.39,28.39,0,0,1-.57-5.15c-.2-1.72-.82-3.56-2.31-4.45a7.19,7.19,0,0,0-3.77-.65l-7.42.08c-1.83,0-4-.12-5-1.64s-.26-3.68.79-5.23,2.38-3.09,2.47-5-1.15-3.56-2.16-5.16a9.25,9.25,0,0,1-1.26-2.86l-2.13-.13c-.83,1.7,0,3.73,1,5.34s2.25,3.26,2.16,5.15-1.42,3.41-2.47,5-1.82,3.67-.78,5.23,3.15,1.67,5,1.65l7.42-.09a7.18,7.18,0,0,1,3.77.66c1.49.89,2.12,2.73,2.31,4.45a27.63,27.63,0,0,0,.58,5.15c.5,1.65,1.89,3.23,3.62,3.2a2.93,2.93,0,0,1,1.45.11,1.88,1.88,0,0,1,.7,1.41c.52,3.12-.44,8.91,2.83,10.65s8.37.3,11-1.81c1.09-.86,2.3-2,3.65-1.68s1.93,2,2.23,3.38l1.09,4.94a6.69,6.69,0,0,1,.16,3.23c-.5,1.75-2.35,2.82-3.05,4.5-.87,2.1.26,4.51,1.71,6.26A18,18,0,0,0,711,314.34a7.73,7.73,0,0,0,3.21.08,7.54,7.54,0,0,0,4.16-3.16A5.56,5.56,0,0,1,716.57,312.08Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "203.69",
+                    cy: "714.3",
+                    rx: "24.17",
+                    ry: "3.71",
+                    fill: "#6c63ff",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "1047.61",
+                    cy: "617.84",
+                    rx: "24.17",
+                    ry: "3.71",
+                    fill: "#6c63ff",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "801.2",
+                    cy: "767.34",
+                    rx: "70",
+                    ry: "10.74",
+                    fill: "#6c63ff",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "1000.19",
+                    cy: "721.84",
+                    rx: "54.6",
+                    ry: "8.38",
+                    fill: "#6c63ff",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "991.2",
+                    cy: "805.34",
+                    rx: "92.59",
+                    ry: "14.21",
+                    fill: "#6c63ff",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "100.24",
+                    cy: "817.84",
+                    rx: "70",
+                    ry: "10.74",
+                    fill: "#6c63ff",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M258.9,631.85s2.74,3.58-1.26,9-7.3,10-6,13.34c0,0,6-10,11-10.18S264.31,637.89,258.9,631.85Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M258.9,631.85a4,4,0,0,1,.56,1.12c4.8,5.64,7.35,10.89,2.74,11-4.29.12-9.44,7.8-10.67,9.74a3.73,3.73,0,0,0,.14.44s6-10,11-10.18S264.31,637.89,258.9,631.85Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M264,636.41c0,1.26-.15,2.28-.32,2.28s-.32-1-.32-2.28.18-.66.35-.66S264,635.15,264,636.41Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#ffd037"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M265.74,637.92c-1.1.6-2.07,1-2.15.81s.74-.76,1.85-1.37.67-.16.75,0S266.85,637.31,265.74,637.92Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#ffd037"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M244.44,631.85s-2.74,3.58,1.26,9,7.31,10,6,13.34c0,0-6-10-10.95-10.18S239,637.89,244.44,631.85Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M244.44,631.85a4.41,4.41,0,0,0-.56,1.12c-4.8,5.64-7.35,10.89-2.74,11,4.29.12,9.44,7.8,10.68,9.74a3.81,3.81,0,0,1-.15.44s-6-10-10.95-10.18S239,637.89,244.44,631.85Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M239.35,636.41c0,1.26.14,2.28.31,2.28s.32-1,.32-2.28-.18-.66-.35-.66S239.35,635.15,239.35,636.41Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#ffd037"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M237.6,637.92c1.11.6,2.07,1,2.16.81s-.75-.76-1.86-1.37-.67-.16-.75,0S236.49,637.31,237.6,637.92Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#ffd037"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "197.56",
+                    cy: "641.47",
+                    rx: "28.63",
+                    ry: "4.39",
+                    fill: "#6c63ff",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M266.41,649.35l-.14,1.12-.19,1.58-.08.66-.19,1.58-.09.66-.19,1.58-2.19,18c-.19,1.6-2.81,2.85-6,2.85H246c-3.16,0-5.78-1.25-6-2.85l-2.19-18-.19-1.58-.08-.66-.2-1.58-.08-.66-.19-1.58-.14-1.12c-.11-.91,1.31-1.67,3.1-1.67h23.29C265.1,647.68,266.52,648.44,266.41,649.35Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#65617d"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "212.16 614.76 211.97 616.34 183.15 616.34 182.96 614.76 212.16 614.76",
+                    fill: "#9d9cb5"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "211.89 617 211.7 618.58 183.43 618.58 183.23 617 211.89 617",
+                    fill: "#9d9cb5"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "211.62 619.24 211.42 620.82 183.7 620.82 183.51 619.24 211.62 619.24",
+                    fill: "#9d9cb5"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1082.67,618s-3.42,15.92,11.79,17.8l.94-1.77S1083.61,622.94,1082.67,618Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1100.24,633.9l-3.54.75-.35.08s-9.44-7.66-9.32-24.76a42.22,42.22,0,0,0,4.51,7.13C1095.28,622.05,1099.53,628.65,1100.24,633.9Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1101.43,635.54a2.22,2.22,0,0,1-1.9.25c-9.08-2.12-6-31.71-6-31.71.5.23,1,4,3.14,8.86C1100.32,621.47,1104.35,633.4,1101.43,635.54Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1121.57,618s.59,15.92-14.62,17.8L1106,634S1120.63,622.94,1121.57,618Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1117.21,610c.12,17.1-12.14,24.76-12.14,24.76l-.36-.08-3.53-.75c.7-5.25,5-11.85,8.69-16.8A38.47,38.47,0,0,1,1117.21,610Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1104.66,634a5.52,5.52,0,0,1-2,1.55h0a3.89,3.89,0,0,1-.75.25c-2.23.52-3-1.09-2.88-3.83.21-4.87,3.27-13.32,6-19.65a24.56,24.56,0,0,1,5.7-8.23S1110.59,627.12,1104.66,634Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1102.12,593.7s-10.14,36-1.41,41.38S1104.36,596.88,1102.12,593.7Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1082.67,618s-3.42,15.92,11.79,17.8l.94-1.77S1083.61,622.94,1082.67,618Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1100.24,633.9l-3.54.75-.35.08s-9.44-7.66-9.32-24.76a42.22,42.22,0,0,0,4.51,7.13C1095.28,622.05,1099.53,628.65,1100.24,633.9Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1101.43,635.54a2.22,2.22,0,0,1-1.9.25c-9.08-2.12-6-31.71-6-31.71.5.23,1,4,3.14,8.86C1100.32,621.47,1104.35,633.4,1101.43,635.54Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1121.57,618s.59,15.92-14.62,17.8L1106,634S1120.63,622.94,1121.57,618Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1117.21,610c.12,17.1-12.14,24.76-12.14,24.76l-.36-.08-3.53-.75c.7-5.25,5-11.85,8.69-16.8A38.47,38.47,0,0,1,1117.21,610Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1104.66,634a5.52,5.52,0,0,1-2,1.55h0a3.89,3.89,0,0,1-.75.25c-2.23.52-3-1.09-2.88-3.83.21-4.87,3.27-13.32,6-19.65a24.56,24.56,0,0,1,5.7-8.23S1110.59,627.12,1104.66,634Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1102.12,593.7s-10.14,36-1.41,41.38S1104.36,596.88,1102.12,593.7Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1082.67,618s-2,15.92,13.2,17.8l.94-1.77S1083.61,622.94,1082.67,618Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1101.65,633.9l-3.54.75-.35.08S1086.91,627.07,1087,610c0,0,2.78,3,5.92,7.13C1096.69,622.05,1100.94,628.65,1101.65,633.9Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1101.65,633.9l-3.54.75c-3.35-2.94-4.68-10.62-5.16-17.55C1096.69,622.05,1100.94,628.65,1101.65,633.9Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1102.85,635.54a2.24,2.24,0,0,1-1.91.25c-9.08-2.12-7.42-31.71-7.42-31.71.5.23,2.46,4,4.55,8.86C1101.74,621.47,1105.76,633.4,1102.85,635.54Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1121.57,618s2,15.92-13.2,17.8l-.94-1.77S1120.63,622.94,1121.57,618Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1117.21,610c.12,17.1-10.73,24.76-10.73,24.76l-.35-.08-3.54-.75c.7-5.25,5-11.85,8.7-16.8C1114.43,613,1117.21,610,1117.21,610Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1111.29,617.1c-.46,6.46-1.64,13.57-4.51,16.89a5.08,5.08,0,0,1-.65.66l-3.54-.75C1103.29,628.65,1107.55,622.05,1111.29,617.1Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1106.07,634a5.41,5.41,0,0,1-2,1.55h0a4,4,0,0,1-.74.25c-2.24.52-3-1.09-2.89-3.83.22-4.87,3.28-13.32,6-19.65,2-4.55,3.81-8,4.29-8.23C1110.73,604.08,1112,627.12,1106.07,634Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1102.85,635.54a2.4,2.4,0,0,1-1.44-.46c-4.27-2.66-4.36-12.64-3.34-22.14C1101.74,621.47,1105.76,633.4,1102.85,635.54Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1106.07,634c-.49,1.07-1.15,1.63-2,1.55h0a2.69,2.69,0,0,1-1.21-.46,6.46,6.46,0,0,1-2.42-3.12c.22-4.87,3.28-13.32,6-19.65C1107.42,621.09,1107.75,630.39,1106.07,634Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1102.12,593.7s-8.72,36,0,41.38S1104.36,596.88,1102.12,593.7Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "1064.75 597.61 1028.44 597.61 1028.44 603.62 1033.98 603.62 1034.12 604.33 1036.34 616 1057.45 616 1059.67 604.33 1059.8 603.62 1064.75 603.62 1064.75 597.61",
+                    fill: "#4b4770"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "1064.75 597.61 1028.44 597.61 1028.44 603.62 1033.98 603.62 1034.12 604.33 1036.34 616 1057.45 616 1059.67 604.33 1059.8 603.62 1064.75 603.62 1064.75 597.61",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "1061.69 601.14 1061.08 604.33 1058.86 616 1037.75 616 1035.53 604.33 1034.92 601.14 1061.69 601.14",
+                    fill: "#4b4770"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "1061.69 601.14 1061.08 604.33 1035.53 604.33 1034.92 601.14 1061.69 601.14",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("rect", {
+                  attrs: {
+                    x: "1029.85",
+                    y: "597.61",
+                    width: "36.31",
+                    height: "6.01",
+                    fill: "#4b4770"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M193.5,736.16a17.44,17.44,0,0,0-2.28,4.3c-.14.37-.28.8-.42,1.21a4.36,4.36,0,0,0-.79-.28,11,11,0,0,0-3.57-.3c0-.47.06-1,.07-1.47.15-5.27-.47-12.61-5.5-9.5-4.82,3-1.38,8,1.73,11.2.27.28.54.54.8.79-2.84,2-3.38,6.73-3.85,11.64s-4.64,10.28-7.41,13.33c-.28.31-.53.59-.78.85a10.15,10.15,0,0,0-8.05-2.07c-.11-.43-.24-.88-.37-1.35-2.24-8.09-6.89-22.1-12.82-25.17l.78-1c2.52-3.29,5.36-8.19,1.17-9.44s-4.57,4.24-4.34,8.36q.06.78.12,1.47a6.13,6.13,0,0,0-4.38,2.14l-.65-.77c-3.4-4-9.63-10.37-11.52-5.56-1.76,4.48,3.73,10.3,7.59,13.67l.24.21c-2.59,10.51,8.72,19.08,14.81,22.83l.79.48c-8.4,9.9-13.59,28.46-13.59,28.46l23.52,4.2s15.6-13.46,13.6-26.1l.16,0c15.59-3.12,19.13-19.74,16.7-29.61l.28-.11a17.65,17.65,0,0,0,7.22-5.46C207.12,737.06,198,730.22,193.5,736.16Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M193.5,736.16a17.44,17.44,0,0,0-2.28,4.3c-.14.37-.28.8-.42,1.21a4.36,4.36,0,0,0-.79-.28,11,11,0,0,0-3.57-.3c0-.47.06-1,.07-1.47.15-5.27-.47-12.61-5.5-9.5-4.82,3-1.38,8,1.73,11.2.27.28.54.54.8.79-2.84,2-3.38,6.73-3.85,11.64s-4.64,10.28-7.41,13.33c-.28.31-.53.59-.78.85a10.15,10.15,0,0,0-8.05-2.07c-.11-.43-.24-.88-.37-1.35-2.24-8.09-6.89-22.1-12.82-25.17l.78-1c2.52-3.29,5.36-8.19,1.17-9.44s-4.57,4.24-4.34,8.36q.06.78.12,1.47a6.13,6.13,0,0,0-4.38,2.14l-.65-.77c-3.4-4-9.63-10.37-11.52-5.56-1.76,4.48,3.73,10.3,7.59,13.67l.24.21c-2.59,10.51,8.72,19.08,14.81,22.83l.79.48c-8.4,9.9-13.59,28.46-13.59,28.46l23.52,4.2s15.6-13.46,13.6-26.1l.16,0c15.59-3.12,19.13-19.74,16.7-29.61l.28-.11a17.65,17.65,0,0,0,7.22-5.46C207.12,737.06,198,730.22,193.5,736.16Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M146.68,743l-2.75,8s-1.53-1.08-3.46-2.78c-3.86-3.37-9.35-9.19-7.59-13.67,1.89-4.81,8.12,1.54,11.52,5.56C145.77,741.71,146.68,743,146.68,743Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M152.48,738.35a38.1,38.1,0,0,1-2.68,3.16,42.2,42.2,0,0,1-.49-4.24c-.23-4.12.21-9.59,4.34-8.36S155,735.06,152.48,738.35Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M188,739.62c-.08,2.65-.34,4.77-.34,4.77a34.92,34.92,0,0,1-3.43-3.07c-3.11-3.23-6.55-8.21-1.73-11.2C187.48,727,188.1,734.35,188,739.62Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M204.2,743.09a17.65,17.65,0,0,1-7.22,5.46,21.62,21.62,0,0,1-2.42.88l-3.24-4.55a32.17,32.17,0,0,1,1.34-4.42,17.44,17.44,0,0,1,2.28-4.3C199.42,730.22,208.56,737.06,204.2,743.09Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M144.4,740.11c1.37,1.6,2.28,2.84,2.28,2.84l-2.75,8s-1.53-1.08-3.46-2.78a15.7,15.7,0,0,1,3.1-7.07C143.84,740.77,144.13,740.43,144.4,740.11Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M152.48,738.35a38.1,38.1,0,0,1-2.68,3.16,42.2,42.2,0,0,1-.49-4.24A5.53,5.53,0,0,1,152.48,738.35Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M166,770.31l-6.84,3s-1.49-.72-3.64-2.06c-7.19-4.42-21.64-15.55-12-28.67s17.77,10.41,21,21.92C165.49,768,166,770.31,166,770.31Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M184.18,741.32a5.62,5.62,0,0,1,3.77-1.7c-.08,2.65-.34,4.77-.34,4.77A34.92,34.92,0,0,1,184.18,741.32Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M197,748.55a21.62,21.62,0,0,1-2.42.88l-3.24-4.55a32.17,32.17,0,0,1,1.34-4.42C194.75,741.68,196.29,744.72,197,748.55Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M180,778.27c-.37.08-.76.15-1.15.21-22.93,3.48-7.56-8.89-7.56-8.89s1-1,2.43-2.51c2.77-3.05,6.93-8.39,7.41-13.33.72-7.43,1.55-14.4,10.32-12.36C200.06,743.41,201.71,773.92,180,778.27Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("rect", {
+                  attrs: {
+                    x: "81.65",
+                    y: "799.65",
+                    width: "43.81",
+                    height: "11.52",
+                    fill: "#d4dfec"
+                  }
+                }),
+                _c("rect", {
+                  attrs: {
+                    x: "74.69",
+                    y: "762.21",
+                    width: "57.24",
+                    height: "40.2",
+                    fill: "#d4dfec"
+                  }
+                }),
+                _c("rect", {
+                  attrs: {
+                    x: "81.65",
+                    y: "799.65",
+                    width: "43.81",
+                    height: "11.52",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("rect", {
+                  attrs: {
+                    x: "74.69",
+                    y: "762.21",
+                    width: "57.24",
+                    height: "40.2",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("rect", {
+                  attrs: {
+                    x: "84.53",
+                    y: "799.65",
+                    width: "43.81",
+                    height: "11.52",
+                    fill: "#d4dfec"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M164.52,764.51c1,3.44,1.48,5.8,1.48,5.8l-6.84,3s-1.49-.72-3.64-2.06C158.2,767.86,161.22,765.3,164.52,764.51Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M180,778.27c-.37.08-.76.15-1.15.21-22.93,3.48-7.56-8.89-7.56-8.89s1-1,2.43-2.51C178,770.51,179.77,774.37,180,778.27Z",
+                    transform: "translate(-54.11 -35.71)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d: "M142.72,800.2s12.84-46,30.85-31.81-7.33,36-7.33,36Z",
+                    transform: "translate(-54.11 -35.71)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("circle", {
+                  attrs: {
+                    cx: "95.09",
+                    cy: "714.08",
+                    r: "1.44",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("circle", {
+                  attrs: { cx: "94.97", cy: "720.8", r: "1.44", opacity: "0.1" }
+                }),
+                _c("circle", {
+                  attrs: {
+                    cx: "136.74",
+                    cy: "715.4",
+                    r: "1.44",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("circle", {
+                  attrs: {
+                    cx: "103.14",
+                    cy: "749.85",
+                    r: "1.44",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("circle", {
+                  attrs: {
+                    cx: "133.74",
+                    cy: "726.56",
+                    r: "1.44",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("circle", {
+                  attrs: {
+                    cx: "118.86",
+                    cy: "741.45",
+                    r: "1.44",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("circle", {
+                  attrs: {
+                    cx: "100.01",
+                    cy: "716.96",
+                    r: "1.44",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("circle", {
+                  attrs: {
+                    cx: "132.78",
+                    cy: "719.72",
+                    r: "1.44",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("circle", {
+                  attrs: {
+                    cx: "127.86",
+                    cy: "730.88",
+                    r: "1.44",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("circle", {
+                  attrs: {
+                    cx: "112.74",
+                    cy: "748.77",
+                    r: "1.44",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("circle", {
+                  attrs: {
+                    cx: "109.62",
+                    cy: "741.69",
+                    r: "1.44",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("circle", {
+                  attrs: {
+                    cx: "102.17",
+                    cy: "725.72",
+                    r: "1.44",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("rect", {
+                  attrs: {
+                    x: "84.53",
+                    y: "799.65",
+                    width: "43.81",
+                    height: "4.21",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("rect", {
+                  attrs: {
+                    x: "77.57",
+                    y: "762.21",
+                    width: "57.24",
+                    height: "40.2",
+                    fill: "#d4dfec"
+                  }
+                }),
+                _c("circle", {
+                  attrs: {
+                    cx: "114.66",
+                    cy: "755.25",
+                    r: "1.44",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("circle", {
+                  attrs: {
+                    cx: "106.02",
+                    cy: "757.05",
+                    r: "1.44",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("circle", {
+                  attrs: {
+                    cx: "50",
+                    cy: "52",
+                    r: "10.46",
+                    fill: "#6c63ff",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("circle", {
+                  attrs: {
+                    cx: "1054.57",
+                    cy: "381.09",
+                    r: "14",
+                    fill: "#6c63ff",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("circle", {
+                  attrs: {
+                    cx: "1081.56",
+                    cy: "351.09",
+                    r: "10.22",
+                    fill: "#6c63ff",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("circle", {
+                  attrs: {
+                    cx: "68",
+                    cy: "14",
+                    r: "14",
+                    fill: "#6c63ff",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("circle", {
+                  attrs: {
+                    cx: "14",
+                    cy: "78",
+                    r: "14",
+                    fill: "#6c63ff",
+                    opacity: "0.1"
+                  }
+                })
+              ]
+            )
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass:
+          "flex flex-col lg:flex-row jusitfy-between items-start py-12 lg:mt-12"
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "mb-16 lg:mb-0 mt-8 lg:mt-0 lg:w-2/4 lg:pl-12 flex justify-center"
+          },
+          [
+            _c(
+              "svg",
+              {
+                staticClass: "w-full h-64 sm:h-auto",
+                attrs: {
+                  id: "bf2b12fd-98ef-4df9-abe4-52340225686d",
+                  "data-name": "Layer 1",
+                  xmlns: "http://www.w3.org/2000/svg",
+                  "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                  width: "1143",
+                  height: "663.73",
+                  viewBox: "0 0 1143 663.73"
+                }
+              },
+              [
+                _c(
+                  "defs",
+                  [
+                    _c(
+                      "linearGradient",
+                      {
+                        attrs: {
+                          id: "fb6415c1-f574-4dab-bb02-7ceb0a7d0718",
+                          x1: "596",
+                          y1: "757.78",
+                          x2: "596",
+                          y2: "598.14",
+                          gradientUnits: "userSpaceOnUse"
+                        }
+                      },
+                      [
+                        _c("stop", {
+                          attrs: {
+                            offset: "0",
+                            "stop-color": "gray",
+                            "stop-opacity": "0.25"
+                          }
+                        }),
+                        _c("stop", {
+                          attrs: {
+                            offset: "0.54",
+                            "stop-color": "gray",
+                            "stop-opacity": "0.12"
+                          }
+                        }),
+                        _c("stop", {
+                          attrs: {
+                            offset: "1",
+                            "stop-color": "gray",
+                            "stop-opacity": "0.1"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _c("title", [_vm._v("discount")]),
+                _c("g", { attrs: { opacity: "0.1" } }, [
+                  _c("ellipse", {
+                    attrs: {
+                      cx: "840.37",
+                      cy: "625.03",
+                      rx: "22.09",
+                      ry: "28.91",
+                      fill: "#3f3d56"
+                    }
+                  }),
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M886.35,619.49A34.83,34.83,0,0,0,891,601.82c0-16-9.89-28.91-22.09-28.91s-22.08,12.94-22.08,28.91a34.83,34.83,0,0,0,4.61,17.67,36.15,36.15,0,0,0,0,35.33,36.17,36.17,0,0,0,0,35.34,34.83,34.83,0,0,0-4.61,17.67c0,16,9.89,28.91,22.08,28.91S891,723.8,891,707.83a34.83,34.83,0,0,0-4.61-17.67,36.17,36.17,0,0,0,0-35.34,36.15,36.15,0,0,0,0-35.33Z",
+                      transform: "translate(-28.5 -118.14)",
+                      fill: "#3f3d56"
+                    }
+                  }),
+                  _c("ellipse", {
+                    attrs: {
+                      cx: "840.37",
+                      cy: "448.35",
+                      rx: "22.09",
+                      ry: "28.91",
+                      fill: "#3f3d56"
+                    }
+                  }),
+                  _c("ellipse", {
+                    attrs: {
+                      cx: "840.37",
+                      cy: "413.01",
+                      rx: "22.09",
+                      ry: "28.91",
+                      fill: "#3f3d56"
+                    }
+                  }),
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M951.55,289.33a106.47,106.47,0,0,0,8.22-12.11l-58-9.53,62.77.47a106,106,0,0,0,2-83.82L882.32,228,960,170.94A105.8,105.8,0,1,0,785.25,289.33a106,106,0,0,0-12.06,19.29l75.33,39.14-80.32-27a105.8,105.8,0,0,0,17,99.34,105.79,105.79,0,1,0,166.3,0,105.79,105.79,0,0,0,0-130.81Z",
+                      transform: "translate(-28.5 -118.14)",
+                      fill: "#6c63ff"
+                    }
+                  }),
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M762.61,354.74a105.31,105.31,0,0,0,22.64,65.4,105.79,105.79,0,1,0,166.3,0C965.73,402.14,762.61,342.86,762.61,354.74Z",
+                      transform: "translate(-28.5 -118.14)",
+                      opacity: "0.1"
+                    }
+                  })
+                ]),
+                _c("g", { attrs: { opacity: "0.1" } }, [
+                  _c("ellipse", {
+                    attrs: {
+                      cx: "220.81",
+                      cy: "605.42",
+                      rx: "13.44",
+                      ry: "17.6",
+                      fill: "#3f3d56"
+                    }
+                  }),
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M260,648.27a21.23,21.23,0,0,0,2.81-10.76c0-9.72-6-17.6-13.45-17.6s-13.44,7.88-13.44,17.6a21.23,21.23,0,0,0,2.8,10.76,22.06,22.06,0,0,0,0,21.51,22.06,22.06,0,0,0,0,21.51,21.16,21.16,0,0,0-2.8,10.75c0,9.73,6,17.61,13.44,17.61s13.45-7.88,13.45-17.61A21.16,21.16,0,0,0,260,691.29a22,22,0,0,0,0-21.51,22,22,0,0,0,0-21.51Z",
+                      transform: "translate(-28.5 -118.14)",
+                      fill: "#3f3d56"
+                    }
+                  }),
+                  _c("ellipse", {
+                    attrs: {
+                      cx: "220.81",
+                      cy: "497.86",
+                      rx: "13.44",
+                      ry: "17.6",
+                      fill: "#3f3d56"
+                    }
+                  }),
+                  _c("ellipse", {
+                    attrs: {
+                      cx: "220.81",
+                      cy: "476.35",
+                      rx: "13.44",
+                      ry: "17.6",
+                      fill: "#3f3d56"
+                    }
+                  }),
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M199,447.27a64.1,64.1,0,0,1-5-7.37l35.33-5.8-38.21.29a64.57,64.57,0,0,1-1.23-51L241.12,410,193.85,375.2a64.4,64.4,0,1,1,106.37,72.07A64.33,64.33,0,0,1,307.56,459L261.7,482.84l48.9-16.41a64.44,64.44,0,0,1-10.38,60.48,64.4,64.4,0,1,1-101.24,0,64.42,64.42,0,0,1,0-79.64Z",
+                      transform: "translate(-28.5 -118.14)",
+                      fill: "#6c63ff"
+                    }
+                  }),
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M314,487.09a64.15,64.15,0,0,1-13.78,39.82,64.4,64.4,0,1,1-101.24,0C190.35,516,314,479.86,314,487.09Z",
+                      transform: "translate(-28.5 -118.14)",
+                      opacity: "0.1"
+                    }
+                  })
+                ]),
+                _c("g", { attrs: { opacity: "0.1" } }, [
+                  _c("ellipse", {
+                    attrs: {
+                      cx: "523.81",
+                      cy: "614.79",
+                      rx: "17.99",
+                      ry: "23.55",
+                      fill: "#3f3d56"
+                    }
+                  }),
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M566.55,632.17a28.41,28.41,0,0,0,3.75-14.4c0-13-8-23.55-18-23.55s-18,10.55-18,23.55a28.32,28.32,0,0,0,3.76,14.4,29.44,29.44,0,0,0,0,28.79,29.42,29.42,0,0,0,0,28.78,28.32,28.32,0,0,0-3.76,14.4c0,13,8.06,23.55,18,23.55s18-10.55,18-23.55a28.41,28.41,0,0,0-3.75-14.4,29.48,29.48,0,0,0,0-28.78,29.5,29.5,0,0,0,0-28.79Z",
+                      transform: "translate(-28.5 -118.14)",
+                      fill: "#3f3d56"
+                    }
+                  }),
+                  _c("ellipse", {
+                    attrs: {
+                      cx: "523.81",
+                      cy: "470.85",
+                      rx: "17.99",
+                      ry: "23.55",
+                      fill: "#3f3d56"
+                    }
+                  }),
+                  _c("ellipse", {
+                    attrs: {
+                      cx: "523.81",
+                      cy: "442.06",
+                      rx: "17.99",
+                      ry: "23.55",
+                      fill: "#3f3d56"
+                    }
+                  }),
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M485,363.2a85.91,85.91,0,0,1-6.7-9.86l47.27-7.76-51.12.38a86.35,86.35,0,0,1-1.65-68.29l68.6,35.58-63.27-46.5A86.19,86.19,0,1,1,620.44,363.2a86.33,86.33,0,0,1,9.82,15.72L568.9,410.8l65.43-22a86.22,86.22,0,0,1-13.89,80.93,86.18,86.18,0,1,1-135.48,0,86.21,86.21,0,0,1,0-106.57Z",
+                      transform: "translate(-28.5 -118.14)",
+                      fill: "#6c63ff"
+                    }
+                  }),
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M638.88,416.49a85.81,85.81,0,0,1-18.44,53.28,86.18,86.18,0,1,1-135.48,0C473.41,455.11,638.88,406.81,638.88,416.49Z",
+                      transform: "translate(-28.5 -118.14)",
+                      opacity: "0.1"
+                    }
+                  })
+                ]),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1171.5,754.36c0,6.87-50.22,13.15-133.25,18-15.1.87-31.28,1.7-48.44,2.48q-22.24,1-46.62,1.89-23.62.84-49.05,1.56c-53.54,1.53-112.73,2.63-175.61,3.18q-22.89.21-46.39.32-24.48.11-49.52.1c-303.14,0-548.87-12.31-548.87-27.5s245.73-27.5,548.87-27.5c130.51,0,250.36,2.29,344.56,6.09l10.3.42h.06C1096.2,738.43,1171.5,746,1171.5,754.36Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1171.5,754.36c0,6.87-50.22,13.15-133.25,18-15.1.87-31.28,1.7-48.44,2.48q-22.24,1-46.62,1.89-23.62.84-49.05,1.56c-53.54,1.53-112.73,2.63-175.61,3.18q-22.89.21-46.39.32-24.48.11-49.52.1c-303.14,0-548.87-12.31-548.87-27.5s245.73-27.5,548.87-27.5c130.51,0,250.36,2.29,344.56,6.09l10.3.42h.06C1096.2,738.43,1171.5,746,1171.5,754.36Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.15"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1126.25,749.52c0,5.74-50.22,11-133.25,15-15.09.73-31.28,1.42-48.43,2.07q-22.25.84-46.62,1.58-23.62.7-49.05,1.31c-53.55,1.28-112.74,2.2-175.62,2.66q-22.87.17-46.39.26-24.48.09-49.51.09c-303.14,0-548.88-10.29-548.88-23s245.74-23,548.88-23c130.5,0,250.35,1.91,344.55,5.09l10.3.35h.07C1051,736.2,1126.25,742.49,1126.25,749.52Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d: "M170.26,540.59,156.48,498.4l330-3.61L500,536.56Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d: "M170.26,540.59,156.48,498.4l330-3.61L500,536.56Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.15"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d: "M148.26,540.59,134.48,498.4l330-3.61L478,536.56Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M711.61,475.76q-51.18,0-80.67-40.63t-29.49-98.44q0-58.2,28.52-98.24t80.46-40q55.08,0,83,42.19t27.93,97.66q0,55.07-28.9,96.28T711.61,475.76Zm1-30.47q33.67,0,50.33-29.35t16.66-74q0-49.7-17.05-81.39t-52.3-31.7q-67,0-67,106.44Q643.25,445.3,712.59,445.29Zm11.24,291.79H674.5l323.08-533.2H1046Zm285.82,5.47q-51.95,0-81-41T899.5,603.1q0-57.81,28.32-97.85t80.66-40q54.69,0,82.42,42.19t27.74,97.65q0,54.71-28.71,96.1T1009.65,742.55Zm.58-31.25q33.51,0,50.06-28.85t16.55-73.7q0-48-16.75-80.51t-52.19-32.56q-67.39,0-67.39,106.44Q940.51,711.31,1010.23,711.3Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M711.61,475.76q-51.18,0-80.67-40.63t-29.49-98.44q0-58.2,28.52-98.24t80.46-40q55.08,0,83,42.19t27.93,97.66q0,55.07-28.9,96.28T711.61,475.76Zm1-30.47q33.67,0,50.33-29.35t16.66-74q0-49.7-17.05-81.39t-52.3-31.7q-67,0-67,106.44Q643.25,445.3,712.59,445.29Zm11.24,291.79H674.5l323.08-533.2H1046Zm285.82,5.47q-51.95,0-81-41T899.5,603.1q0-57.81,28.32-97.85t80.66-40q54.69,0,82.42,42.19t27.74,97.65q0,54.71-28.71,96.1T1009.65,742.55Zm.58-31.25q33.51,0,50.06-28.85t16.55-73.7q0-48-16.75-80.51t-52.19-32.56q-67.39,0-67.39,106.44Q940.51,711.31,1010.23,711.3Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M711.61,475.76q-51.18,0-80.67-40.63t-29.49-98.44q0-58.2,28.52-98.24t80.46-40q55.08,0,83,42.19t27.93,97.66q0,55.07-28.9,96.28T711.61,475.76Zm1-30.47q33.67,0,50.33-29.35t16.66-74q0-49.7-17.05-81.39t-52.3-31.7q-67,0-67,106.44Q643.25,445.3,712.59,445.29Zm11.24,291.79H674.5l323.08-533.2H1046Zm285.82,5.47q-51.95,0-81-41T899.5,603.1q0-57.81,28.32-97.85t80.66-40q54.69,0,82.42,42.19t27.74,97.65q0,54.71-28.71,96.1T1009.65,742.55Zm.58-31.25q33.51,0,50.06-28.85t16.55-73.7q0-48-16.75-80.51t-52.19-32.56q-67.39,0-67.39,106.44Q940.51,711.31,1010.23,711.3Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.15"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M680.61,475.76q-51.18,0-80.67-40.63t-29.49-98.44q0-58.2,28.52-98.24t80.46-40q55.08,0,83,42.19t27.93,97.66q0,55.07-28.9,96.28T680.61,475.76Zm1-30.47q33.67,0,50.33-29.35t16.66-74q0-49.7-17.05-81.39t-52.3-31.7q-67,0-67,106.44Q612.25,445.3,681.59,445.29Zm11.24,291.79H643.5l323.08-533.2H1015Zm285.82,5.47q-51.95,0-81-41T868.5,603.1q0-57.81,28.32-97.85t80.66-40q54.69,0,82.42,42.19t27.74,97.65q0,54.71-28.71,96.1T978.65,742.55Zm.58-31.25q33.51,0,50.06-28.85t16.55-73.7q0-48-16.75-80.51T976.9,495.68q-67.39,0-67.39,106.44Q909.51,711.31,979.23,711.3Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#3f3d56"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M788.57,750.46c4.12-7.64-.56-17-5.94-23.82s-11.94-13.9-11.8-22.59c.2-12.47,13.44-19.84,24-26.46a117.08,117.08,0,0,0,21.58-17.34,31.68,31.68,0,0,0,6.63-8.88c2.19-4.88,2.12-10.43,2-15.77q-.69-26.72-2.64-53.36",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "none",
+                    stroke: "#3f3d56",
+                    "stroke-miterlimit": "10",
+                    "stroke-width": "4"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M842.52,581.26a19.43,19.43,0,0,0-9.71-15.94l-4.36,8.62.13-10.44a19.69,19.69,0,0,0-6.41-.77,19.46,19.46,0,1,0,20.35,18.53Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M807.82,713a19.45,19.45,0,1,1,.94-15.67l-12.16,9.89L810,704.1A19.4,19.4,0,0,1,807.82,713Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M798.21,675.19a19.46,19.46,0,0,1-20.35-18.53,19.24,19.24,0,0,1,1.68-8.87A19.49,19.49,0,0,1,792,637l-.11,8,4.41-8.72h0a19.46,19.46,0,1,1,1.82,38.88Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M845.45,643.76a19.47,19.47,0,1,1-1.82-38.89,19.28,19.28,0,0,1,10.42,2.47l-3.44,9.42,7.08-6.79A19.4,19.4,0,0,1,864,623.4a19,19,0,0,1-.5,5.36A19.47,19.47,0,0,1,845.45,643.76Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M839.9,586.45c-4.49.49-8.85,1.89-13.36,2.17s-9.46-.8-12.31-4.31c-1.54-1.88-2.3-4.27-3.6-6.33a13.79,13.79,0,0,0-4.9-4.61,19.46,19.46,0,1,0,36.38,12.91C841.37,586.32,840.64,586.37,839.9,586.45Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M845.45,643.76A19.48,19.48,0,0,1,826.94,616a14.58,14.58,0,0,1,3.91,3.92c1.39,2.09,2.23,4.51,3.86,6.43,3,3.57,8.21,4.73,12.9,4.52s9.23-1.55,13.91-2c.65-.06,1.31-.1,2-.12A19.47,19.47,0,0,1,845.45,643.76Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M798.21,675.19a19.46,19.46,0,0,1-20.35-18.53,19.24,19.24,0,0,1,1.68-8.87,15.66,15.66,0,0,1,4.11,4c1.51,2.13,2.46,4.59,4.23,6.56,3.28,3.65,8.8,4.94,13.77,4.82s9.46-1.28,14.25-1.65A19.47,19.47,0,0,1,798.21,675.19Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M807.82,713a19.46,19.46,0,0,1-35.48-15.88,19.6,19.6,0,0,1,4.27,3.81c1.85,2.26,3.07,4.82,5.21,6.92,4,3.9,10.4,5.51,16.12,5.66A82.85,82.85,0,0,0,807.82,713Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1089.57,749.46c4.12-7.64-.56-17-5.94-23.82s-11.94-13.9-11.8-22.59c.2-12.47,13.44-19.84,24-26.46a117.08,117.08,0,0,0,21.58-17.34,31.68,31.68,0,0,0,6.63-8.88c2.19-4.88,2.12-10.43,2-15.77q-.69-26.72-2.64-53.36",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "none",
+                    stroke: "#3f3d56",
+                    "stroke-miterlimit": "10",
+                    "stroke-width": "4"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1143.52,580.26a19.43,19.43,0,0,0-9.71-15.94l-4.36,8.62.13-10.44a19.69,19.69,0,0,0-6.41-.77,19.46,19.46,0,1,0,20.35,18.53Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1108.82,712a19.45,19.45,0,1,1,.94-15.67l-12.16,9.89L1111,703.1A19.4,19.4,0,0,1,1108.82,712Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1099.21,674.19a19.46,19.46,0,0,1-20.35-18.53,19.24,19.24,0,0,1,1.68-8.87A19.49,19.49,0,0,1,1093,636l-.11,8,4.41-8.72h.05a19.46,19.46,0,1,1,1.82,38.88Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1146.45,642.76a19.47,19.47,0,1,1-1.82-38.89,19.28,19.28,0,0,1,10.42,2.47l-3.44,9.42,7.08-6.79A19.4,19.4,0,0,1,1165,622.4a19,19,0,0,1-.5,5.36A19.47,19.47,0,0,1,1146.45,642.76Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1140.9,585.45c-4.49.49-8.85,1.89-13.36,2.17s-9.46-.8-12.31-4.31c-1.54-1.88-2.3-4.27-3.6-6.33a13.79,13.79,0,0,0-4.9-4.61,19.46,19.46,0,1,0,36.38,12.91C1142.37,585.32,1141.64,585.37,1140.9,585.45Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1146.45,642.76A19.48,19.48,0,0,1,1127.94,615a14.58,14.58,0,0,1,3.91,3.92c1.39,2.09,2.23,4.51,3.86,6.43,3,3.57,8.21,4.73,12.9,4.52s9.23-1.55,13.91-2c.65-.06,1.31-.1,2-.12A19.47,19.47,0,0,1,1146.45,642.76Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1099.21,674.19a19.46,19.46,0,0,1-20.35-18.53,19.24,19.24,0,0,1,1.68-8.87,15.66,15.66,0,0,1,4.11,4c1.51,2.13,2.46,4.59,4.23,6.56,3.28,3.65,8.8,4.94,13.77,4.82,4.82-.1,9.46-1.28,14.25-1.65A19.47,19.47,0,0,1,1099.21,674.19Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M1108.82,712a19.46,19.46,0,0,1-35.48-15.88,19.6,19.6,0,0,1,4.27,3.81c1.85,2.26,3.07,4.82,5.21,6.92,4,3.9,10.4,5.51,16.12,5.66A82.85,82.85,0,0,0,1108.82,712Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M138.43,736.46c-4.12-7.64.56-17,5.94-23.82s11.94-13.9,11.8-22.59c-.2-12.47-13.44-19.84-24-26.46a117.08,117.08,0,0,1-21.58-17.34,31.68,31.68,0,0,1-6.63-8.88c-2.19-4.88-2.12-10.43-2-15.77q.69-26.72,2.64-53.36",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "none",
+                    stroke: "#3f3d56",
+                    "stroke-miterlimit": "10",
+                    "stroke-width": "4"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M84.48,567.26a19.43,19.43,0,0,1,9.71-15.94l4.36,8.62-.13-10.44a19.69,19.69,0,0,1,6.41-.77,19.46,19.46,0,1,1-20.35,18.53Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M119.18,699a19.45,19.45,0,1,0-.94-15.67l12.16,9.89L117,690.1A19.4,19.4,0,0,0,119.18,699Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M128.79,661.19a19.46,19.46,0,0,0,20.35-18.53,19.24,19.24,0,0,0-1.68-8.87A19.49,19.49,0,0,0,135,623l.11,8-4.41-8.72h0a19.46,19.46,0,1,0-1.82,38.88Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M81.55,629.76a19.47,19.47,0,1,0,1.82-38.89A19.28,19.28,0,0,0,73,593.34l3.44,9.42L69.31,596A19.4,19.4,0,0,0,63,609.4a19,19,0,0,0,.5,5.36A19.47,19.47,0,0,0,81.55,629.76Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M87.1,572.45c4.49.49,8.85,1.89,13.36,2.17s9.46-.8,12.31-4.31c1.54-1.88,2.3-4.27,3.6-6.33a13.79,13.79,0,0,1,4.9-4.61,19.46,19.46,0,1,1-36.38,12.91C85.63,572.32,86.36,572.37,87.1,572.45Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M81.55,629.76A19.48,19.48,0,0,0,100.06,602a14.58,14.58,0,0,0-3.91,3.92c-1.39,2.09-2.23,4.51-3.86,6.43-3,3.57-8.21,4.73-12.9,4.52s-9.23-1.55-13.91-2c-.65-.06-1.31-.1-2-.12A19.47,19.47,0,0,0,81.55,629.76Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M128.79,661.19a19.46,19.46,0,0,0,20.35-18.53,19.24,19.24,0,0,0-1.68-8.87,15.66,15.66,0,0,0-4.11,4c-1.51,2.13-2.46,4.59-4.23,6.56-3.28,3.65-8.8,4.94-13.77,4.82-4.82-.1-9.46-1.28-14.25-1.65A19.47,19.47,0,0,0,128.79,661.19Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M119.18,699a19.46,19.46,0,0,0,35.48-15.88,19.6,19.6,0,0,0-4.27,3.81c-1.85,2.26-3.07,4.82-5.21,6.92-4,3.9-10.4,5.51-16.12,5.66A82.85,82.85,0,0,1,119.18,699Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M702,642.75a15.53,15.53,0,0,0-6.18-12.52c-.24-9.17-6.78-16.66-15.19-17.82a18.13,18.13,0,0,0-12.08-13.52h0a15.34,15.34,0,0,0-2.25-.53l-.22,0-.39-.05-.33,0-.33,0-.43,0-.26,0h-.71c-8.58,0-15.72,6.56-17.19,15.21-5.55-1.28-10.64.38-11.55,3.89a4.75,4.75,0,0,0,.15,2.81c.94,2.72,4,5.32,8.15,6.61l.54.16c.27.08.54.14.81.2l.18,0h0a14,14,0,0,0,6.11,18.31,3.17,3.17,0,0,0-.36.23,5,5,0,0,0-1.2,1.68,24.36,24.36,0,0,0-2.32,5.59c-.4,1.67-.47,3.42-1,5.07-.91,3-3.25,5.63-3.52,8.82-.12,1.42.11,3.09-.9,4.06a6.6,6.6,0,0,1-.8.59,6.18,6.18,0,0,0-1.76,1.84A5.88,5.88,0,0,1,637.8,675c-.91.69-2.41.62-2.86,1.68s.71,2.31.44,3.47c-.22.94-1.25,1.37-2,2a7.09,7.09,0,0,0-1.7,3.23,10.34,10.34,0,0,1-8.53-2.17,16,16,0,0,1,.88,3.19c-1.19-1.27-3.15-1.64-4.6-2.3a14.69,14.69,0,0,1-4.9-3.64l2.62-.36L605.55,662.5l-3.42-.7,3.07,5.89a1.84,1.84,0,0,0-1,1.26,5.36,5.36,0,0,0-.12,2,37,37,0,0,0,.79,4.69l.89,4.14a10.74,10.74,0,0,0,.29,1.15,11.66,11.66,0,0,0-3.44.39,30.22,30.22,0,0,0-7.13-1.69,3.64,3.64,0,0,0-1.61.08,3.9,3.9,0,0,0-1.5,1.22,48,48,0,0,0-5.3,7.46c-6.23,10.84-14.55,20.3-22.34,30.1-5.38,2.19-10.8,4.27-16.23,6.33l-11.67,4.45c-2.33.89-4.75,1.8-7.23,1.64-1.12-.07-2.48-.24-3.11.71a6,6,0,0,0-.71,1.52c-.41,0-.82.1-1.2.12h-.07c-.74-1.84-1.38-3.81-2.8-5.15a1.74,1.74,0,0,0-1.32,1c-.28.52-.45,1.09-.77,1.57-.63.92-1.72,1.37-2.5,2.15s-1.27,2-2.11,2.76a8.38,8.38,0,0,1-4,1.55,25.25,25.25,0,0,0-6.21,2.36,10.63,10.63,0,0,1-2.3,1.06,8.66,8.66,0,0,1-2.69.09l-6.18-.45a4.81,4.81,0,0,0-1.65.07,3.07,3.07,0,0,0-2,3.17,4.93,4.93,0,0,0,1.95,3.4,13,13,0,0,0,3.52,1.83A102.22,102.22,0,0,0,512,753.52v1.25a28.07,28.07,0,0,0,12.61,3,1.88,1.88,0,0,0,.94-.17,2.09,2.09,0,0,0,.79-1.24,51,51,0,0,0,2.47-12.11h0a6.23,6.23,0,0,0,2.23-.57c2.13-.58,4.24.88,6.43,1.12,2.7.29,5.21-1.28,7.76-2.25.37-.14.74-.26,1.11-.38a12.43,12.43,0,0,1-2.55,2.47c-1.06.76-2.25,1.32-3.29,2.11a21.87,21.87,0,0,1-2.77,2.15,16.7,16.7,0,0,1-2.13.82,14.44,14.44,0,0,0-3,1.51,6.24,6.24,0,0,0-2.08,2,2.73,2.73,0,0,0,1.86,4.26,8.58,8.58,0,0,0,2.53.07c3.34-.25,6.67-.56,10-.86a28,28,0,0,0,4.19-.6c.73-.18,1.45-.42,2.18-.61a17.64,17.64,0,0,1,3.81-.57,3.16,3.16,0,0,1,1.11.11c.78.25,1.33,1,2.12,1.2a3.27,3.27,0,0,0,1.51-.21,34.69,34.69,0,0,1,7.42-.79c1.09-.06,2.37-.27,2.88-1.28.62-1.25-.42-2.65-.83-4a12.06,12.06,0,0,1-.34-2.62,16.34,16.34,0,0,0-1.84-6.23,16.87,16.87,0,0,1-1.37-2.84,72.27,72.27,0,0,0,13.64-6.92c2.46-1.53,5-3.18,7.78-3.74,3.24-.65,6.58.21,9.77,1.13a219.71,219.71,0,0,1,22.39,7.81c3.5,1.43,7,2.95,10.58,4a16.47,16.47,0,0,0,3.75,3.66c2.4,1.55,5.33,2,8.15,2.22a107,107,0,0,0,11.46.43c2.92-.05,5.93-.25,8.54-1.58a9.89,9.89,0,0,0,1.79-1.18c2,.36,4.05-.71,5.62-2.08a13.6,13.6,0,0,0,4.3-6.75c.92-3.61.21-7.82,2.43-10.77.59-.79,1.36-1.43,1.94-2.23a6,6,0,0,0,1-3.63l.1-.15a13.48,13.48,0,0,0,1-3.64,20.83,20.83,0,0,1,1-2.87,86.68,86.68,0,0,0,2.94-8.53,46.82,46.82,0,0,0,1.36-5.85c.24-1.58.38-3.17.51-4.76a28.71,28.71,0,0,1,1.44-7.31,59.72,59.72,0,0,0,3.31-17.52c0-.12,0-.23,0-.35A11.73,11.73,0,0,0,701,655.81a12.54,12.54,0,0,0-1.08-5.11A15.86,15.86,0,0,0,702,642.75Zm-56.55,68.71c.17.61.37,1.22.57,1.83-.92-.91-1.83-1.85-2.76-2.75.37.11.74.23,1.1.36A6.6,6.6,0,0,1,645.46,711.46Zm-4.48-3c-5.46-4.74-11.78-8.42-17.37-13,3,1.51,6,3.26,9,4.94q5.24,3,10.6,5.74A8.62,8.62,0,0,1,641,708.42Zm2.33-11.94.26-.27c0,.67,0,1.3,0,1.87-.49-.16-1-.32-1.47-.5A12.4,12.4,0,0,0,643.31,696.48Zm-48.07,12.84a45.32,45.32,0,0,0,5.83-8.31c2.16,3.79,5.68,6.52,8.68,9.69C604.92,710.06,600.09,709.53,595.24,709.32Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "url(#fb6415c1-f574-4dab-bb02-7ceb0a7d0718)"
+                  }
+                }),
+                _c("polygon", {
+                  attrs: {
+                    points:
+                      "574.53 545.12 577.98 545.82 589.73 563.18 584.54 563.88 574.53 545.12",
+                    fill: "#2f2e41"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M519.48,733.72a68.35,68.35,0,0,0,3.43,9,83.16,83.16,0,0,0,11.46-3.27,31.22,31.22,0,0,0-2.38-3.23,11.23,11.23,0,0,0-3.24-2.49c-1.19-.52-2.66-.13-3.93-.06Q522.15,733.77,519.48,733.72Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#fbbebe"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M528.77,738.36c-1.94-.61-3.13-2.57-3.92-4.46s-1.43-3.95-2.93-5.34a1.75,1.75,0,0,0-1.32,1c-.29.5-.46,1.07-.79,1.55-.62.9-1.72,1.34-2.51,2.11s-1.28,1.94-2.13,2.71a8.47,8.47,0,0,1-4,1.54,25.35,25.35,0,0,0-6.26,2.32,10.7,10.7,0,0,1-2.32,1,8.79,8.79,0,0,1-2.71.09l-6.23-.45a4.86,4.86,0,0,0-1.66.08,3,3,0,0,0-2,3.12,4.84,4.84,0,0,0,2,3.35,13.28,13.28,0,0,0,3.54,1.8,106.73,106.73,0,0,0,16.7,4.77v1.23a28.91,28.91,0,0,0,12.71,3,2,2,0,0,0,1-.17,2.08,2.08,0,0,0,.8-1.22,49.18,49.18,0,0,0,2.59-13.54,10.16,10.16,0,0,0-.26-3.48c-.34-1.12.82-.65-.26-1.09",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#2f2e41"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M648.21,714.88C629.74,716,611.5,710.58,593,710a27.61,27.61,0,0,0-6.86.44,33.71,33.71,0,0,0-6.8,2.64c-9.91,4.61-20.17,8.43-30.42,12.25l-11.76,4.38c-2.36.87-4.79,1.76-7.3,1.61-1.12-.07-2.49-.24-3.13.7-1.91,2.83-1,7,.26,10.18.41,1,1.1,2.15,2.2,2.27a6.49,6.49,0,0,0,2.25-.57c2.14-.57,4.28.87,6.48,1.1,2.73.29,5.26-1.26,7.83-2.21,4.26-1.57,8.92-1.52,13.4-2.27,7.52-1.25,14.48-4.74,21-8.72,2.48-1.51,5-3.13,7.84-3.68,3.27-.64,6.64.2,9.85,1.11a227.16,227.16,0,0,1,22.57,7.69,104,104,0,0,0,11.8,4.3,42.66,42.66,0,0,0,26.44-1.54c3-1.17,6.16-3.23,6.33-6.42.1-1.82-1.31-3.42-2.25-5-.61-1-1.21-2-1.87-2.95C657.68,720.67,653.82,714.54,648.21,714.88Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#2f2e41"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M648.21,714.88C629.74,716,611.5,710.58,593,710a27.61,27.61,0,0,0-6.86.44,33.71,33.71,0,0,0-6.8,2.64c-9.91,4.61-20.17,8.43-30.42,12.25l-11.76,4.38c-2.36.87-4.79,1.76-7.3,1.61-1.12-.07-2.49-.24-3.13.7-1.91,2.83-1,7,.26,10.18.41,1,1.1,2.15,2.2,2.27a6.49,6.49,0,0,0,2.25-.57c2.14-.57,4.28.87,6.48,1.1,2.73.29,5.26-1.26,7.83-2.21,4.26-1.57,8.92-1.52,13.4-2.27,7.52-1.25,14.48-4.74,21-8.72,2.48-1.51,5-3.13,7.84-3.68,3.27-.64,6.64.2,9.85,1.11a227.16,227.16,0,0,1,22.57,7.69,104,104,0,0,0,11.8,4.3,42.66,42.66,0,0,0,26.44-1.54c3-1.17,6.16-3.23,6.33-6.42.1-1.82-1.31-3.42-2.25-5-.61-1-1.21-2-1.87-2.95C657.68,720.67,653.82,714.54,648.21,714.88Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M554.93,734.62q4.34,1.47,8.74,2.72c1.65-2.71,4.73-4.59,5.43-7.68a.72.72,0,0,0,0-.41.74.74,0,0,0-.33-.3,16.35,16.35,0,0,0-6.85-2c-1.9-.12-2.76,1.86-3.62,3.25C558,730.76,555.7,734.88,554.93,734.62Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#fbbebe"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M559,732.64a6.29,6.29,0,0,1-4.25-2.79c-.41-.71-.84-1.67-1.66-1.62s-1.1.95-1.27,1.7a48.57,48.57,0,0,1-2.39,8.21,15.39,15.39,0,0,1-5.11,6.71c-1.07.74-2.26,1.3-3.31,2.08a21.91,21.91,0,0,1-2.8,2.12,15.8,15.8,0,0,1-2.15.8,14.76,14.76,0,0,0-3.07,1.49,6.25,6.25,0,0,0-2.09,2,3,3,0,0,0-.18,2.8,3,3,0,0,0,2,1.41,9.07,9.07,0,0,0,2.55.06c3.37-.25,6.73-.55,10.09-.85a28.68,28.68,0,0,0,4.23-.58c.74-.18,1.46-.42,2.19-.61a18.54,18.54,0,0,1,3.85-.56,3.26,3.26,0,0,1,1.12.11c.78.25,1.33,1,2.13,1.18a3.3,3.3,0,0,0,1.52-.2,36,36,0,0,1,7.48-.78c1.1-.06,2.4-.27,2.9-1.26.63-1.23-.41-2.61-.83-3.93a12.33,12.33,0,0,1-.35-2.58,15.71,15.71,0,0,0-1.85-6.13c-.86-1.58-2-3.32-1.43-5a4.38,4.38,0,0,0,.57-1.71C566.75,732,560.52,733,559,732.64Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#2f2e41"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M620.52,685.26a14.48,14.48,0,0,1-7.36-7.31c-.3-.7-.56-1.43-.85-2.14a16.37,16.37,0,0,0-4.4-6.1,2.11,2.11,0,0,0-1.63-.69,1.74,1.74,0,0,0-1.2,1.28,5.25,5.25,0,0,0-.13,2,37.64,37.64,0,0,0,.8,4.61l.9,4.08a8,8,0,0,0,.56,1.82,6.34,6.34,0,0,0,1.5,1.79c.82.76,1.65,1.49,2.49,2.2a8.82,8.82,0,0,0,1.51,1.1,9.26,9.26,0,0,0,2.81.82c3.67.68,7.4,1.66,10.49,4,0,0,0-2.73-.07-3a4,4,0,0,0-.78-2.19C624,686.28,622,685.91,620.52,685.26Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#fbbebe"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M620.52,685.26a14.48,14.48,0,0,1-7.36-7.31c-.3-.7-.56-1.43-.85-2.14a16.37,16.37,0,0,0-4.4-6.1,2.11,2.11,0,0,0-1.63-.69,1.74,1.74,0,0,0-1.2,1.28,5.25,5.25,0,0,0-.13,2,37.64,37.64,0,0,0,.8,4.61l.9,4.08a8,8,0,0,0,.56,1.82,6.34,6.34,0,0,0,1.5,1.79c.82.76,1.65,1.49,2.49,2.2a8.82,8.82,0,0,0,1.51,1.1,9.26,9.26,0,0,0,2.81.82c3.67.68,7.4,1.66,10.49,4,0,0,0-2.73-.07-3a4,4,0,0,0-.78-2.19C624,686.28,622,685.91,620.52,685.26Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "629.62",
+                    cy: "531.4",
+                    rx: "4.49",
+                    ry: "4.52",
+                    fill: "#2f2e41"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M655.34,646.81a5,5,0,0,0-3.55.51,4.78,4.78,0,0,0-1.21,1.66,23.59,23.59,0,0,0-2.34,5.5c-.4,1.65-.47,3.37-1,5-.92,3-3.28,5.55-3.55,8.68-.12,1.4.11,3.05-.91,4a5.88,5.88,0,0,1-.81.57,6.14,6.14,0,0,0-1.77,1.82,5.77,5.77,0,0,1-1.25,1.73c-.92.68-2.43.61-2.88,1.66s.71,2.27.44,3.41c-.22.93-1.26,1.36-2,2a6.92,6.92,0,0,0-1.71,3.19,10.59,10.59,0,0,1-8.59-2.15c1.25,3.09,1.28,6.5,1.33,9.83a4.06,4.06,0,0,1-.79,3c3.58.08,7.06,1,10.55,1.83a7.24,7.24,0,0,0,4.6,0,7.6,7.6,0,0,0,2.11-1.68c1.9-1.93,3.89-4,4.35-6.69a36.34,36.34,0,0,0,.08-4.55,26.1,26.1,0,0,1,1.15-5.51,64.45,64.45,0,0,0,2-11.35c.21-2.37,2.25-4.27,3.33-6.39,2-4,4.1-8.15,4.26-12.63C657.32,648.79,656.82,647,655.34,646.81Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#2f2e41"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M655.34,646.81a5,5,0,0,0-3.55.51,4.78,4.78,0,0,0-1.21,1.66,23.59,23.59,0,0,0-2.34,5.5c-.4,1.65-.47,3.37-1,5-.92,3-3.28,5.55-3.55,8.68-.12,1.4.11,3.05-.91,4a5.88,5.88,0,0,1-.81.57,6.14,6.14,0,0,0-1.77,1.82,5.77,5.77,0,0,1-1.25,1.73c-.92.68-2.43.61-2.88,1.66s.71,2.27.44,3.41c-.22.93-1.26,1.36-2,2a6.92,6.92,0,0,0-1.71,3.19,10.59,10.59,0,0,1-8.59-2.15c1.25,3.09,1.28,6.5,1.33,9.83a4.06,4.06,0,0,1-.79,3c3.58.08,7.06,1,10.55,1.83a7.24,7.24,0,0,0,4.6,0,7.6,7.6,0,0,0,2.11-1.68c1.9-1.93,3.89-4,4.35-6.69a36.34,36.34,0,0,0,.08-4.55,26.1,26.1,0,0,1,1.15-5.51,64.45,64.45,0,0,0,2-11.35c.21-2.37,2.25-4.27,3.33-6.39,2-4,4.1-8.15,4.26-12.63C657.32,648.79,656.82,647,655.34,646.81Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M651.14,718.77c-3.85-1.83-6.66-5.24-9.77-8.16-5.94-5.58-13.2-9.52-19.44-14.75-4.13-3.46-7.83-7.49-12.38-10.39a30.74,30.74,0,0,0-13.26-4.65,3.68,3.68,0,0,0-1.62.08,3.89,3.89,0,0,0-1.51,1.2,47.12,47.12,0,0,0-5.35,7.35c-7.91,13.42-19.14,24.71-28.45,37.2a1.67,1.67,0,0,0-.11,2.26l1.89,3.71c1.06,2.07,2.76,4.49,5,4.08a5.55,5.55,0,0,0,2.65-1.69l8.5-8.13,8.91-8.52c5.22-5,10.53-10.1,13.94-16.48,2.66,4.61,7.38,7.63,10.62,11.86,1.23,1.6,2.23,3.37,3.33,5.07,1.77,2.73,3.77,5.29,5.77,7.84l10.23,13.05a19.79,19.79,0,0,0,4.73,4.8c2.42,1.53,5.37,1.94,8.22,2.19a105.89,105.89,0,0,0,11.55.42c2.94-.05,6-.24,8.6-1.55s4.81-4,4.67-6.93a10.29,10.29,0,0,0-1.47-4.33C662.78,727.6,658,722,651.14,718.77Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#2f2e41"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "632.38",
+                    cy: "534.53",
+                    rx: "3.45",
+                    ry: "3.47",
+                    fill: "#e8e8f0"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M660.12,650.06a6.6,6.6,0,0,1,.38,5,19.33,19.33,0,0,1-2.22,4.6,22.92,22.92,0,0,1-2.89,4.12c5.33.26,10.5-1.83,15.2-4.37,3.79-2,7.57-4.55,9.59-8.36a4.44,4.44,0,0,1-3.53-.65,13.22,13.22,0,0,1-2.71-2.52l-2.67-3a12,12,0,0,1-1.65-2.17,6,6,0,0,1-.71-3.49,20,20,0,0,1-3.54,2.94c-1.91,1.25-4,2.15-5.93,3.38-.68.44-2.19,1.15-1.8,2S659.58,649.1,660.12,650.06Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#fbbebe"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M660.12,650.06a6.6,6.6,0,0,1,.38,5,19.33,19.33,0,0,1-2.22,4.6,22.92,22.92,0,0,1-2.89,4.12c5.33.26,10.5-1.83,15.2-4.37,3.79-2,7.57-4.55,9.59-8.36a4.44,4.44,0,0,1-3.53-.65,13.22,13.22,0,0,1-2.71-2.52l-2.67-3a12,12,0,0,1-1.65-2.17,6,6,0,0,1-.71-3.49,20,20,0,0,1-3.54,2.94c-1.91,1.25-4,2.15-5.93,3.38-.68.44-2.19,1.15-1.8,2S659.58,649.1,660.12,650.06Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M660.19,650.58a4.51,4.51,0,0,0,0,5.21c.15.19.72,1.38,1,1.39a.91.91,0,0,0,.61-.31,42.39,42.39,0,0,0,3.38-4,7.46,7.46,0,0,1,4.3-2.82c2.09-.33,4.1.78,5.93,1.84a5.66,5.66,0,0,1,2,1.66,5.45,5.45,0,0,1,.67,2.26,105.81,105.81,0,0,1,.6,14.36A55.24,55.24,0,0,1,678,680.5c-.34,1.76-.85,3.48-1.09,5.26a35.36,35.36,0,0,0-.21,4.72v6.6a16.75,16.75,0,0,0,.26,3.61,44.11,44.11,0,0,0,1.45,4.19,27.61,27.61,0,0,1,1,5l.9,6.83c.29,2.16.5,4.51-.81,6.24-.58.79-1.36,1.41-2,2.19C675.25,728,676,732.15,675,735.7a13.37,13.37,0,0,1-4.34,6.65c-1.59,1.35-3.65,2.42-5.71,2-2.77-.52-4.44-3.41-5.2-6.14s-1-5.71-2.67-8c-1.34-1.89-3.41-3.07-5.28-4.42s-3.71-3.08-4.12-5.36c-.18-1-.07-2-.17-3a7.15,7.15,0,0,0-4.42-5.8c-1.42-.55-3.18-.75-4-2a9.63,9.63,0,0,0,4.16-5.59,28.7,28.7,0,0,0,1-7l.48-7.94c.21-3.55.31-7.07,1.87-10.26.7-1.42,1.57-2.76,2.29-4.17a46.27,46.27,0,0,0,2.46-6.12c1.13-3.25,2.27-6.51,3.28-9.8a19.42,19.42,0,0,1,1.8-4.57C657.36,652.68,658.59,650.88,660.19,650.58Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#e8e8f0"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M642.56,702.17l2.1.07.45-3.17a6.84,6.84,0,0,1,.44-1.85,11.78,11.78,0,0,1,1.21-1.77c2.07-2.92,1.92-6.8,2.43-10.35.68-4.73,2.66-9.17,4.62-13.53l4.08-9.09a13.08,13.08,0,0,0,.87-2.33,12.77,12.77,0,0,0,.25-2.69c0-1.4.46-6.51.49-7.92,0-.52-1.14-.23-1.38-.69-.51-1-1.21,1.72-2.17,2.32a5.32,5.32,0,0,0-1.88,2.75c-.88,2.29-1.42,4.7-2.24,7a14.39,14.39,0,0,1-3.81,6.19c-.83.74-1.8,1.32-2.59,2.1-2.54,2.51-2.78,6.47-2.87,10C642.5,681.4,642.09,702.17,642.56,702.17Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#2f2e41"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M672.81,646.79c-2,.8-3.16,3-3.73,5.14s-.81,4.4-1.91,6.3c-2.56,4.46-9.09,5.76-10.9,10.58a19.35,19.35,0,0,0-.73,5c-.32,3.45-1.46,6.79-1.8,10.24a45.15,45.15,0,0,0,.19,8.05l2.29,27.23a36,36,0,0,1-.69,12,11.53,11.53,0,0,0,6.86-1.13c2.15-1,4.11-2.32,6.17-3.46,3.55-2,7.47-3.35,10.57-6a6.27,6.27,0,0,0,1.43-1.57,13.51,13.51,0,0,0,1-3.59,20.19,20.19,0,0,1,1-2.82,83.75,83.75,0,0,0,3-8.4,45.24,45.24,0,0,0,1.37-5.77c.25-1.55.38-3.12.52-4.68a27.57,27.57,0,0,1,1.45-7.2,57.73,57.73,0,0,0,3.33-17.25,8.64,8.64,0,0,0-.17-2.54,13.61,13.61,0,0,0-1.38-2.88c-.95-1.79-1.52-3.76-2.42-5.57-2-4.1-5.59-7.21-9.34-9.82C677,647.38,674.89,646,672.81,646.79Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#2f2e41"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M625.07,691.22a16.4,16.4,0,0,1-4.35-3.3c-.57-.67-1-1.42-1.62-2.08a10.69,10.69,0,0,0-5.47-3.12,26.39,26.39,0,0,0-6.34-.61,11.26,11.26,0,0,0-4.21.51,4.25,4.25,0,0,0-2.8,3c-.31,1.7.8,3.35,2.13,4.43a10.29,10.29,0,0,0,4.25,2.07,35.27,35.27,0,0,0,3.84.45c7.56.79,14.31,4.9,20.93,8.65q8.73,4.93,17.8,9.23a35.63,35.63,0,0,0,.3-5.46c0-1.36-.1-3.44-1.39-4.24-1.5-.94-4-1.15-5.66-1.71a89.79,89.79,0,0,1-11.39-4.6C629,693.43,627,692.36,625.07,691.22Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#fbbebe"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "629.62",
+                    cy: "516.82",
+                    rx: "13.47",
+                    ry: "13.55",
+                    fill: "#fbbebe"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M676.66,662.15a21.9,21.9,0,0,0-2.61,4.87c-1.67,3.43-4.28,6.37-5.58,10-1.38,3.77-1.33,8.26-4,11.23a3.87,3.87,0,0,0-1.17,1.7,8.42,8.42,0,0,1-.14,1.23c-.38,1.08-2.15,1.13-2.48,2.23-.09.32,0,.67-.16,1-.27.71-1.2.81-1.83,1.24-1.31.89-1,2.95-2,4.23a3.55,3.55,0,0,1-3.36,1.18,12.46,12.46,0,0,1-3.5-1.31,3.14,3.14,0,0,0-1.25-.39,2.55,2.55,0,0,0-1.45.49c-2.49,1.58-3.66,4.72-3.64,7.68a25,25,0,0,0,2.07,8.58,3.61,3.61,0,0,0,.69,1.28c.82.87,2.26.73,3.36.24a15.65,15.65,0,0,1,3.27-1.46c2.08-.38,4.12,1.06,6.23.94a8.78,8.78,0,0,0,4.21-1.86A23.3,23.3,0,0,0,669,710.4c.92-1.21,1.6-2.59,2.41-3.88a44,44,0,0,1,3.4-4.54l7.77-9.51a20.42,20.42,0,0,0,2.09-2.89,21.17,21.17,0,0,0,1.63-4.34,34.31,34.31,0,0,0,1.61-7.73,30.84,30.84,0,0,0-.57-6.49,22.55,22.55,0,0,0-1.67-6.17C683.94,661.35,679.83,658.45,676.66,662.15Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#2f2e41"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M703.72,644.5a15.17,15.17,0,0,0-6.24-12.33,18,18,0,0,0-15.31-17.55,17.5,17.5,0,0,0-34.47.93c-5.6-1.26-10.72.38-11.65,3.83-1,3.61,3,7.83,8.92,9.43a16.39,16.39,0,0,0,5.71.57,17.55,17.55,0,0,0,12.06,7.5,17.93,17.93,0,0,0,13.15,13.57,15,15,0,0,0,4.06,5.62c0,.42-.07.85-.07,1.29a11.41,11.41,0,1,0,22.8,0,12,12,0,0,0-1.09-5A15.33,15.33,0,0,0,703.72,644.5Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#f86d70"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M639.85,620.07c.93-3.45,6-5.09,11.65-3.83a17.79,17.79,0,0,1,17.33-15c.39,0,.78,0,1.16,0a17,17,0,0,0-5-.74,17.79,17.79,0,0,0-17.33,15c-5.6-1.26-10.72.38-11.65,3.83-1,3.61,3,7.83,8.92,9.43a17.13,17.13,0,0,0,3.37.58C642.68,627.7,638.9,623.6,639.85,620.07Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M683.68,658.06c0-.44,0-.87.07-1.3a14.94,14.94,0,0,1-4.06-5.61,18,18,0,0,1-13.15-13.58,17.52,17.52,0,0,1-12.06-7.5,15.93,15.93,0,0,1-3.36-.09,17.49,17.49,0,0,0,11.62,6.9,17.93,17.93,0,0,0,13.15,13.57,15,15,0,0,0,4.06,5.62c0,.42-.07.85-.07,1.29a11.61,11.61,0,0,0,11.34,11.8A11.78,11.78,0,0,1,683.68,658.06Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.1"
+                  }
+                }),
+                _c("ellipse", {
+                  attrs: {
+                    cx: "662.61",
+                    cy: "637.73",
+                    rx: "2.08",
+                    ry: "2.77",
+                    transform: "translate(-279.29 412.54) rotate(-37.22)",
+                    fill: "#fbbebe"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M342.3,707.35l13.32-7.83a32,32,0,0,0-6.81-8.15l-25.12,7.81,19.68-11.57A32,32,0,0,0,296,715.68c0,17.67,14.33,18.28,32,18.28s32-.61,32-18.28a31.75,31.75,0,0,0-2.75-13Z",
+                    transform: "translate(-28.5 -118.14)",
+                    fill: "#6c63ff"
+                  }
+                }),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M345.69,724.53a25,25,0,0,0-4.72-3.71c-2.41-1.61-4.92-3.25-7.77-3.79-2.5-.48-5.08-.07-7.63-.22a17.83,17.83,0,0,1-11.69-5.36c-1.82-1.88-3.25-4.19-5.44-5.63a11.9,11.9,0,0,0-8.14-1.49,19.79,19.79,0,0,0-2.41.49A32,32,0,0,0,296,715.68c0,17.67,14.33,18.28,32,18.28,8.58,0,16.36-.14,22.11-2.31l-1-1.79A24.88,24.88,0,0,0,345.69,724.53Z",
+                    transform: "translate(-28.5 -118.14)",
+                    opacity: "0.1"
+                  }
+                })
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _vm._m(1)
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left lg:pl-12"
+      },
+      [
+        _c(
+          "h2",
+          {
+            staticClass:
+              "uppercase text-4xl text-orange-500 text-secondary tracking-widest mb-6"
+          },
+          [_vm._v("Ceník")]
+        ),
+        _vm._v(" "),
+        _c(
+          "table",
+          { staticClass: "lg:ml-2 table-fixed text-blue-900 w-5/6" },
+          [
+            _c("thead"),
+            _vm._v(" "),
+            _c("tbody", [
+              _c("tr", { staticStyle: { "background-color": "#f0f0ff" } }, [
+                _c("td", { staticClass: "px-4 py-2 text-left" }, [
+                  _vm._v("Tužka I.")
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "px-4 py-2 text-right" }, [
+                  _vm._v("1950 Kč")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", { staticClass: "px-4 py-2 text-left" }, [
+                  _vm._v("Tužka II.")
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "px-4 py-2 text-right" }, [
+                  _vm._v("1800 Kč")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", { staticStyle: { "background-color": "#f0f0ff" } }, [
+                _c("td", { staticClass: "px-4 py-2 text-left" }, [
+                  _vm._v("Pastel - křída")
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "px-4 py-2 text-right" }, [
+                  _vm._v("1800 Kč")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", { staticClass: "px-4 py-2 text-left" }, [
+                  _vm._v("Pastelka")
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "px-4 py-2 text-right" }, [
+                  _vm._v("1700 Kč")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", { staticStyle: { "background-color": "#f0f0ff" } }, [
+                _c("td", { staticClass: "px-4 py-2 text-left" }, [
+                  _vm._v("Akryl na plátně")
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "px-4 py-2 text-right" }, [
+                  _vm._v("2200 Kč")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", { staticClass: "px-4 py-2 text-left" }, [
+                  _vm._v("Olejomalba")
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "px-4 py-2 text-right" }, [
+                  _vm._v("2900 Kč")
+                ])
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "lg:w-1/2 flex flex-col items-center lg:items-end text-center lg:text-left lg:pl-12"
+      },
+      [
+        _c(
+          "h2",
+          {
+            staticClass:
+              "uppercase text-4xl text-orange-500 text-secondary tracking-widest mb-6"
+          },
+          [_vm._v("Skupinové slevy")]
+        ),
+        _vm._v(" "),
+        _c(
+          "table",
+          { staticClass: "lg:mr-2 table-fixed text-blue-900 w-5/6" },
+          [
+            _c("thead", [
+              _c("tr", [
+                _c("th", { staticClass: "w-2/3 px-4 py-2 text-left" }, [
+                  _vm._v("Počet účastníků")
+                ]),
+                _vm._v(" "),
+                _c("th", { staticClass: "w-1/3 px-4 py-2 text-right" }, [
+                  _vm._v("Sleva/1 osoba")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("tbody", [
+              _c("tr", { staticStyle: { "background-color": "#f0f0ff" } }, [
+                _c("td", { staticClass: "px-4 py-2 text-left" }, [
+                  _vm._v("7 - 10")
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "px-4 py-2 text-right" }, [
+                  _vm._v("dle domluvy")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", { staticClass: "px-4 py-2 text-left" }, [
+                  _vm._v("11 - více")
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "px-4 py-2 text-right" }, [
+                  _vm._v("dle domluvy")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", { staticStyle: { "background-color": "#f0f0ff" } }, [
+                _c("td", { staticClass: "px-4 py-2 text-left" }, [
+                  _vm._v("DVOJICE na kurz Tužka I.")
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "px-4 py-2 text-right" }, [
+                  _vm._v("10%")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("td", { staticClass: "px-4 py-2 text-left" }, [
+                  _vm._v("TROJICE na kurz Tužka I.")
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "px-4 py-2 text-right" }, [
+                  _vm._v("15%")
+                ])
+              ])
+            ])
+          ]
         )
       ]
     )
@@ -64801,249 +70121,6 @@ var render = function() {
   )
 }
 var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SiteNavbar.vue?vue&type=template&id=7aeacf62&":
-/*!*************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/SiteNavbar.vue?vue&type=template&id=7aeacf62& ***!
-  \*************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "bg-white shadow" }, [
-    _c("div", { staticClass: "container mx-auto px-4" }, [
-      _c("div", { staticClass: "flex py-4 aling-center" }, [
-        _c("div", { staticClass: "flex-1" }, [
-          _c("a", { attrs: { href: "/" } }, [
-            _c("div", [
-              _c(
-                "svg",
-                {
-                  staticClass: "w-10 h-10 text-purple-600",
-                  attrs: {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    viewBox: "0 0 496 512"
-                  }
-                },
-                [
-                  _c("path", {
-                    attrs: {
-                      fill: "currentColor",
-                      d:
-                        "M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm194.8 170.2C334.3 380.4 292.5 400 248 400s-86.3-19.6-114.8-53.8c-13.6-16.3 11-36.7 24.6-20.5 22.4 26.9 55.2 42.2 90.2 42.2s67.8-15.4 90.2-42.2c13.4-16.2 38.1 4.2 24.6 20.5z"
-                    }
-                  })
-                ]
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", {
-          staticClass: "flex-1 hidden sm:flex sm:items-center justify-end"
-        }),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "sm:hidden cursor-pointer flex items-center",
-            on: {
-              click: function($event) {
-                return _vm.hideMenu()
-              }
-            }
-          },
-          [
-            _c(
-              "svg",
-              {
-                staticClass:
-                  "fill-current text-teal-500 inline-block h-6 w-6 text-purple-600",
-                attrs: {
-                  xmlns: "http://www.w3.org/2000/svg",
-                  viewBox: "0 0 448 512"
-                }
-              },
-              [
-                _c("path", {
-                  attrs: {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    fill: "currentColor",
-                    d:
-                      "M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
-                  }
-                })
-              ]
-            )
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "sm:hidden bg-white border-t-2 py-2",
-          class: _vm.showMenu ? "block" : "hidden"
-        },
-        [_vm._m(1)]
-      )
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex-1 flex content-center" }, [
-      _c("div", { staticClass: "hidden sm:flex sm:items-center" }, [
-        _c(
-          "a",
-          {
-            staticClass:
-              "text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4",
-            attrs: { href: "/reservations" }
-          },
-          [_vm._v("Rezervace")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass:
-              "text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4",
-            attrs: { href: "#" }
-          },
-          [_vm._v("Termíny")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass:
-              "text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4",
-            attrs: { href: "#" }
-          },
-          [_vm._v("Ceník")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass:
-              "text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4",
-            attrs: { href: "#" }
-          },
-          [_vm._v("Galerie")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass:
-              "text-gray-800 text-sm font-semibold hover:text-purple-600 mr-4",
-            attrs: { href: "#" }
-          },
-          [_vm._v("Reference")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass:
-              "text-gray-800 text-sm font-semibold hover:text-purple-600",
-            attrs: { href: "#" }
-          },
-          [_vm._v("Kontakt")]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex flex-col" }, [
-      _c(
-        "a",
-        {
-          staticClass:
-            "text-gray-800 text-sm font-semibold hover:text-purple-600 mb-1",
-          attrs: { href: "/reservations" }
-        },
-        [_vm._v("Rezervace")]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass:
-            "text-gray-800 text-sm font-semibold hover:text-purple-600 mb-1",
-          attrs: { href: "#" }
-        },
-        [_vm._v("Termíny")]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass:
-            "text-gray-800 text-sm font-semibold hover:text-purple-600 mb-1",
-          attrs: { href: "#" }
-        },
-        [_vm._v("Ceník")]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass:
-            "text-gray-800 text-sm font-semibold hover:text-purple-600 mb-1",
-          attrs: { href: "#" }
-        },
-        [_vm._v("Galerie")]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass:
-            "text-gray-800 text-sm font-semibold hover:text-purple-600 mb-1",
-          attrs: { href: "#" }
-        },
-        [_vm._v("Reference")]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass:
-            "text-gray-800 text-sm font-semibold hover:text-purple-600 mb-1",
-          attrs: { href: "#" }
-        },
-        [_vm._v("Kontakt")]
-      ),
-      _vm._v(" "),
-      _c("div", {
-        staticClass: "flex justify-between items-center border-t-2 pt-2"
-      })
-    ])
-  }
-]
 render._withStripped = true
 
 
@@ -77200,8 +82277,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); // Admin components
-// Vue.component('navbar', require('./components/Admin/Navbar.vue').default);
 
+Vue.component('navbar', __webpack_require__(/*! ./components/Admin/Navbar.vue */ "./resources/js/components/Admin/Navbar.vue")["default"]);
 Vue.component('dashboard', __webpack_require__(/*! ./components/Admin/Dashboard.vue */ "./resources/js/components/Admin/Dashboard.vue")["default"]);
 Vue.component('dashboard-general', __webpack_require__(/*! ./components/Admin/Dashboard/General.vue */ "./resources/js/components/Admin/Dashboard/General.vue")["default"]);
 Vue.component('dashboard-lecturer', __webpack_require__(/*! ./components/Admin/Dashboard/Lecturer.vue */ "./resources/js/components/Admin/Dashboard/Lecturer.vue")["default"]);
@@ -77215,16 +82292,21 @@ Vue.component('course-create', __webpack_require__(/*! ./components/Admin/Course
 Vue.component('reservation', __webpack_require__(/*! ./components/Admin/Reservations/Reservation.vue */ "./resources/js/components/Admin/Reservations/Reservation.vue")["default"]);
 Vue.component('reservations', __webpack_require__(/*! ./components/Admin/Reservations/Reservations.vue */ "./resources/js/components/Admin/Reservations/Reservations.vue")["default"]); // Site components
 
-Vue.component('site-navbar', __webpack_require__(/*! ./components/SiteNavbar.vue */ "./resources/js/components/SiteNavbar.vue")["default"]);
+Vue.component('site-navbar', __webpack_require__(/*! ./components/Navbar.vue */ "./resources/js/components/Navbar.vue")["default"]);
 Vue.component('reservation-form', __webpack_require__(/*! ./components/Reservations/ReservationForm.vue */ "./resources/js/components/Reservations/ReservationForm.vue")["default"]);
-Vue.component('public-reservation', __webpack_require__(/*! ./components/Reservations/PublicReservation.vue */ "./resources/js/components/Reservations/PublicReservation.vue")["default"]); // Utils
+Vue.component('public-reservation', __webpack_require__(/*! ./components/Reservations/PublicReservation.vue */ "./resources/js/components/Reservations/PublicReservation.vue")["default"]);
+Vue.component('home-course', __webpack_require__(/*! ./components/Home/Courses/Course.vue */ "./resources/js/components/Home/Courses/Course.vue")["default"]);
+Vue.component('home-course', __webpack_require__(/*! ./components/Home/Courses/Course.vue */ "./resources/js/components/Home/Courses/Course.vue")["default"]);
+Vue.component('home-courses', __webpack_require__(/*! ./components/Home/Courses/Courses.vue */ "./resources/js/components/Home/Courses/Courses.vue")["default"]);
+Vue.component('home-testamonial', __webpack_require__(/*! ./components/Home/Testamonial.vue */ "./resources/js/components/Home/Testamonial.vue")["default"]);
+Vue.component('home-testamonials', __webpack_require__(/*! ./components/Home/Testamonials.vue */ "./resources/js/components/Home/Testamonials.vue")["default"]);
+Vue.component('contacts', __webpack_require__(/*! ./components/Contacts/Contacts.vue */ "./resources/js/components/Contacts/Contacts.vue")["default"]);
+Vue.component('prices', __webpack_require__(/*! ./components/Prices/Prices.vue */ "./resources/js/components/Prices/Prices.vue")["default"]); // Utils
 
 Vue.component('line-chart', __webpack_require__(/*! ./components/Utils/Charts/LineChart.vue */ "./resources/js/components/Utils/Charts/LineChart.vue")["default"]);
 Vue.component('bar-chart', __webpack_require__(/*! ./components/Utils/Charts/BarChart.vue */ "./resources/js/components/Utils/Charts/BarChart.vue")["default"]);
 Vue.component('pie-chart', __webpack_require__(/*! ./components/Utils/Charts/PieChart.vue */ "./resources/js/components/Utils/Charts/PieChart.vue")["default"]);
 Vue.component('doughnut-chart', __webpack_require__(/*! ./components/Utils/Charts/DoughnutChart.vue */ "./resources/js/components/Utils/Charts/DoughnutChart.vue")["default"]);
-Vue.component('home-course', __webpack_require__(/*! ./components/Home/Courses/Course.vue */ "./resources/js/components/Home/Courses/Course.vue")["default"]);
-Vue.component('navbar', __webpack_require__(/*! ./components/Home/Courses/Courses.vue */ "./resources/js/components/Home/Courses/Courses.vue")["default"]);
 
 Vue.use(vue_js_modal__WEBPACK_IMPORTED_MODULE_0___default.a);
 var app = new Vue({
@@ -77976,6 +83058,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Admin/Navbar.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/Admin/Navbar.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Navbar_vue_vue_type_template_id_0a74dadb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Navbar.vue?vue&type=template&id=0a74dadb& */ "./resources/js/components/Admin/Navbar.vue?vue&type=template&id=0a74dadb&");
+/* harmony import */ var _Navbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Navbar.vue?vue&type=script&lang=js& */ "./resources/js/components/Admin/Navbar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Navbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Navbar_vue_vue_type_template_id_0a74dadb___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Navbar_vue_vue_type_template_id_0a74dadb___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Admin/Navbar.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Navbar.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/Admin/Navbar.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Navbar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Navbar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Navbar.vue?vue&type=template&id=0a74dadb&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/Admin/Navbar.vue?vue&type=template&id=0a74dadb& ***!
+  \*********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_template_id_0a74dadb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Navbar.vue?vue&type=template&id=0a74dadb& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Admin/Navbar.vue?vue&type=template&id=0a74dadb&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_template_id_0a74dadb___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_template_id_0a74dadb___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Admin/Reservations/Reservation.vue":
 /*!********************************************************************!*\
   !*** ./resources/js/components/Admin/Reservations/Reservation.vue ***!
@@ -78114,6 +83265,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Contacts/Contacts.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/Contacts/Contacts.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Contacts_vue_vue_type_template_id_83e75f58___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Contacts.vue?vue&type=template&id=83e75f58& */ "./resources/js/components/Contacts/Contacts.vue?vue&type=template&id=83e75f58&");
+/* harmony import */ var _Contacts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Contacts.vue?vue&type=script&lang=js& */ "./resources/js/components/Contacts/Contacts.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Contacts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Contacts_vue_vue_type_template_id_83e75f58___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Contacts_vue_vue_type_template_id_83e75f58___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Contacts/Contacts.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Contacts/Contacts.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/Contacts/Contacts.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Contacts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Contacts.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Contacts/Contacts.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Contacts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Contacts/Contacts.vue?vue&type=template&id=83e75f58&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/Contacts/Contacts.vue?vue&type=template&id=83e75f58& ***!
+  \**************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Contacts_vue_vue_type_template_id_83e75f58___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Contacts.vue?vue&type=template&id=83e75f58& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Contacts/Contacts.vue?vue&type=template&id=83e75f58&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Contacts_vue_vue_type_template_id_83e75f58___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Contacts_vue_vue_type_template_id_83e75f58___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Home/Courses/Course.vue":
 /*!*********************************************************!*\
   !*** ./resources/js/components/Home/Courses/Course.vue ***!
@@ -78123,9 +83343,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Course_vue_vue_type_template_id_3e6836a7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Course.vue?vue&type=template&id=3e6836a7& */ "./resources/js/components/Home/Courses/Course.vue?vue&type=template&id=3e6836a7&");
+/* harmony import */ var _Course_vue_vue_type_template_id_3e6836a7_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Course.vue?vue&type=template&id=3e6836a7&scoped=true& */ "./resources/js/components/Home/Courses/Course.vue?vue&type=template&id=3e6836a7&scoped=true&");
 /* harmony import */ var _Course_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Course.vue?vue&type=script&lang=js& */ "./resources/js/components/Home/Courses/Course.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _Course_vue_vue_type_style_index_0_id_3e6836a7_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Course.vue?vue&type=style&index=0&id=3e6836a7&scoped=true&lang=css& */ "./resources/js/components/Home/Courses/Course.vue?vue&type=style&index=0&id=3e6836a7&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -78133,13 +83355,13 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _Course_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Course_vue_vue_type_template_id_3e6836a7___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Course_vue_vue_type_template_id_3e6836a7___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Course_vue_vue_type_template_id_3e6836a7_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Course_vue_vue_type_template_id_3e6836a7_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  null,
+  "3e6836a7",
   null
   
 )
@@ -78165,19 +83387,35 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Home/Courses/Course.vue?vue&type=template&id=3e6836a7&":
-/*!****************************************************************************************!*\
-  !*** ./resources/js/components/Home/Courses/Course.vue?vue&type=template&id=3e6836a7& ***!
-  \****************************************************************************************/
+/***/ "./resources/js/components/Home/Courses/Course.vue?vue&type=style&index=0&id=3e6836a7&scoped=true&lang=css&":
+/*!******************************************************************************************************************!*\
+  !*** ./resources/js/components/Home/Courses/Course.vue?vue&type=style&index=0&id=3e6836a7&scoped=true&lang=css& ***!
+  \******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Course_vue_vue_type_style_index_0_id_3e6836a7_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--6-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Course.vue?vue&type=style&index=0&id=3e6836a7&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Courses/Course.vue?vue&type=style&index=0&id=3e6836a7&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Course_vue_vue_type_style_index_0_id_3e6836a7_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Course_vue_vue_type_style_index_0_id_3e6836a7_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Course_vue_vue_type_style_index_0_id_3e6836a7_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Course_vue_vue_type_style_index_0_id_3e6836a7_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Course_vue_vue_type_style_index_0_id_3e6836a7_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Home/Courses/Course.vue?vue&type=template&id=3e6836a7&scoped=true&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/Home/Courses/Course.vue?vue&type=template&id=3e6836a7&scoped=true& ***!
+  \****************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Course_vue_vue_type_template_id_3e6836a7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Course.vue?vue&type=template&id=3e6836a7& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Courses/Course.vue?vue&type=template&id=3e6836a7&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Course_vue_vue_type_template_id_3e6836a7___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Course_vue_vue_type_template_id_3e6836a7_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./Course.vue?vue&type=template&id=3e6836a7&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Courses/Course.vue?vue&type=template&id=3e6836a7&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Course_vue_vue_type_template_id_3e6836a7_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Course_vue_vue_type_template_id_3e6836a7___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Course_vue_vue_type_template_id_3e6836a7_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -78247,6 +83485,300 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Courses_vue_vue_type_template_id_db6b8148___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Courses_vue_vue_type_template_id_db6b8148___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Home/Testamonial.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/Home/Testamonial.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Testamonial_vue_vue_type_template_id_68e08432___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Testamonial.vue?vue&type=template&id=68e08432& */ "./resources/js/components/Home/Testamonial.vue?vue&type=template&id=68e08432&");
+/* harmony import */ var _Testamonial_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Testamonial.vue?vue&type=script&lang=js& */ "./resources/js/components/Home/Testamonial.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Testamonial_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Testamonial_vue_vue_type_template_id_68e08432___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Testamonial_vue_vue_type_template_id_68e08432___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Home/Testamonial.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Home/Testamonial.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/Home/Testamonial.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Testamonial_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Testamonial.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Testamonial.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Testamonial_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Home/Testamonial.vue?vue&type=template&id=68e08432&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/Home/Testamonial.vue?vue&type=template&id=68e08432& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Testamonial_vue_vue_type_template_id_68e08432___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Testamonial.vue?vue&type=template&id=68e08432& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Testamonial.vue?vue&type=template&id=68e08432&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Testamonial_vue_vue_type_template_id_68e08432___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Testamonial_vue_vue_type_template_id_68e08432___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Home/Testamonials.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/Home/Testamonials.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Testamonials_vue_vue_type_template_id_9248b99e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Testamonials.vue?vue&type=template&id=9248b99e& */ "./resources/js/components/Home/Testamonials.vue?vue&type=template&id=9248b99e&");
+/* harmony import */ var _Testamonials_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Testamonials.vue?vue&type=script&lang=js& */ "./resources/js/components/Home/Testamonials.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Testamonials_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Testamonials.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/Home/Testamonials.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Testamonials_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Testamonials_vue_vue_type_template_id_9248b99e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Testamonials_vue_vue_type_template_id_9248b99e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Home/Testamonials.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Home/Testamonials.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/Home/Testamonials.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Testamonials_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Testamonials.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Testamonials.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Testamonials_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Home/Testamonials.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/Home/Testamonials.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Testamonials_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./Testamonials.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Testamonials.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Testamonials_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Testamonials_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Testamonials_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Testamonials_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Testamonials_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Home/Testamonials.vue?vue&type=template&id=9248b99e&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/Home/Testamonials.vue?vue&type=template&id=9248b99e& ***!
+  \**************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Testamonials_vue_vue_type_template_id_9248b99e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Testamonials.vue?vue&type=template&id=9248b99e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Home/Testamonials.vue?vue&type=template&id=9248b99e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Testamonials_vue_vue_type_template_id_9248b99e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Testamonials_vue_vue_type_template_id_9248b99e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Navbar.vue":
+/*!********************************************!*\
+  !*** ./resources/js/components/Navbar.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Navbar_vue_vue_type_template_id_6dde423b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Navbar.vue?vue&type=template&id=6dde423b& */ "./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b&");
+/* harmony import */ var _Navbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Navbar.vue?vue&type=script&lang=js& */ "./resources/js/components/Navbar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Navbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Navbar_vue_vue_type_template_id_6dde423b___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Navbar_vue_vue_type_template_id_6dde423b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Navbar.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Navbar.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Navbar.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Navbar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Navbar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b& ***!
+  \***************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_template_id_6dde423b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Navbar.vue?vue&type=template&id=6dde423b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_template_id_6dde423b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_template_id_6dde423b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Prices/Prices.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/Prices/Prices.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Prices_vue_vue_type_template_id_32533c18___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Prices.vue?vue&type=template&id=32533c18& */ "./resources/js/components/Prices/Prices.vue?vue&type=template&id=32533c18&");
+/* harmony import */ var _Prices_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Prices.vue?vue&type=script&lang=js& */ "./resources/js/components/Prices/Prices.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Prices_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Prices_vue_vue_type_template_id_32533c18___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Prices_vue_vue_type_template_id_32533c18___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Prices/Prices.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Prices/Prices.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/Prices/Prices.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Prices_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Prices.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Prices/Prices.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Prices_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Prices/Prices.vue?vue&type=template&id=32533c18&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/Prices/Prices.vue?vue&type=template&id=32533c18& ***!
+  \**********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prices_vue_vue_type_template_id_32533c18___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Prices.vue?vue&type=template&id=32533c18& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Prices/Prices.vue?vue&type=template&id=32533c18&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prices_vue_vue_type_template_id_32533c18___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Prices_vue_vue_type_template_id_32533c18___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -78403,75 +83935,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservationForm_vue_vue_type_template_id_28915493___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ReservationForm_vue_vue_type_template_id_28915493___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/SiteNavbar.vue":
-/*!************************************************!*\
-  !*** ./resources/js/components/SiteNavbar.vue ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _SiteNavbar_vue_vue_type_template_id_7aeacf62___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SiteNavbar.vue?vue&type=template&id=7aeacf62& */ "./resources/js/components/SiteNavbar.vue?vue&type=template&id=7aeacf62&");
-/* harmony import */ var _SiteNavbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SiteNavbar.vue?vue&type=script&lang=js& */ "./resources/js/components/SiteNavbar.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _SiteNavbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _SiteNavbar_vue_vue_type_template_id_7aeacf62___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _SiteNavbar_vue_vue_type_template_id_7aeacf62___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/SiteNavbar.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/SiteNavbar.vue?vue&type=script&lang=js&":
-/*!*************************************************************************!*\
-  !*** ./resources/js/components/SiteNavbar.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SiteNavbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./SiteNavbar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SiteNavbar.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SiteNavbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/SiteNavbar.vue?vue&type=template&id=7aeacf62&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/SiteNavbar.vue?vue&type=template&id=7aeacf62& ***!
-  \*******************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SiteNavbar_vue_vue_type_template_id_7aeacf62___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./SiteNavbar.vue?vue&type=template&id=7aeacf62& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/SiteNavbar.vue?vue&type=template&id=7aeacf62&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SiteNavbar_vue_vue_type_template_id_7aeacf62___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SiteNavbar_vue_vue_type_template_id_7aeacf62___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

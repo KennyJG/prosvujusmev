@@ -12,27 +12,27 @@
                     </thead>
                     <tbody>
                         <tr class="" style="background-color: #f0f0ff;">
-                            <td class="px-4 py-2">Tužka I.</td>
+                            <td class="px-4 py-2 text-left">Tužka I.</td>
                             <td class="px-4 py-2 text-right">1950 Kč</td>
                         </tr>
                         <tr>
-                            <td class="px-4 py-2">Tužka II.</td>
+                            <td class="px-4 py-2 text-left">Tužka II.</td>
                             <td class="px-4 py-2 text-right">1800 Kč</td>
                         </tr>
                         <tr class="" style="background-color: #f0f0ff;">
-                            <td class="px-4 py-2">Pastel - křída</td>
+                            <td class="px-4 py-2 text-left">Pastel - křída</td>
                             <td class="px-4 py-2 text-right">1800 Kč</td>
                         </tr>
                         <tr>
-                            <td class="px-4 py-2">Pastelka</td>
+                            <td class="px-4 py-2 text-left">Pastelka</td>
                             <td class="px-4 py-2 text-right">1700 Kč</td>
                         </tr>
                         <tr class="" style="background-color: #f0f0ff;">
-                            <td class="px-4 py-2">Akryl na plátně</td>
+                            <td class="px-4 py-2 text-left">Akryl na plátně</td>
                             <td class="px-4 py-2 text-right">2200 Kč</td>
                         </tr>
                         <tr>
-                            <td class="px-4 py-2">Olejomalba</td>
+                            <td class="px-4 py-2 text-left">Olejomalba</td>
                             <td class="px-4 py-2 text-right">2900 Kč</td>
                         </tr>
                     </tbody>
@@ -53,25 +53,25 @@
                 <table class="lg:mr-2 table-fixed text-blue-900 w-5/6">
                     <thead>
                         <tr>
-                            <th class="w-2/3 px-4 py-2">Počet účastníků</th>
-                            <th class="w-1/3 px-4 py-2">Sleva/1 osoba</th>
+                            <th class="w-2/3 px-4 py-2 text-left">Počet účastníků</th>
+                            <th class="w-1/3 px-4 py-2 text-right">Sleva/1 osoba</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="" style="background-color: #f0f0ff;">
-                            <td class="px-4 py-2">7 - 10</td>
+                            <td class="px-4 py-2 text-left">7 - 10</td>
                             <td class="px-4 py-2 text-right">dle domluvy</td>
                         </tr>
                         <tr>
-                            <td class="px-4 py-2">11 - více</td>
+                            <td class="px-4 py-2 text-left">11 - více</td>
                             <td class="px-4 py-2 text-right">dle domluvy</td>
                         </tr>
                         <tr class="" style="background-color: #f0f0ff;">
-                            <td class="px-4 py-2">DVOJICE na kurz Tužka I.</td>
+                            <td class="px-4 py-2 text-left">DVOJICE na kurz Tužka I.</td>
                             <td class="px-4 py-2 text-right">10%</td>
                         </tr>
                         <tr>
-                            <td class="px-4 py-2">TROJICE na kurz Tužka I.</td>
+                            <td class="px-4 py-2 text-left">TROJICE na kurz Tužka I.</td>
                             <td class="px-4 py-2 text-right">15%</td>
                         </tr>
                     </tbody>

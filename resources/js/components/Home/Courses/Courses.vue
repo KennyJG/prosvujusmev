@@ -1,7 +1,7 @@
 <template>
     <section id="kurzy" class="py-12">
         <div class="sm:w-full flex flex-col items-center sm:items-start text-center sm:text-left mb-6">
-            <h2 class="uppercase text-4xl text-gray-800 hover:text-purple-300 font-bold leading-none tracking-wide mb-2">Naše kurzy</h2>
+            <h2 class="uppercase text-4xl text-gray-800 font-bold leading-none tracking-wide mb-2">Naše kurzy</h2>
         </div>
         <div class="block md:flex justify-between lg:justify-start md:-mx-2 flex-wrap">
             <home-course 

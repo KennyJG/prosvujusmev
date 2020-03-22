@@ -16,13 +16,13 @@
                     <div class="flex px-4 py-4 text-gray-600er items-center border-b course-pointer">
                         <div class="w-full">
                             <div class="flex items-center border-b border-b-2 border-blue-500 py-2">
-                                <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Název kurzu" aria-label="Název kurzu">
+                                <input v-model="name" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Název kurzu" aria-label="Název kurzu">
                             </div>
                             <div class="flex items-center border-b border-b-2 border-blue-500 py-2 mt-4">
-                                <textarea class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" placeholder="Popis kurzu..." aria-label="Popis kurzu"></textarea>
+                                <textarea v-model="description" class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" placeholder="Popis kurzu..." aria-label="Popis kurzu"></textarea>
                             </div>
                             <div class="mt-4 flex justify-end">
-                                <button class="bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">Vytvořit</button>
+                                <button @click="createCourse" class="bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">Vytvořit</button>
                                 <a href="/admin/courses" class="border-transparent border-4 text-blue-500 hover:text-blue-800 text-sm py-1 px-2 rounded" type="button">Zrušit</a>
                             </div>
                         </div>
