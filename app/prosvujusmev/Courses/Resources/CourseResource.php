@@ -12,6 +12,7 @@ class CourseResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'slug' => $this->slug,
             'description' => $this->description,
             'courseDates' => $this->dates()->where('status', CourseDate::STATUS_ACTIVE)->get(),
             'created_at' => (string)$this->created_at,
