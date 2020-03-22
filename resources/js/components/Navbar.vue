@@ -8,7 +8,7 @@
             <a href="/rezervace" :class="isActive('/rezervace') ? 'text-purple-600' : ''" class="text-gray-800 hover:text-purple-300 py-3 px-6">Rezervace</a>
             <a href="/cenik" :class="isActive('/cenik') ? 'text-purple-600' : ''" class="text-gray-800 hover:text-purple-300 py-3 px-6">Ceník</a>
             <a href="/terminy" :class="isActive('/terminy') ? 'text-purple-600' : ''" class="text-gray-800 hover:text-purple-300 py-3 px-6">Termíny</a>
-            <a href="/galerie" :class="isActive('/galerie') ? 'text-purple-600' : ''" class="text-gray-800 hover:text-purple-300 py-3 px-6">Galerie</a>
+            <!-- <a href="/galerie" :class="isActive('/galerie') ? 'text-purple-600' : ''" class="text-gray-800 hover:text-purple-300 py-3 px-6">Galerie</a> -->
             <a href="/#reference" class="text-gray-800 hover:text-purple-300 py-3 px-6">Reference</a>
             <a href="/kontakty" :class="isActive('/kontakty') ? 'text-purple-600' : ''" class="text-gray-800 hover:text-purple-300 py-3 px-6">Kontakty</a>
             <!-- <a href="#" class="bg-purple-200 hover:bg-purple-300 rounded-full uppercase text-purple-700 py-3 px-6">Sign Up</a> -->

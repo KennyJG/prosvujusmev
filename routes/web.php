@@ -44,6 +44,8 @@ Route::group(['namespace' => 'prosvujusmev\\'], function () {
 
     Route::get('/kurzy/{course}', 'Courses\CoursesController@show');
 
+    Route::get('/terminy', 'Courses\CourseDatesController@index');
+
     Route::get('/kontakty', 'ContactsController@index');
 
     Route::get('/cenik', 'PricesController@index');
