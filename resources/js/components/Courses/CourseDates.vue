@@ -2,7 +2,7 @@
     <div>
         <div class="w-5/6 flex flex-col mx-auto mt-12">
             <div class="flex w-full flex-wrap lg:flex-no-wrap lg:justify-between">
-                <div v-for="course in courses" class="flex flex-col text-center w-1/3 md:w-auto">
+                <div v-for="course in courses" class="flex flex-col text-center w-1/3 lg:w-auto p-2 lg:p-0">
                     <div class="flex justify-center text-center w-full">
                         <div @click="selectCourse(course)" :class="{'bg-purple-600 text-white': selectedCourse == course, 'bg-white text-purple-300': selectedCourse != course}" class="rounded border h-12 w-full md:w-auto px-8 shadow-md flex justify-center items-center cursor-pointer">
                             <div class="font-bold">{{ course.name }}</div>
